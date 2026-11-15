@@ -1,0 +1,4 @@
+Source: Zomer, R. J., Xu, J. & Trabucco, A. (2022) "Version 3 of the Global Aridity Index and Potential Evapotranspiration Database", Scientific Data 9, 409. doi:10.1038/s41597-022-01493-1
+URL: https://www.nature.com/articles/s41597-022-01493-1 (open access, CC BY 4.0). Retrieved 2026-11-15 with curl.
+Verbatim (Methods): "As a general reference, a climate classification scheme for Aridity Index values provided by UNEP provides an insight into the climatic significance of the range of moisture availability conditions described by the AI. Aridity Index Value Climate Class <0.03 Hyper Arid 0.03–0.2 Arid 0.2–0.5 Semi-Arid 0.5–0.65 Dry sub-humid >0.65 Humid"
+(Aridity Index = mean annual precipitation / mean annual reference evapotranspiration ET0, FAO Penman-Monteith.)

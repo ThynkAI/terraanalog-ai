@@ -105,6 +105,14 @@ def build_earth():
         # --- soil texture (SoilGrids, modeled) ---
         for k in ("sand", "silt", "clay"):
             r[f"soil_{k}_pct"] = g(soil, f"soil_{k}_mean_pct")
+        r["soil_texture_source"] = "SoilGrids2_point" if r["soil_silt_pct"] is not None else None
+        r["soil_nearby_distance_km"] = None
+        near = _load(RAW / "soilgrids" / f"{sid}_nearby.json")  # step 02b: nearest valid pixel <= 10 km, not interpolated
+        if r["soil_silt_pct"] is None and near and near.get("found"):
+            for k in ("sand", "silt", "clay"):
+                r[f"soil_{k}_pct"] = g(near, f"soil_{k}_mean_pct")
+            r["soil_texture_source"] = "SoilGrids2_nearest_valid_pixel"
+            r["soil_nearby_distance_km"] = g(near, "distance_km")
         if r["soil_silt_pct"] is not None and r["soil_clay_pct"] is not None:
             r["fine_fraction"] = clean((r["soil_silt_pct"] + r["soil_clay_pct"]) / 100.0)
         else:
@@ -151,7 +159,8 @@ def build_earth():
             "permafrost": {"dataset_id": "DS-OBU-PF" if r["permafrost_source"] == "Obu2019_PERPROB" else "DS-CHELSA21",
                            "provenance": "modeled", "method": r["permafrost_source"], "note": pf.get(sid, {}).get("note")},
             "soil": {"dataset_id": "DS-SOILGRIDS", "provenance": "modeled", "request": (soil or {}).get("request"),
-                     "error": (soil or {}).get("error") or (soil or {}).get("http_status")},
+                     "error": (soil or {}).get("error") or (soil or {}).get("http_status"),
+                     "texture_source": r["soil_texture_source"], "nearest_pixel": near if r["soil_texture_source"] == "SoilGrids2_nearest_valid_pixel" else None},
             "access": {"dataset_id": (osm or {}).get("dataset_id"), "provenance": "derived", "note": (osm or {}).get("note"),
                        "nearest_populated_place": (osm or {}).get("nearest_populated_place")},
             "geology_map": {"dataset_id": "DS-MACROSTRAT", "provenance": "literature", "units": units[:4]},
@@ -176,7 +185,9 @@ def site_limitations(s, r):
     if r["permafrost_source"] == "MAAT_logistic_model":
         L.append("Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).")
     if r["fine_fraction"] is None:
-        L.append("SoilGrids texture unavailable (masked/no response).")
+        L.append("SoilGrids texture unavailable (masked/no response, and no valid pixel within 10 km).")
+    elif r.get("soil_texture_source") == "SoilGrids2_nearest_valid_pixel":
+        L.append(f"SoilGrids texture taken from the nearest valid 250 m pixel, {r['soil_nearby_distance_km']} km from the point (point pixel masked).")
     if r["road_distance_m"] is None:
         L.append("No mapped road/track within search radius or Overpass unavailable.")
     L.append("ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.")

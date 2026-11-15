@@ -188,7 +188,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-69.25&lat=-24.5&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -388,7 +390,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-89.66667&lat=75.38333&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -616,7 +620,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-116.82583&lat=36.25028&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -884,7 +890,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=160.83333&lat=-77.55&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": null,
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -917,7 +925,7 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
+    "SoilGrids texture unavailable (masked/no response, and no valid pixel within 10 km).",
     "No mapped road/track within search radius or Overpass unavailable.",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
@@ -1093,7 +1101,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=13.304977&lat=79.431656&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -1281,7 +1291,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-16.83&lat=64.85&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -1432,7 +1444,17 @@
      "retrieved": "2026-11-15"
     }
    ],
-   "resource": [],
+   "resource": [
+    {
+     "tag": "ground_ice",
+     "keyword": "permafrost ice",
+     "provenance": "literature",
+     "quote": "Locally around the caldera this ash fall on snow cover has resulted in the formation of a layer of permafrost ice.",
+     "source": "https://en.wikipedia.org/wiki/Askja",
+     "source_revision": 1382433494,
+     "retrieved": "2026-11-15"
+    }
+   ],
    "regulatory": {
     "tag": "protected_area",
     "keyword": "National Park",
@@ -1497,7 +1519,26 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-16.783&lat=65.033&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_nearest_valid_pixel",
+     "nearest_pixel": {
+      "site_id": "EA-007",
+      "retrieved": "2026-11-15",
+      "method": "nearest pixel with valid sand/silt/clay within 10.0 km (no interpolation)",
+      "sources": [
+       "https://files.isric.org/soilgrids/latest/data/sand/sand_0-5cm_mean.vrt",
+       "https://files.isric.org/soilgrids/latest/data/silt/silt_0-5cm_mean.vrt",
+       "https://files.isric.org/soilgrids/latest/data/clay/clay_0-5cm_mean.vrt"
+      ],
+      "found": true,
+      "distance_km": 0.547,
+      "pixel_lon": -16.79461,
+      "pixel_lat": 65.03262,
+      "soil_sand_mean_pct": 55.0,
+      "soil_silt_mean_pct": 32.2,
+      "soil_clay_mean_pct": 12.8,
+      "units_note": "SoilGrids stores g/kg; divided by 10 to give %"
+     }
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -1545,11 +1586,11 @@
     }
    },
    "limitations": [
-    "SoilGrids texture unavailable (masked/no response).",
+    "SoilGrids texture taken from the nearest valid 250 m pixel, 0.547 km from the point (point pixel masked).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.605,
+    "score": 0.75,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -1682,7 +1723,26 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-13.79333&lat=28.99417&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_nearest_valid_pixel",
+     "nearest_pixel": {
+      "site_id": "EA-008",
+      "retrieved": "2026-11-15",
+      "method": "nearest pixel with valid sand/silt/clay within 10.0 km (no interpolation)",
+      "sources": [
+       "https://files.isric.org/soilgrids/latest/data/sand/sand_0-5cm_mean.vrt",
+       "https://files.isric.org/soilgrids/latest/data/silt/silt_0-5cm_mean.vrt",
+       "https://files.isric.org/soilgrids/latest/data/clay/clay_0-5cm_mean.vrt"
+      ],
+      "found": true,
+      "distance_km": 0.68,
+      "pixel_lon": -13.79817,
+      "pixel_lat": 28.98976,
+      "soil_sand_mean_pct": 45.0,
+      "soil_silt_mean_pct": 30.0,
+      "soil_clay_mean_pct": 25.0,
+      "units_note": "SoilGrids stores g/kg; divided by 10 to give %"
+     }
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -1731,11 +1791,11 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
+    "SoilGrids texture taken from the nearest valid 250 m pixel, 0.68 km from the point (point pixel masked).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.509,
+    "score": 0.58,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -1862,7 +1922,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-13.43889&lat=29.16111&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -2112,7 +2174,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=40.3&lat=14.24167&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -2293,7 +2357,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-67.48913&lat=-20.13378&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -2436,7 +2502,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-67.75&lat=-25.73333&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -2663,7 +2731,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=119.437252&lat=-21.151759&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -2859,7 +2929,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=139.33611&lat=-30.31167&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -3054,7 +3126,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=127.79556&lat=-19.17167&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -3224,7 +3298,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=144.59611&lat=-18.20111&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -3432,7 +3508,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=77.98333&lat=33.3&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": "HTTPSConnectionPool(host='rest.isric.org', port=443): Read timed out. (read timeout=90)"
+     "error": "HTTPSConnectionPool(host='rest.isric.org', port=443): Read timed out. (read timeout=90)",
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -3632,7 +3710,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=94.45&lat=37.26667&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -3831,7 +3911,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-155.46806&lat=19.82056&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -4019,7 +4101,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-155.29667&lat=19.40861&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -4208,7 +4292,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-121.50833&lat=41.71389&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -4341,7 +4427,17 @@
      "retrieved": "2026-11-15"
     }
    ],
-   "resource": [],
+   "resource": [
+    {
+     "tag": "cave_ice",
+     "keyword": "winter ice",
+     "provenance": "literature",
+     "quote": "The lava tubes and pit craters of the park are known for their preservation of winter ice and snow into the hot summer months due to shielding from the sun and the insulating properties of basalt.",
+     "source": "https://en.wikipedia.org/wiki/Craters_of_the_Moon_National_Monument_and_Preserve",
+     "source_revision": 1366646688,
+     "retrieved": "2026-11-15"
+    }
+   ],
    "regulatory": {
     "tag": "protected_area",
     "keyword": "National Monument",
@@ -4404,7 +4500,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-113.56271&lat=43.46167&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": "HTTPSConnectionPool(host='rest.isric.org', port=443): Read timed out. (read timeout=90)"
+     "error": "HTTPSConnectionPool(host='rest.isric.org', port=443): Read timed out. (read timeout=90)",
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -4455,7 +4553,7 @@
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.675,
+    "score": 0.75,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -4595,7 +4693,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-111.02333&lat=35.02806&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -4800,7 +4900,26 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-63.3&lat=55.88333&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_nearest_valid_pixel",
+     "nearest_pixel": {
+      "site_id": "EA-024",
+      "retrieved": "2026-11-15",
+      "method": "nearest pixel with valid sand/silt/clay within 10.0 km (no interpolation)",
+      "sources": [
+       "https://files.isric.org/soilgrids/latest/data/sand/sand_0-5cm_mean.vrt",
+       "https://files.isric.org/soilgrids/latest/data/silt/silt_0-5cm_mean.vrt",
+       "https://files.isric.org/soilgrids/latest/data/clay/clay_0-5cm_mean.vrt"
+      ],
+      "found": true,
+      "distance_km": 0.858,
+      "pixel_lon": -63.30047,
+      "pixel_lat": 55.87561,
+      "soil_sand_mean_pct": 46.5,
+      "soil_silt_mean_pct": 34.3,
+      "soil_clay_mean_pct": 19.2,
+      "units_note": "SoilGrids stores g/kg; divided by 10 to give %"
+     }
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -4825,11 +4944,11 @@
    },
    "limitations": [
     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
-    "SoilGrids texture unavailable (masked/no response).",
+    "SoilGrids texture taken from the nearest valid 250 m pixel, 0.858 km from the point (point pixel masked).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.657,
+    "score": 0.727,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -4967,7 +5086,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-81.18333&lat=46.6&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -5173,7 +5294,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-6.58333&lat=37.68333&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -5361,7 +5484,26 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=76.5075&lat=19.975&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_nearest_valid_pixel",
+     "nearest_pixel": {
+      "site_id": "EA-027",
+      "retrieved": "2026-11-15",
+      "method": "nearest pixel with valid sand/silt/clay within 10.0 km (no interpolation)",
+      "sources": [
+       "https://files.isric.org/soilgrids/latest/data/sand/sand_0-5cm_mean.vrt",
+       "https://files.isric.org/soilgrids/latest/data/silt/silt_0-5cm_mean.vrt",
+       "https://files.isric.org/soilgrids/latest/data/clay/clay_0-5cm_mean.vrt"
+      ],
+      "found": true,
+      "distance_km": 0.586,
+      "pixel_lon": 76.50431,
+      "pixel_lat": 19.97067,
+      "soil_sand_mean_pct": 22.5,
+      "soil_silt_mean_pct": 31.1,
+      "soil_clay_mean_pct": 46.4,
+      "units_note": "SoilGrids stores g/kg; divided by 10 to give %"
+     }
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -5387,11 +5529,11 @@
    "limitations": [
     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
+    "SoilGrids texture taken from the nearest valid 250 m pixel, 0.586 km from the point (point pixel masked).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.577,
+    "score": 0.647,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -5532,7 +5674,9 @@
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
      "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-110.7919&lat=38.40646&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
-     "error": null
+     "error": null,
+     "texture_source": "SoilGrids2_point",
+     "nearest_pixel": null
     },
     "access": {
      "dataset_id": "DS-NATEARTH",
@@ -7051,11 +7195,11 @@
     }
    ],
    "temperature": {
-    "value": null,
-    "provenance": "unavailable",
-    "quote": "low of about −153 °C (120 K; −243 °F) at the poles",
-    "source": "wiki:Climate of Mars",
-    "note": "Only a minimum is sourced; no mean used."
+    "value": 155,
+    "provenance": "literature",
+    "quote": "Given a present mean annual surface temperature of 155 K and a geothermal gradient of 15°/km, the temperature at the base of the north polar cap likely falls between 200 and 215 K.",
+    "source": "doi:10.1006/icar.1999.6290",
+    "note": "Clifford et al. 2000 (Icarus 144:210-242), section 2.4; mean annual surface temperature of the north polar cap. Excerpt: data/raw/literature/web/clifford2000_unl_excerpt.txt. Replaces the earlier null (only a minimum, 120 K, had been sourced from wiki:Climate of Mars)."
    },
    "illumination": null,
    "ice_evidence": "Ice cap mostly water ice (~95%) with dust layers (wiki:Planum Boreum).",

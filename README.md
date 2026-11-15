@@ -133,15 +133,15 @@ and other data sources are credited below and in the app.
 <!-- RESULTS:START -->
 | Profile | #1 (score, completeness) | #2 | #3 | MC mean Spearman |
 |---|---|---|---|---|
-| MOON_ISRU_ICE | EA-002 Haughton impact crater (57.4, 1.00) | EA-004 McMurdo Dry Valleys (45.6, 0.90) | EA-005 Bockfjorden Volcanic Complex (42.0, 1.00) | 0.914 |
-| MOON_ROVER_MOBILITY | EA-028 Mars Desert Research Station area (77.2, 0.95) | EA-008 Timanfaya volcanic field (68.5, 0.80) | EA-011 Salar de Uyuni (67.3, 0.75) | 0.925 |
-| MOON_EVA_HABITAT | EA-004 McMurdo Dry Valleys (50.9, 0.75) | EA-005 Bockfjorden Volcanic Complex (44.7, 1.00) | EA-002 Haughton impact crater (39.5, 1.00) | 0.938 |
-| MOON_FIELD_GEOLOGY | EA-024 Mistastin Lake impact structure (51.1, 1.00) | EA-002 Haughton impact crater (44.5, 1.00) | EA-023 Meteor Crater (42.4, 1.00) | 0.952 |
-| MOON_LAVA_TUBE | EA-009 Cueva de los Verdes lava tube (74.3, 0.95) | EA-016 Undara lava tubes (69.1, 0.95) | EA-008 Timanfaya volcanic field (58.7, 0.90) | 0.97 |
-| MARS_ISRU_ICE | EA-002 Haughton impact crater (65.7, 1.00) | EA-004 McMurdo Dry Valleys (64.0, 0.80) | EA-005 Bockfjorden Volcanic Complex (43.2, 0.85) | 0.917 |
+| MOON_ISRU_ICE | EA-002 Haughton impact crater (57.4, 1.00) | EA-004 McMurdo Dry Valleys (45.6, 0.90) | EA-007 Askja caldera (42.6, 1.00) | 0.912 |
+| MOON_ROVER_MOBILITY | EA-028 Mars Desert Research Station area (77.2, 0.95) | EA-008 Timanfaya volcanic field (70.3, 0.95) | EA-011 Salar de Uyuni (67.3, 0.75) | 0.927 |
+| MOON_EVA_HABITAT | EA-004 McMurdo Dry Valleys (50.9, 0.75) | EA-005 Bockfjorden Volcanic Complex (44.7, 1.00) | EA-002 Haughton impact crater (39.5, 1.00) | 0.937 |
+| MOON_FIELD_GEOLOGY | EA-024 Mistastin Lake impact structure (51.1, 1.00) | EA-002 Haughton impact crater (44.5, 1.00) | EA-023 Meteor Crater (42.4, 1.00) | 0.948 |
+| MOON_LAVA_TUBE | EA-009 Cueva de los Verdes lava tube (74.3, 0.95) | EA-016 Undara lava tubes (69.1, 0.95) | EA-008 Timanfaya volcanic field (59.8, 0.95) | 0.969 |
+| MARS_ISRU_ICE | EA-002 Haughton impact crater (65.7, 1.00) | EA-004 McMurdo Dry Valleys (56.8, 0.95) | EA-007 Askja caldera (42.0, 1.00) | 0.909 |
 | MARS_ROVER_MOBILITY | EA-028 Mars Desert Research Station area (71.5, 0.95) | EA-008 Timanfaya volcanic field (62.3, 0.95) | EA-006 Holuhraun lava field (61.7, 0.95) | 0.946 |
 | MARS_EVA_HABITAT | EA-002 Haughton impact crater (57.2, 0.95) | EA-018 Qaidam Basin (53.9, 0.95) | EA-028 Mars Desert Research Station area (45.8, 0.95) | 0.925 |
-| MARS_ASTROBIO_SEDIMENTS | EA-028 Mars Desert Research Station area (61.6, 1.00) | EA-003 Death Valley (51.6, 1.00) | EA-018 Qaidam Basin (50.3, 1.00) | 0.958 |
+| MARS_ASTROBIO_SEDIMENTS | EA-028 Mars Desert Research Station area (61.6, 1.00) | EA-003 Death Valley (51.6, 1.00) | EA-018 Qaidam Basin (50.3, 1.00) | 0.96 |
 | MARS_LAVA_TUBE | EA-009 Cueva de los Verdes lava tube (57.5, 0.95) | EA-016 Undara lava tubes (51.4, 0.95) | EA-008 Timanfaya volcanic field (45.3, 0.95) | 0.953 |
 
 Validation: **42/42 checks passed** (see `outputs/validation_report.md`).
@@ -180,14 +180,19 @@ python scripts/retrieve_credentialed_or_blocked.py worldclim overpass
 |---|---|
 | `01_retrieve_literature.py` | Wikipedia extracts and GeoData, Crossref DOI verification, archived web pages |
 | `02_retrieve_earth_data.py` | Copernicus DEM, WorldCover, CHELSA, ERA5 (Open-Meteo), permafrost, Macrostrat, SoilGrids, access distances |
+| `01b_imagery.py` | Openly licensed lead image per site from Wikimedia Commons (licence, author, file page, HTTP 200 check) |
+| `02b_soilgrids_nearby.py` | SoilGrids nearest valid pixel (<= 10 km, no interpolation) where the point pixel is masked |
+| `02c_admin_region.py` | Admin-1 region per site (Natural Earth 1:10m, point-in-polygon) |
+| `02d_climate_class.py` | Koppen-Geiger class (Peel et al. 2007) from ERA5 1991-2020 monthly normals, plus UNEP aridity class |
 | `03_retrieve_planetary_data.py` | LOLA/MOLA terrain around each reference |
+| `03b_gazetteer.py` | USGS/IAU Gazetteer of Planetary Nomenclature feature IDs and official diameters for the references |
 | `04_build_features.py` | Feature table, planetary features, `site_evidence.json` |
 | `05_score.py` | MCDA fidelity score, operational score, Monte Carlo / OAT / leave-one-out sensitivity, strict-evidence variant |
 | `06_analytics.py` | PCA, k-means/Ward clustering, similarity matrices, radar data, baseline comparison, figures |
 | `07_dataset_catalog.py` · `08_build_geojson.py` · `10_write_references.py` · `11_data_contract.py` | Catalog, GeoJSON, references, data contract and schemas |
 | `09_validate.py` | Validation suite (geometry, coordinates, DOIs, units, score recalculation, sensitivity, plausibility, URLs) |
 | `12_results_snapshot.py` | Refreshes the results tables in this README and the handoff |
-| `13_export_app_contract.py` | Exports the 9-file web-app data contract (`terraanalog-ai/docs/DATA_INTEGRATION.md`): `python scripts/13_export_app_contract.py --out <dir>` (default `app_contract_export/`, git-ignored) |
+| `13_export_app_contract.py` | Exports the 9-file web-app data contract (`terraanalog-ai/docs/DATA_INTEGRATION.md`) plus a `supplementary/` folder (data gaps, radar data, sensitivity, profile rankings with `mc_*`, site bounds): `python scripts/13_export_app_contract.py --out <dir>` (default `app_contract_export/`, git-ignored) |
 
 Network retrieval of 28 sites takes roughly 1–2 h. SoilGrids is rate-limited, and Overpass is skipped after its first failure. Processing (`--offline`) takes about 2 min.
 

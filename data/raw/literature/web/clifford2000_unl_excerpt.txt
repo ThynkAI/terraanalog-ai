@@ -1,0 +1,8 @@
+Source: Clifford, S. M. et al. (2000) "The State and Future of Mars Polar Science and Exploration", Icarus 144, 210-242, doi:10.1006/icar.1999.6290
+Open-access copy: https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1015&context=mechengfacpub (DigitalCommons@University of Nebraska-Lincoln, mechengfacpub/17)
+Retrieved 2026-11-15 via web fetch (direct curl returns a Cloudflare challenge page, so the text below was copied from the fetched rendering).
+
+Section 2.4 (p. 221), verbatim:
+"Temperature and mass balance are two of the most significant factors affecting flow. Given a present mean annual surface temperature of 155 K and a geothermal gradient of 15°/km, the temperature at the base of the north polar cap likely falls between 200 and 215 K."
+
+Section 2.3 (p. 219), supporting: "... its exact location being dependent on the mean annual surface temperature (~155 K), local geothermal heat flux, thermal conductivity of the deposits, and melting temperature of the polar ice ..."

@@ -240,7 +240,9 @@
     "lava_flow_field:lava flow",
     "volcanic_cone_shield:volcano"
    ],
-   "resource": [],
+   "resource": [
+    "ground_ice:permafrost ice"
+   ],
    "regulatory": "protected_area:National Park",
    "infrastructure": "analog_research_history:Apollo"
   },
@@ -711,7 +713,9 @@
     "lava_tube_cave:lava tube",
     "volcanic_cone_shield:cinder cone"
    ],
-   "resource": [],
+   "resource": [
+    "cave_ice:winter ice"
+   ],
    "regulatory": "protected_area:National Monument",
    "infrastructure": "analog_research_history:Apollo"
   },

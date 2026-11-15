@@ -97,10 +97,21 @@ def cite_doi(doi, meta):
     m = meta.get(doi)
     if not m:
         raise SystemExit(f"DOI {doi} not verified - refusing to cite")
-    au = m.get("authors") or []
-    a = (au[0].split(",")[0] + (" et al." if len(au) > 1 else "")) if au else (m.get("publisher") or "")
+    # Crossref sometimes returns author records without a family name (e.g. the ESA Copernicus DEM DOI returns one empty
+    # author). Empty names are dropped; with no named author the registrant/publisher is used. Authors are never invented.
+    au = [x for x in (m.get("authors") or []) if x and x.split(",")[0].strip()]
+    a = (au[0].split(",")[0].strip() + (" et al." if len(au) > 1 else "")) if au else (m.get("publisher") or "Unknown author (no author in DOI metadata)")
     title = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", re.sub(r"\s*<(sub|sup)>\s*(.*?)\s*</(sub|sup)>\s*", r"\2", m.get("title") or ""))).strip()
     return f"{a} ({m.get('year')}) {title}. {m.get('container') or ''}. doi:{doi}".replace(" . ", " ")
+
+
+EMPTY_PAREN = re.compile(r"\s*\(\s*[;,]?\s*\)")
+
+
+def clean_quote(q):
+    """Remove empty '()' left where the MediaWiki plain-text extract dropped pronunciation/IPA markup; flag the edit."""
+    q2 = EMPTY_PAREN.sub("", q)
+    return (q2, True) if q2 != q else (q, False)
 
 
 def cite_wiki(url, rev=None):
@@ -130,6 +141,10 @@ def main():
     opcomp = load_json(OUTPUTS / "sensitivity_summary.json")["operational_components"]
     catalog = read_csv(OUTPUTS / "dataset_catalog.csv")
     profiles = cfg["mission_profiles"]
+    regions = load_json(RAW / "admin1" / "regions.json")
+    imagery = load_json(RAW / "imagery" / "imagery.json")
+    climcls = load_json(RAW / "era5_monthly" / "climate_classes.json")["classes"]
+    gaz = load_json(RAW / "gazetteer" / "reference_matches.json")
     site_ids = sorted(feats)
     ref_ids = sorted(pf, key=lambda r: (r.startswith("MARS"), r))
     body_of = {r: pf[r]["body"].lower() for r in ref_ids}
@@ -210,8 +225,10 @@ def main():
                    "multipliers": {}}]
     for pname, prof in profiles.items():
         objectives.append({"id": pname, "label": pname.replace("_", " ").title().replace("Isru", "ISRU").replace("Eva", "EVA"),
-                           "description": f"{prof.get('description', '')}. TerraAnalog mission profile ({prof['body']}); published references: {', '.join(prof['references'])}. Multipliers = profile feature weights.",
-                           "multipliers": {c["id"]: float(prof["weights"].get(c["feature"], 0.0)) for c in crit if c["ref_id"]},
+                           "description": f"{prof.get('description', '')}. TerraAnalog mission profile ({prof['body']}); published references: {', '.join(prof['references'])}. Multipliers = profile feature weights, defined only for {prof['body']} criteria.",
+                           # only this profile's own body: a Moon profile carries no multipliers for Mars criteria (and vice versa)
+                           "multipliers": {c["id"]: float(prof["weights"].get(c["feature"], 0.0)) for c in crit
+                                           if c["ref_id"] and body_of[c["ref_id"]] == prof["body"].lower()},
                            "body": prof["body"].lower(), "published_references": prof["references"]})
     scoring = {
         "meta": {"version": f"terraanalog-app-contract-1.0.0", "provenance": "mixed", "synthetic": False,
@@ -269,6 +286,11 @@ def main():
                     st = tag_info(e.get(feat, [])); rt = tag_info(er.get(feat, []))
                     if not st or not rt:
                         vt, conf, note = "missing", None, ("site has no " if not st else "reference has no ") + f"{feat} tags"
+                        why = (f"no {feat} tag for this site is supported by its fetched sources ({', '.join(sorted(set(t['source'] for k2 in ('lithology','process','landform') for t in e.get(k2, []) if t.get('source'))) or 'none')}); keyword search of the fetched text found no {feat} term in the tag vocabulary"
+                               if not st else f"{r} has no {feat} tag supported by its fetched sources")
+                        items.append({"statement": f"No evidence: value missing - {why}. Similarity not computed and not imputed.",
+                                      "source_id": "TA-ENGINE", "value_type": "missing", "confidence": None,
+                                      "citation": f"TerraAnalog AI scoring engine (ThynkAI/terraanalog-ai @ {commit}), scripts/04_build_features.py tags_with_evidence"})
                     else:
                         confs = [TAG_CONF.get(t["provenance"], 0.3) for t in list(st.values()) + list(rt.values())]
                         conf = round(sum(confs) / len(confs), 3)
@@ -282,7 +304,8 @@ def main():
                         for k in shared[:2] or sorted(st)[:1]:
                             t = st[k]
                             if t.get("quote"):
-                                items.append({"statement": f"'{k}' at site: \"{t['quote']}\"", "source_id": "DS-WIKI", "value_type": "provisional",
+                                q, edited = clean_quote(t["quote"])
+                                items.append({"statement": f"'{k}' at site: \"{q}\"" + (" [empty parentheses left by the Wikipedia plain-text extract were removed]" if edited else ""), "source_id": "DS-WIKI", "value_type": "provisional",
                                               "confidence": TAG_CONF["literature"], "citation": cite_wiki(t["source"], t.get("source_revision"))})
                             else:
                                 items.append({"statement": f"'{k}' at site is an expert (hypothesized) tag; no supporting sentence was found in the fetched sources.",
@@ -319,18 +342,23 @@ def main():
                         ev_txt = f"WorldCover 2021 bare/sparse + snow/ice fraction within 5 km = {f['abiotic_fraction_r5km']}; references are unvegetated (1.0)"
                         conf = pc["modeled"]
                     else:  # dust_sediment
-                        ev_txt = f"SoilGrids 0-5 cm silt+clay {f['fine_fraction'] or 'null'}; {r} fine fraction {pfr['fine_fraction'] or 'null (no sourced value)'}"
-                        conf = min(pc["modeled"], pc["derived"])
+                        near = f.get("soil_texture_source") == "SoilGrids2_nearest_valid_pixel"
+                        ev_txt = (f"SoilGrids 0-5 cm silt+clay {f['fine_fraction'] or 'null'}"
+                                  + (f" (nearest valid 250 m pixel, {f['soil_nearby_distance_km']} km from the point; point pixel masked; no interpolation)" if near else "")
+                                  + f"; {r} fine fraction {pfr['fine_fraction'] or 'null (no sourced value)'}")
+                        conf = min(pc["modeled"], pc["derived"]) - (0.1 if near else 0.0)
                     vt = VT_MAP[cls] if v is not None else "missing"
                     if v is None:
                         conf = None
-                        note = "No value: " + ev_txt
+                        why = missing_reason(feat, s, r, f, pfr)
+                        ev_txt = f"No evidence: value missing - {why}. Inputs: {ev_txt}"
+                        note = ev_txt
                     else:
                         note = ev_txt
-                    items.append({"statement": ev_txt + (f". Similarity {v}." if v is not None else ". Similarity unavailable (not imputed)."),
+                    items.append({"statement": ev_txt + (f". Similarity {v}." if v is not None else ". Similarity not computed and not imputed."),
                                   "source_id": src if v is not None else src, "value_type": vt, "confidence": conf,
                                   "citation": catalog_citation(src, catalog, meta)})
-                val = "" if v is None else round(5 * v, 3)
+                val = "" if v is None else round(5 * v, 4)  # 4 dp; published scores are computed from these exported values
                 if v is None:
                     vt, conf = "missing", None
                 frows.append({"site_id": s, "criterion_id": cid, "value": val, "unit": "score_0_5", "value_type": vt,
@@ -341,13 +369,14 @@ def main():
         o = opcomp.get(s, {})
         osc = fnum(next(iter(rk[s].values()))["operational_score"]) if rk[s] else None
         ocomp = fnum(next(iter(rk[s].values()))["operational_completeness"]) if rk[s] else None
-        frows.append({"site_id": s, "criterion_id": "operational_suitability", "value": "" if osc is None else round(osc / 20, 3),
-                      "unit": "score_0_5", "value_type": "provisional" if osc is not None else "missing", "confidence": "",
+        oconf = operational_confidence(o, f, e, cfg, ocomp) if osc is not None else None
+        frows.append({"site_id": s, "criterion_id": "operational_suitability", "value": "" if osc is None else round(osc / 20, 4),
+                      "unit": "score_0_5", "value_type": "provisional" if osc is not None else "missing", "confidence": "" if oconf is None else oconf,
                       "source_id": "TA-ENGINE",
                       "notes": f"Operational score {osc}/100 (completeness {ocomp}); components {o}; access from Natural Earth major roads (upper bound). Weight 0: never part of fidelity."})
         vt_counts["provisional" if osc is not None else "missing"] += 1
         evidence[s]["operational_suitability"] = [{"statement": f"Operational components (0-1): {o}. Road distance {f['road_distance_m'] or ('> ' + f['road_distance_censored_gt_m'] + ' m (censored)')} m; regulatory class {f['regulatory_class']}; infrastructure {f['infrastructure_class']}.",
-                                                   "source_id": "DS-NATEARTH", "value_type": "provisional", "confidence": 0.5,
+                                                   "source_id": "DS-NATEARTH", "value_type": "provisional", "confidence": oconf,
                                                    "citation": catalog_citation("DS-NATEARTH", catalog, meta)}]
     with open(out / "analog_features.csv", "w", newline="", encoding="utf-8") as fh:
         fh.write(f"# TerraAnalog AI real research outputs (source commit {commit}). value = 5 x similarity to the reference named in criterion_id; empty = missing (never imputed).\n")
@@ -389,16 +418,31 @@ def main():
                "Group": f["group"], "Sampling point": f"{f['coord_kind']} ({f['coord_source']})",
                "Best Moon profile": f"{best['moon']['mission_profile']} {best['moon']['fidelity_score']} (completeness {best['moon']['evidence_completeness']}, vs {best['moon']['matched_reference_id']})",
                "Best Mars profile": f"{best['mars']['mission_profile']} {best['mars']['fidelity_score']} (completeness {best['mars']['evidence_completeness']}, vs {best['mars']['matched_reference_id']})"}
-        props = {"site_id": s, "name": f["name"], "country": f["country"], "region": "",
+        rg = regions["regions"].get(s) or {}
+        region = rg.get("admin1") or ""
+        if rg.get("country") == "Antarctica":
+            region = "Antarctica (no first-level administrative division)"
+        cc = climcls[s]
+        img = imagery.get(s)
+        img_out = None
+        if img:
+            who = img.get("artist") or "author not recorded in Commons metadata"
+            img_out = {"url": img["url"], "license": img["license"], "license_url": img.get("license_url"),
+                       "credit": f"{who} / Wikimedia Commons ({img['license']})", "attribution_page": img["file_page"],
+                       "source": f"Lead image of Wikipedia article '{img['from_article']}'", "url_checked": f"HTTP {img['url_status']} on {img['checked']}"}
+        props = {"site_id": s, "name": f["name"], "country": f["country"], "region": region,
+                 "region_source": f"Natural Earth 1:10m admin-1 ({rg.get('admin1_type') or 'n/a'}; {rg.get('iso_3166_2') or 'n/a'}), point-in-polygon" if rg.get("admin1") else None,
                  "analog_types": site_analog_types(s),
-                 "climate": f"MAAT {rd(maat, 1)} deg C ({f['maat_source']}); precipitation {rd(pr, 0)} mm/yr and P/ET0 {rd(ai, 3)} (ERA5 1991-2020). Modeled values.",
+                 "climate_class": cc["climate_class"], "aridity_class": cc["aridity_class"],
+                 "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+                 "climate": f"Koppen {cc['climate_class']}, {cc['aridity_class']} (ERA5 grid cell). MAAT {rd(maat, 1)} deg C ({f['maat_source']}); precipitation {rd(pr, 0)} mm/yr and P/ET0 {rd(ai, 3)} (ERA5 1991-2020). Modeled values.",
                  "geology": f"Macrostrat map unit: {f['macrostrat_lith'] or 'n/a'} ({f['macrostrat_scale'] or 'n/a'} map). Lithology tags: {', '.join(tags(f, 'lithology')) or 'none'}; process tags: {', '.join(tags(f, 'process')) or 'none'}.",
                  "description": f"{f['group'].capitalize()} TerraAnalog site. Landforms: {', '.join(tags(f, 'landform')) or 'none'}. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: {', '.join(supported) or 'none'}.",
                  "target_bodies": ["moon", "mars"], "mission_objectives": supported, "environment": env,
                  "elevation_m": rd(fnum(f["elev_point_m"]), 1),
                  "limitations": [x.strip() for x in (f["limitations"] or "").split("|") if x.strip()] +
                                 ["Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."],
-                 "imagery": None, "provenance": "mixed", "citations": cites,
+                 "imagery": img_out, "provenance": "mixed", "citations": cites + [cite_doi("10.5194/hess-11-1633-2007", meta), cite_doi("10.1038/s41597-022-01493-1", meta)],
                  "coordinate_note": f"WGS84 sampling point: {f['coord_kind']} ({f['coord_source']}).",
                  "group": f["group"], "data_confidence": fnum(f["data_confidence"]), "terraanalog_site_id": s}
         feats_out.append({"type": "Feature", "id": s, "geometry": {"type": "Point", "coordinates": [float(f["lon"]), float(f["lat"])]}, "properties": props})
@@ -415,13 +459,17 @@ def main():
         lon = ((lon + 180) % 360) - 180 if lon != 180 else 180.0
         lon360 = lon % 360
         d = DIAMETERS.get(r)
-        diam = None
+        wiki_diam = None
         if d:
             fp, _ = wiki_file(d[1])
             if fp and d[2] in fp.read_text(encoding="utf-8"):
-                diam = d[0]
+                wiki_diam = d[0]
             else:
                 raise SystemExit(f"diameter quote for {r} not found in fetched {d[1]}")
+        g = gaz.get(r) or {}
+        exact = g.get("match") == "exact"
+        diam = g.get("diameter_km") if exact else None  # official IAU/USGS value, only when the named feature IS the reference
+        diam_src = (f"USGS Gazetteer of Planetary Nomenclature feature {g['feature_id']} ({g['name']}), {g['url']}" if exact else None)
         cites = [cite_doi(x, meta) for x in REF_DOIS.get(r, [])]
         for w in c.get("wiki", []):
             fp, info = wiki_file(w)
@@ -430,13 +478,19 @@ def main():
         traits = [f"{k}: {t}" for k in ("lithology", "process", "landform", "resource") for t in tags(p, k)]
         props = {"ref_id": r, "body": b, "name": p["name"], "region_type": p["status_class"],
                  "lon_east_360": round(lon360, 6), "coordinate_system": COORD_SYS[b], "body_radius_km": BODY_RADIUS_KM[b],
-                 "diameter_km": diam, "gazetteer_feature_id": None,
+                 "lon_east": round(lon, 6),
+                 "diameter_km": diam, "gazetteer_feature_id": (str(g["feature_id"]) if g.get("feature_id") is not None else None),
+                 "gazetteer_feature_name": g.get("name"), "gazetteer_match": g.get("match"), "gazetteer_url": g.get("url"),
+                 "gazetteer_note": ({"exact": "Reference is this named feature.",
+                                     "containing": "Reference lies inside this named feature; its diameter is not the reference's, so diameter_km is null.",
+                                     "none": g.get("note")}.get(g.get("match"))),
                  "description": f"{c.get('status_note', '')} Illumination: {p['illumination_summary'] or 'n/a'}. Ice evidence: {p['ice_evidence'] or 'none'}. Hazards: {p['hazards'] or 'n/a'}. Objectives: {p['mission_objectives'] or 'n/a'}.",
                  "traits": traits, "analog_type_affinity": ref_analog_types(r),
                  "citation": " | ".join(cites) if cites else "No peer-reviewed citation attached; coordinates from " + c.get("coord_source", ""),
                  "provenance": "published", "status_class": p["status_class"], "not_an_approved_base_site": True,
                  "crs": CRS[b], "coord_source": c.get("coord_source"), "body_radius_source": RADIUS_SOURCE[b],
-                 "diameter_source": (f"wiki:{d[1]} ('{d[2]}')" if diam else None),
+                 "diameter_source": diam_src,
+                 "diameter_wiki_km": wiki_diam, "diameter_wiki_source": (f"wiki:{d[1]} ('{d[2]}')" if wiki_diam else None),
                  "terrain": {"dem_product": p["dem_product"], "grid_res_m": fnum(p["dem_grid_res_m"]), "elevation_m": rd(fnum(p["ref_elev_point_m"]), 1),
                              "slope_median_deg": rd(fnum(p["ref_slope_median_deg"]), 2), "tri_median_m": rd(fnum(p["ref_tri_median_m"]), 2)},
                  "temperature_K": fnum(p["temperature_K"]), "temperature_provenance": p["temperature_provenance"] or None}
@@ -447,17 +501,40 @@ def main():
 
     # ======================================================================================================
     # 4. analog_rankings.csv  (exact TerraAnalog fidelity per (reference, profile, site))
+    # Published scores are recomputed here from the EXPORTED (4 dp) values with the app's formula, in config criteria order,
+    # so a consumer that recomputes from analog_features.csv gets the same number. Score is stored at 4 dp; completeness at 3 dp.
+    # Ties: rank by (-score_4dp, -completeness_3dp, site_id) - the same deterministic key the app uses.
+    xval = {(fr["site_id"], fr["criterion_id"]): (None if fr["value"] == "" else float(str(fr["value"]))) for fr in frows}
+    objmult = {o["id"]: o["multipliers"] for o in objectives}
     grp = defaultdict(list)
     for p in pairs:
         grp[(p["ref_id"], p["mission_profile"])].append(p)
-    rrows = []
+    rrows, max_dev = [], 0.0
     for (r, prof), lst in sorted(grp.items()):
-        lst.sort(key=lambda x: (-float(x["fidelity_score"]), x["site_id"]))
-        for i, p in enumerate(lst, 1):
-            rrows.append({"ref_id": r, "objective": prof, "site_id": p["site_id"], "score": round(float(p["fidelity_score"]), 2), "rank": i,
-                          "completeness": round(float(p["evidence_completeness"]), 3), "method_version": f"terraanalog-mcda-1.0.0@{commit}", "provenance": "mixed"})
+        b = body_of[r]
+        active = [c for c in crit if c["ref_id"] is None or c["ref_id"] == r]
+        scored = []
+        for p in lst:
+            sid = p["site_id"]
+            tot = pres = wsum = 0.0
+            for c in active:
+                w = body_weights[b].get(c["id"], 0.0) * ref_mult.get(r, {}).get(c["id"], 1.0) * objmult[prof].get(c["id"], 1.0) * 1.0
+                tot += w
+                x = xval.get((sid, c["id"]))
+                if x is None:
+                    continue
+                pres += w; wsum += w * ((x - 0) / 5)
+            sc, comp = 100.0 * wsum / pres, pres / tot
+            max_dev = max(max_dev, abs(sc - float(p["fidelity_score"])))
+            scored.append((round(sc, 4), round(comp, 3), sid))
+        scored.sort(key=lambda t: (-t[0], -t[1], t[2]))
+        for i, (sc, comp, sid) in enumerate(scored, 1):
+            rrows.append({"ref_id": r, "objective": prof, "site_id": sid, "score": sc, "rank": i,
+                          "completeness": comp, "method_version": f"terraanalog-mcda-1.0.0@{commit}", "provenance": "mixed"})
+    if max_dev > 0.01:
+        raise SystemExit(f"recomputed score deviates from package fidelity by {max_dev}")
     with open(out / "analog_rankings.csv", "w", newline="", encoding="utf-8") as fh:
-        fh.write("# TerraAnalog AI published fidelity per (reference, mission profile). Profile-level ranking in the package = max over the profile's references.\n")
+        fh.write(f"# TerraAnalog AI published fidelity per (reference, mission profile), recomputed from the exported 4 dp values (max |diff| vs package fidelity {max_dev:.5f}); score 4 dp; ties broken by (-score, -completeness, site_id). Profile-level ranking in the package = max over the profile's references.\n")
         w = csv.DictWriter(fh, fieldnames=list(rrows[0])); w.writeheader(); w.writerows(rrows)
 
     # ======================================================================================================
@@ -470,7 +547,8 @@ def main():
     crow = []
     for c in catalog:
         crow.append({"source_id": c["dataset_id"], "name": c["name"], "provider": c["agency"], "url": c["official_url"], "license": c["license_access"],
-                     "data_type": f"{c['variables']} | resolution {c['spatial_resolution']} | {c['crs']}", "usage": c["variables"] if c["used_in_package"].startswith("yes") else "",
+                     "data_type": f"{c['variables']} | resolution {c['spatial_resolution']} | {c['crs']}", "usage": (c["variables"] if c["used_in_package"].startswith("yes") else
+                               ("Not used: access blocked from the build host - " if c["used_in_package"] == "blocked" else "Not used: catalogued for reference only - ") + c["limitations"]),
                      "status": STATUS.get(c["used_in_package"], c["used_in_package"]), "provenance": PROV.get(c["dataset_id"], "published"),
                      "notes": "; ".join(x for x in (c["limitations"], ("doi:" + c["citation_doi"]) if c["citation_doi"] else "", f"retrieved {c['retrieval_date']}") if x)})
     crow.append({"source_id": "TA-ENGINE", "name": "TerraAnalog AI scoring engine (similarities, operational score)", "provider": "ThynkAI / TerraAnalog AI",
@@ -494,13 +572,18 @@ def main():
     with open(out / "source_references.md", "a", encoding="utf-8") as fh:
         fh.write("\n\n## App-contract source IDs\n\nEvery `source_id` in `analog_features.csv` and `site_evidence.json` is a row of `dataset_catalog.csv` "
                  "(TerraAnalog `dataset_id`s, plus `TA-ENGINE` for engine-derived values and `TA-PF-LOGISTIC` for the in-house permafrost fallback).\n"
-                 "Body radii come from the DEM products themselves (LOLA PDS label; MOLA mosaic GeoTIFF CRS). Reference diameters are given only where a fetched Wikipedia revision states them (Shackleton, Jezero, Gale, Arsia Mons); all others are null.\n")
+                 "Body radii come from the DEM products themselves (LOLA PDS label; MOLA mosaic GeoTIFF CRS). Reference diameters are the official USGS Gazetteer of Planetary Nomenclature values where the reference is the named feature itself (exact match); references inside a larger named feature, and the lunar south-pole region, have null diameters.\n"
+                 "New sources in this export: Natural Earth admin-1 (DS-NE-ADMIN1), USGS Gazetteer (DS-USGS-GAZ), Wikimedia Commons imagery (DS-COMMONS), "
+                 "Clifford et al. (2000) Icarus doi:10.1006/icar.1999.6290 (Planum Boreum 155 K mean annual surface temperature), Peel et al. (2007) doi:10.5194/hess-11-1633-2007 (Koppen-Geiger criteria), "
+                 "Zomer et al. (2022) doi:10.1038/s41597-022-01493-1 (aridity classes).\n")
     meth = (ROOT / "scientific_methodology.md").read_text(encoding="utf-8")
     meth += f"""
 
 ## App data-contract export (scripts/13_export_app_contract.py, source commit {commit})
 
-**Criteria.** The app's score is `100 * sum(w_c * x_c/5) / sum_present(w_c)` with one value per (site, criterion). TerraAnalog fidelity is a similarity to a specific reference, so the export uses **reference-specific criteria** `<REF_ID>.<feature>` (11 features x 14 references = 154) with `x = 5 x similarity`. `body_weights` = 1 for criteria of that body's references, `reference_multipliers[ref]` = 0 for the other references of the same body, and each objective's multipliers are the TerraAnalog mission-profile feature weights (`general` = equal weights; it is not a TerraAnalog profile). With this setup the app's live score for (reference, profile) equals the published fidelity in `analog_rankings.csv`. `min_completeness` = 0.5 (the lowest TerraAnalog pair completeness is 0.70, so no published score is suppressed).
+**Criteria.** The app's score is `100 * sum(w_c * x_c/5) / sum_present(w_c)` with one value per (site, criterion). TerraAnalog fidelity is a similarity to a specific reference, so the export uses **reference-specific criteria** `<REF_ID>.<feature>` (11 features x 14 references = 154) with `x = 5 x similarity`. `body_weights` = 1 for criteria of that body's references, `reference_multipliers[ref]` = 0 for the other references of the same body, and each objective's multipliers are the TerraAnalog mission-profile feature weights, **listed only for that profile's own body** (a Moon profile has no multipliers for Mars criteria, so applying it to a Mars reference falls back to equal weights; the app flags that combination). `general` = equal weights; it is not a TerraAnalog profile.
+
+**Published scores and ties.** `analog_rankings.csv` scores are recomputed by this script from the exported values (4 dp) with the app's formula, in config criteria order, and stored at 4 dp (completeness at 3 dp). Recomputing from `analog_features.csv` therefore reproduces them to within 0.00005 (rounding of the 4th decimal). They differ from the package's own fidelity (computed from unrounded similarities) by at most the amount stated in the CSV banner (< 0.001). Ranks use the deterministic key (-score, -completeness, site_id), the same key as the app. `min_completeness` = 0.5 (the lowest TerraAnalog pair completeness is 0.70, so no published score is suppressed).
 **Operational separation.** `operational_suitability` (= operational score / 20) has weight 0 everywhere. It is displayed and is never part of fidelity.
 
 **value_type mapping** (TerraAnalog provenance -> app):
@@ -531,17 +614,90 @@ Thermal values are always `modeled`, even where the reference temperature is a p
 
 `mission_objectives` lists the TerraAnalog profiles where the site ranks in the top quartile (rank <= 7 of 28).
 
-**Known contract mismatches.**
-1. 155 criteria instead of a handful. This keeps the app's live score identical to the TerraAnalog fidelity, at the cost of long criterion lists in the UI. The app may group criteria by the extra `ref_id` and `feature` keys on each criterion.
-2. `region` is empty, because no region field was sourced.
-3. `imagery` is null, because no licensed imagery was gathered.
-4. `gazetteer_feature_id` is null, because the USGS Gazetteer was not queried by this package.
-5. `diameter_km` is null except where a fetched source states it.
-6. `target_bodies` lists both bodies for every site, because every site is scored against both.
+**Evidence.** Every (site, criterion) has at least one evidence item. Where the value is missing the item starts with "No evidence: value missing -" and states why. Wikipedia quotes whose plain-text extract contained empty parentheses (where pronunciation markup was dropped) have them removed and are flagged in the statement. Citations with no named author in the DOI metadata use the registrant/publisher (e.g. "European Space Agency (2022) Copernicus DEM"); authors are never invented.
+
+**Operational confidence.** `confidence` of `operational_suitability` = weighted mean of component confidences over the components present (same weights as the operational score: access 0.30, trafficability 0.20, climate workability 0.20, regulatory 0.15, infrastructure 0.15), multiplied by operational completeness. Component confidences: access 0.5 (Natural Earth major roads, an upper bound) or 0.3 when the distance is censored; trafficability 0.85 (DEM-derived); climate workability 0.70 (ERA5, modeled); regulatory/infrastructure 0.75 when a supporting sentence was found in the fetched source, else 0.30 (hypothesized).
+
+**Fine sediment fallback.** Where the SoilGrids point pixel is masked, the nearest valid 250 m pixel within 10 km is used (scripts/02b_soilgrids_nearby.py). It is not interpolated, the distance is reported in the evidence, and confidence drops by 0.1 (to 0.60).
+
+**Region, imagery, gazetteer, climate classes.**
+* `region`: Natural Earth 1:10m admin-1 unit containing the sampling point (scripts/02c_admin_region.py). Antarctica has no admin-1 units.
+* `imagery`: the lead image of the site's Wikipedia article, kept only if its Wikimedia Commons licence is public domain, CC0, CC BY, CC BY-SA or the Free Art License. Licence, author, file page and an HTTP 200 check are recorded (scripts/01b_imagery.py); sites without such an image stay null.
+* `gazetteer_feature_id`: the USGS/IAU Gazetteer of Planetary Nomenclature ID (scripts/03b_gazetteer.py). The match is either "exact" (the reference is the named feature) or "containing" (the reference lies inside a named mare or planitia). For exact matches `diameter_km` is the official Gazetteer diameter, and the Wikipedia diameter is kept as `diameter_wiki_km`. Containing matches have a null diameter.
+* `climate_class`: Koppen-Geiger type per Peel et al. (2007), doi:10.5194/hess-11-1633-2007, Table 1 (B tested first; Cs/Cw and Ds/Dw ties broken by half-year precipitation). It is computed from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell, so it describes the grid cell (with its own elevation), not necessarily the exact point.
+* `aridity_class`: ERA5 P/ET0 classed with the UNEP scheme as tabulated by Zomer et al. (2022), doi:10.1038/s41597-022-01493-1: <0.03 hyper-arid, 0.03-0.2 arid, 0.2-0.5 semi-arid, 0.5-0.65 dry sub-humid, >0.65 humid. Cold polar sites can class as "humid" because ET0 is very small; read it together with `climate_class`.
+
+**Values that remain missing (not imputed; see supplementary/data_gaps.csv).**
+* `dust_sediment`: no Mars reference has a sourced silt+clay fraction, and EA-004 (McMurdo Dry Valleys) has no valid SoilGrids pixel within 10 km.
+* `resource`: seven sites have no resource tag supported by their fetched text, and MARS-REF-06 (Arsia Mons) has none either.
+* `thermal`: MOON-REF-07 (Apollo 11 site). Only a temperature range was found in the sources read, not a mean.
+* `abiotic_surface`: EA-004, because ESA WorldCover does not cover Antarctica.
+* `ruggedness`: EA-011 (Salar de Uyuni). The DEM has zero relief over the window, so the log ratio is undefined.
+
+**Known contract notes.**
+1. There are 155 criteria instead of a handful. This keeps the app's live score identical to the TerraAnalog fidelity, at the cost of long criterion lists in the UI; the app groups criteria by the extra `ref_id` and `feature` keys.
+2. `target_bodies` lists both bodies for every site, because every site is scored against both.
+3. Supplementary research files (not part of the 9-file contract) are in `supplementary/`: `data_gaps.csv`, `radar_chart_data.json`, `sensitivity_summary.json`, `analog_profile_rankings.csv` (profile-level ranking with the Monte Carlo `mc_*` columns) and `earth_analog_site_bounds.geojson` (approximate site extents, with `boundary_status`).
 """
     (out / "scientific_methodology.md").write_text(meth, encoding="utf-8")
+    # supplementary research files (outside the 9-file contract; same bytes as outputs/)
+    sup = out / "supplementary"
+    sup.mkdir(exist_ok=True)
+    for src, dst in (("data_gaps.csv", "data_gaps.csv"), ("radar_chart_data.json", "radar_chart_data.json"),
+                     ("sensitivity_summary.json", "sensitivity_summary.json"), ("analog_rankings.csv", "analog_profile_rankings.csv"),
+                     ("earth_analog_site_bounds.geojson", "earth_analog_site_bounds.geojson")):
+        shutil.copy(OUTPUTS / src, sup / dst)
+    (sup / "README.md").write_text(
+        "# Supplementary TerraAnalog research files (not part of the 9-file app contract)\n\n"
+        f"Copied unchanged from `outputs/` of ThynkAI/terraanalog-ai @ {commit} by scripts/13_export_app_contract.py.\n\n"
+        "| file | content |\n|---|---|\n"
+        "| data_gaps.csv | per-site list of missing inputs and why |\n"
+        "| radar_chart_data.json | per-profile top-5 sites with per-feature similarities |\n"
+        "| sensitivity_summary.json | Monte Carlo weight-sensitivity results, operational components, strict-evidence variant |\n"
+        "| analog_profile_rankings.csv | package ranking per (site, mission profile) = max over the profile's references, with mc_score_p05/p95, mc_rank_p05/p95, mc_top5_probability |\n"
+        "| earth_analog_site_bounds.geojson | approximate site extents (Polygon, EPSG:4326) with boundary_status |\n", encoding="utf-8")
     print(f"exported to {out}: {len(feats_out)} sites, {len(rfeats)} references, {len(frows)} feature rows {dict(vt_counts)}, "
           f"{len(rrows)} ranking rows, {len(crow)} catalog rows, {len(crit)} criteria")
+
+
+def missing_reason(feat, s, r, f, pfr):
+    """Plain-language reason a similarity is missing (written into the value notes and evidence)."""
+    if feat == "dust_sediment":
+        if fnum(pfr.get("fine_fraction")) is None:
+            return (f"{r} has no sourced silt+clay (fine) fraction: no Mars regolith source read by this package reports a fine fraction "
+                    "comparable with SoilGrids 0-5 cm silt+clay (texts checked report clay-size or dust-particle sizes only)")
+        return ("SoilGrids 2.0 returned no texture at the point and there is no valid 250 m pixel within 10 km "
+                "(bare rock / ice areas are masked in SoilGrids)")
+    if feat == "thermal":
+        if fnum(pfr.get("temperature_K")) is None:
+            return f"no primary published mean annual surface temperature for {r} was found (the sources read give only a temperature range, e.g. 'lunar equator where temperatures span from −150 °C to 100 °C', not a mean)"
+        return "no modeled mean annual temperature at the site"
+    if feat == "abiotic_surface":
+        return "ESA WorldCover 2021 has no coverage of Antarctica (the tile request returned HTTP 404), so the unvegetated fraction is unknown"
+    if feat == "ruggedness":
+        if fnum(f.get("t90m_r5km_tri_median_m")) == 0.0:
+            return ("Copernicus DEM GLO-30 has zero relief across the whole sampling window (TRI = 0 at 30, 90 and 450 m), so the log-ratio "
+                    "similarity is undefined; a constant DEM surface over a salt flat is consistent with DEM flat-area editing, so no TRI floor was substituted")
+        return "terrain index unavailable"
+    return "input unavailable"
+
+
+def operational_confidence(o, f, e, cfg, ocomp):
+    """Documented confidence for operational_suitability: weighted mean of per-component confidences over the components
+    present (same weights as the operational score), multiplied by operational completeness."""
+    pc = cfg["provenance_confidence"]
+    W = cfg["operational"]["weights"]
+    c = {"access": 0.5 if fnum(f.get("road_distance_m")) is not None else 0.3,  # Natural Earth major roads = upper bound; censored = weaker
+         "trafficability": pc["derived"], "climate_workability": pc["modeled"],
+         "regulatory": pc.get((e.get("regulatory") or {}).get("provenance"), pc["hypothesized"]),
+         "infrastructure": pc.get((e.get("infrastructure") or {}).get("provenance"), pc["hypothesized"])}
+    num = den = 0.0
+    for k, w in W.items():
+        if o.get(k) is not None:
+            num += w * c[k]; den += w
+    if not den:
+        return None
+    return round(num / den * (ocomp if ocomp is not None else den), 3)
 
 
 def catalog_citation(src, catalog, meta):

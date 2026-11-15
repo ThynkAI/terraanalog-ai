@@ -33,6 +33,8 @@ FEAT = [
  (r"ice_indicator", "num", "0-1", "modeled/derived", "max(permafrost_prob, WorldCover snow/ice fraction); references 1/0 from literature ice evidence"),
  (r"soil_(sand|silt|clay)_pct", "num", "% mass", "modeled", "SoilGrids 2.0 0-5 cm mean"),
  (r"fine_fraction", "num", "fraction 0-1", "modeled (Earth) / derived (Moon)", "silt+clay (<50 µm) fraction"),
+ (r"soil_texture_source", "str", "", "derived", "SoilGrids2_point, or SoilGrids2_nearest_valid_pixel where the point pixel is masked (scripts/02b_soilgrids_nearby.py)"),
+ (r"soil_nearby_distance_km", "num", "km", "derived", "Distance from the sampling point to the nearest valid SoilGrids pixel (only for the fallback)"),
  (r"road_distance_m", "num", "m", "derived", "Distance to nearest mapped road (Natural Earth 1:10m; OSM if available); upper bound"),
  (r"road_distance_censored_gt_m", "num", "m", "derived", "If set, no road within this distance (right-censored)"),
  (r"populated_place_distance_m", "num", "m", "derived", "Distance to nearest Natural Earth populated place"),

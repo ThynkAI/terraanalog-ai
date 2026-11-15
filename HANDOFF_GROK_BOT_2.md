@@ -34,6 +34,16 @@ Basemap suggestions: an Earth basemap of your choice (attribute it). For Moon an
 
 Full column dictionary and JSON Schemas: `data_contract.md`, `schemas/*.schema.json`. Validate the files against the schemas in CI.
 
+### 2b. Web-app data contract export (terraanalog-ai platform)
+The `terraanalog-ai` web app does not read `outputs/` directly. It reads 9 files produced by
+`python scripts/13_export_app_contract.py --out <dir>`: `earth_analog_sites.geojson`, `planetary_reference_sites.geojson`,
+`analog_features.csv` (long format, one row per site x `<REF_ID>.<feature>` criterion), `analog_rankings.csv` (per reference x profile),
+`dataset_catalog.csv`, `site_evidence.json`, `scoring_config.json`, `scientific_methodology.md`, `source_references.md`.
+The files in the table above that are not part of those 9 are written to `<dir>/supplementary/` unchanged:
+`data_gaps.csv`, `radar_chart_data.json`, `sensitivity_summary.json`, `analog_profile_rankings.csv` (= `outputs/analog_rankings.csv`, with the
+`mc_score_p05/p95`, `mc_rank_p05/p95` and `mc_top5_probability` columns) and `earth_analog_site_bounds.geojson`. The `outputs/...` paths in the table
+refer to this repository, not to the app's data directory.
+
 ## 3. Recommended screens
 
 1. **Map + profile selector.** Offer 10 profiles (`scoring_config.mission_profiles`: 5 MOON_*, 5 MARS_*). Size points by `scores[profile].fidelity_score`, set opacity from `evidence_completeness`, and colour by `group` (baseline / established / candidate).
@@ -54,15 +64,15 @@ Full column dictionary and JSON Schemas: `data_contract.md`, `schemas/*.schema.j
 <!-- RESULTS:START -->
 | Profile | #1 (score, completeness) | #2 | #3 | MC mean Spearman |
 |---|---|---|---|---|
-| MOON_ISRU_ICE | EA-002 Haughton impact crater (57.4, 1.00) | EA-004 McMurdo Dry Valleys (45.6, 0.90) | EA-005 Bockfjorden Volcanic Complex (42.0, 1.00) | 0.914 |
-| MOON_ROVER_MOBILITY | EA-028 Mars Desert Research Station area (77.2, 0.95) | EA-008 Timanfaya volcanic field (68.5, 0.80) | EA-011 Salar de Uyuni (67.3, 0.75) | 0.925 |
-| MOON_EVA_HABITAT | EA-004 McMurdo Dry Valleys (50.9, 0.75) | EA-005 Bockfjorden Volcanic Complex (44.7, 1.00) | EA-002 Haughton impact crater (39.5, 1.00) | 0.938 |
-| MOON_FIELD_GEOLOGY | EA-024 Mistastin Lake impact structure (51.1, 1.00) | EA-002 Haughton impact crater (44.5, 1.00) | EA-023 Meteor Crater (42.4, 1.00) | 0.952 |
-| MOON_LAVA_TUBE | EA-009 Cueva de los Verdes lava tube (74.3, 0.95) | EA-016 Undara lava tubes (69.1, 0.95) | EA-008 Timanfaya volcanic field (58.7, 0.90) | 0.97 |
-| MARS_ISRU_ICE | EA-002 Haughton impact crater (65.7, 1.00) | EA-004 McMurdo Dry Valleys (64.0, 0.80) | EA-005 Bockfjorden Volcanic Complex (43.2, 0.85) | 0.917 |
+| MOON_ISRU_ICE | EA-002 Haughton impact crater (57.4, 1.00) | EA-004 McMurdo Dry Valleys (45.6, 0.90) | EA-007 Askja caldera (42.6, 1.00) | 0.912 |
+| MOON_ROVER_MOBILITY | EA-028 Mars Desert Research Station area (77.2, 0.95) | EA-008 Timanfaya volcanic field (70.3, 0.95) | EA-011 Salar de Uyuni (67.3, 0.75) | 0.927 |
+| MOON_EVA_HABITAT | EA-004 McMurdo Dry Valleys (50.9, 0.75) | EA-005 Bockfjorden Volcanic Complex (44.7, 1.00) | EA-002 Haughton impact crater (39.5, 1.00) | 0.937 |
+| MOON_FIELD_GEOLOGY | EA-024 Mistastin Lake impact structure (51.1, 1.00) | EA-002 Haughton impact crater (44.5, 1.00) | EA-023 Meteor Crater (42.4, 1.00) | 0.948 |
+| MOON_LAVA_TUBE | EA-009 Cueva de los Verdes lava tube (74.3, 0.95) | EA-016 Undara lava tubes (69.1, 0.95) | EA-008 Timanfaya volcanic field (59.8, 0.95) | 0.969 |
+| MARS_ISRU_ICE | EA-002 Haughton impact crater (65.7, 1.00) | EA-004 McMurdo Dry Valleys (56.8, 0.95) | EA-007 Askja caldera (42.0, 1.00) | 0.909 |
 | MARS_ROVER_MOBILITY | EA-028 Mars Desert Research Station area (71.5, 0.95) | EA-008 Timanfaya volcanic field (62.3, 0.95) | EA-006 Holuhraun lava field (61.7, 0.95) | 0.946 |
 | MARS_EVA_HABITAT | EA-002 Haughton impact crater (57.2, 0.95) | EA-018 Qaidam Basin (53.9, 0.95) | EA-028 Mars Desert Research Station area (45.8, 0.95) | 0.925 |
-| MARS_ASTROBIO_SEDIMENTS | EA-028 Mars Desert Research Station area (61.6, 1.00) | EA-003 Death Valley (51.6, 1.00) | EA-018 Qaidam Basin (50.3, 1.00) | 0.958 |
+| MARS_ASTROBIO_SEDIMENTS | EA-028 Mars Desert Research Station area (61.6, 1.00) | EA-003 Death Valley (51.6, 1.00) | EA-018 Qaidam Basin (50.3, 1.00) | 0.96 |
 | MARS_LAVA_TUBE | EA-009 Cueva de los Verdes lava tube (57.5, 0.95) | EA-016 Undara lava tubes (51.4, 0.95) | EA-008 Timanfaya volcanic field (45.3, 0.95) | 0.953 |
 
 Validation: **42/42 checks passed** (see `outputs/validation_report.md`).

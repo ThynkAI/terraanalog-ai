@@ -462,6 +462,20 @@
    ],
    "description": "SoilGrids 2.0 0-5 cm mean [% mass; modeled]"
   },
+  "soil_texture_source": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "SoilGrids2_point, or SoilGrids2_nearest_valid_pixel where the point pixel is masked (scripts/02b_soilgrids_nearby.py) [; derived]"
+  },
+  "soil_nearby_distance_km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Distance from the sampling point to the nearest valid SoilGrids pixel (only for the fallback) [km; derived]"
+  },
   "fine_fraction": {
    "type": [
     "number",

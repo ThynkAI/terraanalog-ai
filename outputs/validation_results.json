@@ -63,13 +63,13 @@
   {
    "name": "dois_resolve",
    "pass": true,
-   "detail": "37/37 DOIs resolve (Crossref/doi.org); corrections applied: {'10.1002/2015JE004782': '404 at Crossref -> corrected to 10.1002/2014JE004782', '10.1016/j.earscirev.2016.11.008': 'resolved to an unrelated paper (Warren 2017) -> corrected to 10.1016/j.earscirev.2016.11.003'}",
+   "detail": "40/40 DOIs resolve (Crossref/doi.org); corrections applied: {'10.1002/2015JE004782': '404 at Crossref -> corrected to 10.1002/2014JE004782', '10.1016/j.earscirev.2016.11.008': 'resolved to an unrelated paper (Warren 2017) -> corrected to 10.1016/j.earscirev.2016.11.003'}",
    "severity": "error"
   },
   {
    "name": "all_cited_dois_verified",
    "pass": true,
-   "detail": "39 DOI strings found in docs/configs; not in verified list: []",
+   "detail": "40 DOI strings found in docs/configs; not in verified list: []",
    "severity": "error"
   },
   {
@@ -105,7 +105,7 @@
   {
    "name": "missing_values_reported",
    "pass": true,
-   "detail": "20 columns contain explicit nulls (listed in report)",
+   "detail": "22 columns contain explicit nulls (listed in report)",
    "severity": "info"
   },
   {
@@ -141,13 +141,13 @@
   {
    "name": "weight_sensitivity_rank_stability",
    "pass": true,
-   "detail": "mean Spearman over Dirichlet draws per profile: MOON_ISRU_ICE=0.914, MOON_ROVER_MOBILITY=0.925, MOON_EVA_HABITAT=0.938, MOON_FIELD_GEOLOGY=0.952, MOON_LAVA_TUBE=0.97, MARS_ISRU_ICE=0.917, MARS_ROVER_MOBILITY=0.946, MARS_EVA_HABITAT=0.925, MARS_ASTROBIO_SEDIMENTS=0.958, MARS_LAVA_TUBE=0.953",
+   "detail": "mean Spearman over Dirichlet draws per profile: MOON_ISRU_ICE=0.912, MOON_ROVER_MOBILITY=0.927, MOON_EVA_HABITAT=0.937, MOON_FIELD_GEOLOGY=0.948, MOON_LAVA_TUBE=0.969, MARS_ISRU_ICE=0.909, MARS_ROVER_MOBILITY=0.946, MARS_EVA_HABITAT=0.925, MARS_ASTROBIO_SEDIMENTS=0.96, MARS_LAVA_TUBE=0.953",
    "severity": "warning"
   },
   {
    "name": "strict_evidence_variant",
    "pass": true,
-   "detail": "Spearman(strict, base): MOON_ISRU_ICE=0.973, MOON_ROVER_MOBILITY=0.956, MOON_EVA_HABITAT=0.971, MOON_FIELD_GEOLOGY=0.951, MOON_LAVA_TUBE=0.981, MARS_ISRU_ICE=0.988, MARS_ROVER_MOBILITY=0.993, MARS_EVA_HABITAT=0.968, MARS_ASTROBIO_SEDIMENTS=0.928, MARS_LAVA_TUBE=0.964",
+   "detail": "Spearman(strict, base): MOON_ISRU_ICE=0.964, MOON_ROVER_MOBILITY=0.958, MOON_EVA_HABITAT=0.965, MOON_FIELD_GEOLOGY=0.956, MOON_LAVA_TUBE=0.98, MARS_ISRU_ICE=0.966, MARS_ROVER_MOBILITY=0.993, MARS_EVA_HABITAT=0.968, MARS_ASTROBIO_SEDIMENTS=0.933, MARS_LAVA_TUBE=0.964",
    "severity": "warning"
   },
   {
@@ -243,7 +243,7 @@
   {
    "name": "dataset_urls_reachable",
    "pass": true,
-   "detail": "33/35 return HTTP <400; failures: [('DS-CTX', 404), ('DS-PSA', 'ERR:SSLError')]",
+   "detail": "36/38 return HTTP <400; failures: [('DS-CTX', 404), ('DS-PSA', 'ERR:SSLError')]",
    "severity": "warning"
   },
   {
@@ -585,51 +585,53 @@
   "wc_frac_wetland_r5km": 1,
   "wc_frac_moss_lichen_r5km": 1,
   "abiotic_fraction_r5km": 1,
-  "soil_sand_pct": 5,
-  "soil_silt_pct": 5,
-  "soil_clay_pct": 5,
-  "fine_fraction": 5,
+  "soil_sand_pct": 1,
+  "soil_silt_pct": 1,
+  "soil_clay_pct": 1,
+  "soil_texture_source": 1,
+  "soil_nearby_distance_km": 24,
+  "fine_fraction": 1,
   "road_distance_m": 3,
   "road_distance_censored_gt_m": 25,
   "nearest_highway_class": 3,
   "macrostrat_unit": 2,
-  "resource_tags": 9
+  "resource_tags": 7
  },
  "sensitivity": [
   [
    "MOON_ISRU_ICE",
-   0.914,
-   0.8,
+   0.912,
+   0.803,
    4
   ],
   [
    "MOON_ROVER_MOBILITY",
-   0.925,
-   0.84,
+   0.927,
+   0.842,
    4
   ],
   [
    "MOON_EVA_HABITAT",
-   0.938,
-   0.861,
-   4
+   0.937,
+   0.845,
+   3
   ],
   [
    "MOON_FIELD_GEOLOGY",
-   0.952,
-   0.864,
+   0.948,
+   0.847,
    3
   ],
   [
    "MOON_LAVA_TUBE",
-   0.97,
-   0.922,
+   0.969,
+   0.923,
    3
   ],
   [
    "MARS_ISRU_ICE",
-   0.917,
-   0.789,
+   0.909,
+   0.796,
    4
   ],
   [
@@ -646,8 +648,8 @@
   ],
   [
    "MARS_ASTROBIO_SEDIMENTS",
-   0.958,
-   0.905,
+   0.96,
+   0.912,
    2
   ],
   [
@@ -659,25 +661,25 @@
  ],
  "strict": {
   "MOON_ISRU_ICE": {
-   "spearman_strict_vs_base": 0.973,
+   "spearman_strict_vs_base": 0.964,
    "top5_base": [
     "EA-002",
     "EA-004",
-    "EA-005",
     "EA-007",
+    "EA-005",
     "EA-023"
    ],
    "top5_strict": [
     "EA-002",
     "EA-004",
-    "EA-005",
     "EA-007",
-    "EA-019"
+    "EA-005",
+    "EA-024"
    ],
-   "max_rank_shift": 9
+   "max_rank_shift": 10
   },
   "MOON_ROVER_MOBILITY": {
-   "spearman_strict_vs_base": 0.956,
+   "spearman_strict_vs_base": 0.958,
    "top5_base": [
     "EA-028",
     "EA-008",
@@ -692,28 +694,28 @@
     "EA-002",
     "EA-023"
    ],
-   "max_rank_shift": 8
+   "max_rank_shift": 7
   },
   "MOON_EVA_HABITAT": {
-   "spearman_strict_vs_base": 0.971,
+   "spearman_strict_vs_base": 0.965,
    "top5_base": [
     "EA-004",
     "EA-005",
     "EA-002",
     "EA-001",
-    "EA-019"
+    "EA-007"
    ],
    "top5_strict": [
     "EA-004",
     "EA-005",
     "EA-001",
-    "EA-019",
-    "EA-017"
+    "EA-007",
+    "EA-019"
    ],
-   "max_rank_shift": 6
+   "max_rank_shift": 7
   },
   "MOON_FIELD_GEOLOGY": {
-   "spearman_strict_vs_base": 0.951,
+   "spearman_strict_vs_base": 0.956,
    "top5_base": [
     "EA-024",
     "EA-002",
@@ -731,13 +733,13 @@
    "max_rank_shift": 9
   },
   "MOON_LAVA_TUBE": {
-   "spearman_strict_vs_base": 0.981,
+   "spearman_strict_vs_base": 0.98,
    "top5_base": [
     "EA-009",
     "EA-016",
     "EA-008",
     "EA-021",
-    "EA-022"
+    "EA-006"
    ],
    "top5_strict": [
     "EA-008",
@@ -749,13 +751,13 @@
    "max_rank_shift": 5
   },
   "MARS_ISRU_ICE": {
-   "spearman_strict_vs_base": 0.988,
+   "spearman_strict_vs_base": 0.966,
    "top5_base": [
     "EA-002",
     "EA-004",
-    "EA-005",
     "EA-007",
-    "EA-028"
+    "EA-005",
+    "EA-001"
    ],
    "top5_strict": [
     "EA-002",
@@ -764,7 +766,7 @@
     "EA-005",
     "EA-028"
    ],
-   "max_rank_shift": 3
+   "max_rank_shift": 6
   },
   "MARS_ROVER_MOBILITY": {
    "spearman_strict_vs_base": 0.993,
@@ -803,7 +805,7 @@
    "max_rank_shift": 6
   },
   "MARS_ASTROBIO_SEDIMENTS": {
-   "spearman_strict_vs_base": 0.928,
+   "spearman_strict_vs_base": 0.933,
    "top5_base": [
     "EA-028",
     "EA-003",
@@ -878,15 +880,15 @@
   },
   "profiles": {
    "MOON_ISRU_ICE": {
-    "baseline": 0.642,
-    "established": 0.63,
-    "candidate": 0.385,
+    "baseline": 0.617,
+    "established": 0.659,
+    "candidate": 0.37,
     "top_new_candidates": [
      [
       "EA-019",
       "Mauna Kea (upper slopes)",
       26.87,
-      7
+      8
      ],
      [
       "EA-025",
@@ -895,22 +897,22 @@
       9
      ],
      [
-      "EA-009",
-      "Cueva de los Verdes lava tube (La Corona), Lanzarote",
-      21.07,
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      21.44,
       10
      ]
     ]
    },
    "MOON_ROVER_MOBILITY": {
-    "baseline": 0.42,
-    "established": 0.448,
-    "candidate": 0.551,
+    "baseline": 0.395,
+    "established": 0.493,
+    "candidate": 0.526,
     "top_new_candidates": [
      [
       "EA-008",
       "Timanfaya volcanic field, Lanzarote",
-      68.45,
+      70.29,
       2
      ],
      [
@@ -928,34 +930,34 @@
     ]
    },
    "MOON_EVA_HABITAT": {
-    "baseline": 0.728,
-    "established": 0.615,
-    "candidate": 0.378,
+    "baseline": 0.704,
+    "established": 0.67,
+    "candidate": 0.346,
     "top_new_candidates": [
      [
       "EA-019",
       "Mauna Kea (upper slopes)",
       38.06,
-      5
+      6
      ],
      [
       "EA-011",
       "Salar de Uyuni",
       34.67,
-      10
+      11
      ],
      [
       "EA-014",
       "Arkaroola (Northern Flinders Ranges)",
       33.68,
-      11
+      13
      ]
     ]
    },
    "MOON_FIELD_GEOLOGY": {
     "baseline": 0.667,
-    "established": 0.552,
-    "candidate": 0.432,
+    "established": 0.567,
+    "candidate": 0.422,
     "top_new_candidates": [
      [
       "EA-025",
@@ -997,33 +999,33 @@
      [
       "EA-008",
       "Timanfaya volcanic field, Lanzarote",
-      58.67,
+      59.79,
       3
      ]
     ]
    },
    "MARS_ISRU_ICE": {
     "baseline": 0.802,
-    "established": 0.578,
-    "candidate": 0.388,
+    "established": 0.626,
+    "candidate": 0.356,
     "top_new_candidates": [
      [
       "EA-008",
       "Timanfaya volcanic field, Lanzarote",
-      25.51,
-      8
-     ],
-     [
-      "EA-010",
-      "Dallol hydrothermal field, Danakil Depression",
-      23.34,
+      22.24,
       9
      ],
      [
       "EA-006",
       "Holuhraun lava field",
-      22.18,
-      12
+      21.0,
+      10
+     ],
+     [
+      "EA-010",
+      "Dallol hydrothermal field, Danakil Depression",
+      20.25,
+      11
      ]
     ]
    },
@@ -1172,7 +1174,7 @@
    {
     "profile": "MOON_LAVA_TUBE",
     "site_id": "EA-022",
-    "rank": 5,
+    "rank": 6,
     "top_quartile_threshold": 7,
     "pass": true,
     "basis": "Lava-tube analog literature (Sauro et al. 2020, doi:10.1016/j.earscirev.2020.103288); sites contain mapped lava tubes (wiki)"
@@ -1437,6 +1439,21 @@
   {
    "dataset_id": "DS-NATEARTH",
    "url": "https://www.naturalearthdata.com/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-NE-ADMIN1",
+   "url": "https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces.zip",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-USGS-GAZ",
+   "url": "https://planetarynames.wr.usgs.gov/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-COMMONS",
+   "url": "https://commons.wikimedia.org/",
    "status": 200
   },
   {

@@ -54,6 +54,25 @@
     }
    },
    {
+    "site_id": "EA-007",
+    "name": "Askja caldera",
+    "matched_reference_id": "MOON-REF-04",
+    "fidelity_score": 42.56,
+    "values": {
+     "lithology": 0.2,
+     "process": 0.0,
+     "landform": 0.0,
+     "resource": 1.0,
+     "slope": 0.5915,
+     "ruggedness": 0.4191,
+     "thermal": 0.0,
+     "aridity": 0.0026,
+     "ice": 0.7029,
+     "abiotic_surface": 0.9937,
+     "dust_sediment": 1.0
+    }
+   },
+   {
     "site_id": "EA-005",
     "name": "Bockfjorden Volcanic Complex (Sverrefjellet), Svalbard",
     "matched_reference_id": "MOON-REF-02",
@@ -70,25 +89,6 @@
      "ice": 1.0,
      "abiotic_surface": 0.8545,
      "dust_sediment": 0.7223
-    }
-   },
-   {
-    "site_id": "EA-007",
-    "name": "Askja caldera",
-    "matched_reference_id": "MOON-REF-04",
-    "fidelity_score": 36.18,
-    "values": {
-     "lithology": 0.2,
-     "process": 0.0,
-     "landform": 0.0,
-     "resource": null,
-     "slope": 0.5915,
-     "ruggedness": 0.4191,
-     "thermal": 0.0,
-     "aridity": 0.0026,
-     "ice": 0.7029,
-     "abiotic_surface": 0.9937,
-     "dust_sediment": null
     }
    },
    {
@@ -135,7 +135,7 @@
     "site_id": "EA-008",
     "name": "Timanfaya volcanic field, Lanzarote",
     "matched_reference_id": "MOON-REF-07",
-    "fidelity_score": 68.45,
+    "fidelity_score": 70.29,
     "values": {
      "lithology": 0.3333,
      "process": 0.3333,
@@ -147,7 +147,7 @@
      "aridity": 0.8643,
      "ice": null,
      "abiotic_surface": 0.9276,
-     "dust_sediment": null
+     "dust_sediment": 0.8007
     }
    },
    {
@@ -286,22 +286,22 @@
     }
    },
    {
-    "site_id": "EA-019",
-    "name": "Mauna Kea (upper slopes)",
+    "site_id": "EA-007",
+    "name": "Askja caldera",
     "matched_reference_id": "MOON-REF-03",
-    "fidelity_score": 38.06,
+    "fidelity_score": 38.71,
     "values": {
      "lithology": 0.0,
      "process": 0.0,
      "landform": 0.0,
      "resource": null,
-     "slope": 0.3336,
-     "ruggedness": 0.5094,
-     "thermal": 0.2494,
-     "aridity": 0.0146,
-     "ice": 0.1359,
-     "abiotic_surface": 0.9943,
-     "dust_sediment": 0.8968
+     "slope": 0.2994,
+     "ruggedness": 0.1659,
+     "thermal": 0.2721,
+     "aridity": 0.0026,
+     "ice": 0.7029,
+     "abiotic_surface": 0.9937,
+     "dust_sediment": 1.0
     }
    }
   ],
@@ -445,7 +445,7 @@
     "site_id": "EA-008",
     "name": "Timanfaya volcanic field, Lanzarote",
     "matched_reference_id": "MOON-REF-05",
-    "fidelity_score": 58.67,
+    "fidelity_score": 59.79,
     "values": {
      "lithology": 0.5,
      "process": 0.5,
@@ -457,7 +457,7 @@
      "aridity": 0.8643,
      "ice": null,
      "abiotic_surface": 0.9276,
-     "dust_sediment": null
+     "dust_sediment": 0.8007
     }
    },
    {
@@ -480,22 +480,22 @@
     }
    },
    {
-    "site_id": "EA-022",
-    "name": "Craters of the Moon lava field",
-    "matched_reference_id": "MOON-REF-05",
-    "fidelity_score": 54.29,
+    "site_id": "EA-006",
+    "name": "Holuhraun lava field",
+    "matched_reference_id": "MOON-REF-06",
+    "fidelity_score": 51.69,
     "values": {
      "lithology": 0.5,
-     "process": 0.5,
-     "landform": 0.5,
+     "process": 0.3333,
+     "landform": 0.25,
      "resource": null,
-     "slope": 0.527,
-     "ruggedness": 0.8989,
-     "thermal": 0.9338,
-     "aridity": 0.2034,
+     "slope": 0.9382,
+     "ruggedness": 0.4334,
+     "thermal": 0.8533,
+     "aridity": 0.0008,
      "ice": null,
-     "abiotic_surface": 0.3861,
-     "dust_sediment": 0.5461
+     "abiotic_surface": 1.0,
+     "dust_sediment": 0.9928
     }
    }
   ],
@@ -522,16 +522,16 @@
    {
     "site_id": "EA-004",
     "name": "McMurdo Dry Valleys (Wright Valley)",
-    "matched_reference_id": "MARS-REF-05",
-    "fidelity_score": 63.99,
+    "matched_reference_id": "MARS-REF-04",
+    "fidelity_score": 56.77,
     "values": {
-     "lithology": 0.1667,
-     "process": 0.75,
-     "landform": 0.6,
-     "resource": 0.5,
-     "slope": 0.0671,
-     "ruggedness": 0.0447,
-     "thermal": null,
+     "lithology": 0.1429,
+     "process": 0.5,
+     "landform": 0.5,
+     "resource": 0.3333,
+     "slope": 0.0701,
+     "ruggedness": 0.0525,
+     "thermal": 0.4559,
      "aridity": 0.9216,
      "ice": 1.0,
      "abiotic_surface": null,
@@ -539,37 +539,18 @@
     }
    },
    {
-    "site_id": "EA-005",
-    "name": "Bockfjorden Volcanic Complex (Sverrefjellet), Svalbard",
-    "matched_reference_id": "MARS-REF-05",
-    "fidelity_score": 43.2,
-    "values": {
-     "lithology": 0.25,
-     "process": 0.4,
-     "landform": 0.2,
-     "resource": 0.0,
-     "slope": 0.0318,
-     "ruggedness": 0.033,
-     "thermal": null,
-     "aridity": 0.0627,
-     "ice": 1.0,
-     "abiotic_surface": 0.8545,
-     "dust_sediment": null
-    }
-   },
-   {
     "site_id": "EA-007",
     "name": "Askja caldera",
-    "matched_reference_id": "MARS-REF-05",
-    "fidelity_score": 40.7,
+    "matched_reference_id": "MARS-REF-07",
+    "fidelity_score": 41.96,
     "values": {
      "lithology": 0.25,
-     "process": 0.2,
+     "process": 0.25,
      "landform": 0.0,
-     "resource": null,
-     "slope": 0.7274,
-     "ruggedness": 0.1648,
-     "thermal": null,
+     "resource": 1.0,
+     "slope": 0.6648,
+     "ruggedness": 0.0953,
+     "thermal": 0.1231,
      "aridity": 0.0026,
      "ice": 0.7029,
      "abiotic_surface": 0.9937,
@@ -577,21 +558,40 @@
     }
    },
    {
-    "site_id": "EA-028",
-    "name": "Mars Desert Research Station area (San Rafael Swell margin)",
+    "site_id": "EA-005",
+    "name": "Bockfjorden Volcanic Complex (Sverrefjellet), Svalbard",
     "matched_reference_id": "MARS-REF-05",
-    "fidelity_score": 29.41,
+    "fidelity_score": 36.74,
     "values": {
-     "lithology": 0.0,
-     "process": 0.25,
-     "landform": 0.5,
+     "lithology": 0.25,
+     "process": 0.4,
+     "landform": 0.2,
      "resource": 0.0,
-     "slope": 0.9568,
-     "ruggedness": 0.2388,
-     "thermal": null,
-     "aridity": 0.797,
+     "slope": 0.0318,
+     "ruggedness": 0.033,
+     "thermal": 0.0013,
+     "aridity": 0.0627,
+     "ice": 1.0,
+     "abiotic_surface": 0.8545,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-001",
+    "name": "Atacama Desert (hyperarid core)",
+    "matched_reference_id": "MARS-REF-04",
+    "fidelity_score": 27.56,
+    "values": {
+     "lithology": 0.1667,
+     "process": 0.25,
+     "landform": 0.25,
+     "resource": 0.3333,
+     "slope": 0.5043,
+     "ruggedness": 0.1212,
+     "thermal": 0.0458,
+     "aridity": 1.0,
      "ice": 0.0,
-     "abiotic_surface": 0.9607,
+     "abiotic_surface": 1.0,
      "dust_sediment": null
     }
    }

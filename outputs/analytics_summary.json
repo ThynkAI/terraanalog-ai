@@ -306,15 +306,15 @@
   },
   "profiles": {
    "MOON_ISRU_ICE": {
-    "baseline": 0.642,
-    "established": 0.63,
-    "candidate": 0.385,
+    "baseline": 0.617,
+    "established": 0.659,
+    "candidate": 0.37,
     "top_new_candidates": [
      [
       "EA-019",
       "Mauna Kea (upper slopes)",
       26.87,
-      7
+      8
      ],
      [
       "EA-025",
@@ -323,22 +323,22 @@
       9
      ],
      [
-      "EA-009",
-      "Cueva de los Verdes lava tube (La Corona), Lanzarote",
-      21.07,
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      21.44,
       10
      ]
     ]
    },
    "MOON_ROVER_MOBILITY": {
-    "baseline": 0.42,
-    "established": 0.448,
-    "candidate": 0.551,
+    "baseline": 0.395,
+    "established": 0.493,
+    "candidate": 0.526,
     "top_new_candidates": [
      [
       "EA-008",
       "Timanfaya volcanic field, Lanzarote",
-      68.45,
+      70.29,
       2
      ],
      [
@@ -356,34 +356,34 @@
     ]
    },
    "MOON_EVA_HABITAT": {
-    "baseline": 0.728,
-    "established": 0.615,
-    "candidate": 0.378,
+    "baseline": 0.704,
+    "established": 0.67,
+    "candidate": 0.346,
     "top_new_candidates": [
      [
       "EA-019",
       "Mauna Kea (upper slopes)",
       38.06,
-      5
+      6
      ],
      [
       "EA-011",
       "Salar de Uyuni",
       34.67,
-      10
+      11
      ],
      [
       "EA-014",
       "Arkaroola (Northern Flinders Ranges)",
       33.68,
-      11
+      13
      ]
     ]
    },
    "MOON_FIELD_GEOLOGY": {
     "baseline": 0.667,
-    "established": 0.552,
-    "candidate": 0.432,
+    "established": 0.567,
+    "candidate": 0.422,
     "top_new_candidates": [
      [
       "EA-025",
@@ -425,33 +425,33 @@
      [
       "EA-008",
       "Timanfaya volcanic field, Lanzarote",
-      58.67,
+      59.79,
       3
      ]
     ]
    },
    "MARS_ISRU_ICE": {
     "baseline": 0.802,
-    "established": 0.578,
-    "candidate": 0.388,
+    "established": 0.626,
+    "candidate": 0.356,
     "top_new_candidates": [
      [
       "EA-008",
       "Timanfaya volcanic field, Lanzarote",
-      25.51,
-      8
-     ],
-     [
-      "EA-010",
-      "Dallol hydrothermal field, Danakil Depression",
-      23.34,
+      22.24,
       9
      ],
      [
       "EA-006",
       "Holuhraun lava field",
-      22.18,
-      12
+      21.0,
+      10
+     ],
+     [
+      "EA-010",
+      "Dallol hydrothermal field, Danakil Depression",
+      20.25,
+      11
      ]
     ]
    },
@@ -600,7 +600,7 @@
    {
     "profile": "MOON_LAVA_TUBE",
     "site_id": "EA-022",
-    "rank": 5,
+    "rank": 6,
     "top_quartile_threshold": 7,
     "pass": true,
     "basis": "Lava-tube analog literature (Sauro et al. 2020, doi:10.1016/j.earscirev.2020.103288); sites contain mapped lava tubes (wiki)"

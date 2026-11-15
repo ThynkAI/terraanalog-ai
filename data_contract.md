@@ -103,6 +103,8 @@ This contract is for **Grok Bot 2** (web-app developer). Files live in `outputs/
 | `soil_sand_pct` | number | % mass | modeled | SoilGrids 2.0 0-5 cm mean |
 | `soil_silt_pct` | number | % mass | modeled | SoilGrids 2.0 0-5 cm mean |
 | `soil_clay_pct` | number | % mass | modeled | SoilGrids 2.0 0-5 cm mean |
+| `soil_texture_source` | string |  | derived | SoilGrids2_point, or SoilGrids2_nearest_valid_pixel where the point pixel is masked (scripts/02b_soilgrids_nearby.py) |
+| `soil_nearby_distance_km` | number | km | derived | Distance from the sampling point to the nearest valid SoilGrids pixel (only for the fallback) |
 | `fine_fraction` | number | fraction 0-1 | modeled (Earth) / derived (Moon) | silt+clay (<50 µm) fraction |
 | `road_distance_m` | number | m | derived | Distance to nearest mapped road (Natural Earth 1:10m; OSM if available); upper bound |
 | `road_distance_censored_gt_m` | number | m | derived | If set, no road within this distance (right-censored) |
