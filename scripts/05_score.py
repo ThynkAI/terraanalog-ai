@@ -230,6 +230,7 @@ def main():
     sens["operational_components"] = {sid: {k: clean(v, 3) for k, v in o[2].items()} for sid, o in ops.items()}
     sens["strict_evidence_variant"] = {"method": "categorical tags with provenance 'hypothesized' removed", "profiles": strict_comparison(E, R, ev)}
     save_json(sens, OUTPUTS / "sensitivity_summary.json")
+    save_json(CFG, OUTPUTS / "scoring_config.json")
     for pname in CFG["mission_profiles"]:
         top = [r for r in rank_rows if r["mission_profile"] == pname][:5]
         print(pname, " | ".join(f"{r['site_id']} {r['fidelity_score']} ({r['evidence_completeness']})" for r in top),

@@ -113,6 +113,8 @@ def build_earth():
         r["road_distance_m"] = g(osm, "road_distance_m")
         r["road_distance_censored_gt_m"] = g(osm, "road_distance_censored_gt_m")
         r["nearest_highway_class"] = osm.get("nearest_highway_class") if osm else None
+        r["populated_place_distance_m"] = g(osm, "populated_place_distance_m")
+        r["access_source"] = (osm or {}).get("dataset_id")
         # --- geology text from Macrostrat ---
         units = (mac or {}).get("units", [])
         best = next((u for sc in ("large", "medium", "small", "tiny") for u in units if u["scale"] == sc and u.get("lith")), None)
@@ -150,7 +152,8 @@ def build_earth():
                            "provenance": "modeled", "method": r["permafrost_source"], "note": pf.get(sid, {}).get("note")},
             "soil": {"dataset_id": "DS-SOILGRIDS", "provenance": "modeled", "request": (soil or {}).get("request"),
                      "error": (soil or {}).get("error") or (soil or {}).get("http_status")},
-            "access": {"dataset_id": "DS-OSM", "provenance": "derived", "note": (osm or {}).get("note")},
+            "access": {"dataset_id": (osm or {}).get("dataset_id"), "provenance": "derived", "note": (osm or {}).get("note"),
+                       "nearest_populated_place": (osm or {}).get("nearest_populated_place")},
             "geology_map": {"dataset_id": "DS-MACROSTRAT", "provenance": "literature", "units": units[:4]},
         }
         ev["limitations"] = site_limitations(s, r)
