@@ -2,8 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-/** Server-side proxy to the FastAPI data/scoring service. API_URL is read at request time (runtime-configurable in Docker). */
-const API_URL = () => (process.env.API_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
+/**
+ * Server-side proxy to the FastAPI data/scoring service, resolved at request time (runtime-configurable in Docker / Render).
+ * API_URL (full URL) wins; otherwise API_HOST is used — a public hostname ("x.onrender.com" → https) or a private "host:port" (→ http).
+ */
+const API_URL = () => {
+  if (process.env.API_URL) return process.env.API_URL.replace(/\/$/, "");
+  const host = process.env.API_HOST;
+  if (host) return (/:\d+$/.test(host) ? `http://${host}` : `https://${host}`).replace(/\/$/, "");
+  return "http://127.0.0.1:8000";
+};
 const SAFE_SEGMENT = /^[A-Za-z0-9_.\-]+$/;
 
 async function forward(req: NextRequest, path: string[], method: "GET" | "POST") {

@@ -1,0 +1,43 @@
+# Render Blueprint for TerraAnalog AI (https://render.com/docs/blueprint-spec).
+# One click: Render Dashboard → New → Blueprint → pick this repository. Creates two free web services:
+#   terraanalog-api  FastAPI scoring/data service (app/backend), serving the research dataset in app/data/research
+#   terraanalog-web  Next.js UI (app/web); its server-side /api/* proxy is wired to the API service below.
+# No secrets are needed.
+services:
+  - type: web
+    name: terraanalog-api
+    runtime: python
+    plan: free
+    rootDir: app
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: TERRA_DATA_DIR
+        value: data/research          # synthetic fallback: data/fixtures
+      - key: TERRA_CORS_ORIGINS
+        value: "*"                    # the UI calls the API server-side; browsers never need direct access
+
+  - type: web
+    name: terraanalog-web
+    runtime: node
+    plan: free
+    rootDir: app/web
+    buildCommand: npm ci && npm run build
+    startCommand: npm start           # next start honours $PORT
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      # API wiring: the API's public hostname (free web services cannot receive private-network traffic).
+      # The proxy turns it into https://<host>. On paid plans you can switch to the private network with
+      #   fromService: { name: terraanalog-api, type: web, property: hostport }
+      - key: API_HOST
+        fromService:
+          name: terraanalog-api
+          type: web
+          envVarKey: RENDER_EXTERNAL_HOSTNAME

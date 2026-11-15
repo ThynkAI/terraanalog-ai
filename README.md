@@ -1,9 +1,109 @@
-# TerraAnalog AI
+# TerraAnalog AI — Earth as a Testbed for the Moon and Mars
 
-**An evidence-traceable system for ranking Earth field sites as lunar and Martian mission-test analogs.**
-Built 2026-11-15 for the NASA Space Apps context. Every retrieval in this package was performed on 2026-11-15.
+**An evidence-traceable decision-support platform that ranks Earth field sites as analogs for testing lunar and Martian mission
+hardware, procedures and crews.** Built 2026-11-15 for the **NASA Space Apps Challenge 2026**.
+
+Pick a Moon or Mars reference region and a mission objective (ISRU ice, rover mobility, EVA/habitat, field geology, lava-tube
+exploration, astrobiology sediments) and TerraAnalog AI ranks 28 Earth analog sites on an interactive globe. Each score comes with a
+transparent breakdown, evidence completeness, confidence, a source and citation for every value, a sensitivity analysis, and an
+explicit list of what Earth cannot replicate.
 
 > **Read this first.** A TerraAnalog score ranks the *relative surface/process analog fidelity of an Earth site for one specific mission objective*, using the features that data exists for. It is **not** a measure of lunar or Martian equivalence. No Earth site reproduces lunar or Martian gravity, vacuum or thin CO₂ atmosphere, radiation or temperature regime. **Operational test suitability** (access, trafficability, climate workability, permits, infrastructure) is scored **separately** and is never mixed into fidelity. The planetary reference locations are verified mission sites, candidate regions or representative regions. **None is an approved permanent base site.**
+
+![Comparison Lab](app/docs/screenshots/06-comparison-lab-radar.png)
+
+## Repository layout
+| Path | What it is |
+|---|---|
+| [`app/`](app/) | **The web application.** FastAPI scoring/data service (`app/backend`), Next.js 15 UI (`app/web`), tests, Docker Compose, one-command setup scripts and docs ([`app/README.md`](app/README.md)) |
+| [`app/data/research/`](app/data/research/) | The 9-file app data contract exported from this pipeline by `scripts/13_export_app_contract.py`, copied so the app runs standalone |
+| [`app/data/fixtures/`](app/data/fixtures/) | Clearly labelled synthetic fallback data (only used if you point `TERRA_DATA_DIR` at it) |
+| `scripts/`, `config/`, `outputs/`, `schemas/`, `data/processed/` | **The research pipeline**: data retrieval, feature extraction, similarity engine, sensitivity, analytics, validation (see [Research pipeline](#research-pipeline) below) |
+| `scientific_methodology.md`, `source_references.md`, `data_contract.md` | Methods, verified references, and the data dictionary |
+| [`render.yaml`](render.yaml) | One-click Render Blueprint for deploying the app |
+
+## Quick start (run the app locally)
+Prerequisites: **Python 3.11+** and **Node.js 20+**. Docker is optional.
+
+**Windows (PowerShell 5.1 or 7):**
+```powershell
+git clone https://github.com/ThynkAI/terraanalog-ai.git
+cd terraanalog-ai\app
+powershell -ExecutionPolicy Bypass -File scripts\setup.ps1
+```
+**macOS / Linux:**
+```bash
+git clone https://github.com/ThynkAI/terraanalog-ai.git
+cd terraanalog-ai/app
+./scripts/setup.sh
+```
+**Docker:**
+```bash
+cd terraanalog-ai/app
+docker compose up --build
+```
+Then open **http://localhost:3000**. The API docs are at http://localhost:8000/docs. The setup scripts create a virtualenv, install
+dependencies, build the UI and start both servers. Options such as dev mode, other ports, running the tests, or using the synthetic data
+are covered in [`app/README.md`](app/README.md).
+
+## Screenshots
+| | |
+|---|---|
+| ![Mission overview and recommendation engine](app/docs/screenshots/01-mission-overview.png) | ![Earth Analog Explorer](app/docs/screenshots/02-earth-explorer-globe.png) |
+| Mission overview and the explainable recommendation engine | Earth Analog Explorer: globe, ranked sites, score breakdown with value-type badges |
+| ![Moon reference explorer](app/docs/screenshots/04-moon-reference-shackleton.png) | ![Site detail with value types](app/docs/screenshots/17-site-detail-value-types.png) |
+| Moon Reference Explorer (planetocentric coordinates, never WGS84) | Site detail: measured / modeled / provisional values, and missing values shown as "—" (never imputed) |
+
+All screenshots: [`app/docs/screenshots/`](app/docs/screenshots/). A sample generated PDF report: [`app/docs/samples/site-comparison-report-sample.pdf`](app/docs/samples/site-comparison-report-sample.pdf).
+
+## How the AI works
+TerraAnalog AI is **explainable AI for decision support**. It does not use a chatbot or a large language model, so nothing can invent a site, a value or a citation.
+1. **Feature extraction (research pipeline):** open geospatial datasets (Copernicus DEM, ESA WorldCover, CHELSA, ERA5, SoilGrids,
+   permafrost models, Macrostrat, LRO LOLA, MGS MOLA) and quoted literature are turned into 11 comparable features per site.
+2. **Similarity engine:** each Earth site is compared with each lunar or Martian reference using transparent functions (Jaccard on
+   controlled-vocabulary tags, Gaussian or log-ratio kernels on terrain and thermal values, threshold decay on aridity).
+3. **Multi-criteria scoring:** `score = 100 · Σ w·sim / Σ w` over the features that have data. Weights are body × reference ×
+   mission objective × user, and every weight is visible and adjustable in the Custom Weight Lab. Missing data lowers *evidence
+   completeness* and widens the plausible score range; it is **never imputed**. Operational suitability is scored separately.
+4. **Uncertainty and discovery:** Monte Carlo / one-at-a-time sensitivity and rank-stability analysis; unsupervised PCA and
+   k-means clustering to find families of similar environments (shown on a deck.gl arc map).
+5. **Recommendation engine:** type a plain-language request such as *"Identify cave environments suitable for subsurface robotics
+   tests"*. Deterministic keyword parsing turns it into structured filters (body, reference, mission objective, analog types). It then
+   runs the documented scoring, shows its interpretation, explains *why* each site ranks where it does, lists caveats, and states what
+   Earth cannot replicate.
+
+The app recomputes all 588 published research scores to within 0.011 points
+([`app/docs/TEST_RESULTS.md`](app/docs/TEST_RESULTS.md)). No ML model is trained and no predictive accuracy is claimed.
+
+## Data provenance
+* Each value is labelled **measured**, **modeled**, **provisional** or **missing**, with a source ID and citation. The app's *Data & Provenance*
+  page shows the dataset catalog, file validation and ID-consistency checks.
+* Earth sites use WGS84. Moon and Mars references use planetocentric, east-positive body-fixed coordinates (IAU_2015:30100 /
+  IAU_2015:49900) and are never drawn on an Earth map.
+* Data sources actually used, unavailable sources and licences are listed below and in `outputs/dataset_catalog.csv`.
+  Imagery tiles (NASA GIBS, NASA Moon/Mars Trek) are loaded at runtime from NASA and are not redistributed in this repository.
+* Scores are relative, objective-specific fidelity proxies for planning field tests. They are **not** landing-site selections or
+  hardware qualification.
+
+## Deploy
+**Render (one click):** in the Render Dashboard choose **New → Blueprint** and select this repository. [`render.yaml`](render.yaml) creates
+two free web services:
+* `terraanalog-api`: FastAPI, rootDir `app`, `TERRA_DATA_DIR=data/research`, health check `/api/health`.
+* `terraanalog-web`: Next.js, rootDir `app/web`. Its server-side `/api/*` proxy is wired to the API through `API_HOST` (the API service's
+  public hostname, filled in automatically by the Blueprint).
+
+No secrets or environment values need to be entered. Free Render services sleep when idle, so the first request after a pause can take
+about a minute. Other options include any Docker host (`app/docker-compose.yml`) and the notes in
+[`app/docs/DEPLOYMENT.md`](app/docs/DEPLOYMENT.md). No public deployment URL exists yet.
+
+## Team and NASA Space Apps
+Built for the NASA Space Apps Challenge 2026 by Deep Kanabar (lead), with AI assistants for the planetary-science and geospatial
+research pipeline and for the software platform. NASA does not endorse this project. NASA data is used under NASA's open data policy,
+and other data sources are credited below and in the app.
+
+---
+
+# Research pipeline
 
 ## What is in the package
 
@@ -97,7 +197,7 @@ For each mission profile, a site's fidelity is `100 · Σ wᵢ·simᵢ / Σ wᵢ
 
 ## Repository notes
 
-* The repo root is the package root. A zip of the package (without `data/raw/`) is produced as `terraanalog_package.zip`.
+* The repo root is the research package root; the web app lives in `app/` (added with its own commit history via `git subtree`). A zip of the package (without `data/raw/`) is produced as `terraanalog_package.zip`.
 * Commits were pushed with `git` over HTTPS using the box's `gh` credential helper, not the GitHub MCP `push_files` tool, because that tool cannot carry binary PNGs or more than four file substitutions per call.
 
 ## Licence and data terms
