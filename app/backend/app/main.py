@@ -36,9 +36,12 @@ OPERATIONAL_CONFIDENCE_METHOD = (
 )
 
 
-def _climate_hay(site) -> str:
-    parts = [site.climate or "", site.climate_class or "", site.aridity_class or ""]
-    return " ".join(parts).lower()
+def _climate_matches(site, climate: str) -> bool:
+    """When Köppen/aridity classes exist, match them exactly so 'ET' does not hit 'P/ET0' in the climate sentence."""
+    needle = climate.lower()
+    if site.climate_class or site.aridity_class:
+        return needle in { (site.climate_class or "").lower(), (site.aridity_class or "").lower() }
+    return needle in (site.climate or "").lower()
 
 
 @app.exception_handler(ScoringError)
@@ -260,7 +263,7 @@ def list_sites(
             continue
         if analog_type and analog_type not in s.analog_types:
             continue
-        if climate and climate.lower() not in _climate_hay(s):
+        if climate and not _climate_matches(s, climate):
             continue
         if aridity and aridity.lower() != (s.aridity_class or "").lower() and aridity.lower() not in (s.climate or "").lower():
             continue

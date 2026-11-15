@@ -200,7 +200,8 @@ def test_corrected_export_fields_and_supplementary(research_store, research_clie
     assert "ET" in meta["climates"] and "humid" in meta["aridity_classes"] and meta["has_supplementary"] is True
     # Climate filter uses the Köppen class (ET would not uniquely match the long climate sentence alone as a category)
     et = research_client.get("/api/sites", params={"climate": "ET"}).json()
-    assert et["count"] >= 1 and all(s.get("climate_class") == "ET" or "ET" in (s.get("climate") or "") for s in et["sites"])
+    assert 0 < et["count"] < 28
+    assert all(s.get("climate_class") == "ET" for s in et["sites"])
     humid = research_client.get("/api/sites", params={"aridity": "humid"}).json()
     assert humid["count"] >= 1 and all(s.get("aridity_class") == "humid" for s in humid["sites"])
     detail = research_client.get("/api/sites/EA-002").json()
