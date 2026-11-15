@@ -6,6 +6,8 @@ import { NAV } from "@/lib/constants";
 import { MetaProvider, useMeta } from "./MetaContext";
 import { DataStatusBadge } from "./ui";
 
+const SHORT_NAV: Record<string, string> = { "/": "Overview", "/explorer": "Earth Explorer", "/moon": "Moon", "/mars": "Mars", "/compare": "Compare", "/science": "Science Cases", "/methodology": "Methods", "/data": "Data", "/impact": "Team" };
+
 function Logo() {
   return (
     <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
@@ -22,6 +24,12 @@ function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const close = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, [open]);
   return (
     <header className="no-print sticky top-0 z-40 border-b border-white/[0.07] bg-space-950/85 backdrop-blur">
       <div className="mx-auto flex max-w-[1600px] items-center gap-3 px-4 py-2.5">
@@ -31,21 +39,22 @@ function Header() {
             <span className="block text-[15px] font-semibold tracking-tight text-lunar-50">
               TerraAnalog <span className="text-mars-400">AI</span>
             </span>
-            <span className="hidden text-[10px] uppercase tracking-[0.18em] text-lunar-400 sm:block">Earth as a testbed for Moon &amp; Mars</span>
+            <span className="hidden text-[10px] uppercase tracking-[0.18em] text-lunar-400 2xl:block">Earth as a testbed for Moon &amp; Mars</span>
           </span>
         </Link>
         <nav aria-label="Main" className="ml-4 hidden flex-1 xl:block">
-          <ul className="flex flex-wrap items-center gap-0.5">
+          <ul className="flex items-center gap-0.5">
             {NAV.map((n) => {
               const active = n.href === "/" ? pathname === "/" : pathname.startsWith(n.href);
               return (
                 <li key={n.href}>
                   <Link
                     href={n.href}
+                    aria-label={n.label}
                     aria-current={active ? "page" : undefined}
                     className={`rounded-md px-2.5 py-1.5 text-[13px] transition ${active ? "bg-white/10 text-white" : "text-lunar-300 hover:bg-white/5 hover:text-white"}`}
                   >
-                    {n.label}
+                    {SHORT_NAV[n.href] || n.label}
                   </Link>
                 </li>
               );
@@ -70,7 +79,7 @@ function Header() {
           <ul className="mx-auto grid max-w-[1600px] grid-cols-1 gap-1 p-3 sm:grid-cols-2">
             {NAV.map((n) => (
               <li key={n.href}>
-                <Link href={n.href} className="block rounded-md px-3 py-2 text-sm text-lunar-100 hover:bg-white/5" aria-current={pathname === n.href ? "page" : undefined}>
+                <Link href={n.href} onClick={() => setOpen(false)} className="block rounded-md px-3 py-2 text-sm text-lunar-100 hover:bg-white/5" aria-current={pathname === n.href ? "page" : undefined}>
                   {n.label}
                 </Link>
               </li>
@@ -127,9 +136,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <main id="main" className="mx-auto max-w-[1600px] px-4 pb-16 pt-5">
         {children}
       </main>
-      <footer className="no-print border-t border-white/[0.06] px-4 py-6 text-center text-xs text-lunar-400">
-        TerraAnalog AI · Built for NASA Space Apps · Not affiliated with or endorsed by NASA. Planetary imagery: NASA Moon Trek / Mars Trek · Earth tiles: NASA GIBS · Land: Natural Earth.
-        Analog scores are decision-support proxies, not landing-site selections.
+      <footer className="no-print border-t border-white/10 bg-space-950/70 px-4 py-8 text-xs text-lunar-300">
+        <div className="mx-auto grid max-w-[1600px] gap-6 md:grid-cols-[1fr_auto]">
+          <div><p className="text-sm font-semibold text-white">TerraAnalog <span className="text-mars-300">AI</span></p><p className="mt-2 max-w-2xl leading-relaxed">Earth as a testbed for the Moon and Mars. Research leads for a specific test, with evidence and uncertainty attached.</p></div>
+          <nav aria-label="Project resources" className="flex flex-wrap items-start gap-x-5 gap-y-3"><Link className="link" href="/science">Scientific cases</Link><Link className="link" href="/data">Sources &amp; licenses</Link><a className="link" href="https://github.com/ThynkAI/terraanalog-ai" target="_blank" rel="noreferrer">Open source ↗</a></nav>
+          <p className="max-w-5xl text-[11px] leading-relaxed text-lunar-400 md:col-span-2">Built for NASA Space Apps. Not affiliated with or endorsed by NASA. Planetary imagery: NASA Moon Trek / Mars Trek. Earth tiles: NASA GIBS. Land: Natural Earth. Analog scores are decision-support proxies, not landing-site selections or hardware qualification.</p>
+        </div>
       </footer>
     </MetaProvider>
   );

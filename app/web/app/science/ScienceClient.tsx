@@ -16,7 +16,7 @@ function CaseImage({ study }: { study: CaseStudy }) {
   return <figure className="min-w-0 rounded-xl border border-white/10 bg-space-950 p-3">
     <p className="panel-title mb-2">Earth / {study.site.country}</p>
     {image && !failed ? <img src={image.url} alt={`${study.site.name} geographic context; not a scale-matched field survey`} onError={() => setFailed(true)} loading="lazy" className="h-56 w-full rounded-lg object-cover" /> : <div className="flex h-56 items-center justify-center rounded-lg bg-space-800 text-sm text-lunar-300">Site photograph unavailable; measurements remain available below.</div>}
-    <figcaption className="mt-2 text-[11px] leading-relaxed text-lunar-300">{study.site.name}. {image && <><a className="link" href={image.attribution_page || image.url} target="_blank" rel="noreferrer">{image.credit}</a>{" · "}<a className="link" href={image.license_url ?? undefined} target="_blank" rel="noreferrer">{image.license}</a></>}</figcaption>
+    <figcaption className="mt-2 text-[11px] leading-relaxed text-lunar-300">{study.site.name}. Archival geographic context; conditions may differ today. {image && <><a className="link" href={image.attribution_page || image.url} target="_blank" rel="noreferrer">{image.credit}</a>{" · "}<a className="link" href={image.license_url ?? undefined} target="_blank" rel="noreferrer">{image.license}</a></>}</figcaption>
   </figure>;
 }
 
@@ -27,6 +27,7 @@ export default function ScienceClient() {
   const study = data?.cases.find((c) => c.id === requested) ?? data?.cases[0];
   const stress = url.get("stress") === "1";
   const [copied, setCopied] = useState(false);
+  const baseline = study?.comparisons.find((row) => row.site_id === study.site_id)?.result;
   const exportCase = (c: CaseStudy) => downloadText(`terraanalog_${c.id}_evidence.json`, JSON.stringify({ reviewed_on: data?.reviewed_on, review_scope: data?.review_scope, scoring_note: data?.scoring_note, case_study: c }, null, 2), "application/json");
   return <div className="space-y-5">
     <PageHeader eyebrow="From a ranking to a research decision" title="Scientific Case Studies">Three source-reviewed investigations connect regional measurements to practical field questions. Compare the benchmarks, challenge the assumptions, and see what still needs to be measured.</PageHeader>
@@ -38,8 +39,14 @@ export default function ScienceClient() {
       <nav aria-label="Scientific case selection" className="grid gap-3 md:grid-cols-3">
         {data.cases.map((c, i) => <button key={c.id} onClick={() => { url.set({ case: c.id, stress: null }); setCopied(false); }} aria-pressed={study.id === c.id} className={`min-w-0 rounded-xl border p-4 text-left transition ${study.id === c.id ? "border-mars-400 bg-mars-500/10" : "border-white/10 bg-space-800 hover:border-white/30"}`}><span className="font-mono text-xs text-mars-300">0{i + 1} / {c.reference.body.toUpperCase()}</span><span className="mt-2 block text-sm font-semibold text-white">{c.title}</span><span className="mt-2 block text-xs text-lunar-300">{c.novelty_status}</span></button>)}
       </nav>
+      <nav className="no-print flex flex-wrap gap-2" aria-label="Case study sections">
+        {[["case-overview", "Overview"], ["measurement-title", "Measurements"], ["benchmark-title", "Benchmarks"], ["case-evidence", "Evidence"], ["case-field-plan", "Field plan"]].map(([id, label]) => <a key={id} href={`#${id}`} className="btn btn-ghost text-xs">{label} <span aria-hidden="true">↓</span></a>)}
+      </nav>
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4" aria-label="Baseline case summary">
+        {[["Baseline proxy score", `${n(baseline?.score, 1)} / 100`], ["Evidence completeness", baseline ? `${n(baseline.completeness * 100, 1)}%` : "—"], ["Full-catalog rank", baseline?.rank ? `#${baseline.rank}` : "—"], ["Compared with best benchmark", study.advantage_vs_best_benchmark == null ? "—" : `${study.advantage_vs_best_benchmark > 0 ? "+" : ""}${n(study.advantage_vs_best_benchmark, 1)} points`]].map(([label, value]) => <div key={label} className="rounded-xl border border-white/10 bg-space-900/70 p-4"><p className="text-[11px] text-lunar-300">{label}</p><p className="mt-2 font-mono text-xl text-white">{value}</p></div>)}
+      </div>
       <article className="space-y-5" data-testid="scientific-case">
-        <section className="panel p-5 sm:p-7">
+        <section id="case-overview" className="panel p-5 sm:p-7">
           <p className="panel-title text-signal-cyan">{study.objective_label} / {study.site_id}</p>
           <h2 className="mt-3 text-2xl font-semibold text-white">{study.question}</h2>
           <p className="mt-3 text-sm leading-relaxed text-lunar-200">{study.interpretation}</p>
@@ -75,8 +82,8 @@ export default function ScienceClient() {
           <p className="mt-2 text-sm text-lunar-200">Baseline difference from the strongest of the three challenge benchmarks: <strong className="font-mono text-mars-300">{study.advantage_vs_best_benchmark == null ? "unavailable" : `${study.advantage_vs_best_benchmark > 0 ? "+" : ""}${n(study.advantage_vs_best_benchmark, 1)} points`}</strong>. A positive difference is an internal proxy-score advantage, not evidence of superior field performance.</p>
         </section>
         {study.strict_evidence && <StrictEvidencePanel data={study.strict_evidence} objective={study.objective} />}
-        <div className="grid gap-4 lg:grid-cols-2"><section className="panel p-5"><h3 className="panel-title text-mars-300">Where the analogy breaks</h3><ul className="mt-3 list-disc space-y-3 pl-5 text-sm leading-relaxed text-lunar-200">{study.limits.map((l) => <li key={l}>{l}</li>)}</ul></section><section className="panel p-5"><h3 className="panel-title text-signal-cyan">Proposed field-validation plan</h3><ol className="mt-3 list-decimal space-y-3 pl-5 text-sm leading-relaxed text-lunar-200">{study.field_plan.map((p) => <li key={p}>{p}</li>)}</ol><p className="mt-3 text-xs text-lunar-400">A proposed research protocol; no access permission, field work or hardware qualification is implied.</p></section></div>
-        <section className="panel p-5"><h3 className="panel-title">Verified source trail</h3><ul className="mt-3 space-y-3">{study.sources.map((s) => <li key={s.url}><a className="link text-sm" href={s.url} target="_blank" rel="noreferrer">{s.title} ↗</a><p className="mt-1 text-xs leading-relaxed text-lunar-300">Supports: {s.supports}</p></li>)}</ul><p className="mt-4 text-xs text-lunar-300">This source review supplies context and caveats. It does not silently relabel the scoring inputs as primary measurements.</p></section>
+        <div className="grid gap-4 lg:grid-cols-2"><section className="panel p-5"><h3 className="panel-title text-mars-300">Where the analogy breaks</h3><ul className="mt-3 list-disc space-y-3 pl-5 text-sm leading-relaxed text-lunar-200">{study.limits.map((l) => <li key={l}>{l}</li>)}</ul></section><section id="case-field-plan" className="panel p-5"><h3 className="panel-title text-signal-cyan">Proposed field-validation plan</h3><ol className="mt-3 list-decimal space-y-3 pl-5 text-sm leading-relaxed text-lunar-200">{study.field_plan.map((p) => <li key={p}>{p}</li>)}</ol><p className="mt-3 text-xs text-lunar-400">A proposed research protocol; no access permission, field work or hardware qualification is implied.</p></section></div>
+        <section id="case-evidence" className="panel p-5"><h3 className="panel-title">Verified source trail</h3><ul className="mt-3 space-y-3">{study.sources.map((s) => <li key={s.url}><a className="link text-sm" href={s.url} target="_blank" rel="noreferrer">{s.title} ↗</a><p className="mt-1 text-xs leading-relaxed text-lunar-300">Supports: {s.supports}</p></li>)}</ul><p className="mt-4 text-xs text-lunar-300">This source review supplies context and caveats. It does not silently relabel the scoring inputs as primary measurements.</p></section>
         <div className="no-print flex flex-wrap gap-2">
           <Link className="btn btn-primary" href={`/compare?ids=${study.comparisons.map((r) => r.site_id).join(",")}&ref=${study.ref_id}&obj=${study.objective}`}>Open this case in Comparison Lab →</Link>
           <button className="btn" onClick={() => exportCase(study)}>Download evidence JSON</button>

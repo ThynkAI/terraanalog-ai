@@ -2,7 +2,7 @@
 
 Usage: python scripts/verify_published.py [DATA_DIR] [--json OUT]
 Reports abs score difference (vs the engine's unrounded score and its 1-dp display value), completeness difference and rank agreement.
-Exit code 1 if max |diff| (unrounded) > 0.05 or any row cannot be scored.
+Exit code 1 if max |diff| (unrounded) > 0.05 or any row cannot be scored or its published rank differs.
 """
 from __future__ import annotations
 
@@ -75,7 +75,7 @@ worst = sorted(rows, key=lambda r: -r["abs_diff"])[:5]
 summary = {
     "data_dir": os.environ["TERRA_DATA_DIR"].replace(str(ROOT) + "/", ""),
     "rows_published": len(st.published_rankings), "rows_compared": len(rows), "rows_unscorable": len(problems),
-    "score_abs_diff_unrounded": {"max": round(max(d), 4), "mean": round(statistics.mean(d), 4), "median": round(statistics.median(d), 4),
+    "score_abs_diff_unrounded": {"max": round(max(d), 8), "mean": round(statistics.mean(d), 8), "median": round(statistics.median(d), 8),
                                  "within_0.05": sum(x <= 0.05 + 1e-9 for x in d), "within_0.01": sum(x <= 0.01 + 1e-9 for x in d)},
     "score_abs_diff_display_1dp": {"max": round(max(dd), 4), "mean": round(statistics.mean(dd), 4), "exact": sum(x < 1e-9 for x in dd)},
     "completeness_abs_diff": {"max": round(max(cd), 4) if cd else None, "mean": round(statistics.mean(cd), 4) if cd else None},
@@ -88,4 +88,4 @@ summary = {
 print(json.dumps(summary, indent=2))
 if out_path:
     Path(out_path).write_text(json.dumps(summary, indent=2) + "\n")
-sys.exit(1 if problems or max(d) > 0.05 + 1e-9 else 0)
+sys.exit(1 if problems or rank_mismatch or max(d) > 0.05 + 1e-9 else 0)

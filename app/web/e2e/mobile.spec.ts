@@ -35,3 +35,12 @@ test("mobile science case: switching cases and stress test stays usable", async 
   await expect(page.getByRole("button", { name: "Restore baseline weights" })).toHaveAttribute("aria-pressed", "true");
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
 });
+
+
+test("mobile navigation dismisses with Escape", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Menu" }).click();
+  await expect(page.getByRole("navigation", { name: "Main mobile" })).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("navigation", { name: "Main mobile" })).toBeHidden();
+});

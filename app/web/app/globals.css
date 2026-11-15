@@ -68,3 +68,14 @@ body {
   .hero-globe { height: 310px; }
   .btn { min-height: 40px; }
 }
+
+/* Final presentation pass: steady navigation and a clear route into the evidence. */
+html { scroll-padding-top: 6rem; }
+.case-preview { transition: border-color .2s, box-shadow .2s; }
+.case-preview:hover { border-color: rgba(103,212,238,.35); box-shadow: 0 14px 40px -20px rgba(0,0,0,.8); }
+.case-landscape { background: radial-gradient(ellipse at 30% 90%,rgba(232,116,59,.25),transparent 60%),linear-gradient(160deg,#1a2540,#080e1c); }
+@media (max-width: 639px) { main { padding-top: 1rem; } }
+@media print {
+  [aria-label="Baseline case summary"] { color: #000; }
+  [aria-label="Baseline case summary"] * { color: #000 !important; }
+}

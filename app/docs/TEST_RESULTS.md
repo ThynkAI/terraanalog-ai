@@ -76,3 +76,9 @@ Live URLs: https://terraanalog-web-cqgu.onrender.com and https://terraanalog-api
 - Playwright e2e (previously 41 passed against research data and Docker Compose) and a fresh `next build` / Docker Compose run.
 - Scores are research-package similarity proxies (measured / modeled / provisional values, with missing values shown as missing).
   They are decision support, not landing-site selections.
+
+## Final submission pass
+
+The current audit reports are `test-results/submission-sanity.json` and `test-results/submission-score-reproduction.json`. Seventeen committed-data checks pass across 2,352 compatible site scores. All 588 published ranks agree. The maximum unrounded score difference is **0.00004737 points**, which older four-decimal summaries displayed as 0.0. The displayed one-decimal scores can differ from the published four-decimal values by up to 0.05 points due to rounding.
+
+The final pass reran 97 backend tests, 19 frontend unit tests, and the production build locally. The matching pull request's GitHub Actions result supplies current browser/mobile/accessibility verification. Earlier sections above describe earlier revisions and their historical test counts. A raw-raster retrieval/rederivation and independent field validation were not repeated in this pass.

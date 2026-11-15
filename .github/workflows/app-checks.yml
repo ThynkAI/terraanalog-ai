@@ -27,6 +27,8 @@ jobs:
         run: |
           python -m venv .venv
           .venv/bin/pip install -r backend/requirements-dev.txt
+      - name: Committed data sanity audit
+        run: app/.venv/bin/python app/scripts/submission_sanity.py
       - name: Backend and research-score regression tests
         working-directory: app
         run: .venv/bin/python -m pytest backend/tests -q
