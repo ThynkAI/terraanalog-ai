@@ -87,6 +87,7 @@ python scripts/retrieve_credentialed_or_blocked.py worldclim overpass
 | `07_dataset_catalog.py` · `08_build_geojson.py` · `10_write_references.py` · `11_data_contract.py` | Catalog, GeoJSON, references, data contract and schemas |
 | `09_validate.py` | Validation suite (geometry, coordinates, DOIs, units, score recalculation, sensitivity, plausibility, URLs) |
 | `12_results_snapshot.py` | Refreshes the results tables in this README and the handoff |
+| `13_export_app_contract.py` | Exports the 9-file web-app data contract (`terraanalog-ai/docs/DATA_INTEGRATION.md`): `python scripts/13_export_app_contract.py --out <dir>` (default `app_contract_export/`, git-ignored) |
 
 Network retrieval of 28 sites takes roughly 1–2 h. SoilGrids is rate-limited, and Overpass is skipped after its first failure. Processing (`--offline`) takes about 2 min.
 

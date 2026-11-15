@@ -5,3 +5,4 @@ __pycache__/
 .venv/
 *.zip
 __pycache__/
+app_contract_export/
