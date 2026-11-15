@@ -1,0 +1,123 @@
+# SYNTHETIC FIXTURE — NOT REAL DATA. Replace with Bot 1 research outputs (see docs/DATA_INTEGRATION.md).
+# value_type: provisional = AnalogSite PREP_DRAFT expert judgement; synthetic = generated placeholder; missing = no value (never imputed)
+site_id,criterion_id,value,unit,value_type,confidence,source_id,notes
+CA-HAU,terrain,4,score_0_5,provisional,0.5,AS-PREP,Impact ejecta and crater rim topography; traversable but rough in places.
+CA-HAU,geology,5,score_0_5,provisional,0.5,AS-PREP,Impact structure + published CSA/NASA analog campaigns.
+CA-HAU,thermal,4,score_0_5,provisional,0.5,AS-PREP,High-Arctic cold extremes; strong seasonal swing.
+CA-HAU,dust_aridity,3,score_0_5,provisional,0.5,AS-PREP,Cold desert fines; not hyper-arid Atacama-class.
+CA-HAU,illumination,5,score_0_5,provisional,0.5,AS-PREP,Polar night / low sun angle; strongest lunar south-pole illumination proxy in set.
+CA-HAU,ice_permafrost,4,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+CA-HAU,subsurface_access,1,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+CA-HAU,operational,3,score_0_5,provisional,0.5,AS-PREP,"Seasonal airlift; established analog camp logistics, still remote."
+AQ-MDV,terrain,3,score_0_5,provisional,0.5,AS-PREP,Valley floors often gentle; valley walls steep — AOI-dependent.
+AQ-MDV,geology,5,score_0_5,provisional,0.5,AS-PREP,Extensive Mars cold-desert literature.
+AQ-MDV,thermal,5,score_0_5,provisional,0.5,AS-PREP,Extreme cold desert thermal environment.
+AQ-MDV,dust_aridity,5,score_0_5,provisional,0.5,AS-PREP,Classic cold hyper-arid Mars proxy.
+AQ-MDV,illumination,4,score_0_5,provisional,0.5,AS-PREP,Polar night seasons; secondary lunar value.
+AQ-MDV,ice_permafrost,5,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+AQ-MDV,subsurface_access,1,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+AQ-MDV,operational,2,score_0_5,provisional,0.5,AS-PREP,USAP/national program logistics; hard for indie hardware tests.
+CL-ATA,terrain,3,score_0_5,provisional,0.5,AS-PREP,Mostly low-relief basins; local alluvial fans.
+CL-ATA,geology,5,score_0_5,provisional,0.5,AS-PREP,Canonical Mars soil/microbial-limit analog literature.
+CL-ATA,thermal,4,score_0_5,provisional,0.5,AS-PREP,Hot diurnal swing; not polar cold.
+CL-ATA,dust_aridity,5,score_0_5,provisional,0.5,AS-PREP,Hyper-arid; primary Mars dust/soil proxy.
+CL-ATA,illumination,1,score_0_5,provisional,0.5,AS-PREP,Low-latitude; weak PSR/polar-night proxy.
+CL-ATA,ice_permafrost,0,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+CL-ATA,subsurface_access,1,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+CL-ATA,operational,4,score_0_5,provisional,0.5,AS-PREP,Road-accessible research sites; permits required.
+US-MOJ,terrain,3,score_0_5,provisional,0.5,AS-PREP,Playas flat; volcanic fields locally rough.
+US-MOJ,geology,4,score_0_5,provisional,0.5,AS-PREP,Basaltic/playa Mars-ops analog; training heritage.
+US-MOJ,thermal,4,score_0_5,provisional,0.5,AS-PREP,Strong desert diurnal swing.
+US-MOJ,dust_aridity,4,score_0_5,provisional,0.5,AS-PREP,Dusty arid; good ops dust testing.
+US-MOJ,illumination,1,score_0_5,provisional,0.5,AS-PREP,Not polar.
+US-MOJ,ice_permafrost,0,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MOJ,subsurface_access,2,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MOJ,operational,5,score_0_5,provisional,0.5,AS-PREP,Excellent road access for hardware shakedown.
+US-SFV,terrain,4,score_0_5,provisional,0.5,AS-PREP,"Cinder cones, lava fields — lunar trafficability practice."
+US-SFV,geology,5,score_0_5,provisional,0.5,AS-PREP,Lunar volcanic/crater training heritage (USGS/NASA region).
+US-SFV,thermal,3,score_0_5,provisional,0.5,AS-PREP,Elevated plateau; moderate desert swing.
+US-SFV,dust_aridity,3,score_0_5,provisional,0.5,AS-PREP,Semi-arid volcanic fines.
+US-SFV,illumination,1,score_0_5,provisional,0.5,AS-PREP,Not polar.
+US-SFV,ice_permafrost,0,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-SFV,subsurface_access,2,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-SFV,operational,5,score_0_5,provisional,0.5,AS-PREP,Near Flagstaff; strong logistics for field tests.
+IS-ASK,terrain,4,score_0_5,provisional,0.5,AS-PREP,Lava fields and hyaloclastite — rough trafficability.
+IS-ASK,geology,5,score_0_5,provisional,0.5,AS-PREP,Basaltic Mars volcanic analog literature.
+IS-ASK,thermal,3,score_0_5,provisional,0.5,AS-PREP,Subarctic; milder than polar deserts.
+IS-ASK,dust_aridity,3,score_0_5,provisional,0.5,AS-PREP,Volcanic dust; not hyper-arid.
+IS-ASK,illumination,2,score_0_5,provisional,0.5,AS-PREP,High-latitude winters; partial illumination interest.
+IS-ASK,ice_permafrost,2,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+IS-ASK,subsurface_access,3,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+IS-ASK,operational,3,score_0_5,provisional,0.5,AS-PREP,Seasonal highland access; research-camp precedent.
+ES-RIO,terrain,2,score_0_5,provisional,0.5,AS-PREP,River valley / mine terrain; low regional relief.
+ES-RIO,geology,5,score_0_5,provisional,0.5,AS-PREP,Acidic aqueous geochemistry analog literature.
+ES-RIO,thermal,3,score_0_5,provisional,0.5,AS-PREP,Mediterranean; limited Mars thermal match.
+ES-RIO,dust_aridity,3,score_0_5,provisional,0.5,AS-PREP,Seasonally dry; not a dust analog.
+ES-RIO,illumination,1,score_0_5,provisional,0.5,AS-PREP,Not polar.
+ES-RIO,ice_permafrost,,score_0_5,missing,,,Intentionally missing in fixture to exercise missing-data handling.
+ES-RIO,subsurface_access,,score_0_5,missing,,,Intentionally missing in fixture to exercise missing-data handling.
+ES-RIO,operational,4,score_0_5,provisional,0.5,AS-PREP,Road access; mining-district permits.
+CA-AXE,terrain,3,score_0_5,provisional,0.5,AS-PREP,Local relief variable; glacier-proximal hazards.
+CA-AXE,geology,4,score_0_5,provisional,0.5,AS-PREP,Cold-spring/permafrost analog literature.
+CA-AXE,thermal,5,score_0_5,provisional,0.5,AS-PREP,High-Arctic extreme cold.
+CA-AXE,dust_aridity,3,score_0_5,provisional,0.5,AS-PREP,Polar desert; moderate dust.
+CA-AXE,illumination,5,score_0_5,provisional,0.5,AS-PREP,Polar night; strong low-sun proxy.
+CA-AXE,ice_permafrost,5,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+CA-AXE,subsurface_access,1,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+CA-AXE,operational,2,score_0_5,provisional,0.5,AS-PREP,Remote; seasonal research station logistics.
+US-LBN,terrain,4,score_0_5,provisional,0.5,AS-PREP,Tube floors/roofs and collapse pits — subsurface trafficability practice.
+US-LBN,geology,5,score_0_5,provisional,0.5,AS-PREP,Lava-tube analog for lunar/Martian caves.
+US-LBN,thermal,3,score_0_5,provisional,0.5,AS-PREP,Stable cave microclimate vs surface desert swing (document both).
+US-LBN,dust_aridity,3,score_0_5,provisional,0.5,AS-PREP,Semi-arid surface fines.
+US-LBN,illumination,4,score_0_5,provisional,0.5,AS-PREP,Cave darkness provides a PSR-like low-light proxy.
+US-LBN,ice_permafrost,3,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-LBN,subsurface_access,5,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-LBN,operational,4,score_0_5,provisional,0.5,AS-PREP,Park access with permits.
+US-DV,terrain,2,score_0_5,provisional,0.5,AS-PREP,Basin floors gentle.
+US-DV,geology,3,score_0_5,provisional,0.5,AS-PREP,Evaporite/alluvial; partial Mars analog.
+US-DV,thermal,5,score_0_5,provisional,0.5,AS-PREP,Extreme heat / diurnal swing.
+US-DV,dust_aridity,4,score_0_5,provisional,0.5,AS-PREP,Very dry basin fines.
+US-DV,illumination,1,score_0_5,provisional,0.5,AS-PREP,Not polar.
+US-DV,ice_permafrost,0,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-DV,subsurface_access,,score_0_5,missing,,,Intentionally missing in fixture to exercise missing-data handling.
+US-DV,operational,4,score_0_5,provisional,0.5,AS-PREP,National park access.
+US-HMK,terrain,4,score_0_5,provisional,0.5,AS-PREP,Volcanic slopes; rover-scale roughness.
+US-HMK,geology,4,score_0_5,provisional,0.5,AS-PREP,Basaltic tephra regolith simulant heritage.
+US-HMK,thermal,3,score_0_5,provisional,0.5,AS-PREP,High-elevation cold nights.
+US-HMK,dust_aridity,2,score_0_5,provisional,0.5,AS-PREP,Volcanic tephra; moderate.
+US-HMK,illumination,1,score_0_5,provisional,0.5,AS-PREP,Not polar.
+US-HMK,ice_permafrost,1,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-HMK,subsurface_access,2,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-HMK,operational,3,score_0_5,provisional,0.5,AS-PREP,Access constrained; cultural and permit considerations.
+AU-PIL,terrain,3,score_0_5,provisional,0.5,AS-PREP,Moderate relief outback.
+AU-PIL,geology,4,score_0_5,provisional,0.5,AS-PREP,Ancient terrains relevant to early-Mars habitability studies.
+AU-PIL,thermal,4,score_0_5,provisional,0.5,AS-PREP,Hot arid swing.
+AU-PIL,dust_aridity,4,score_0_5,provisional,0.5,AS-PREP,"Arid, dusty."
+AU-PIL,illumination,1,score_0_5,provisional,0.5,AS-PREP,Not polar.
+AU-PIL,ice_permafrost,,score_0_5,missing,,,Intentionally missing in fixture to exercise missing-data handling.
+AU-PIL,subsurface_access,,score_0_5,missing,,,Intentionally missing in fixture to exercise missing-data handling.
+AU-PIL,operational,3,score_0_5,provisional,0.5,AS-PREP,Remote; long road logistics.
+US-MDR,terrain,3,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MDR,geology,4,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MDR,thermal,3,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MDR,dust_aridity,4,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MDR,illumination,1,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MDR,ice_permafrost,0,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MDR,subsurface_access,1,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MDR,operational,5,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MET,terrain,4,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MET,geology,4,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MET,thermal,3,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MET,dust_aridity,3,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MET,illumination,1,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MET,ice_permafrost,0,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MET,subsurface_access,0,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+US-MET,operational,5,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+ES-LAN,terrain,4,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+ES-LAN,geology,4,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+ES-LAN,thermal,,score_0_5,missing,,,Intentionally missing in fixture to exercise missing-data handling.
+ES-LAN,dust_aridity,3,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+ES-LAN,illumination,3,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+ES-LAN,ice_permafrost,0,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+ES-LAN,subsurface_access,5,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.
+ES-LAN,operational,4,score_0_5,synthetic,0.25,SYN-FIXTURE,Synthetic placeholder value generated for UI development.

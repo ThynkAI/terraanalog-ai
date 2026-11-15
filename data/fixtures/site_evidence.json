@@ -1,0 +1,1119 @@
+{
+  "meta": {
+    "synthetic": true,
+    "notice": "SYNTHETIC FIXTURE \u2014 NOT REAL DATA. Replace with Bot 1 research outputs (see docs/DATA_INTEGRATION.md).",
+    "generated": "2026-11-15"
+  },
+  "evidence": {
+    "CA-HAU": {
+      "terrain": [
+        {
+          "statement": "Impact ejecta and crater rim topography; traversable but rough in places.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Impact structure + published CSA/NASA analog campaigns.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "High-Arctic cold extremes; strong seasonal swing.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Cold desert fines; not hyper-arid Atacama-class.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Polar night / low sun angle; strongest lunar south-pole illumination proxy in set.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Seasonal airlift; established analog camp logistics, still remote.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "AQ-MDV": {
+      "terrain": [
+        {
+          "statement": "Valley floors often gentle; valley walls steep \u2014 AOI-dependent.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Extensive Mars cold-desert literature.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "Extreme cold desert thermal environment.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Classic cold hyper-arid Mars proxy.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Polar night seasons; secondary lunar value.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "USAP/national program logistics; hard for indie hardware tests.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "CL-ATA": {
+      "terrain": [
+        {
+          "statement": "Mostly low-relief basins; local alluvial fans.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Canonical Mars soil/microbial-limit analog literature.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "Hot diurnal swing; not polar cold.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Hyper-arid; primary Mars dust/soil proxy.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Low-latitude; weak PSR/polar-night proxy.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Road-accessible research sites; permits required.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "US-MOJ": {
+      "terrain": [
+        {
+          "statement": "Playas flat; volcanic fields locally rough.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Basaltic/playa Mars-ops analog; training heritage.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "Strong desert diurnal swing.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Dusty arid; good ops dust testing.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Not polar.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Excellent road access for hardware shakedown.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "US-SFV": {
+      "terrain": [
+        {
+          "statement": "Cinder cones, lava fields \u2014 lunar trafficability practice.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Lunar volcanic/crater training heritage (USGS/NASA region).",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "Elevated plateau; moderate desert swing.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Semi-arid volcanic fines.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Not polar.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Near Flagstaff; strong logistics for field tests.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "IS-ASK": {
+      "terrain": [
+        {
+          "statement": "Lava fields and hyaloclastite \u2014 rough trafficability.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Basaltic Mars volcanic analog literature.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "Subarctic; milder than polar deserts.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Volcanic dust; not hyper-arid.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "High-latitude winters; partial illumination interest.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Seasonal highland access; research-camp precedent.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "ES-RIO": {
+      "terrain": [
+        {
+          "statement": "River valley / mine terrain; low regional relief.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Acidic aqueous geochemistry analog literature.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "Mediterranean; limited Mars thermal match.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Seasonally dry; not a dust analog.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Not polar.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "No evidence available \u2014 value missing (not imputed).",
+          "source_id": "",
+          "value_type": "missing",
+          "confidence": 0.0,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "No evidence available \u2014 value missing (not imputed).",
+          "source_id": "",
+          "value_type": "missing",
+          "confidence": 0.0,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Road access; mining-district permits.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "CA-AXE": {
+      "terrain": [
+        {
+          "statement": "Local relief variable; glacier-proximal hazards.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Cold-spring/permafrost analog literature.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "High-Arctic extreme cold.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Polar desert; moderate dust.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Polar night; strong low-sun proxy.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Remote; seasonal research station logistics.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "US-LBN": {
+      "terrain": [
+        {
+          "statement": "Tube floors/roofs and collapse pits \u2014 subsurface trafficability practice.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Lava-tube analog for lunar/Martian caves.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "Stable cave microclimate vs surface desert swing (document both).",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Semi-arid surface fines.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Cave darkness provides a PSR-like low-light proxy.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Park access with permits.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "US-DV": {
+      "terrain": [
+        {
+          "statement": "Basin floors gentle.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Evaporite/alluvial; partial Mars analog.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "Extreme heat / diurnal swing.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Very dry basin fines.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Not polar.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "No evidence available \u2014 value missing (not imputed).",
+          "source_id": "",
+          "value_type": "missing",
+          "confidence": 0.0,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "National park access.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "US-HMK": {
+      "terrain": [
+        {
+          "statement": "Volcanic slopes; rover-scale roughness.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Basaltic tephra regolith simulant heritage.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "High-elevation cold nights.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Volcanic tephra; moderate.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Not polar.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Access constrained; cultural and permit considerations.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "AU-PIL": {
+      "terrain": [
+        {
+          "statement": "Moderate relief outback.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Ancient terrains relevant to early-Mars habitability studies.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "Hot arid swing.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Arid, dusty.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Not polar.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "No evidence available \u2014 value missing (not imputed).",
+          "source_id": "",
+          "value_type": "missing",
+          "confidence": 0.0,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "No evidence available \u2014 value missing (not imputed).",
+          "source_id": "",
+          "value_type": "missing",
+          "confidence": 0.0,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Remote; long road logistics.",
+          "source_id": "AS-PREP",
+          "value_type": "provisional",
+          "confidence": 0.5,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "US-MDR": {
+      "terrain": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "US-MET": {
+      "terrain": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    },
+    "ES-LAN": {
+      "terrain": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "geology": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "thermal": [
+        {
+          "statement": "No evidence available \u2014 value missing (not imputed).",
+          "source_id": "",
+          "value_type": "missing",
+          "confidence": 0.0,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "dust_aridity": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "illumination": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "ice_permafrost": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "subsurface_access": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ],
+      "operational": [
+        {
+          "statement": "Synthetic placeholder value generated for UI development.",
+          "source_id": "SYN-FIXTURE",
+          "value_type": "synthetic",
+          "confidence": 0.25,
+          "citation": "citation pending from research dataset"
+        }
+      ]
+    }
+  }
+}

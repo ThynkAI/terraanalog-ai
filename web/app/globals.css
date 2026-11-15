@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body { background: #070b16; }
+body {
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgba(232, 116, 59, 0.08), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(201, 206, 214, 0.06), transparent 60%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .panel { @apply rounded-xl border border-white/[0.07] bg-space-800/80 shadow-panel backdrop-blur; }
+  .panel-title { @apply text-xs font-semibold uppercase tracking-[0.14em] text-lunar-300; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-space-700 px-3 py-1.5 text-sm text-lunar-100 transition hover:border-white/25 hover:bg-space-600 disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply border-mars-500/60 bg-mars-700 text-white hover:bg-mars-600 hover:border-mars-300; }
+  .btn-ghost { @apply border-transparent bg-transparent hover:bg-white/5; }
+  .input { @apply w-full rounded-lg border border-white/10 bg-space-900 px-3 py-2 text-sm text-lunar-50 placeholder:text-lunar-400 focus:border-mars-400 focus:outline-none; }
+  .select { @apply w-full rounded-lg border border-white/10 bg-space-900 px-2.5 py-2 text-sm text-lunar-50 focus:border-mars-400 focus:outline-none; }
+  .label { @apply mb-1 block text-xs font-medium text-lunar-300; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium ring-1 ring-inset; }
+  .kbd { @apply rounded border border-white/20 bg-space-700 px-1.5 py-0.5 font-mono text-[11px] text-lunar-200; }
+  .link { @apply text-mars-300 underline decoration-mars-500/40 underline-offset-2 hover:text-mars-400; }
+  .table-base { @apply w-full text-left text-sm; }
+  .table-base th { @apply border-b border-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-lunar-300; }
+  .table-base td { @apply border-b border-white/5 px-3 py-2 align-top text-lunar-100; }
+}
+
+*:focus-visible { outline: 2px solid #f6a77c; outline-offset: 2px; border-radius: 4px; }
+
+.skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.09), rgba(255,255,255,0.04)); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.fade-in { animation: fadein 0.35s ease-out both; }
+@keyframes fadein { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* MapLibre */
+.maplibregl-ctrl-attrib { background: rgba(10, 16, 32, 0.75) !important; color: #aab2bf !important; font-size: 10px; }
+.maplibregl-ctrl-attrib a { color: #f6a77c !important; }
+.maplibregl-ctrl-group { background: #111a2e !important; border: 1px solid rgba(255,255,255,0.1); }
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon { filter: invert(0.9); }
+.site-marker { cursor: pointer; border: 0; background: transparent; padding: 0; }
+.site-marker:focus-visible { outline: 3px solid #f6a77c; outline-offset: 3px; border-radius: 9999px; }
+
+@media print {
+  body { background: #fff !important; color: #000 !important; }
+  .no-print { display: none !important; }
+  .panel { border: 1px solid #999 !important; background: #fff !important; box-shadow: none !important; color: #000 !important; break-inside: avoid; }
+  .print-dark-text, .print-dark-text * { color: #000 !important; }
+}
