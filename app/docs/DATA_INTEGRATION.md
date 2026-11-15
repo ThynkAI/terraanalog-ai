@@ -31,8 +31,8 @@ extra keys `ref_id` and `feature`. The engine handles this generically:
 
 ### Published-score reproduction
 `python scripts/verify_published.py data/research --json docs/test-results/published_reproduction.json` recomputes all 588
-published rows independently. Current result: max |diff| **0.0**, mean **0.0**, completeness identical, **0 rank mismatches**
-(floating-point residuals are ~5×10⁻⁵, reported as 0.0 at 4 decimal places).
+published rows independently. Current result (Final submission pass): all **588 ranks agree**, maximum unrounded |diff| **0.00004737** points
+(older four-decimal summaries displayed this residual as 0.0). Completeness is identical on every row.
 
 ## Loading other research outputs
 ```bash
@@ -125,9 +125,10 @@ If `data/research/supplementary/` is present the loader reads it; missing files 
 | `README.md` | File inventory |
 
 ## Known data issues in the research package (export @ d2e464b)
-The 15 November 2026 re-export (research commits `3be5e92` fixes, `d2e464b` export) resolved the previously reported issues:
+The 15 November 2026 re-export (research commits `3be5e92` fixes, `d2e464b` export) resolved the previously reported issues
+(historical, before that re-export):
 empty `region`/`imagery`, blank operational confidence, null Gazetteer ids and missing `lon_east` properties, empty catalog `usage`,
-empty citation authors and leftover `()`, unique-sentence climate filters, rounding drift in published scores (max |diff| was 0.0111
+empty citation authors and leftover `()`, unique-sentence climate filters, rounding drift in published scores (historical max |diff| was 0.0111
 with two tie-related rank swaps), empty evidence items, cross-body profile multipliers, and the missing `outputs/` extras.
 `scripts/validate_data.py data/research` exits 0 with **0 errors and 0 warnings**. All 588 published ranks match.
 

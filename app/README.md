@@ -9,7 +9,7 @@ what Earth cannot replicate.
 > package `ThynkAI/terraanalog-ai @ d2e464b`, copied unmodified, plus `supplementary/`): 28 Earth analog sites, 14 Moon/Mars references, 155 criteria
 > (11 reference-specific similarity features × 14 references + a separate operational-suitability score), 4,340 values
 > (770 measured · 1,519 modeled · 1,673 provisional · 378 missing, never imputed) and 588 published rankings, which the engine
-> reproduces exactly (max |diff| 0.0; [docs/TEST_RESULTS.md](docs/TEST_RESULTS.md)). The UI shows a *Research dataset* badge and the
+> reproduces all 588 published ranks with a maximum unrounded difference of 0.00004737 points ([docs/TEST_RESULTS.md](docs/TEST_RESULTS.md#final-submission-pass)). The UI shows a *Research dataset* badge and the
 > research notice on every page. `data/fixtures/` is kept as a clearly-labelled **synthetic fallback**
 > (`TERRA_DATA_DIR=data/fixtures`; the *Synthetic fixture data* badge then appears). See [docs/DATA_INTEGRATION.md](docs/DATA_INTEGRATION.md).
 

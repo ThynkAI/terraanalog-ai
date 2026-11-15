@@ -76,8 +76,8 @@ TerraAnalog AI is **explainable AI for decision support**. It does not use a cha
    runs the documented scoring, shows its interpretation, explains *why* each site ranks where it does, lists caveats, and states what
    Earth cannot replicate.
 
-The app recomputes all 588 published research scores to within 0.011 points
-([`app/docs/TEST_RESULTS.md`](app/docs/TEST_RESULTS.md)). No ML model is trained and no predictive accuracy is claimed.
+The app recomputes all 588 published research scores with all ranks in agreement and a maximum unrounded difference of 0.00004737 points
+([`app/docs/TEST_RESULTS.md`](app/docs/TEST_RESULTS.md#final-submission-pass)). No ML model is trained and no predictive accuracy is claimed.
 
 ## Data provenance
 * Each value is labelled **measured**, **modeled**, **provisional** or **missing**, with a source ID and citation. The app's *Data & Provenance*

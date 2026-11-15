@@ -14,7 +14,7 @@ The project addresses Earth analog identification with a curated 28-site catalog
 - Mobile explorer places the map and evidence before the long results list; smaller screens get larger button targets. Existing keyboard and reduced-motion behavior is retained.
 - GitHub Actions workflow for backend regression tests, frontend unit tests, production build, desktop/mobile flows and accessibility checks.
 
-## Verification performed for this change
+## Verification performed for this change (historical counts from revision `f47f95c`)
 
 | Check | Result |
 |---|---|

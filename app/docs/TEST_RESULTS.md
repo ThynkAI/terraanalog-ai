@@ -1,10 +1,8 @@
 # Test results
 
-Recorded 2026-11-15 13:20 EST (America/Toronto) on the dev box, then updated **2026-11-15 14:20 EST (America/Toronto)** after
-ingesting the corrected research export (`data/research/`, package `@ d2e464b`, plus `supplementary/`). These counts come from
-actual runs. Raw outputs are in `docs/test-results/`.
+Current reproduction figures and test counts are in **Final submission pass**. The sections from *Local* through *Not re-executed in the 14:20 EST data-update pass* are historical records of the 13:20 and 14:20 EST (America/Toronto) revisions on 15 November 2026, after ingesting the corrected research export (`data/research/`, package `@ d2e464b`, plus `supplementary/`). Those counts come from actual runs at the time. Raw outputs are in `docs/test-results/`.
 
-## Local (API :8710 via uvicorn on data/research, UI :3710 via `PORT=3710 npm start`)
+## Local (historical: 13:20 / 14:20 EST passes; API :8710 via uvicorn on data/research, UI :3710 via `PORT=3710 npm start`)
 | Suite | Command | Result |
 |---|---|---|
 | Backend unit/API (pytest) | `.venv/bin/python -m pytest -q backend` | **85 passed**, 0 failed (68 on the synthetic fixtures, incl. 4 PDF tests, for backward compatibility + 17 on the research data) |
@@ -25,17 +23,17 @@ references; the recommendation engine choosing a published reference; reproducti
 Backward compatibility: the synthetic fallback (`TERRA_DATA_DIR=data/fixtures`) still passes the 68 original backend tests, and a
 headless smoke run of all pages on fixtures (API :8711, UI :3711) showed the *Synthetic fixture data* badge and no page errors.
 
-## Published-score reproduction (all 588 rows, 21 reference × objective pairs)
+## Published-score reproduction (historical four-decimal summary; precise residual in Final submission pass)
 | Metric | Value |
 |---|---|
 | Rows compared / unscorable | 588 / 0 |
-| abs(engine score − published score), unrounded | max **0.0**, mean **0.0**, median 0.0; 588/588 within 0.01 (floating-point residuals ~5×10⁻⁵) |
+| abs(engine score − published score), unrounded | max **0.00004737**, mean **0.0**, median 0.0; 588/588 within 0.01 (older four-decimal summaries displayed the max as 0.0) |
 | abs diff of the 1-dp display value | max 0.05, mean 0.0258, 4 exact |
 | Completeness difference | 0 (all rows identical) |
 | Rank agreement | **588/588** (0 mismatches) |
 Full report: `docs/test-results/published_reproduction.json`.
 
-## Docker Compose (Docker Compose v5.7.1, Docker Engine 29.1.4)
+## Docker Compose (historical; Docker Compose v5.7.1, Docker Engine 29.1.4)
 | Step | Result |
 |---|---|
 | `API_PORT=18000 WEB_PORT=13000 docker compose -p terraanalog up --build -d` | both images built; api **healthy** with `data/research` (`synthetic: false, sites: 28, references: 14, errors: 0`) |
@@ -43,21 +41,21 @@ Full report: `docs/test-results/published_reproduction.json`.
 | Playwright against compose (`BASE_URL=http://127.0.0.1:13000`) | **41 passed**, 0 failed (`playwright-docker-compose.txt`) |
 The stack was stopped afterwards (`docker compose -p terraanalog down`).
 
-## Render free-tier memory check (2026-11-15 ~14:00 EST, Docker cgroup limits on the dev box)
+## Render free-tier memory check (historical; 2026-11-15 ~14:00 EST, Docker cgroup limits on the dev box)
 | Check | Result |
 |---|---|
 | `next build` with `NODE_OPTIONS=--max-old-space-size=460` (no container memory limit) | **success** (exit 0), 11/11 pages; peak container memory ~1.0 GB |
 | `next build` inside a hard **512 MB** container (heap caps of 460 and 300 MB, with and without one build worker and webpack memory optimizations) | **fails**: the build worker is OOM-killed. A 512 MB machine cannot build this app. Render runs builds on its separate build pipeline (Starter tier: 2 CPU / 8 GB), so this does not block the Blueprint |
 | Runtime: API (`uvicorn`, data/research) and web (`next start`, `NODE_OPTIONS=--max-old-space-size=460`, `API_HOST=<api>:8000`), each in its own 512 MB container | all 8 pages, `/api/*` proxy, clusters, sensitivity and a 4-site PDF returned 200; desktop Playwright **31 passed** against the capped web container; peak memory **web 105 MB, API 72 MB**, 0 OOM kills |
 
-## One-command setup scripts
+## One-command setup scripts (historical)
 | Script | Result |
 |---|---|
 | `scripts/setup.sh` | syntax check (`bash -n`) passed after switching the default to `data/research`; the full clean-copy run was done in the previous round (fresh venv + `npm ci` + build + start; health, `/compare`, PDF 200) |
 | `scripts/setup.ps1` | parsed with 0 errors under PowerShell 7.7.0 on Linux; full install/start was run in the previous round |
 | `scripts/setup.ps1` on **Windows PowerShell 5.1** | **not executed** (no Windows machine available). The script avoids PS 7-only syntax (`&&`, ternary, `??`) |
 
-## Live Render deployment (verified 2026-11-15 ~13:56–13:58 EST, America/Toronto)
+## Live Render deployment (historical; verified 2026-11-15 ~13:56–13:58 EST, America/Toronto)
 Both Blueprint services were Live on commit `7238b1e` before this data update. Measured with curl (services were already warm from
 deploy health checks; a true free-tier cold start was not observed and can take ~1 minute after idle sleep).
 
@@ -72,7 +70,7 @@ deploy health checks; a true free-tier cold start was not observed and can take 
 
 Live URLs: https://terraanalog-web-cqgu.onrender.com and https://terraanalog-api-cqgu.onrender.com. A later push of this data update retriggers auto-deploy; re-verify after that deploy is Live.
 
-## Not re-executed in the 14:20 EST data-update pass
+## Not re-executed in the 14:20 EST data-update pass (historical)
 - Playwright e2e (previously 41 passed against research data and Docker Compose) and a fresh `next build` / Docker Compose run.
 - Scores are research-package similarity proxies (measured / modeled / provisional values, with missing values shown as missing).
   They are decision support, not landing-site selections.
