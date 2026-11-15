@@ -7,12 +7,12 @@
 |---|---|
 | Challenge review and latest change verification | [`app/docs/CHALLENGE_REVIEW.md`](app/docs/CHALLENGE_REVIEW.md) |
 | Public repository | https://github.com/ThynkAI/terraanalog-ai |
-| Live demo URL | https://terraanalog-web-cqgu.onrender.com (API: https://terraanalog-api-cqgu.onrender.com) |
+| Live demo URL | https://terraanalog-web-cqgu.onrender.com (API health: https://terraanalog-api-cqgu.onrender.com/api/health) |
 | Supplementary 3-minute walkthrough | [`app/docs/DEMO_SCRIPT.md`](app/docs/DEMO_SCRIPT.md) |
 | Pitch (~150 words) | [`app/docs/PITCH.md`](app/docs/PITCH.md) |
 | Presentation outline | [`app/docs/PRESENTATION_OUTLINE.md`](app/docs/PRESENTATION_OUTLINE.md) |
 | Required short demonstration: seven-slide PDF | [`app/docs/TerraAnalog-AI-Space-Apps-Demo.pdf`](app/docs/TerraAnalog-AI-Space-Apps-Demo.pdf) |
-| Screenshots | [`app/docs/screenshots/`](app/docs/screenshots/) (17 app views, including mobile, plus a PDF report page) |
+| Screenshots | [`app/docs/screenshots/`](app/docs/screenshots/) (18 app views, including mobile, plus a PDF report page) |
 | Sample generated report | [`app/docs/samples/site-comparison-report-sample.pdf`](app/docs/samples/site-comparison-report-sample.pdf) |
 | How the AI works | [README → *How the AI works*](README.md#how-the-ai-works) (explainable scoring and a rule-based recommendation engine; no LLM invents facts) |
 | Scientific cases and source review | Live: `/science` · [`app/docs/SCIENTIFIC_CASE_REVIEW.md`](app/docs/SCIENTIFIC_CASE_REVIEW.md) |
@@ -35,8 +35,8 @@ The committed-data audit and score-reproduction reports are in `app/docs/test-re
 See [`app/docs/SUBMISSION_READY.md`](app/docs/SUBMISSION_READY.md) for copy-ready project text and final links.
 
 ## Before submitting
-- [x] Deploy (Render Blueprint) and replace the **TBD** demo URL above, and in the README *Deploy* section. Live as of 15 November 2026, America/Toronto: https://terraanalog-web-cqgu.onrender.com
-- [ ] Open the demo URL in a private window and walk through `DEMO_SCRIPT.md` once (allow ~1 min for free-tier services to wake).
+- [x] Deploy (Render Blueprint) and add the demo URL above and in the README *Deploy* section. Live as of 15 November 2026, America/Toronto: https://terraanalog-web-cqgu.onrender.com
+- [ ] Open the demo URL in a private window and walk through `DEMO_SCRIPT.md` once. Both Render services run on Starter instances and do not sleep when idle.
 - [ ] Use the refreshed seven-slide PDF as the short demonstration, or supply a video of no more than 30 seconds if preferred. The three-minute walkthrough is supplementary.
 - [ ] Paste the repo link, the demo link, the pitch and the team names into the Space Apps project page.
 - [ ] Credit NASA data and imagery as listed in the README (*Data provenance*, *Licence and data terms*). NASA does not endorse the project.

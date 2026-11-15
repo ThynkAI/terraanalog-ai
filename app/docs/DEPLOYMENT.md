@@ -1,6 +1,6 @@
 # Deployment
 
-The app is deployed on Render (free tier) from the public repo's Blueprint (`render.yaml`).
+The app is deployed on Render (Starter instances, always on) from the public repo's Blueprint (`render.yaml`).
 
 | Service | Live URL |
 |---|---|
@@ -8,11 +8,11 @@ The app is deployed on Render (free tier) from the public repo's Blueprint (`ren
 | API | https://terraanalog-api-cqgu.onrender.com |
 | API health | https://terraanalog-api-cqgu.onrender.com/api/health |
 
-Verified 15 November 2026, America/Toronto: both services Live on commit `7238b1e` (subsequent pushes to `main` auto-deploy). Free services sleep when idle; the first request after a pause can take about a minute. After that, page and API responses were ~0.08–0.4 s on a warm instance.
+Verified 15 November 2026, America/Toronto: both services Live on commit `7238b1e` (subsequent pushes to `main` auto-deploy). At that time the services were on the free plan, which sleeps when idle; since 15 November 2026 (commit `82c03a1`) both run on Starter instances and stay awake. On a warm instance, page and API responses were ~0.08–0.4 s on a warm instance.
 
 ## Option 0 — Render Blueprint (one click, from the monorepo root)
 The repository root contains [`render.yaml`](../../render.yaml). In the Render Dashboard choose **New → Blueprint** and select the repo.
-It creates two free web services: `terraanalog-api` (rootDir `app`, `pip install -r backend/requirements.txt`, uvicorn on `$PORT`,
+It creates two Starter web services: `terraanalog-api` (rootDir `app`, `pip install -r backend/requirements.txt`, uvicorn on `$PORT`,
 `TERRA_DATA_DIR=data/research`, health check `/api/health`) and `terraanalog-web` (rootDir `app/web`, `npm ci && npm run build`,
 `npm start`). The web service gets `API_HOST` = the API's public hostname, and its proxy calls `https://$API_HOST`. On paid plans you can
 use the private network instead (`property: hostport`, which gives `http://host:port`). No secrets are required.

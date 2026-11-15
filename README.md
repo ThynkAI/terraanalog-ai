@@ -91,18 +91,18 @@ The app recomputes all 588 published research scores with all ranks in agreement
 
 ## Deploy
 **Render (one click):** in the Render Dashboard choose **New → Blueprint** and select this repository. [`render.yaml`](render.yaml) creates
-two free web services:
+two Starter (always-on) web services:
 * `terraanalog-api`: FastAPI, rootDir `app`, `TERRA_DATA_DIR=data/research`, health check `/api/health`.
 * `terraanalog-web`: Next.js, rootDir `app/web`. Its server-side `/api/*` proxy is wired to the API through `API_HOST` (the API service's
   public hostname, filled in automatically by the Blueprint).
 
-No secrets or environment values need to be entered. Free Render services sleep when idle, so the first request after a pause can take
-about a minute. Other options include any Docker host (`app/docker-compose.yml`) and the notes in
+No secrets or environment values need to be entered. The live deployment runs on Render Starter instances, which do not sleep when
+idle (if you deploy on the free plan instead, the first request after an idle pause can take about a minute). Other options include any Docker host (`app/docker-compose.yml`) and the notes in
 [`app/docs/DEPLOYMENT.md`](app/docs/DEPLOYMENT.md).
 
 **Live demo (verified 15 November 2026, America/Toronto):**
 * App: https://terraanalog-web-cqgu.onrender.com
-* API: https://terraanalog-api-cqgu.onrender.com (`/api/health` returns `synthetic: false`, 28 sites, 14 references)
+* API: https://terraanalog-api-cqgu.onrender.com/api/health ( returns `synthetic: false`, 28 sites, 14 references)
 
 ## Team and NASA Space Apps
 Built for the NASA Space Apps Challenge 2026 by Deep Kanabar (lead), with AI assistants for the planetary-science and geospatial

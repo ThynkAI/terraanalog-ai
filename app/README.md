@@ -100,7 +100,7 @@ docs/               architecture, data integration, deployment, pitch, demo scri
 ## Live demo
 - App: https://terraanalog-web-cqgu.onrender.com
 - API: https://terraanalog-api-cqgu.onrender.com/api/health
-Free Render services sleep when idle; the first request after a pause can take about a minute.
+Both services run on Render Starter instances, which do not sleep when idle.
 
 ## Documentation
 - [Architecture](docs/ARCHITECTURE.md) · [Data integration guide](docs/DATA_INTEGRATION.md) · [Deployment](docs/DEPLOYMENT.md)
@@ -114,7 +114,7 @@ TerraAnalog AI was conceived, specified and directed by the team. Deep Kanabar w
 The deployed application uses no generative AI at runtime. Scores are produced by a deterministic, explainable engine, and every value traces to a cited source. Missing measurements are shown as missing; they are never invented.
 
 ## Licence
-Code: [MIT](LICENSE) (copyright 2026 Deep Kanabar / ThynkAI). Data files keep their upstream licences, and research text and derived values are CC BY 4.0 unless upstream says otherwise. See *Licence and data terms* in the monorepo README (https://github.com/ThynkAI/terraanalog-ai).
+Code: [MIT](../LICENSE) (copyright 2026 Deep Kanabar / ThynkAI). Data files keep their upstream licences, and research text and derived values are CC BY 4.0 unless upstream says otherwise. See *Licence and data terms* in the monorepo README (https://github.com/ThynkAI/terraanalog-ai).
 
 ## Attribution
 Planetary imagery: NASA Moon Trek (LRO WAC, NASA/GSFC/ASU) and NASA Mars Trek (Viking MDIM 2.1, NASA/JPL/USGS). Earth tiles: NASA GIBS

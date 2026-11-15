@@ -1,6 +1,6 @@
 # Test results
 
-Current reproduction figures and test counts are in **Final submission pass**. The sections from *Local* through *Not re-executed in the 14:20 EST data-update pass* are historical records of the 13:20 and 14:20 EST (America/Toronto) revisions on 15 November 2026, after ingesting the corrected research export (`data/research/`, package `@ d2e464b`, plus `supplementary/`). Those counts come from actual runs at the time. Raw outputs are in `docs/test-results/`.
+Current test counts are in **Pre-submission audit** (the last section); reproduction figures are unchanged from **Final submission pass**. The sections from *Local* through *Not re-executed in the 14:20 EST data-update pass* are historical records of the 13:20 and 14:20 EST (America/Toronto) revisions on 15 November 2026, after ingesting the corrected research export (`data/research/`, package `@ d2e464b`, plus `supplementary/`). Those counts come from actual runs at the time. Raw outputs are in `docs/test-results/`.
 
 ## Local (historical: 13:20 / 14:20 EST passes; API :8710 via uvicorn on data/research, UI :3710 via `PORT=3710 npm start`)
 | Suite | Command | Result |
@@ -81,3 +81,21 @@ The current audit reports are `test-results/submission-sanity.json` and `test-re
 
 The final pass reran 97 backend tests, 19 frontend unit tests, and the production build locally. GitHub Actions run 43764106365 passed the committed-data audit, 97 backend tests, 19 frontend unit tests, and all 50 desktop/mobile/keyboard/accessibility checks. Final captures wait for the globe to finish initializing. The seven-slide PDF was regenerated and all pages visually inspected. Earlier sections above describe earlier revisions and their historical test counts. A raw-raster retrieval/rederivation and independent field validation were not repeated in this pass.
 
+
+## Pre-submission audit (15 November 2026, ~18:35–18:50 EST, America/Toronto)
+
+Fresh clone of `main` at `82c03a1` (Render Starter plan, 502/HTML wake handling from `b7fb30d`), plus this audit's wording-only changes to the service-unavailable messages. All counts below come from runs in this pass.
+
+| Check | Command | Result |
+|---|---|---|
+| Backend (pytest) | `.venv/bin/python -m pytest backend/tests -q` | **97 passed**, 0 failed (1 upstream Starlette deprecation warning) |
+| Frontend unit (Vitest) | `cd web && npx vitest run` | **25 passed** (3 files); up from 19 because `b7fb30d` added transient-retry and HTML-error tests |
+| TypeScript (`npm run lint` = `tsc --noEmit`) | `cd web && npx tsc --noEmit` | **0 errors** |
+| Production build | `cd web && npx next build` | **success**, 12/12 static pages generated |
+| End-to-end (Playwright, desktop Chromium + Pixel 7, axe) | `cd web && npx playwright test` (local API + `next start`) | **50 passed**, 0 failed |
+| Committed-data audit | `python scripts/submission_sanity.py` | **17/17** checks passed |
+| Data validation | `python scripts/validate_data.py data/research` | exit 0, **0 errors, 0 warnings**; 4,340 feature records = 770 measured + 1,519 modeled + 1,673 provisional + 378 missing |
+| Published-score reproduction | `python scripts/verify_published.py data/research` | **588/588** compared, 0 unscorable, **0 rank mismatches**, max unrounded diff **0.00004737** |
+| GitHub Actions on `82c03a1` | run 43770088943 | success |
+
+Live deployment (Starter instances), checked with curl in the same window: all pages (`/`, `/science`, `/explorer`, `/compare`, `/data`, `/methodology`, `/moon`, `/mars`, `/impact`, case deep links) returned HTTP 200 in 0.06–0.11 s; 17 API GET endpoints returned 200 directly and through the web proxy (0.07–0.42 s), including CSV and PDF export (`%PDF-1.4`) and `POST /api/recommend`.
