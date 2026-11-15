@@ -1,0 +1,699 @@
+{
+ "note": "Unsupervised, exploratory. n=28 sites is small; clusters describe environmental similarity in the measured/modelled feature space only and are not validated analog classes.",
+ "features_used": [
+  "slope_med_90m_deg",
+  "slope_p90_90m_deg",
+  "log_TRI_90m",
+  "log_relief_15km",
+  "MAAT_K",
+  "log_aridity",
+  "ice_indicator",
+  "abiotic_fraction",
+  "freeze_thaw_days",
+  "diurnal_range_C"
+ ],
+ "imputed_missing_values": 1,
+ "imputation": "column median (on transformed scale)",
+ "pca_explained_variance_ratio": [
+  0.398,
+  0.2,
+  0.121,
+  0.1,
+  0.077
+ ],
+ "pca_loadings": {
+  "PC1": {
+   "slope_med_90m_deg": 0.41,
+   "slope_p90_90m_deg": 0.432,
+   "log_TRI_90m": 0.379,
+   "log_relief_15km": 0.266,
+   "MAAT_K": -0.353,
+   "log_aridity": 0.223,
+   "ice_indicator": 0.393,
+   "abiotic_fraction": 0.064,
+   "freeze_thaw_days": -0.002,
+   "diurnal_range_C": -0.313
+  },
+  "PC2": {
+   "slope_med_90m_deg": 0.002,
+   "slope_p90_90m_deg": 0.063,
+   "log_TRI_90m": -0.357,
+   "log_relief_15km": -0.34,
+   "MAAT_K": -0.382,
+   "log_aridity": 0.015,
+   "ice_indicator": 0.198,
+   "abiotic_fraction": 0.51,
+   "freeze_thaw_days": 0.532,
+   "diurnal_range_C": 0.158
+  },
+  "PC3": {
+   "slope_med_90m_deg": -0.234,
+   "slope_p90_90m_deg": -0.246,
+   "log_TRI_90m": -0.154,
+   "log_relief_15km": -0.341,
+   "MAAT_K": -0.128,
+   "log_aridity": 0.691,
+   "ice_indicator": 0.142,
+   "abiotic_fraction": -0.305,
+   "freeze_thaw_days": -0.056,
+   "diurnal_range_C": -0.366
+  }
+ },
+ "kmeans_silhouette_by_k": {
+  "2": 0.341,
+  "3": 0.354,
+  "4": 0.204,
+  "5": 0.214,
+  "6": 0.225
+ },
+ "k_selected": 3,
+ "kmeans_vs_ward_adjusted_rand_index": 1.0,
+ "clusters": {
+  "C1": {
+   "members": [
+    "EA-001",
+    "EA-003",
+    "EA-006",
+    "EA-008",
+    "EA-009",
+    "EA-010",
+    "EA-012",
+    "EA-013",
+    "EA-014",
+    "EA-015",
+    "EA-016",
+    "EA-017",
+    "EA-018",
+    "EA-020",
+    "EA-021",
+    "EA-022",
+    "EA-023",
+    "EA-024",
+    "EA-025",
+    "EA-026",
+    "EA-027",
+    "EA-028"
+   ],
+   "defining_features_z": {
+    "ice_indicator": -0.42,
+    "MAAT_K": 0.34,
+    "slope_med_90m_deg": -0.27
+   }
+  },
+  "C2": {
+   "members": [
+    "EA-002",
+    "EA-004",
+    "EA-005",
+    "EA-007",
+    "EA-019"
+   ],
+   "defining_features_z": {
+    "ice_indicator": 1.92,
+    "MAAT_K": -1.46,
+    "slope_med_90m_deg": 1.35
+   }
+  },
+  "C3": {
+   "members": [
+    "EA-011"
+   ],
+   "defining_features_z": {
+    "log_relief_15km": -4.83,
+    "log_TRI_90m": -3.9,
+    "freeze_thaw_days": 1.77
+   }
+  }
+ },
+ "site_coordinates_pca": {
+  "EA-001": {
+   "PC1": 0.248,
+   "PC2": -0.013,
+   "cluster": "C1"
+  },
+  "EA-002": {
+   "PC1": 2.332,
+   "PC2": 1.032,
+   "cluster": "C2"
+  },
+  "EA-003": {
+   "PC1": -2.022,
+   "PC2": -0.195,
+   "cluster": "C1"
+  },
+  "EA-004": {
+   "PC1": 4.32,
+   "PC2": 0.798,
+   "cluster": "C2"
+  },
+  "EA-005": {
+   "PC1": 5.461,
+   "PC2": 0.65,
+   "cluster": "C2"
+  },
+  "EA-006": {
+   "PC1": 0.305,
+   "PC2": 0.844,
+   "cluster": "C1"
+  },
+  "EA-007": {
+   "PC1": 2.368,
+   "PC2": 1.077,
+   "cluster": "C2"
+  },
+  "EA-008": {
+   "PC1": 0.106,
+   "PC2": -0.876,
+   "cluster": "C1"
+  },
+  "EA-009": {
+   "PC1": 0.311,
+   "PC2": -1.718,
+   "cluster": "C1"
+  },
+  "EA-010": {
+   "PC1": -2.487,
+   "PC2": -0.187,
+   "cluster": "C1"
+  },
+  "EA-011": {
+   "PC1": -4.214,
+   "PC2": 4.607,
+   "cluster": "C3"
+  },
+  "EA-012": {
+   "PC1": -1.297,
+   "PC2": 1.14,
+   "cluster": "C1"
+  },
+  "EA-013": {
+   "PC1": -0.994,
+   "PC2": -1.7,
+   "cluster": "C1"
+  },
+  "EA-014": {
+   "PC1": 0.849,
+   "PC2": -1.788,
+   "cluster": "C1"
+  },
+  "EA-015": {
+   "PC1": -2.101,
+   "PC2": -1.28,
+   "cluster": "C1"
+  },
+  "EA-016": {
+   "PC1": -1.154,
+   "PC2": -1.562,
+   "cluster": "C1"
+  },
+  "EA-017": {
+   "PC1": 0.563,
+   "PC2": 1.071,
+   "cluster": "C1"
+  },
+  "EA-018": {
+   "PC1": -1.898,
+   "PC2": 1.475,
+   "cluster": "C1"
+  },
+  "EA-019": {
+   "PC1": 2.096,
+   "PC2": 2.273,
+   "cluster": "C2"
+  },
+  "EA-020": {
+   "PC1": 0.214,
+   "PC2": -1.24,
+   "cluster": "C1"
+  },
+  "EA-021": {
+   "PC1": -0.323,
+   "PC2": -0.327,
+   "cluster": "C1"
+  },
+  "EA-022": {
+   "PC1": 0.303,
+   "PC2": -0.062,
+   "cluster": "C1"
+  },
+  "EA-023": {
+   "PC1": -1.436,
+   "PC2": -0.304,
+   "cluster": "C1"
+  },
+  "EA-024": {
+   "PC1": 0.891,
+   "PC2": -0.653,
+   "cluster": "C1"
+  },
+  "EA-025": {
+   "PC1": -0.556,
+   "PC2": -0.46,
+   "cluster": "C1"
+  },
+  "EA-026": {
+   "PC1": 0.338,
+   "PC2": -1.462,
+   "cluster": "C1"
+  },
+  "EA-027": {
+   "PC1": -1.372,
+   "PC2": -1.541,
+   "cluster": "C1"
+  },
+  "EA-028": {
+   "PC1": -0.852,
+   "PC2": 0.401,
+   "cluster": "C1"
+  }
+ },
+ "baseline_comparison": {
+  "groups": {
+   "baseline": [
+    "EA-001",
+    "EA-002",
+    "EA-003"
+   ],
+   "established": [
+    "EA-004",
+    "EA-005",
+    "EA-007",
+    "EA-017",
+    "EA-018",
+    "EA-022",
+    "EA-023",
+    "EA-024",
+    "EA-026",
+    "EA-028"
+   ],
+   "candidate": [
+    "EA-006",
+    "EA-008",
+    "EA-009",
+    "EA-010",
+    "EA-011",
+    "EA-012",
+    "EA-013",
+    "EA-014",
+    "EA-015",
+    "EA-016",
+    "EA-019",
+    "EA-020",
+    "EA-021",
+    "EA-025",
+    "EA-027"
+   ]
+  },
+  "profiles": {
+   "MOON_ISRU_ICE": {
+    "baseline": 0.642,
+    "established": 0.63,
+    "candidate": 0.385,
+    "top_new_candidates": [
+     [
+      "EA-019",
+      "Mauna Kea (upper slopes)",
+      26.87,
+      7
+     ],
+     [
+      "EA-025",
+      "Sudbury Basin",
+      25.35,
+      9
+     ],
+     [
+      "EA-009",
+      "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+      21.07,
+      10
+     ]
+    ]
+   },
+   "MOON_ROVER_MOBILITY": {
+    "baseline": 0.42,
+    "established": 0.448,
+    "candidate": 0.551,
+    "top_new_candidates": [
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      68.45,
+      2
+     ],
+     [
+      "EA-011",
+      "Salar de Uyuni",
+      67.26,
+      3
+     ],
+     [
+      "EA-006",
+      "Holuhraun lava field",
+      64.33,
+      5
+     ]
+    ]
+   },
+   "MOON_EVA_HABITAT": {
+    "baseline": 0.728,
+    "established": 0.615,
+    "candidate": 0.378,
+    "top_new_candidates": [
+     [
+      "EA-019",
+      "Mauna Kea (upper slopes)",
+      38.06,
+      5
+     ],
+     [
+      "EA-011",
+      "Salar de Uyuni",
+      34.67,
+      10
+     ],
+     [
+      "EA-014",
+      "Arkaroola (Northern Flinders Ranges)",
+      33.68,
+      11
+     ]
+    ]
+   },
+   "MOON_FIELD_GEOLOGY": {
+    "baseline": 0.667,
+    "established": 0.552,
+    "candidate": 0.432,
+    "top_new_candidates": [
+     [
+      "EA-025",
+      "Sudbury Basin",
+      35.34,
+      4
+     ],
+     [
+      "EA-027",
+      "Lonar impact crater",
+      27.35,
+      5
+     ],
+     [
+      "EA-015",
+      "Wolfe Creek Crater",
+      24.19,
+      6
+     ]
+    ]
+   },
+   "MOON_LAVA_TUBE": {
+    "baseline": 0.383,
+    "established": 0.422,
+    "candidate": 0.575,
+    "top_new_candidates": [
+     [
+      "EA-009",
+      "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+      74.31,
+      1
+     ],
+     [
+      "EA-016",
+      "Undara lava tubes (McBride Basalt Province)",
+      69.07,
+      2
+     ],
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      58.67,
+      3
+     ]
+    ]
+   },
+   "MARS_ISRU_ICE": {
+    "baseline": 0.802,
+    "established": 0.578,
+    "candidate": 0.388,
+    "top_new_candidates": [
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      25.51,
+      8
+     ],
+     [
+      "EA-010",
+      "Dallol hydrothermal field, Danakil Depression",
+      23.34,
+      9
+     ],
+     [
+      "EA-006",
+      "Holuhraun lava field",
+      22.18,
+      12
+     ]
+    ]
+   },
+   "MARS_ROVER_MOBILITY": {
+    "baseline": 0.852,
+    "established": 0.433,
+    "candidate": 0.474,
+    "top_new_candidates": [
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      62.26,
+      2
+     ],
+     [
+      "EA-006",
+      "Holuhraun lava field",
+      61.72,
+      3
+     ],
+     [
+      "EA-011",
+      "Salar de Uyuni",
+      52.88,
+      9
+     ]
+    ]
+   },
+   "MARS_EVA_HABITAT": {
+    "baseline": 0.753,
+    "established": 0.504,
+    "candidate": 0.447,
+    "top_new_candidates": [
+     [
+      "EA-010",
+      "Dallol hydrothermal field, Danakil Depression",
+      44.64,
+      4
+     ],
+     [
+      "EA-011",
+      "Salar de Uyuni",
+      43.94,
+      5
+     ],
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      41.03,
+      8
+     ]
+    ]
+   },
+   "MARS_ASTROBIO_SEDIMENTS": {
+    "baseline": 0.741,
+    "established": 0.526,
+    "candidate": 0.435,
+    "top_new_candidates": [
+     [
+      "EA-011",
+      "Salar de Uyuni",
+      39.61,
+      5
+     ],
+     [
+      "EA-010",
+      "Dallol hydrothermal field, Danakil Depression",
+      39.33,
+      7
+     ],
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      36.71,
+      8
+     ]
+    ]
+   },
+   "MARS_LAVA_TUBE": {
+    "baseline": 0.444,
+    "established": 0.437,
+    "candidate": 0.553,
+    "top_new_candidates": [
+     [
+      "EA-009",
+      "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+      57.51,
+      1
+     ],
+     [
+      "EA-016",
+      "Undara lava tubes (McBride Basalt Province)",
+      51.44,
+      2
+     ],
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      45.31,
+      3
+     ]
+    ]
+   }
+  },
+  "expected_role_checks": [
+   {
+    "profile": "MARS_ISRU_ICE",
+    "site_id": "EA-004",
+    "rank": 2,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Dry Valleys permafrost drilling for Mars (wiki:McMurdo Dry Valleys); Haughton permafrost 'cold, wet Mars' analogue (wiki:Haughton impact crater)"
+   },
+   {
+    "profile": "MARS_ISRU_ICE",
+    "site_id": "EA-002",
+    "rank": 1,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Dry Valleys permafrost drilling for Mars (wiki:McMurdo Dry Valleys); Haughton permafrost 'cold, wet Mars' analogue (wiki:Haughton impact crater)"
+   },
+   {
+    "profile": "MOON_LAVA_TUBE",
+    "site_id": "EA-009",
+    "rank": 1,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Lava-tube analog literature (Sauro et al. 2020, doi:10.1016/j.earscirev.2020.103288); sites contain mapped lava tubes (wiki)"
+   },
+   {
+    "profile": "MOON_LAVA_TUBE",
+    "site_id": "EA-016",
+    "rank": 2,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Lava-tube analog literature (Sauro et al. 2020, doi:10.1016/j.earscirev.2020.103288); sites contain mapped lava tubes (wiki)"
+   },
+   {
+    "profile": "MOON_LAVA_TUBE",
+    "site_id": "EA-021",
+    "rank": 4,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Lava-tube analog literature (Sauro et al. 2020, doi:10.1016/j.earscirev.2020.103288); sites contain mapped lava tubes (wiki)"
+   },
+   {
+    "profile": "MOON_LAVA_TUBE",
+    "site_id": "EA-022",
+    "rank": 5,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Lava-tube analog literature (Sauro et al. 2020, doi:10.1016/j.earscirev.2020.103288); sites contain mapped lava tubes (wiki)"
+   },
+   {
+    "profile": "MARS_LAVA_TUBE",
+    "site_id": "EA-009",
+    "rank": 1,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "as above"
+   },
+   {
+    "profile": "MARS_LAVA_TUBE",
+    "site_id": "EA-016",
+    "rank": 2,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "as above"
+   },
+   {
+    "profile": "MARS_LAVA_TUBE",
+    "site_id": "EA-021",
+    "rank": 4,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "as above"
+   },
+   {
+    "profile": "MARS_LAVA_TUBE",
+    "site_id": "EA-022",
+    "rank": 6,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "as above"
+   },
+   {
+    "profile": "MARS_ASTROBIO_SEDIMENTS",
+    "site_id": "EA-001",
+    "rank": 4,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Atacama Mars-like soils (Navarro-Gonzalez 2003); Rio Tinto Meridiani comparison (wiki); Qaidam Mars analogue (Xiao et al. 2017); Dallol polyextreme brines (wiki)"
+   },
+   {
+    "profile": "MARS_ASTROBIO_SEDIMENTS",
+    "site_id": "EA-026",
+    "rank": 22,
+    "top_quartile_threshold": 7,
+    "pass": false,
+    "basis": "Atacama Mars-like soils (Navarro-Gonzalez 2003); Rio Tinto Meridiani comparison (wiki); Qaidam Mars analogue (Xiao et al. 2017); Dallol polyextreme brines (wiki)"
+   },
+   {
+    "profile": "MARS_ASTROBIO_SEDIMENTS",
+    "site_id": "EA-018",
+    "rank": 3,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Atacama Mars-like soils (Navarro-Gonzalez 2003); Rio Tinto Meridiani comparison (wiki); Qaidam Mars analogue (Xiao et al. 2017); Dallol polyextreme brines (wiki)"
+   },
+   {
+    "profile": "MARS_ASTROBIO_SEDIMENTS",
+    "site_id": "EA-010",
+    "rank": 7,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Atacama Mars-like soils (Navarro-Gonzalez 2003); Rio Tinto Meridiani comparison (wiki); Qaidam Mars analogue (Xiao et al. 2017); Dallol polyextreme brines (wiki)"
+   },
+   {
+    "profile": "MOON_FIELD_GEOLOGY",
+    "site_id": "EA-024",
+    "rank": 1,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Apollo/Artemis astronaut geology training at Meteor Crater, Sudbury, Mistastin (wiki)"
+   },
+   {
+    "profile": "MOON_FIELD_GEOLOGY",
+    "site_id": "EA-023",
+    "rank": 3,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Apollo/Artemis astronaut geology training at Meteor Crater, Sudbury, Mistastin (wiki)"
+   },
+   {
+    "profile": "MOON_FIELD_GEOLOGY",
+    "site_id": "EA-025",
+    "rank": 4,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Apollo/Artemis astronaut geology training at Meteor Crater, Sudbury, Mistastin (wiki)"
+   }
+  ],
+  "expected_role_pass_rate": "16/17"
+ }
+}

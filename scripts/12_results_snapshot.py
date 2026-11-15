@@ -9,7 +9,7 @@ def snapshot():
     L = ["| Profile | #1 (score, completeness) | #2 | #3 | MC mean Spearman |", "|---|---|---|---|---|"]
     for p in scoring_config()["mission_profiles"]:
         top = sorted((r for r in rows if r["mission_profile"] == p), key=lambda r: int(r["fidelity_rank"]))[:3]
-        cell = lambda r: f"{r['site_id']} {r['name'].split(' (')[0][:28]} ({float(r['fidelity_score']):.1f}, {float(r['evidence_completeness']):.2f})"
+        cell = lambda r: f"{r['site_id']} {r['name'].split(',')[0].split(' (')[0][:34]} ({float(r['fidelity_score']):.1f}, {float(r['evidence_completeness']):.2f})"
         rho = (sens.get("profiles", sens).get(p) or {}).get("mc_spearman_mean")
         L.append(f"| {p} | " + " | ".join(cell(r) for r in top) + f" | {rho if rho is None else round(rho, 3)} |")
     if val:

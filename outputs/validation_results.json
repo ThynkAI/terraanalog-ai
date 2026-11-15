@@ -1,0 +1,1448 @@
+{
+ "checks": [
+  {
+   "name": "geometry_valid:earth_analog_sites.geojson",
+   "pass": true,
+   "detail": "28 features; invalid=[]; unique_ids=True",
+   "severity": "error"
+  },
+  {
+   "name": "id_format:earth_analog_sites.geojson",
+   "pass": true,
+   "detail": "^EA-\\d{3}$",
+   "severity": "error"
+  },
+  {
+   "name": "geometry_valid:earth_analog_site_bounds.geojson",
+   "pass": true,
+   "detail": "28 features; invalid=[]; unique_ids=True",
+   "severity": "error"
+  },
+  {
+   "name": "id_format:earth_analog_site_bounds.geojson",
+   "pass": true,
+   "detail": "^EA-\\d{3}$",
+   "severity": "error"
+  },
+  {
+   "name": "geometry_valid:planetary_reference_sites.geojson",
+   "pass": true,
+   "detail": "14 features; invalid=[]; unique_ids=True",
+   "severity": "error"
+  },
+  {
+   "name": "id_format:planetary_reference_sites.geojson",
+   "pass": true,
+   "detail": "^(MOON|MARS)-REF-\\d{2}$",
+   "severity": "error"
+  },
+  {
+   "name": "site_count",
+   "pass": true,
+   "detail": "28 sites, 25 outside the three baselines",
+   "severity": "error"
+  },
+  {
+   "name": "geographic_distribution",
+   "pass": true,
+   "detail": "lat span -77.5..79.4; 13 countries/territories; continents incl. Antarctica",
+   "severity": "error"
+  },
+  {
+   "name": "coords_match_wikipedia_geodata",
+   "pass": true,
+   "detail": "18 sites cross-checked against GeoData (others from infobox coord templates); >1 km: []",
+   "severity": "error"
+  },
+  {
+   "name": "era5_grid_within_30km",
+   "pass": true,
+   "detail": "max 13.3 km",
+   "severity": "warning"
+  },
+  {
+   "name": "dois_resolve",
+   "pass": true,
+   "detail": "37/37 DOIs resolve (Crossref/doi.org); corrections applied: {'10.1002/2015JE004782': '404 at Crossref -> corrected to 10.1002/2014JE004782', '10.1016/j.earscirev.2016.11.008': 'resolved to an unrelated paper (Warren 2017) -> corrected to 10.1016/j.earscirev.2016.11.003'}",
+   "severity": "error"
+  },
+  {
+   "name": "all_cited_dois_verified",
+   "pass": true,
+   "detail": "39 DOI strings found in docs/configs; not in verified list: []",
+   "severity": "error"
+  },
+  {
+   "name": "units_and_ranges",
+   "pass": true,
+   "detail": "22 columns range-checked in SI units; violations: []",
+   "severity": "error"
+  },
+  {
+   "name": "slope_p90_ge_median",
+   "pass": true,
+   "detail": "[]",
+   "severity": "error"
+  },
+  {
+   "name": "kelvin_conversion",
+   "pass": true,
+   "detail": "[]",
+   "severity": "error"
+  },
+  {
+   "name": "chelsa_vs_era5_maat",
+   "pass": true,
+   "detail": "Pearson r=0.999; |diff|>3 °C at [] (expected where ERA5 grid elevation differs from site)",
+   "severity": "warning"
+  },
+  {
+   "name": "reference_terrain_present",
+   "pass": true,
+   "detail": "14 references with DEM-derived slope; problems []",
+   "severity": "error"
+  },
+  {
+   "name": "missing_values_reported",
+   "pass": true,
+   "detail": "20 columns contain explicit nulls (listed in report)",
+   "severity": "info"
+  },
+  {
+   "name": "score_recalculation",
+   "pass": true,
+   "detail": "280 scores recomputed independently from sim_* columns; max |diff| = 0.0063",
+   "severity": "error"
+  },
+  {
+   "name": "weights_sum_to_one",
+   "pass": true,
+   "detail": "{'MOON_ISRU_ICE': 1.0, 'MOON_ROVER_MOBILITY': 1.0, 'MOON_EVA_HABITAT': 1.0, 'MOON_FIELD_GEOLOGY': 1.0, 'MOON_LAVA_TUBE': 1.0, 'MARS_ISRU_ICE': 1.0, 'MARS_ROVER_MOBILITY': 1.0, 'MARS_EVA_HABITAT': 1.0, 'MARS_ASTROBIO_SEDIMENTS': 1.0, 'MARS_LAVA_TUBE': 1.0}",
+   "severity": "error"
+  },
+  {
+   "name": "operational_weights_sum_to_one",
+   "pass": true,
+   "detail": "",
+   "severity": "error"
+  },
+  {
+   "name": "similarities_in_unit_interval",
+   "pass": true,
+   "detail": "[]",
+   "severity": "error"
+  },
+  {
+   "name": "pair_vs_ranking_consistency",
+   "pass": true,
+   "detail": "[]",
+   "severity": "error"
+  },
+  {
+   "name": "weight_sensitivity_rank_stability",
+   "pass": true,
+   "detail": "mean Spearman over Dirichlet draws per profile: MOON_ISRU_ICE=0.914, MOON_ROVER_MOBILITY=0.925, MOON_EVA_HABITAT=0.938, MOON_FIELD_GEOLOGY=0.952, MOON_LAVA_TUBE=0.97, MARS_ISRU_ICE=0.917, MARS_ROVER_MOBILITY=0.946, MARS_EVA_HABITAT=0.925, MARS_ASTROBIO_SEDIMENTS=0.958, MARS_LAVA_TUBE=0.953",
+   "severity": "warning"
+  },
+  {
+   "name": "strict_evidence_variant",
+   "pass": true,
+   "detail": "Spearman(strict, base): MOON_ISRU_ICE=0.973, MOON_ROVER_MOBILITY=0.956, MOON_EVA_HABITAT=0.971, MOON_FIELD_GEOLOGY=0.951, MOON_LAVA_TUBE=0.981, MARS_ISRU_ICE=0.988, MARS_ROVER_MOBILITY=0.993, MARS_EVA_HABITAT=0.968, MARS_ASTROBIO_SEDIMENTS=0.928, MARS_LAVA_TUBE=0.964",
+   "severity": "warning"
+  },
+  {
+   "name": "baseline_expected_roles",
+   "pass": true,
+   "detail": "16/17 established analogs rank in the top quartile for their literature role",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:EA-003 Badwater Basin below sea level (wiki: lowest point in N. America)",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:EA-010 Dallol below sea level (Danakil Depression)",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:EA-011 Salar de Uyuni nearly flat (median 30 m slope < 1°)",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:EA-019 Mauna Kea summit > 3,500 m",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:EA-004 Dry Valleys MAAT < -15 °C",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:EA-001 Atacama hyper-arid (ERA5 P < 100 mm/yr)",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:EA-002 Haughton permafrost probability > 0.9 (Obu 2019)",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:EA-022 Craters of the Moon not hyper-arid (AI > 0.05)",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:EA-020 Ka'u Desert receives > 1,000 mm/yr (rain-shadow 'desert' is not dry; known limitation)",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:MOON-REF-03 Malapert massif elevation > 4,000 m (rises ~5 km; Allender 2019)",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:MOON-REF-02 Shackleton centre below rim (point elev < mean elev)",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:MARS-REF-02 Gale landing ~4.4 km below datum (wiki) -> MOLA < -4,000 m",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:MARS-REF-06 Arsia Mons > 15 km",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "plausibility:MARS-REF-03 InSight plains smooth (median slope < 1° at 450 m)",
+   "pass": true,
+   "detail": "",
+   "severity": "warning"
+  },
+  {
+   "name": "dataset_urls_reachable",
+   "pass": true,
+   "detail": "33/35 return HTTP <400; failures: [('DS-CTX', 404), ('DS-PSA', 'ERR:SSLError')]",
+   "severity": "warning"
+  },
+  {
+   "name": "evidence_source_urls_reachable",
+   "pass": true,
+   "detail": "45/45 evidence URLs OK; failures []",
+   "severity": "error"
+  }
+ ],
+ "coord_crosscheck": [
+  [
+   "EA-002",
+   "Haughton impact crater",
+   0.0
+  ],
+  [
+   "EA-003",
+   "Badwater Basin",
+   0.0
+  ],
+  [
+   "EA-007",
+   "Askja",
+   0.0
+  ],
+  [
+   "EA-008",
+   "Timanfaya National Park",
+   0.0
+  ],
+  [
+   "EA-009",
+   "Cueva de los Verdes",
+   0.0
+  ],
+  [
+   "EA-011",
+   "Salar de Uyuni",
+   0.001
+  ],
+  [
+   "EA-014",
+   "Arkaroola",
+   0.0
+  ],
+  [
+   "EA-015",
+   "Wolfe Creek Crater",
+   0.001
+  ],
+  [
+   "EA-016",
+   "Undara Volcanic National Park",
+   0.0
+  ],
+  [
+   "EA-018",
+   "Qaidam Basin",
+   0.0
+  ],
+  [
+   "EA-019",
+   "Mauna Kea",
+   0.001
+  ],
+  [
+   "EA-020",
+   "Kaʻū Desert",
+   0.0
+  ],
+  [
+   "EA-021",
+   "Lava Beds National Monument",
+   0.0
+  ],
+  [
+   "EA-022",
+   "Craters of the Moon National Monument and Preserve",
+   0.0
+  ],
+  [
+   "EA-023",
+   "Meteor Crater",
+   0.001
+  ],
+  [
+   "EA-024",
+   "Mistastin crater",
+   0.0
+  ],
+  [
+   "EA-025",
+   "Sudbury Basin",
+   0.0
+  ],
+  [
+   "EA-028",
+   "Mars Desert Research Station",
+   0.0
+  ]
+ ],
+ "era5_grid_distance_km": [
+  [
+   "EA-001",
+   0.0
+  ],
+  [
+   "EA-002",
+   13.2
+  ],
+  [
+   "EA-003",
+   6.8
+  ],
+  [
+   "EA-004",
+   5.9
+  ],
+  [
+   "EA-005",
+   7.7
+  ],
+  [
+   "EA-006",
+   11.7
+  ],
+  [
+   "EA-007",
+   4.0
+  ],
+  [
+   "EA-008",
+   4.3
+  ],
+  [
+   "EA-009",
+   11.5
+  ],
+  [
+   "EA-010",
+   5.5
+  ],
+  [
+   "EA-011",
+   13.0
+  ],
+  [
+   "EA-012",
+   1.9
+  ],
+  [
+   "EA-013",
+   12.7
+  ],
+  [
+   "EA-014",
+   10.7
+  ],
+  [
+   "EA-015",
+   9.9
+  ],
+  [
+   "EA-016",
+   11.5
+  ],
+  [
+   "EA-017",
+   5.8
+  ],
+  [
+   "EA-018",
+   4.8
+  ],
+  [
+   "EA-019",
+   8.5
+  ],
+  [
+   "EA-020",
+   11.3
+  ],
+  [
+   "EA-021",
+   4.1
+  ],
+  [
+   "EA-022",
+   6.6
+  ],
+  [
+   "EA-023",
+   3.8
+  ],
+  [
+   "EA-024",
+   13.3
+  ],
+  [
+   "EA-025",
+   12.2
+  ],
+  [
+   "EA-026",
+   10.4
+  ],
+  [
+   "EA-027",
+   2.9
+  ],
+  [
+   "EA-028",
+   11.0
+  ]
+ ],
+ "chelsa_minus_era5_c": [
+  [
+   "EA-001",
+   -0.51
+  ],
+  [
+   "EA-002",
+   -1.13
+  ],
+  [
+   "EA-003",
+   0.09
+  ],
+  [
+   "EA-004",
+   1.2
+  ],
+  [
+   "EA-005",
+   -0.78
+  ],
+  [
+   "EA-006",
+   -0.37
+  ],
+  [
+   "EA-007",
+   -0.28
+  ],
+  [
+   "EA-008",
+   0.69
+  ],
+  [
+   "EA-009",
+   0.2
+  ],
+  [
+   "EA-010",
+   -0.3
+  ],
+  [
+   "EA-011",
+   -0.22
+  ],
+  [
+   "EA-012",
+   -1.48
+  ],
+  [
+   "EA-013",
+   -0.28
+  ],
+  [
+   "EA-014",
+   -0.56
+  ],
+  [
+   "EA-015",
+   -0.04
+  ],
+  [
+   "EA-016",
+   -0.21
+  ],
+  [
+   "EA-017",
+   -0.91
+  ],
+  [
+   "EA-018",
+   -0.53
+  ],
+  [
+   "EA-019",
+   0.09
+  ],
+  [
+   "EA-020",
+   -0.02
+  ],
+  [
+   "EA-021",
+   -0.47
+  ],
+  [
+   "EA-022",
+   -0.57
+  ],
+  [
+   "EA-023",
+   -0.88
+  ],
+  [
+   "EA-024",
+   -0.78
+  ],
+  [
+   "EA-025",
+   -0.29
+  ],
+  [
+   "EA-026",
+   -0.45
+  ],
+  [
+   "EA-027",
+   -0.36
+  ],
+  [
+   "EA-028",
+   -0.38
+  ]
+ ],
+ "missing_values": {
+  "wc_frac_bare_sparse_r5km": 1,
+  "wc_frac_snow_ice_r5km": 1,
+  "wc_frac_water_r5km": 1,
+  "wc_frac_tree_r5km": 1,
+  "wc_frac_shrub_r5km": 1,
+  "wc_frac_grass_r5km": 1,
+  "wc_frac_crop_r5km": 1,
+  "wc_frac_built_r5km": 1,
+  "wc_frac_wetland_r5km": 1,
+  "wc_frac_moss_lichen_r5km": 1,
+  "abiotic_fraction_r5km": 1,
+  "soil_sand_pct": 5,
+  "soil_silt_pct": 5,
+  "soil_clay_pct": 5,
+  "fine_fraction": 5,
+  "road_distance_m": 3,
+  "road_distance_censored_gt_m": 25,
+  "nearest_highway_class": 3,
+  "macrostrat_unit": 2,
+  "resource_tags": 9
+ },
+ "sensitivity": [
+  [
+   "MOON_ISRU_ICE",
+   0.914,
+   0.8,
+   4
+  ],
+  [
+   "MOON_ROVER_MOBILITY",
+   0.925,
+   0.84,
+   4
+  ],
+  [
+   "MOON_EVA_HABITAT",
+   0.938,
+   0.861,
+   4
+  ],
+  [
+   "MOON_FIELD_GEOLOGY",
+   0.952,
+   0.864,
+   3
+  ],
+  [
+   "MOON_LAVA_TUBE",
+   0.97,
+   0.922,
+   3
+  ],
+  [
+   "MARS_ISRU_ICE",
+   0.917,
+   0.789,
+   4
+  ],
+  [
+   "MARS_ROVER_MOBILITY",
+   0.946,
+   0.854,
+   5
+  ],
+  [
+   "MARS_EVA_HABITAT",
+   0.925,
+   0.84,
+   4
+  ],
+  [
+   "MARS_ASTROBIO_SEDIMENTS",
+   0.958,
+   0.905,
+   2
+  ],
+  [
+   "MARS_LAVA_TUBE",
+   0.953,
+   0.872,
+   4
+  ]
+ ],
+ "strict": {
+  "MOON_ISRU_ICE": {
+   "spearman_strict_vs_base": 0.973,
+   "top5_base": [
+    "EA-002",
+    "EA-004",
+    "EA-005",
+    "EA-007",
+    "EA-023"
+   ],
+   "top5_strict": [
+    "EA-002",
+    "EA-004",
+    "EA-005",
+    "EA-007",
+    "EA-019"
+   ],
+   "max_rank_shift": 9
+  },
+  "MOON_ROVER_MOBILITY": {
+   "spearman_strict_vs_base": 0.956,
+   "top5_base": [
+    "EA-028",
+    "EA-008",
+    "EA-011",
+    "EA-023",
+    "EA-006"
+   ],
+   "top5_strict": [
+    "EA-028",
+    "EA-008",
+    "EA-011",
+    "EA-002",
+    "EA-023"
+   ],
+   "max_rank_shift": 8
+  },
+  "MOON_EVA_HABITAT": {
+   "spearman_strict_vs_base": 0.971,
+   "top5_base": [
+    "EA-004",
+    "EA-005",
+    "EA-002",
+    "EA-001",
+    "EA-019"
+   ],
+   "top5_strict": [
+    "EA-004",
+    "EA-005",
+    "EA-001",
+    "EA-019",
+    "EA-017"
+   ],
+   "max_rank_shift": 6
+  },
+  "MOON_FIELD_GEOLOGY": {
+   "spearman_strict_vs_base": 0.951,
+   "top5_base": [
+    "EA-024",
+    "EA-002",
+    "EA-023",
+    "EA-025",
+    "EA-027"
+   ],
+   "top5_strict": [
+    "EA-024",
+    "EA-002",
+    "EA-015",
+    "EA-025",
+    "EA-023"
+   ],
+   "max_rank_shift": 9
+  },
+  "MOON_LAVA_TUBE": {
+   "spearman_strict_vs_base": 0.981,
+   "top5_base": [
+    "EA-009",
+    "EA-016",
+    "EA-008",
+    "EA-021",
+    "EA-022"
+   ],
+   "top5_strict": [
+    "EA-008",
+    "EA-009",
+    "EA-016",
+    "EA-021",
+    "EA-028"
+   ],
+   "max_rank_shift": 5
+  },
+  "MARS_ISRU_ICE": {
+   "spearman_strict_vs_base": 0.988,
+   "top5_base": [
+    "EA-002",
+    "EA-004",
+    "EA-005",
+    "EA-007",
+    "EA-028"
+   ],
+   "top5_strict": [
+    "EA-002",
+    "EA-004",
+    "EA-007",
+    "EA-005",
+    "EA-028"
+   ],
+   "max_rank_shift": 3
+  },
+  "MARS_ROVER_MOBILITY": {
+   "spearman_strict_vs_base": 0.993,
+   "top5_base": [
+    "EA-028",
+    "EA-008",
+    "EA-006",
+    "EA-001",
+    "EA-003"
+   ],
+   "top5_strict": [
+    "EA-028",
+    "EA-006",
+    "EA-008",
+    "EA-001",
+    "EA-003"
+   ],
+   "max_rank_shift": 2
+  },
+  "MARS_EVA_HABITAT": {
+   "spearman_strict_vs_base": 0.968,
+   "top5_base": [
+    "EA-002",
+    "EA-018",
+    "EA-028",
+    "EA-010",
+    "EA-011"
+   ],
+   "top5_strict": [
+    "EA-002",
+    "EA-018",
+    "EA-028",
+    "EA-010",
+    "EA-011"
+   ],
+   "max_rank_shift": 6
+  },
+  "MARS_ASTROBIO_SEDIMENTS": {
+   "spearman_strict_vs_base": 0.928,
+   "top5_base": [
+    "EA-028",
+    "EA-003",
+    "EA-018",
+    "EA-001",
+    "EA-011"
+   ],
+   "top5_strict": [
+    "EA-003",
+    "EA-018",
+    "EA-001",
+    "EA-023",
+    "EA-011"
+   ],
+   "max_rank_shift": 7
+  },
+  "MARS_LAVA_TUBE": {
+   "spearman_strict_vs_base": 0.964,
+   "top5_base": [
+    "EA-009",
+    "EA-016",
+    "EA-008",
+    "EA-021",
+    "EA-010"
+   ],
+   "top5_strict": [
+    "EA-008",
+    "EA-009",
+    "EA-021",
+    "EA-016",
+    "EA-010"
+   ],
+   "max_rank_shift": 7
+  }
+ },
+ "baseline": {
+  "groups": {
+   "baseline": [
+    "EA-001",
+    "EA-002",
+    "EA-003"
+   ],
+   "established": [
+    "EA-004",
+    "EA-005",
+    "EA-007",
+    "EA-017",
+    "EA-018",
+    "EA-022",
+    "EA-023",
+    "EA-024",
+    "EA-026",
+    "EA-028"
+   ],
+   "candidate": [
+    "EA-006",
+    "EA-008",
+    "EA-009",
+    "EA-010",
+    "EA-011",
+    "EA-012",
+    "EA-013",
+    "EA-014",
+    "EA-015",
+    "EA-016",
+    "EA-019",
+    "EA-020",
+    "EA-021",
+    "EA-025",
+    "EA-027"
+   ]
+  },
+  "profiles": {
+   "MOON_ISRU_ICE": {
+    "baseline": 0.642,
+    "established": 0.63,
+    "candidate": 0.385,
+    "top_new_candidates": [
+     [
+      "EA-019",
+      "Mauna Kea (upper slopes)",
+      26.87,
+      7
+     ],
+     [
+      "EA-025",
+      "Sudbury Basin",
+      25.35,
+      9
+     ],
+     [
+      "EA-009",
+      "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+      21.07,
+      10
+     ]
+    ]
+   },
+   "MOON_ROVER_MOBILITY": {
+    "baseline": 0.42,
+    "established": 0.448,
+    "candidate": 0.551,
+    "top_new_candidates": [
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      68.45,
+      2
+     ],
+     [
+      "EA-011",
+      "Salar de Uyuni",
+      67.26,
+      3
+     ],
+     [
+      "EA-006",
+      "Holuhraun lava field",
+      64.33,
+      5
+     ]
+    ]
+   },
+   "MOON_EVA_HABITAT": {
+    "baseline": 0.728,
+    "established": 0.615,
+    "candidate": 0.378,
+    "top_new_candidates": [
+     [
+      "EA-019",
+      "Mauna Kea (upper slopes)",
+      38.06,
+      5
+     ],
+     [
+      "EA-011",
+      "Salar de Uyuni",
+      34.67,
+      10
+     ],
+     [
+      "EA-014",
+      "Arkaroola (Northern Flinders Ranges)",
+      33.68,
+      11
+     ]
+    ]
+   },
+   "MOON_FIELD_GEOLOGY": {
+    "baseline": 0.667,
+    "established": 0.552,
+    "candidate": 0.432,
+    "top_new_candidates": [
+     [
+      "EA-025",
+      "Sudbury Basin",
+      35.34,
+      4
+     ],
+     [
+      "EA-027",
+      "Lonar impact crater",
+      27.35,
+      5
+     ],
+     [
+      "EA-015",
+      "Wolfe Creek Crater",
+      24.19,
+      6
+     ]
+    ]
+   },
+   "MOON_LAVA_TUBE": {
+    "baseline": 0.383,
+    "established": 0.422,
+    "candidate": 0.575,
+    "top_new_candidates": [
+     [
+      "EA-009",
+      "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+      74.31,
+      1
+     ],
+     [
+      "EA-016",
+      "Undara lava tubes (McBride Basalt Province)",
+      69.07,
+      2
+     ],
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      58.67,
+      3
+     ]
+    ]
+   },
+   "MARS_ISRU_ICE": {
+    "baseline": 0.802,
+    "established": 0.578,
+    "candidate": 0.388,
+    "top_new_candidates": [
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      25.51,
+      8
+     ],
+     [
+      "EA-010",
+      "Dallol hydrothermal field, Danakil Depression",
+      23.34,
+      9
+     ],
+     [
+      "EA-006",
+      "Holuhraun lava field",
+      22.18,
+      12
+     ]
+    ]
+   },
+   "MARS_ROVER_MOBILITY": {
+    "baseline": 0.852,
+    "established": 0.433,
+    "candidate": 0.474,
+    "top_new_candidates": [
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      62.26,
+      2
+     ],
+     [
+      "EA-006",
+      "Holuhraun lava field",
+      61.72,
+      3
+     ],
+     [
+      "EA-011",
+      "Salar de Uyuni",
+      52.88,
+      9
+     ]
+    ]
+   },
+   "MARS_EVA_HABITAT": {
+    "baseline": 0.753,
+    "established": 0.504,
+    "candidate": 0.447,
+    "top_new_candidates": [
+     [
+      "EA-010",
+      "Dallol hydrothermal field, Danakil Depression",
+      44.64,
+      4
+     ],
+     [
+      "EA-011",
+      "Salar de Uyuni",
+      43.94,
+      5
+     ],
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      41.03,
+      8
+     ]
+    ]
+   },
+   "MARS_ASTROBIO_SEDIMENTS": {
+    "baseline": 0.741,
+    "established": 0.526,
+    "candidate": 0.435,
+    "top_new_candidates": [
+     [
+      "EA-011",
+      "Salar de Uyuni",
+      39.61,
+      5
+     ],
+     [
+      "EA-010",
+      "Dallol hydrothermal field, Danakil Depression",
+      39.33,
+      7
+     ],
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      36.71,
+      8
+     ]
+    ]
+   },
+   "MARS_LAVA_TUBE": {
+    "baseline": 0.444,
+    "established": 0.437,
+    "candidate": 0.553,
+    "top_new_candidates": [
+     [
+      "EA-009",
+      "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+      57.51,
+      1
+     ],
+     [
+      "EA-016",
+      "Undara lava tubes (McBride Basalt Province)",
+      51.44,
+      2
+     ],
+     [
+      "EA-008",
+      "Timanfaya volcanic field, Lanzarote",
+      45.31,
+      3
+     ]
+    ]
+   }
+  },
+  "expected_role_checks": [
+   {
+    "profile": "MARS_ISRU_ICE",
+    "site_id": "EA-004",
+    "rank": 2,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Dry Valleys permafrost drilling for Mars (wiki:McMurdo Dry Valleys); Haughton permafrost 'cold, wet Mars' analogue (wiki:Haughton impact crater)"
+   },
+   {
+    "profile": "MARS_ISRU_ICE",
+    "site_id": "EA-002",
+    "rank": 1,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Dry Valleys permafrost drilling for Mars (wiki:McMurdo Dry Valleys); Haughton permafrost 'cold, wet Mars' analogue (wiki:Haughton impact crater)"
+   },
+   {
+    "profile": "MOON_LAVA_TUBE",
+    "site_id": "EA-009",
+    "rank": 1,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Lava-tube analog literature (Sauro et al. 2020, doi:10.1016/j.earscirev.2020.103288); sites contain mapped lava tubes (wiki)"
+   },
+   {
+    "profile": "MOON_LAVA_TUBE",
+    "site_id": "EA-016",
+    "rank": 2,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Lava-tube analog literature (Sauro et al. 2020, doi:10.1016/j.earscirev.2020.103288); sites contain mapped lava tubes (wiki)"
+   },
+   {
+    "profile": "MOON_LAVA_TUBE",
+    "site_id": "EA-021",
+    "rank": 4,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Lava-tube analog literature (Sauro et al. 2020, doi:10.1016/j.earscirev.2020.103288); sites contain mapped lava tubes (wiki)"
+   },
+   {
+    "profile": "MOON_LAVA_TUBE",
+    "site_id": "EA-022",
+    "rank": 5,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Lava-tube analog literature (Sauro et al. 2020, doi:10.1016/j.earscirev.2020.103288); sites contain mapped lava tubes (wiki)"
+   },
+   {
+    "profile": "MARS_LAVA_TUBE",
+    "site_id": "EA-009",
+    "rank": 1,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "as above"
+   },
+   {
+    "profile": "MARS_LAVA_TUBE",
+    "site_id": "EA-016",
+    "rank": 2,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "as above"
+   },
+   {
+    "profile": "MARS_LAVA_TUBE",
+    "site_id": "EA-021",
+    "rank": 4,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "as above"
+   },
+   {
+    "profile": "MARS_LAVA_TUBE",
+    "site_id": "EA-022",
+    "rank": 6,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "as above"
+   },
+   {
+    "profile": "MARS_ASTROBIO_SEDIMENTS",
+    "site_id": "EA-001",
+    "rank": 4,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Atacama Mars-like soils (Navarro-Gonzalez 2003); Rio Tinto Meridiani comparison (wiki); Qaidam Mars analogue (Xiao et al. 2017); Dallol polyextreme brines (wiki)"
+   },
+   {
+    "profile": "MARS_ASTROBIO_SEDIMENTS",
+    "site_id": "EA-026",
+    "rank": 22,
+    "top_quartile_threshold": 7,
+    "pass": false,
+    "basis": "Atacama Mars-like soils (Navarro-Gonzalez 2003); Rio Tinto Meridiani comparison (wiki); Qaidam Mars analogue (Xiao et al. 2017); Dallol polyextreme brines (wiki)"
+   },
+   {
+    "profile": "MARS_ASTROBIO_SEDIMENTS",
+    "site_id": "EA-018",
+    "rank": 3,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Atacama Mars-like soils (Navarro-Gonzalez 2003); Rio Tinto Meridiani comparison (wiki); Qaidam Mars analogue (Xiao et al. 2017); Dallol polyextreme brines (wiki)"
+   },
+   {
+    "profile": "MARS_ASTROBIO_SEDIMENTS",
+    "site_id": "EA-010",
+    "rank": 7,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Atacama Mars-like soils (Navarro-Gonzalez 2003); Rio Tinto Meridiani comparison (wiki); Qaidam Mars analogue (Xiao et al. 2017); Dallol polyextreme brines (wiki)"
+   },
+   {
+    "profile": "MOON_FIELD_GEOLOGY",
+    "site_id": "EA-024",
+    "rank": 1,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Apollo/Artemis astronaut geology training at Meteor Crater, Sudbury, Mistastin (wiki)"
+   },
+   {
+    "profile": "MOON_FIELD_GEOLOGY",
+    "site_id": "EA-023",
+    "rank": 3,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Apollo/Artemis astronaut geology training at Meteor Crater, Sudbury, Mistastin (wiki)"
+   },
+   {
+    "profile": "MOON_FIELD_GEOLOGY",
+    "site_id": "EA-025",
+    "rank": 4,
+    "top_quartile_threshold": 7,
+    "pass": true,
+    "basis": "Apollo/Artemis astronaut geology training at Meteor Crater, Sudbury, Mistastin (wiki)"
+   }
+  ],
+  "expected_role_pass_rate": "16/17"
+ },
+ "url_status": [
+  {
+   "dataset_id": "DS-PDS",
+   "url": "https://pds.nasa.gov/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-LOLA-80S",
+   "url": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/polar/img/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-LOLA-118",
+   "url": "https://planetarymaps.usgs.gov/mosaic/Lunar_LRO_LOLA_Global_LDEM_118m_Mar2014.tif",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-MOLA-463",
+   "url": "https://planetarymaps.usgs.gov/mosaic/Mars_MGS_MOLA_DEM_mosaic_global_463m.tif",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-MOONTREK",
+   "url": "https://trek.nasa.gov/moon/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-MARSTREK",
+   "url": "https://trek.nasa.gov/mars/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-DIVINER",
+   "url": "https://www.diviner.ucla.edu/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-LCROSS",
+   "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2009-031B",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-LROC",
+   "url": "https://lroc.im-ldi.com/atlases/pits/list",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-HIRISE",
+   "url": "https://www.uahirise.org/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-CTX",
+   "url": "https://www.msss.com/mro/ctx/",
+   "status": 404
+  },
+  {
+   "dataset_id": "DS-CRISM",
+   "url": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-THEMIS",
+   "url": "https://themis.asu.edu/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-ASTROGEO",
+   "url": "https://astrogeology.usgs.gov/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-PSA",
+   "url": "https://psa.esa.int/",
+   "status": "ERR:SSLError"
+  },
+  {
+   "dataset_id": "DS-EARTHDATA",
+   "url": "https://www.earthdata.nasa.gov/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-MODIS-LST",
+   "url": "https://lpdaac.usgs.gov/products/mod11a2v061/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-APPEEARS",
+   "url": "https://appeears.earthdatacloud.nasa.gov/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-EARTHEXPLORER",
+   "url": "https://earthexplorer.usgs.gov/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-LANDSAT",
+   "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-SENTINEL2",
+   "url": "https://dataspace.copernicus.eu/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-COP-DEM30",
+   "url": "https://registry.opendata.aws/copernicus-dem/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-ESA-WC2021",
+   "url": "https://esa-worldcover.org/en",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-ERA5",
+   "url": "https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-ERA5-OM",
+   "url": "https://open-meteo.com/en/docs/historical-weather-api",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-OPENTOPO",
+   "url": "https://opentopography.org/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-WORLDCLIM",
+   "url": "https://www.worldclim.org/data/worldclim21.html",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-CHELSA21",
+   "url": "https://chelsa-climate.org/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-OBU-PF",
+   "url": "https://doi.pangaea.de/10.1594/PANGAEA.888600",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-CCI-PF",
+   "url": "https://climate.esa.int/en/projects/permafrost/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-MACROSTRAT",
+   "url": "https://macrostrat.org/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-SOILGRIDS",
+   "url": "https://soilgrids.org/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-OSM",
+   "url": "https://www.openstreetmap.org/copyright",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-NATEARTH",
+   "url": "https://www.naturalearthdata.com/",
+   "status": 200
+  },
+  {
+   "dataset_id": "DS-WIKI",
+   "url": "https://en.wikipedia.org/",
+   "status": 200
+  }
+ ]
+}

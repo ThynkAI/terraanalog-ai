@@ -1,0 +1,4152 @@
+{
+ "type": "FeatureCollection",
+ "name": "earth_analog_sites",
+ "metadata": {
+  "schema_version": "1.0.0",
+  "generated": "2026-11-15",
+  "crs": "WGS84 lon/lat (EPSG:4326, RFC 7946 default)"
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "id": "EA-001",
+   "bbox": [
+    -69.79947,
+    -25.0,
+    -68.70053,
+    -24.0
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -69.25,
+     -24.5
+    ]
+   },
+   "properties": {
+    "site_id": "EA-001",
+    "name": "Atacama Desert (hyperarid core)",
+    "country": "Chile",
+    "group": "baseline",
+    "coord_kind": "region centroid",
+    "coord_source": "wiki:Atacama Desert",
+    "elevation_m": 2651.9458,
+    "slope_median_30m_deg": 7.6743,
+    "slope_p90_30m_deg": 13.9193,
+    "tri_30m_m": 10.0952,
+    "maat_c": 11.35,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 40.0067,
+    "aridity_index": 0.0217,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 1.0,
+    "fine_fraction": 0.339,
+    "road_distance_m": 38848.6068,
+    "lithology_tags": [
+     "evaporite_salts",
+     "sedimentary_clastic",
+     "sulfate",
+     "nitrate_perchlorate"
+    ],
+    "process_tags": [
+     "aeolian",
+     "evaporitic",
+     "fluvial_lacustrine"
+    ],
+    "landform_tags": [
+     "plains",
+     "playa_salt_flat",
+     "valley_canyon"
+    ],
+    "resource_tags": [
+     "hydrated_salts",
+     "perchlorate"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 46.89,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 60.42,
+    "operational_score": 70.29,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 46.9,
+      "fidelity_rank": 4,
+      "evidence_completeness": 1.0,
+      "confidence": 0.678,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.969
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 39.32,
+      "fidelity_rank": 9,
+      "evidence_completeness": 0.95,
+      "confidence": 0.709,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.033
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 27.56,
+      "fidelity_rank": 7,
+      "evidence_completeness": 1.0,
+      "confidence": 0.625,
+      "matched_reference_id": "MARS-REF-04",
+      "mc_top5_probability": 0.243
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 25.0,
+      "fidelity_rank": 13,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.005
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 60.42,
+      "fidelity_rank": 4,
+      "evidence_completeness": 0.95,
+      "confidence": 0.791,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.722
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 38.88,
+      "fidelity_rank": 4,
+      "evidence_completeness": 1.0,
+      "confidence": 0.681,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.609
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 16.49,
+      "fidelity_rank": 11,
+      "evidence_completeness": 1.0,
+      "confidence": 0.734,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.021
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 27.92,
+      "fidelity_rank": 6,
+      "evidence_completeness": 1.0,
+      "confidence": 0.66,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.297
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 36.66,
+      "fidelity_rank": 14,
+      "evidence_completeness": 1.0,
+      "confidence": 0.706,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 46.89,
+      "fidelity_rank": 21,
+      "evidence_completeness": 0.95,
+      "confidence": 0.791,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.711,
+    "limitations": [
+     "Sampling point is a region centroid; local terrain may not represent the best analog outcrops.",
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-002",
+   "bbox": [
+    -90.65735,
+    75.13333,
+    -88.67599,
+    75.63333
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -89.66667,
+     75.38333
+    ]
+   },
+   "properties": {
+    "site_id": "EA-002",
+    "name": "Haughton impact crater, Devon Island",
+    "country": "Canada",
+    "group": "baseline",
+    "coord_kind": "crater centre",
+    "coord_source": "wiki:Haughton impact crater",
+    "elevation_m": 126.3429,
+    "slope_median_30m_deg": 3.3556,
+    "slope_p90_30m_deg": 7.7228,
+    "tri_30m_m": 4.6523,
+    "maat_c": -16.65,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 160.89,
+    "aridity_index": 0.7293,
+    "permafrost_prob": 1.0,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.8591,
+    "fine_fraction": 0.634,
+    "road_distance_m": null,
+    "lithology_tags": [
+     "impact_breccia_melt",
+     "carbonate",
+     "ground_ice"
+    ],
+    "process_tags": [
+     "impact",
+     "periglacial"
+    ],
+    "landform_tags": [
+     "impact_crater",
+     "patterned_ground",
+     "plains"
+    ],
+    "resource_tags": [
+     "ground_ice"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 62.17,
+    "best_mars_profile": "MARS_ISRU_ICE",
+    "best_mars_score": 65.71,
+    "operational_score": 63.06,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 24.69,
+      "fidelity_rank": 18,
+      "evidence_completeness": 1.0,
+      "confidence": 0.66,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 57.18,
+      "fidelity_rank": 1,
+      "evidence_completeness": 0.95,
+      "confidence": 0.742,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.994
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 65.71,
+      "fidelity_rank": 1,
+      "evidence_completeness": 1.0,
+      "confidence": 0.71,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 1.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 21.27,
+      "fidelity_rank": 17,
+      "evidence_completeness": 0.95,
+      "confidence": 0.65,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 58.42,
+      "fidelity_rank": 6,
+      "evidence_completeness": 0.95,
+      "confidence": 0.774,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.354
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 39.49,
+      "fidelity_rank": 3,
+      "evidence_completeness": 1.0,
+      "confidence": 0.74,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.619
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 44.45,
+      "fidelity_rank": 2,
+      "evidence_completeness": 1.0,
+      "confidence": 0.7,
+      "matched_reference_id": "MOON-REF-02",
+      "mc_top5_probability": 1.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 57.42,
+      "fidelity_rank": 1,
+      "evidence_completeness": 1.0,
+      "confidence": 0.715,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 1.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 29.37,
+      "fidelity_rank": 21,
+      "evidence_completeness": 1.0,
+      "confidence": 0.7,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 62.17,
+      "fidelity_rank": 7,
+      "evidence_completeness": 0.95,
+      "confidence": 0.774,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.261
+     }
+    },
+    "data_confidence": 0.72,
+    "limitations": [
+     "No mapped road/track within search radius or Overpass unavailable.",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-003",
+   "bbox": [
+    -117.19783,
+    35.95028,
+    -116.45383,
+    36.55028
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -116.82583,
+     36.25028
+    ]
+   },
+   "properties": {
+    "site_id": "EA-003",
+    "name": "Death Valley (Badwater Basin)",
+    "country": "United States",
+    "group": "baseline",
+    "coord_kind": "named feature",
+    "coord_source": "wiki:Badwater Basin",
+    "elevation_m": -85.3803,
+    "slope_median_30m_deg": 0.1027,
+    "slope_p90_30m_deg": 0.1963,
+    "tri_30m_m": 0.2562,
+    "maat_c": 26.35,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 137.2533,
+    "aridity_index": 0.0776,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.999,
+    "fine_fraction": 0.606,
+    "road_distance_m": 15731.1884,
+    "lithology_tags": [
+     "evaporite_salts",
+     "sedimentary_clastic",
+     "sulfate"
+    ],
+    "process_tags": [
+     "evaporitic",
+     "aeolian",
+     "fluvial_lacustrine"
+    ],
+    "landform_tags": [
+     "playa_salt_flat",
+     "dune_field",
+     "valley_canyon",
+     "alluvial_fan_delta"
+    ],
+    "resource_tags": [
+     "hydrated_salts"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 46.24,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 60.03,
+    "operational_score": 68.99,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 51.61,
+      "fidelity_rank": 2,
+      "evidence_completeness": 1.0,
+      "confidence": 0.72,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 1.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 29.11,
+      "fidelity_rank": 13,
+      "evidence_completeness": 0.95,
+      "confidence": 0.738,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 22.29,
+      "fidelity_rank": 11,
+      "evidence_completeness": 0.85,
+      "confidence": 0.738,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 20.91,
+      "fidelity_rank": 18,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 60.03,
+      "fidelity_rank": 5,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.709
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 26.73,
+      "fidelity_rank": 18,
+      "evidence_completeness": 1.0,
+      "confidence": 0.695,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 13.7,
+      "fidelity_rank": 17,
+      "evidence_completeness": 1.0,
+      "confidence": 0.768,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 12.91,
+      "fidelity_rank": 25,
+      "evidence_completeness": 1.0,
+      "confidence": 0.73,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 30.42,
+      "fidelity_rank": 18,
+      "evidence_completeness": 1.0,
+      "confidence": 0.67,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 46.24,
+      "fidelity_rank": 22,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.75,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-004",
+   "bbox": [
+    159.44178,
+    -77.85,
+    162.22488,
+    -77.25
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     160.83333,
+     -77.55
+    ]
+   },
+   "properties": {
+    "site_id": "EA-004",
+    "name": "McMurdo Dry Valleys (Wright Valley)",
+    "country": "Antarctica (Antarctic Treaty area)",
+    "group": "established",
+    "coord_kind": "valley reference point",
+    "coord_source": "wiki:Wright Valley (coord template)",
+    "elevation_m": 786.0717,
+    "slope_median_30m_deg": 13.7985,
+    "slope_p90_30m_deg": 31.6931,
+    "tri_30m_m": 20.4137,
+    "maat_c": -25.55,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 14.1633,
+    "aridity_index": 0.0756,
+    "permafrost_prob": 1.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": null,
+    "fine_fraction": null,
+    "road_distance_m": null,
+    "lithology_tags": [
+     "granitic_felsic",
+     "basalt_mafic",
+     "evaporite_salts",
+     "ground_ice",
+     "sedimentary_clastic"
+    ],
+    "process_tags": [
+     "periglacial",
+     "glacial",
+     "aeolian",
+     "evaporitic"
+    ],
+    "landform_tags": [
+     "valley_canyon",
+     "patterned_ground",
+     "dune_field",
+     "plains"
+    ],
+    "resource_tags": [
+     "ground_ice",
+     "hydrated_salts"
+    ],
+    "best_moon_profile": "MOON_EVA_HABITAT",
+    "best_moon_score": 50.87,
+    "best_mars_profile": "MARS_ISRU_ICE",
+    "best_mars_score": 63.99,
+    "operational_score": 32.54,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 32.35,
+      "fidelity_rank": 12,
+      "evidence_completeness": 0.9,
+      "confidence": 0.69,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.015
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 42.37,
+      "fidelity_rank": 6,
+      "evidence_completeness": 0.85,
+      "confidence": 0.692,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.409
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 63.99,
+      "fidelity_rank": 2,
+      "evidence_completeness": 0.8,
+      "confidence": 0.644,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 1.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 20.45,
+      "fidelity_rank": 19,
+      "evidence_completeness": 0.85,
+      "confidence": 0.671,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.001
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 29.59,
+      "fidelity_rank": 27,
+      "evidence_completeness": 0.8,
+      "confidence": 0.787,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 50.87,
+      "fidelity_rank": 1,
+      "evidence_completeness": 0.75,
+      "confidence": 0.655,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.982
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 17.86,
+      "fidelity_rank": 10,
+      "evidence_completeness": 0.9,
+      "confidence": 0.758,
+      "matched_reference_id": "MOON-REF-02",
+      "mc_top5_probability": 0.022
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 45.64,
+      "fidelity_rank": 2,
+      "evidence_completeness": 0.9,
+      "confidence": 0.647,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.992
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 19.13,
+      "fidelity_rank": 25,
+      "evidence_completeness": 0.85,
+      "confidence": 0.709,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 43.02,
+      "fidelity_rank": 26,
+      "evidence_completeness": 0.75,
+      "confidence": 0.743,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.567,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "SoilGrids texture unavailable (masked/no response).",
+     "No mapped road/track within search radius or Overpass unavailable.",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-005",
+   "bbox": [
+    12.80498,
+    79.33166,
+    13.80498,
+    79.53166
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.304977,
+     79.431656
+    ]
+   },
+   "properties": {
+    "site_id": "EA-005",
+    "name": "Bockfjorden Volcanic Complex (Sverrefjellet), Svalbard",
+    "country": "Norway",
+    "group": "established",
+    "coord_kind": "volcano summit",
+    "coord_source": "wiki:Sverrefjellet",
+    "elevation_m": 483.7592,
+    "slope_median_30m_deg": 8.4827,
+    "slope_p90_30m_deg": 25.875,
+    "tri_30m_m": 11.7759,
+    "maat_c": -8.85,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 465.2367,
+    "aridity_index": 2.1252,
+    "permafrost_prob": 1.0,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.8545,
+    "fine_fraction": 0.571,
+    "road_distance_m": null,
+    "lithology_tags": [
+     "basalt_mafic",
+     "carbonate",
+     "ground_ice"
+    ],
+    "process_tags": [
+     "volcanic_effusive",
+     "hydrothermal",
+     "periglacial",
+     "glacial"
+    ],
+    "landform_tags": [
+     "volcanic_cone_shield",
+     "valley_canyon"
+    ],
+    "resource_tags": [
+     "hydrated_minerals"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 46.99,
+    "best_mars_profile": "MARS_ISRU_ICE",
+    "best_mars_score": 43.2,
+    "operational_score": 51.97,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 33.14,
+      "fidelity_rank": 10,
+      "evidence_completeness": 1.0,
+      "confidence": 0.645,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.018
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 26.58,
+      "fidelity_rank": 18,
+      "evidence_completeness": 0.95,
+      "confidence": 0.744,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.01
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 43.2,
+      "fidelity_rank": 3,
+      "evidence_completeness": 0.85,
+      "confidence": 0.703,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.93
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 26.55,
+      "fidelity_rank": 11,
+      "evidence_completeness": 0.95,
+      "confidence": 0.672,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 25.23,
+      "fidelity_rank": 28,
+      "evidence_completeness": 0.95,
+      "confidence": 0.782,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 44.7,
+      "fidelity_rank": 2,
+      "evidence_completeness": 1.0,
+      "confidence": 0.727,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.939
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 19.64,
+      "fidelity_rank": 7,
+      "evidence_completeness": 1.0,
+      "confidence": 0.655,
+      "matched_reference_id": "MOON-REF-02",
+      "mc_top5_probability": 0.052
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 42.05,
+      "fidelity_rank": 3,
+      "evidence_completeness": 1.0,
+      "confidence": 0.709,
+      "matched_reference_id": "MOON-REF-02",
+      "mc_top5_probability": 0.976
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 35.03,
+      "fidelity_rank": 16,
+      "evidence_completeness": 1.0,
+      "confidence": 0.653,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 46.99,
+      "fidelity_rank": 20,
+      "evidence_completeness": 1.0,
+      "confidence": 0.772,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.709,
+    "limitations": [
+     "No mapped road/track within search radius or Overpass unavailable.",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-006",
+   "bbox": [
+    -17.18295,
+    64.7,
+    -16.47705,
+    65.0
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.83,
+     64.85
+    ]
+   },
+   "properties": {
+    "site_id": "EA-006",
+    "name": "Holuhraun lava field",
+    "country": "Iceland",
+    "group": "candidate",
+    "coord_kind": "lava field reference point",
+    "coord_source": "wiki:Holuhraun",
+    "elevation_m": 748.8787,
+    "slope_median_30m_deg": 0.8229,
+    "slope_p90_30m_deg": 2.1678,
+    "tri_30m_m": 1.4489,
+    "maat_c": -0.05,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 1331.6767,
+    "aridity_index": 3.2825,
+    "permafrost_prob": 0.0706,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 1.0,
+    "fine_fraction": 0.468,
+    "road_distance_m": 64298.2833,
+    "lithology_tags": [
+     "basalt_mafic",
+     "tephra_pyroclastic"
+    ],
+    "process_tags": [
+     "volcanic_effusive",
+     "fluvial_lacustrine",
+     "glacial"
+    ],
+    "landform_tags": [
+     "lava_flow_field",
+     "plains"
+    ],
+    "resource_tags": [],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 64.33,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 61.72,
+    "operational_score": 55.79,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 26.84,
+      "fidelity_rank": 15,
+      "evidence_completeness": 0.9,
+      "confidence": 0.617,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 38.13,
+      "fidelity_rank": 10,
+      "evidence_completeness": 0.95,
+      "confidence": 0.714,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.055
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 22.18,
+      "fidelity_rank": 12,
+      "evidence_completeness": 0.75,
+      "confidence": 0.677,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.022
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 32.13,
+      "fidelity_rank": 8,
+      "evidence_completeness": 0.95,
+      "confidence": 0.63,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.01
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 61.72,
+      "fidelity_rank": 3,
+      "evidence_completeness": 0.95,
+      "confidence": 0.762,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.804
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 29.37,
+      "fidelity_rank": 13,
+      "evidence_completeness": 1.0,
+      "confidence": 0.684,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 11.27,
+      "fidelity_rank": 20,
+      "evidence_completeness": 0.9,
+      "confidence": 0.657,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 15.4,
+      "fidelity_rank": 21,
+      "evidence_completeness": 0.95,
+      "confidence": 0.697,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 51.69,
+      "fidelity_rank": 6,
+      "evidence_completeness": 0.95,
+      "confidence": 0.666,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.28
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 64.33,
+      "fidelity_rank": 5,
+      "evidence_completeness": 0.95,
+      "confidence": 0.762,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.542
+     }
+    },
+    "data_confidence": 0.63,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-007",
+   "bbox": [
+    -17.13837,
+    64.883,
+    -16.42763,
+    65.183
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.783,
+     65.033
+    ]
+   },
+   "properties": {
+    "site_id": "EA-007",
+    "name": "Askja caldera",
+    "country": "Iceland",
+    "group": "established",
+    "coord_kind": "volcano",
+    "coord_source": "wiki:Askja",
+    "elevation_m": 1055.5,
+    "slope_median_30m_deg": 1.6982,
+    "slope_p90_30m_deg": 17.0392,
+    "tri_30m_m": 2.4269,
+    "maat_c": -1.75,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 1103.38,
+    "aridity_index": 3.121,
+    "permafrost_prob": 0.7029,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.9937,
+    "fine_fraction": null,
+    "road_distance_m": 47655.1728,
+    "lithology_tags": [
+     "basalt_mafic",
+     "tephra_pyroclastic",
+     "ground_ice"
+    ],
+    "process_tags": [
+     "volcanic_effusive",
+     "volcanic_explosive",
+     "periglacial"
+    ],
+    "landform_tags": [
+     "caldera",
+     "lava_flow_field",
+     "volcanic_cone_shield"
+    ],
+    "resource_tags": [],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 48.44,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 53.77,
+    "operational_score": 60.19,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 18.03,
+      "fidelity_rank": 25,
+      "evidence_completeness": 0.9,
+      "confidence": 0.717,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 33.98,
+      "fidelity_rank": 11,
+      "evidence_completeness": 0.95,
+      "confidence": 0.766,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.03
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 40.7,
+      "fidelity_rank": 4,
+      "evidence_completeness": 0.75,
+      "confidence": 0.737,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.94
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 37.84,
+      "fidelity_rank": 7,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.267
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 53.77,
+      "fidelity_rank": 8,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.009
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 27.89,
+      "fidelity_rank": 17,
+      "evidence_completeness": 0.85,
+      "confidence": 0.694,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.006
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 18.5,
+      "fidelity_rank": 8,
+      "evidence_completeness": 0.9,
+      "confidence": 0.769,
+      "matched_reference_id": "MOON-REF-02",
+      "mc_top5_probability": 0.042
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 36.18,
+      "fidelity_rank": 4,
+      "evidence_completeness": 0.9,
+      "confidence": 0.731,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.847
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 43.09,
+      "fidelity_rank": 9,
+      "evidence_completeness": 0.9,
+      "confidence": 0.689,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.002
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 48.44,
+      "fidelity_rank": 19,
+      "evidence_completeness": 0.8,
+      "confidence": 0.816,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.605,
+    "limitations": [
+     "SoilGrids texture unavailable (masked/no response).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-008",
+   "bbox": [
+    -13.90766,
+    28.89417,
+    -13.679,
+    29.09417
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.79333,
+     28.99417
+    ]
+   },
+   "properties": {
+    "site_id": "EA-008",
+    "name": "Timanfaya volcanic field, Lanzarote",
+    "country": "Spain",
+    "group": "candidate",
+    "coord_kind": "park reference point",
+    "coord_source": "wiki:Timanfaya National Park",
+    "elevation_m": 155.4136,
+    "slope_median_30m_deg": 3.1774,
+    "slope_p90_30m_deg": 18.0502,
+    "tri_30m_m": 4.5558,
+    "maat_c": 19.05,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 86.6033,
+    "aridity_index": 0.0665,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 0.9276,
+    "fine_fraction": null,
+    "road_distance_m": 148246.1377,
+    "lithology_tags": [
+     "basalt_mafic",
+     "tephra_pyroclastic"
+    ],
+    "process_tags": [
+     "volcanic_effusive",
+     "aeolian"
+    ],
+    "landform_tags": [
+     "lava_flow_field",
+     "volcanic_cone_shield"
+    ],
+    "resource_tags": [],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 68.45,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 62.26,
+    "operational_score": 51.15,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 36.71,
+      "fidelity_rank": 8,
+      "evidence_completeness": 0.9,
+      "confidence": 0.584,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.021
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 41.03,
+      "fidelity_rank": 8,
+      "evidence_completeness": 0.95,
+      "confidence": 0.685,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.126
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 25.51,
+      "fidelity_rank": 8,
+      "evidence_completeness": 0.75,
+      "confidence": 0.578,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.017
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 45.31,
+      "fidelity_rank": 3,
+      "evidence_completeness": 0.95,
+      "confidence": 0.595,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.989
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 62.26,
+      "fidelity_rank": 2,
+      "evidence_completeness": 0.95,
+      "confidence": 0.758,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.976
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 24.27,
+      "fidelity_rank": 20,
+      "evidence_completeness": 0.85,
+      "confidence": 0.664,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 15.79,
+      "fidelity_rank": 12,
+      "evidence_completeness": 0.9,
+      "confidence": 0.607,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.007
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 18.19,
+      "fidelity_rank": 13,
+      "evidence_completeness": 0.9,
+      "confidence": 0.607,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.001
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 58.67,
+      "fidelity_rank": 3,
+      "evidence_completeness": 0.9,
+      "confidence": 0.589,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.999
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 68.45,
+      "fidelity_rank": 2,
+      "evidence_completeness": 0.8,
+      "confidence": 0.759,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.874
+     }
+    },
+    "data_confidence": 0.509,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "SoilGrids texture unavailable (masked/no response).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-009",
+   "bbox": [
+    -13.49615,
+    29.11111,
+    -13.38163,
+    29.21111
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.43889,
+     29.16111
+    ]
+   },
+   "properties": {
+    "site_id": "EA-009",
+    "name": "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+    "country": "Spain",
+    "group": "candidate",
+    "coord_kind": "cave entrance area",
+    "coord_source": "wiki:Cueva de los Verdes",
+    "elevation_m": 54.5936,
+    "slope_median_30m_deg": 3.2235,
+    "slope_p90_30m_deg": 5.5618,
+    "tri_30m_m": 4.4474,
+    "maat_c": 19.25,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 85.7767,
+    "aridity_index": 0.0647,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 0.2778,
+    "fine_fraction": 0.515,
+    "road_distance_m": 145814.6418,
+    "lithology_tags": [
+     "basalt_mafic"
+    ],
+    "process_tags": [
+     "volcanic_effusive"
+    ],
+    "landform_tags": [
+     "lava_tube_cave",
+     "pit_skylight",
+     "lava_flow_field"
+    ],
+    "resource_tags": [],
+    "best_moon_profile": "MOON_LAVA_TUBE",
+    "best_moon_score": 74.31,
+    "best_mars_profile": "MARS_LAVA_TUBE",
+    "best_mars_score": 57.51,
+    "operational_score": 53.59,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 25.4,
+      "fidelity_rank": 17,
+      "evidence_completeness": 0.9,
+      "confidence": 0.701,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 28.38,
+      "fidelity_rank": 15,
+      "evidence_completeness": 0.95,
+      "confidence": 0.709,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 17.07,
+      "fidelity_rank": 16,
+      "evidence_completeness": 0.75,
+      "confidence": 0.643,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 57.51,
+      "fidelity_rank": 1,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 1.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 44.26,
+      "fidelity_rank": 18,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 28.75,
+      "fidelity_rank": 14,
+      "evidence_completeness": 1.0,
+      "confidence": 0.681,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 8.78,
+      "fidelity_rank": 22,
+      "evidence_completeness": 0.9,
+      "confidence": 0.769,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 21.07,
+      "fidelity_rank": 10,
+      "evidence_completeness": 0.95,
+      "confidence": 0.655,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.002
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 74.31,
+      "fidelity_rank": 1,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 1.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 59.21,
+      "fidelity_rank": 9,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.066
+     }
+    },
+    "data_confidence": 0.647,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-010",
+   "bbox": [
+    40.24841,
+    14.19167,
+    40.35159,
+    14.29167
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     40.3,
+     14.24167
+    ]
+   },
+   "properties": {
+    "site_id": "EA-010",
+    "name": "Dallol hydrothermal field, Danakil Depression",
+    "country": "Ethiopia",
+    "group": "candidate",
+    "coord_kind": "feature reference point",
+    "coord_source": "wiki:Dallol (hydrothermal system) (coord template)",
+    "elevation_m": -93.5288,
+    "slope_median_30m_deg": 1.1514,
+    "slope_p90_30m_deg": 4.1007,
+    "tri_30m_m": 1.7914,
+    "maat_c": 32.85,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 78.8433,
+    "aridity_index": 0.0328,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 0.9976,
+    "fine_fraction": 0.603,
+    "road_distance_m": 67938.2118,
+    "lithology_tags": [
+     "evaporite_salts",
+     "sulfate",
+     "iron_oxide",
+     "basalt_mafic"
+    ],
+    "process_tags": [
+     "hydrothermal",
+     "evaporitic",
+     "acidic_aqueous",
+     "volcanic_effusive"
+    ],
+    "landform_tags": [
+     "playa_salt_flat",
+     "volcanic_cone_shield"
+    ],
+    "resource_tags": [
+     "hydrated_salts",
+     "sulfates",
+     "iron_oxides"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 50.17,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 48.94,
+    "operational_score": 54.65,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 39.33,
+      "fidelity_rank": 7,
+      "evidence_completeness": 1.0,
+      "confidence": 0.706,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.316
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 44.64,
+      "fidelity_rank": 4,
+      "evidence_completeness": 0.95,
+      "confidence": 0.709,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.633
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 23.34,
+      "fidelity_rank": 9,
+      "evidence_completeness": 0.85,
+      "confidence": 0.656,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.002
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 39.3,
+      "fidelity_rank": 5,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.478
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 48.94,
+      "fidelity_rank": 14,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 28.58,
+      "fidelity_rank": 15,
+      "evidence_completeness": 1.0,
+      "confidence": 0.681,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.001
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 14.65,
+      "fidelity_rank": 15,
+      "evidence_completeness": 1.0,
+      "confidence": 0.768,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 14.04,
+      "fidelity_rank": 23,
+      "evidence_completeness": 1.0,
+      "confidence": 0.66,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 44.48,
+      "fidelity_rank": 8,
+      "evidence_completeness": 1.0,
+      "confidence": 0.67,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.025
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 50.17,
+      "fidelity_rank": 16,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.722,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-011",
+   "bbox": [
+    -68.02167,
+    -20.63378,
+    -66.95659,
+    -19.63378
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -67.48913,
+     -20.13378
+    ]
+   },
+   "properties": {
+    "site_id": "EA-011",
+    "name": "Salar de Uyuni",
+    "country": "Bolivia",
+    "group": "candidate",
+    "coord_kind": "salt flat reference point",
+    "coord_source": "wiki:Salar de Uyuni",
+    "elevation_m": 3653.5,
+    "slope_median_30m_deg": 0.0,
+    "slope_p90_30m_deg": 0.0,
+    "tri_30m_m": 0.0,
+    "maat_c": 7.45,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 264.7367,
+    "aridity_index": 0.1487,
+    "permafrost_prob": 0.0001,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 1.0,
+    "fine_fraction": 0.412,
+    "road_distance_m": 56801.972,
+    "lithology_tags": [
+     "evaporite_salts",
+     "sedimentary_clastic"
+    ],
+    "process_tags": [
+     "evaporitic",
+     "fluvial_lacustrine"
+    ],
+    "landform_tags": [
+     "playa_salt_flat",
+     "plains"
+    ],
+    "resource_tags": [
+     "hydrated_salts"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 67.26,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 52.88,
+    "operational_score": 64.09,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 39.61,
+      "fidelity_rank": 5,
+      "evidence_completeness": 1.0,
+      "confidence": 0.706,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.263
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 43.94,
+      "fidelity_rank": 5,
+      "evidence_completeness": 0.85,
+      "confidence": 0.692,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.521
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 20.26,
+      "fidelity_rank": 13,
+      "evidence_completeness": 0.8,
+      "confidence": 0.644,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 21.94,
+      "fidelity_rank": 15,
+      "evidence_completeness": 0.9,
+      "confidence": 0.681,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 52.88,
+      "fidelity_rank": 9,
+      "evidence_completeness": 0.75,
+      "confidence": 0.783,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.003
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 34.67,
+      "fidelity_rank": 10,
+      "evidence_completeness": 0.9,
+      "confidence": 0.662,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.074
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 12.79,
+      "fidelity_rank": 18,
+      "evidence_completeness": 0.95,
+      "confidence": 0.763,
+      "matched_reference_id": "MOON-REF-02",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 13.87,
+      "fidelity_rank": 24,
+      "evidence_completeness": 0.95,
+      "confidence": 0.65,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 38.56,
+      "fidelity_rank": 13,
+      "evidence_completeness": 0.95,
+      "confidence": 0.716,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 67.26,
+      "fidelity_rank": 3,
+      "evidence_completeness": 0.75,
+      "confidence": 0.783,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.832
+     }
+    },
+    "data_confidence": 0.722,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-012",
+   "bbox": [
+    -68.08303,
+    -26.03333,
+    -67.41697,
+    -25.43333
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -67.75,
+     -25.73333
+    ]
+   },
+   "properties": {
+    "site_id": "EA-012",
+    "name": "Salar de Antofalla (Puna de Atacama)",
+    "country": "Argentina",
+    "group": "candidate",
+    "coord_kind": "salt flat reference point",
+    "coord_source": "wiki:Salar de Antofalla",
+    "elevation_m": 3323.7251,
+    "slope_median_30m_deg": 0.092,
+    "slope_p90_30m_deg": 0.5004,
+    "tri_30m_m": 0.2088,
+    "maat_c": 8.75,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 123.65,
+    "aridity_index": 0.0693,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 1.0,
+    "fine_fraction": 0.324,
+    "road_distance_m": 46677.856,
+    "lithology_tags": [
+     "evaporite_salts"
+    ],
+    "process_tags": [
+     "evaporitic"
+    ],
+    "landform_tags": [
+     "playa_salt_flat"
+    ],
+    "resource_tags": [],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 48.5,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 52.25,
+    "operational_score": 65.64,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 25.71,
+      "fidelity_rank": 16,
+      "evidence_completeness": 0.9,
+      "confidence": 0.701,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 28.95,
+      "fidelity_rank": 14,
+      "evidence_completeness": 0.95,
+      "confidence": 0.709,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 19.86,
+      "fidelity_rank": 15,
+      "evidence_completeness": 0.75,
+      "confidence": 0.643,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 21.72,
+      "fidelity_rank": 16,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 52.25,
+      "fidelity_rank": 10,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.001
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 30.97,
+      "fidelity_rank": 12,
+      "evidence_completeness": 1.0,
+      "confidence": 0.681,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.001
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 15.51,
+      "fidelity_rank": 13,
+      "evidence_completeness": 0.9,
+      "confidence": 0.769,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.004
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 18.15,
+      "fidelity_rank": 15,
+      "evidence_completeness": 0.95,
+      "confidence": 0.655,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 33.79,
+      "fidelity_rank": 17,
+      "evidence_completeness": 0.95,
+      "confidence": 0.721,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 48.5,
+      "fidelity_rank": 18,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.647,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-013",
+   "bbox": [
+    119.33003,
+    -21.25176,
+    119.54448,
+    -21.05176
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     119.437252,
+     -21.151759
+    ]
+   },
+   "properties": {
+    "site_id": "EA-013",
+    "name": "Dresser Formation (North Pole Dome), Pilbara",
+    "country": "Australia",
+    "group": "candidate",
+    "coord_kind": "formation reference point",
+    "coord_source": "wiki:Dresser Formation (coord template)",
+    "elevation_m": 222.2461,
+    "slope_median_30m_deg": 8.722,
+    "slope_p90_30m_deg": 20.2989,
+    "tri_30m_m": 14.3202,
+    "maat_c": 27.05,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 317.9833,
+    "aridity_index": 0.1264,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 0.0157,
+    "fine_fraction": 0.339,
+    "road_distance_m": 36840.1384,
+    "lithology_tags": [
+     "basalt_mafic",
+     "silica_chert_sinter",
+     "carbonate",
+     "evaporite_salts",
+     "sedimentary_clastic",
+     "sulfate"
+    ],
+    "process_tags": [
+     "hydrothermal",
+     "volcanic_effusive",
+     "fluvial_lacustrine"
+    ],
+    "landform_tags": [
+     "layered_sedimentary_outcrop",
+     "massif_highland"
+    ],
+    "resource_tags": [
+     "sulfates"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 49.84,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 52.01,
+    "operational_score": 62.98,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 32.99,
+      "fidelity_rank": 11,
+      "evidence_completeness": 1.0,
+      "confidence": 0.706,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.005
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 25.92,
+      "fidelity_rank": 20,
+      "evidence_completeness": 0.95,
+      "confidence": 0.709,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 15.03,
+      "fidelity_rank": 20,
+      "evidence_completeness": 0.85,
+      "confidence": 0.656,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 19.69,
+      "fidelity_rank": 21,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 52.01,
+      "fidelity_rank": 13,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.092
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 21.47,
+      "fidelity_rank": 22,
+      "evidence_completeness": 1.0,
+      "confidence": 0.681,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 8.27,
+      "fidelity_rank": 23,
+      "evidence_completeness": 1.0,
+      "confidence": 0.768,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 14.94,
+      "fidelity_rank": 22,
+      "evidence_completeness": 1.0,
+      "confidence": 0.66,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 29.68,
+      "fidelity_rank": 19,
+      "evidence_completeness": 1.0,
+      "confidence": 0.67,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 49.84,
+      "fidelity_rank": 17,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.722,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-014",
+   "bbox": [
+    139.16236,
+    -30.46167,
+    139.50986,
+    -30.16167
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     139.33611,
+     -30.31167
+    ]
+   },
+   "properties": {
+    "site_id": "EA-014",
+    "name": "Arkaroola (Northern Flinders Ranges)",
+    "country": "Australia",
+    "group": "candidate",
+    "coord_kind": "settlement/sanctuary reference point",
+    "coord_source": "wiki:Arkaroola",
+    "elevation_m": 343.125,
+    "slope_median_30m_deg": 14.0503,
+    "slope_p90_30m_deg": 27.5254,
+    "tri_30m_m": 21.3917,
+    "maat_c": 19.05,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 210.3333,
+    "aridity_index": 0.1085,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 0.0189,
+    "fine_fraction": 0.355,
+    "road_distance_m": 97357.231,
+    "lithology_tags": [
+     "granitic_felsic",
+     "sedimentary_clastic",
+     "metamorphic"
+    ],
+    "process_tags": [
+     "hydrothermal",
+     "fluvial_lacustrine"
+    ],
+    "landform_tags": [
+     "valley_canyon",
+     "massif_highland"
+    ],
+    "resource_tags": [
+     "radioactive_minerals"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 42.78,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 43.49,
+    "operational_score": 49.21,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 23.1,
+      "fidelity_rank": 19,
+      "evidence_completeness": 1.0,
+      "confidence": 0.631,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 21.32,
+      "fidelity_rank": 26,
+      "evidence_completeness": 0.95,
+      "confidence": 0.705,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 14.29,
+      "fidelity_rank": 24,
+      "evidence_completeness": 0.85,
+      "confidence": 0.621,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 11.3,
+      "fidelity_rank": 25,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 43.49,
+      "fidelity_rank": 19,
+      "evidence_completeness": 0.95,
+      "confidence": 0.782,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 33.68,
+      "fidelity_rank": 11,
+      "evidence_completeness": 1.0,
+      "confidence": 0.681,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.131
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 10.83,
+      "fidelity_rank": 21,
+      "evidence_completeness": 1.0,
+      "confidence": 0.677,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 17.91,
+      "fidelity_rank": 16,
+      "evidence_completeness": 1.0,
+      "confidence": 0.645,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 18.53,
+      "fidelity_rank": 27,
+      "evidence_completeness": 1.0,
+      "confidence": 0.67,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 42.78,
+      "fidelity_rank": 27,
+      "evidence_completeness": 1.0,
+      "confidence": 0.748,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.692,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-015",
+   "bbox": [
+    127.74262,
+    -19.22167,
+    127.8485,
+    -19.12167
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.79556,
+     -19.17167
+    ]
+   },
+   "properties": {
+    "site_id": "EA-015",
+    "name": "Wolfe Creek Crater",
+    "country": "Australia",
+    "group": "candidate",
+    "coord_kind": "crater centre",
+    "coord_source": "wiki:Wolfe Creek Crater",
+    "elevation_m": 323.526,
+    "slope_median_30m_deg": 0.5515,
+    "slope_p90_30m_deg": 2.075,
+    "tri_30m_m": 0.8623,
+    "maat_c": 27.25,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 418.7933,
+    "aridity_index": 0.1601,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 0.0001,
+    "fine_fraction": 0.318,
+    "road_distance_m": 84166.3833,
+    "lithology_tags": [
+     "impact_breccia_melt",
+     "sedimentary_clastic",
+     "iron_oxide"
+    ],
+    "process_tags": [
+     "impact",
+     "aeolian"
+    ],
+    "landform_tags": [
+     "impact_crater",
+     "dune_field"
+    ],
+    "resource_tags": [
+     "iron_oxides"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 44.96,
+    "best_mars_profile": "MARS_EVA_HABITAT",
+    "best_mars_score": 33.93,
+    "operational_score": 54.23,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 29.5,
+      "fidelity_rank": 13,
+      "evidence_completeness": 1.0,
+      "confidence": 0.62,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.013
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 33.93,
+      "fidelity_rank": 12,
+      "evidence_completeness": 0.95,
+      "confidence": 0.693,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.019
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 17.0,
+      "fidelity_rank": 17,
+      "evidence_completeness": 1.0,
+      "confidence": 0.621,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.001
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 10.58,
+      "fidelity_rank": 26,
+      "evidence_completeness": 0.95,
+      "confidence": 0.595,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 32.41,
+      "fidelity_rank": 25,
+      "evidence_completeness": 0.95,
+      "confidence": 0.762,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 20.76,
+      "fidelity_rank": 23,
+      "evidence_completeness": 1.0,
+      "confidence": 0.711,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 24.19,
+      "fidelity_rank": 6,
+      "evidence_completeness": 1.0,
+      "confidence": 0.644,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.048
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 16.27,
+      "fidelity_rank": 19,
+      "evidence_completeness": 1.0,
+      "confidence": 0.626,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 19.98,
+      "fidelity_rank": 24,
+      "evidence_completeness": 1.0,
+      "confidence": 0.647,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 44.96,
+      "fidelity_rank": 24,
+      "evidence_completeness": 0.95,
+      "confidence": 0.754,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.662,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-016",
+   "bbox": [
+    144.43821,
+    -18.35111,
+    144.75401,
+    -18.05111
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     144.59611,
+     -18.20111
+    ]
+   },
+   "properties": {
+    "site_id": "EA-016",
+    "name": "Undara lava tubes (McBride Basalt Province)",
+    "country": "Australia",
+    "group": "candidate",
+    "coord_kind": "park reference point",
+    "coord_source": "wiki:Undara Volcanic National Park",
+    "elevation_m": 741.0352,
+    "slope_median_30m_deg": 0.9761,
+    "slope_p90_30m_deg": 2.2332,
+    "tri_30m_m": 1.6875,
+    "maat_c": 22.15,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 711.1133,
+    "aridity_index": 0.3861,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 0.0001,
+    "fine_fraction": 0.526,
+    "road_distance_m": 6979.9908,
+    "lithology_tags": [
+     "basalt_mafic"
+    ],
+    "process_tags": [
+     "volcanic_effusive"
+    ],
+    "landform_tags": [
+     "lava_tube_cave",
+     "volcanic_cone_shield",
+     "lava_flow_field"
+    ],
+    "resource_tags": [],
+    "best_moon_profile": "MOON_LAVA_TUBE",
+    "best_moon_score": 69.07,
+    "best_mars_profile": "MARS_LAVA_TUBE",
+    "best_mars_score": 51.44,
+    "operational_score": 76.19,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 13.39,
+      "fidelity_rank": 27,
+      "evidence_completeness": 0.9,
+      "confidence": 0.701,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 24.47,
+      "fidelity_rank": 21,
+      "evidence_completeness": 0.95,
+      "confidence": 0.709,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 11.08,
+      "fidelity_rank": 27,
+      "evidence_completeness": 0.75,
+      "confidence": 0.643,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 51.44,
+      "fidelity_rank": 2,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.983
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 37.39,
+      "fidelity_rank": 23,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 15.45,
+      "fidelity_rank": 25,
+      "evidence_completeness": 1.0,
+      "confidence": 0.681,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 0.72,
+      "fidelity_rank": 28,
+      "evidence_completeness": 0.9,
+      "confidence": 0.769,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 8.76,
+      "fidelity_rank": 28,
+      "evidence_completeness": 0.95,
+      "confidence": 0.655,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 69.07,
+      "fidelity_rank": 2,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.999
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 58.99,
+      "fidelity_rank": 10,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.064
+     }
+    },
+    "data_confidence": 0.647,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-017",
+   "bbox": [
+    77.86369,
+    33.2,
+    78.10297,
+    33.4
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.98333,
+     33.3
+    ]
+   },
+   "properties": {
+    "site_id": "EA-017",
+    "name": "Tso Kar basin, Ladakh",
+    "country": "India",
+    "group": "established",
+    "coord_kind": "lake centre (water body)",
+    "coord_source": "wiki:Tso Kar",
+    "elevation_m": 4538.9893,
+    "slope_median_30m_deg": 1.1229,
+    "slope_p90_30m_deg": 10.0411,
+    "tri_30m_m": 1.5255,
+    "maat_c": -5.95,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 253.1067,
+    "aridity_index": 0.2597,
+    "permafrost_prob": 0.0382,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.9279,
+    "fine_fraction": 0.524,
+    "road_distance_m": 18239.899,
+    "lithology_tags": [
+     "evaporite_salts",
+     "sedimentary_clastic"
+    ],
+    "process_tags": [
+     "evaporitic",
+     "fluvial_lacustrine",
+     "periglacial"
+    ],
+    "landform_tags": [
+     "playa_salt_flat",
+     "valley_canyon",
+     "plains"
+    ],
+    "resource_tags": [
+     "hydrated_salts"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 57.22,
+    "best_mars_profile": "MARS_ASTROBIO_SEDIMENTS",
+    "best_mars_score": 39.45,
+    "operational_score": 76.24,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 39.45,
+      "fidelity_rank": 6,
+      "evidence_completeness": 1.0,
+      "confidence": 0.664,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.249
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 21.98,
+      "fidelity_rank": 24,
+      "evidence_completeness": 0.95,
+      "confidence": 0.746,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 16.38,
+      "fidelity_rank": 18,
+      "evidence_completeness": 0.85,
+      "confidence": 0.712,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 15.02,
+      "fidelity_rank": 23,
+      "evidence_completeness": 0.95,
+      "confidence": 0.666,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 32.2,
+      "fidelity_rank": 26,
+      "evidence_completeness": 0.95,
+      "confidence": 0.786,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 37.72,
+      "fidelity_rank": 6,
+      "evidence_completeness": 1.0,
+      "confidence": 0.695,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.43
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 11.41,
+      "fidelity_rank": 19,
+      "evidence_completeness": 1.0,
+      "confidence": 0.67,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 16.47,
+      "fidelity_rank": 17,
+      "evidence_completeness": 1.0,
+      "confidence": 0.715,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 35.08,
+      "fidelity_rank": 15,
+      "evidence_completeness": 1.0,
+      "confidence": 0.666,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 57.22,
+      "fidelity_rank": 12,
+      "evidence_completeness": 0.95,
+      "confidence": 0.778,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.029
+     }
+    },
+    "data_confidence": 0.713,
+    "limitations": [
+     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-018",
+   "bbox": [
+    93.19344,
+    36.26667,
+    95.70656,
+    38.26667
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     94.45,
+     37.26667
+    ]
+   },
+   "properties": {
+    "site_id": "EA-018",
+    "name": "Qaidam Basin",
+    "country": "China",
+    "group": "established",
+    "coord_kind": "basin centroid",
+    "coord_source": "wiki:Qaidam Basin",
+    "elevation_m": 2699.5215,
+    "slope_median_30m_deg": 0.5288,
+    "slope_p90_30m_deg": 1.7065,
+    "tri_30m_m": 0.9066,
+    "maat_c": 6.55,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 26.55,
+    "aridity_index": 0.0169,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 1.0,
+    "fine_fraction": 0.544,
+    "road_distance_m": 79368.6286,
+    "lithology_tags": [
+     "evaporite_salts",
+     "sedimentary_clastic",
+     "sulfate"
+    ],
+    "process_tags": [
+     "evaporitic",
+     "aeolian",
+     "fluvial_lacustrine"
+    ],
+    "landform_tags": [
+     "playa_salt_flat",
+     "plains",
+     "yardang_aeolian"
+    ],
+    "resource_tags": [
+     "hydrated_salts"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 57.99,
+    "best_mars_profile": "MARS_EVA_HABITAT",
+    "best_mars_score": 53.89,
+    "operational_score": 66.75,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 50.34,
+      "fidelity_rank": 3,
+      "evidence_completeness": 1.0,
+      "confidence": 0.72,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 1.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 53.89,
+      "fidelity_rank": 2,
+      "evidence_completeness": 0.95,
+      "confidence": 0.738,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 1.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 28.65,
+      "fidelity_rank": 6,
+      "evidence_completeness": 0.85,
+      "confidence": 0.738,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.285
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 28.51,
+      "fidelity_rank": 9,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.034
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 52.04,
+      "fidelity_rank": 12,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.08
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 35.04,
+      "fidelity_rank": 9,
+      "evidence_completeness": 1.0,
+      "confidence": 0.695,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.141
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 15.08,
+      "fidelity_rank": 14,
+      "evidence_completeness": 1.0,
+      "confidence": 0.768,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.002
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 15.77,
+      "fidelity_rank": 20,
+      "evidence_completeness": 1.0,
+      "confidence": 0.73,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 38.94,
+      "fidelity_rank": 12,
+      "evidence_completeness": 1.0,
+      "confidence": 0.722,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.002
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 57.99,
+      "fidelity_rank": 11,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.051
+     }
+    },
+    "data_confidence": 0.75,
+    "limitations": [
+     "Sampling point is a region centroid; local terrain may not represent the best analog outcrops.",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-019",
+   "bbox": [
+    -155.62751,
+    19.67056,
+    -155.30861,
+    19.97056
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -155.46806,
+     19.82056
+    ]
+   },
+   "properties": {
+    "site_id": "EA-019",
+    "name": "Mauna Kea (upper slopes)",
+    "country": "United States",
+    "group": "candidate",
+    "coord_kind": "summit",
+    "coord_source": "wiki:Mauna Kea",
+    "elevation_m": 4202.4438,
+    "slope_median_30m_deg": 9.469,
+    "slope_p90_30m_deg": 23.4437,
+    "tri_30m_m": 12.8125,
+    "maat_c": -0.15,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 813.8033,
+    "aridity_index": 0.7901,
+    "permafrost_prob": 0.1359,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 0.9943,
+    "fine_fraction": 0.52,
+    "road_distance_m": 17443.0429,
+    "lithology_tags": [
+     "basalt_mafic",
+     "tephra_pyroclastic",
+     "ground_ice"
+    ],
+    "process_tags": [
+     "volcanic_effusive",
+     "volcanic_explosive",
+     "glacial",
+     "periglacial"
+    ],
+    "landform_tags": [
+     "volcanic_cone_shield"
+    ],
+    "resource_tags": [
+     "iron_oxides"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 43.24,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 36.63,
+    "operational_score": 63.12,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 19.13,
+      "fidelity_rank": 23,
+      "evidence_completeness": 1.0,
+      "confidence": 0.661,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 17.75,
+      "fidelity_rank": 27,
+      "evidence_completeness": 0.95,
+      "confidence": 0.736,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 16.18,
+      "fidelity_rank": 19,
+      "evidence_completeness": 0.85,
+      "confidence": 0.603,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 28.45,
+      "fidelity_rank": 10,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.001
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 36.63,
+      "fidelity_rank": 24,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 38.06,
+      "fidelity_rank": 5,
+      "evidence_completeness": 1.0,
+      "confidence": 0.681,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.513
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 17.89,
+      "fidelity_rank": 9,
+      "evidence_completeness": 1.0,
+      "confidence": 0.722,
+      "matched_reference_id": "MOON-REF-02",
+      "mc_top5_probability": 0.005
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 26.87,
+      "fidelity_rank": 7,
+      "evidence_completeness": 1.0,
+      "confidence": 0.637,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.152
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 41.65,
+      "fidelity_rank": 11,
+      "evidence_completeness": 1.0,
+      "confidence": 0.67,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.001
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 43.24,
+      "fidelity_rank": 25,
+      "evidence_completeness": 1.0,
+      "confidence": 0.748,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.677,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-020",
+   "bbox": [
+    -155.4027,
+    19.30861,
+    -155.19064,
+    19.50861
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -155.29667,
+     19.40861
+    ]
+   },
+   "properties": {
+    "site_id": "EA-020",
+    "name": "Kaʻū Desert (Kīlauea)",
+    "country": "United States",
+    "group": "candidate",
+    "coord_kind": "desert reference point",
+    "coord_source": "wiki:Kaʻū Desert (coord template)",
+    "elevation_m": 1155.0269,
+    "slope_median_30m_deg": 2.4031,
+    "slope_p90_30m_deg": 7.1972,
+    "tri_30m_m": 3.3565,
+    "maat_c": 16.75,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 2145.53,
+    "aridity_index": 1.8196,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 0.5265,
+    "fine_fraction": 0.672,
+    "road_distance_m": 6525.0727,
+    "lithology_tags": [
+     "tephra_pyroclastic",
+     "basalt_mafic"
+    ],
+    "process_tags": [
+     "volcanic_explosive",
+     "volcanic_effusive",
+     "aeolian"
+    ],
+    "landform_tags": [
+     "lava_flow_field",
+     "plains"
+    ],
+    "resource_tags": [],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 61.71,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 45.37,
+    "operational_score": 75.35,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 21.57,
+      "fidelity_rank": 20,
+      "evidence_completeness": 0.9,
+      "confidence": 0.701,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 27.14,
+      "fidelity_rank": 17,
+      "evidence_completeness": 0.95,
+      "confidence": 0.709,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 13.54,
+      "fidelity_rank": 25,
+      "evidence_completeness": 0.9,
+      "confidence": 0.624,
+      "matched_reference_id": "MARS-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 23.96,
+      "fidelity_rank": 14,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 45.37,
+      "fidelity_rank": 16,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 12.85,
+      "fidelity_rank": 27,
+      "evidence_completeness": 1.0,
+      "confidence": 0.681,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 6.42,
+      "fidelity_rank": 25,
+      "evidence_completeness": 0.9,
+      "confidence": 0.769,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 10.98,
+      "fidelity_rank": 27,
+      "evidence_completeness": 0.95,
+      "confidence": 0.655,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 46.06,
+      "fidelity_rank": 7,
+      "evidence_completeness": 0.95,
+      "confidence": 0.721,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.001
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 61.71,
+      "fidelity_rank": 8,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.284
+     }
+    },
+    "data_confidence": 0.647,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-021",
+   "bbox": [
+    -121.64229,
+    41.61389,
+    -121.37437,
+    41.81389
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.50833,
+     41.71389
+    ]
+   },
+   "properties": {
+    "site_id": "EA-021",
+    "name": "Lava Beds National Monument",
+    "country": "United States",
+    "group": "candidate",
+    "coord_kind": "monument reference point",
+    "coord_source": "wiki:Lava Beds National Monument",
+    "elevation_m": 1451.2104,
+    "slope_median_30m_deg": 3.5167,
+    "slope_p90_30m_deg": 7.5153,
+    "tri_30m_m": 4.8901,
+    "maat_c": 8.95,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 544.1767,
+    "aridity_index": 0.4542,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.2039,
+    "fine_fraction": 0.608,
+    "road_distance_m": 43028.673,
+    "lithology_tags": [
+     "basalt_mafic",
+     "tephra_pyroclastic"
+    ],
+    "process_tags": [
+     "volcanic_effusive"
+    ],
+    "landform_tags": [
+     "lava_tube_cave",
+     "lava_flow_field",
+     "volcanic_cone_shield"
+    ],
+    "resource_tags": [
+     "cave_ice"
+    ],
+    "best_moon_profile": "MOON_LAVA_TUBE",
+    "best_moon_score": 57.96,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 45.69,
+    "operational_score": 58.06,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 13.08,
+      "fidelity_rank": 28,
+      "evidence_completeness": 1.0,
+      "confidence": 0.72,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 21.62,
+      "fidelity_rank": 25,
+      "evidence_completeness": 0.95,
+      "confidence": 0.738,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 20.17,
+      "fidelity_rank": 14,
+      "evidence_completeness": 0.85,
+      "confidence": 0.738,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.077
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 43.72,
+      "fidelity_rank": 4,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.88
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 45.69,
+      "fidelity_rank": 15,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 15.21,
+      "fidelity_rank": 26,
+      "evidence_completeness": 1.0,
+      "confidence": 0.695,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 8.04,
+      "fidelity_rank": 24,
+      "evidence_completeness": 1.0,
+      "confidence": 0.768,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 16.41,
+      "fidelity_rank": 18,
+      "evidence_completeness": 1.0,
+      "confidence": 0.73,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.004
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 57.96,
+      "fidelity_rank": 4,
+      "evidence_completeness": 1.0,
+      "confidence": 0.67,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.915
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 56.09,
+      "fidelity_rank": 13,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.001
+     }
+    },
+    "data_confidence": 0.75,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-022",
+   "bbox": [
+    -113.83825,
+    43.26167,
+    -113.28717,
+    43.66167
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -113.56271,
+     43.46167
+    ]
+   },
+   "properties": {
+    "site_id": "EA-022",
+    "name": "Craters of the Moon lava field",
+    "country": "United States",
+    "group": "established",
+    "coord_kind": "monument reference point",
+    "coord_source": "wiki:Craters of the Moon National Monument and Preserve",
+    "elevation_m": 1799.1335,
+    "slope_median_30m_deg": 4.4468,
+    "slope_p90_30m_deg": 17.4199,
+    "tri_30m_m": 6.5991,
+    "maat_c": 5.75,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 352.6233,
+    "aridity_index": 0.3018,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.3861,
+    "fine_fraction": 0.615,
+    "road_distance_m": 1171.916,
+    "lithology_tags": [
+     "basalt_mafic",
+     "tephra_pyroclastic"
+    ],
+    "process_tags": [
+     "volcanic_effusive",
+     "volcanic_explosive"
+    ],
+    "landform_tags": [
+     "lava_flow_field",
+     "lava_tube_cave",
+     "volcanic_cone_shield"
+    ],
+    "resource_tags": [],
+    "best_moon_profile": "MOON_LAVA_TUBE",
+    "best_moon_score": 54.29,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 55.95,
+    "operational_score": 83.68,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 18.06,
+      "fidelity_rank": 24,
+      "evidence_completeness": 0.9,
+      "confidence": 0.717,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 22.06,
+      "fidelity_rank": 23,
+      "evidence_completeness": 0.95,
+      "confidence": 0.738,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 11.16,
+      "fidelity_rank": 26,
+      "evidence_completeness": 0.75,
+      "confidence": 0.737,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 38.24,
+      "fidelity_rank": 6,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.354
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 55.95,
+      "fidelity_rank": 7,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.245
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 23.34,
+      "fidelity_rank": 21,
+      "evidence_completeness": 1.0,
+      "confidence": 0.695,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 6.15,
+      "fidelity_rank": 26,
+      "evidence_completeness": 0.9,
+      "confidence": 0.769,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 12.16,
+      "fidelity_rank": 26,
+      "evidence_completeness": 0.95,
+      "confidence": 0.729,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 54.29,
+      "fidelity_rank": 5,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.766
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 52.01,
+      "fidelity_rank": 15,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.004
+     }
+    },
+    "data_confidence": 0.675,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-023",
+   "bbox": [
+    -111.08439,
+    34.97806,
+    -110.96227,
+    35.07806
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -111.02333,
+     35.02806
+    ]
+   },
+   "properties": {
+    "site_id": "EA-023",
+    "name": "Meteor Crater (Barringer)",
+    "country": "United States",
+    "group": "established",
+    "coord_kind": "crater centre",
+    "coord_source": "wiki:Meteor Crater",
+    "elevation_m": 1564.451,
+    "slope_median_30m_deg": 1.3026,
+    "slope_p90_30m_deg": 7.6008,
+    "tri_30m_m": 1.8084,
+    "maat_c": 13.95,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 174.1733,
+    "aridity_index": 0.0936,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.3948,
+    "fine_fraction": 0.47,
+    "road_distance_m": 8515.905,
+    "lithology_tags": [
+     "impact_breccia_melt",
+     "sedimentary_clastic",
+     "carbonate"
+    ],
+    "process_tags": [
+     "impact"
+    ],
+    "landform_tags": [
+     "impact_crater"
+    ],
+    "resource_tags": [
+     "metals_ni_fe"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 64.41,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 52.07,
+    "operational_score": 79.66,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 35.97,
+      "fidelity_rank": 9,
+      "evidence_completeness": 1.0,
+      "confidence": 0.682,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.132
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 42.1,
+      "fidelity_rank": 7,
+      "evidence_completeness": 0.95,
+      "confidence": 0.758,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.269
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 23.15,
+      "fidelity_rank": 10,
+      "evidence_completeness": 1.0,
+      "confidence": 0.725,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.005
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 20.14,
+      "fidelity_rank": 20,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 52.07,
+      "fidelity_rank": 11,
+      "evidence_completeness": 0.95,
+      "confidence": 0.789,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.005
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 37.15,
+      "fidelity_rank": 7,
+      "evidence_completeness": 1.0,
+      "confidence": 0.747,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.391
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 42.35,
+      "fidelity_rank": 3,
+      "evidence_completeness": 1.0,
+      "confidence": 0.723,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 1.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 29.66,
+      "fidelity_rank": 5,
+      "evidence_completeness": 1.0,
+      "confidence": 0.73,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.497
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 29.47,
+      "fidelity_rank": 20,
+      "evidence_completeness": 1.0,
+      "confidence": 0.7,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 64.41,
+      "fidelity_rank": 4,
+      "evidence_completeness": 0.95,
+      "confidence": 0.789,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.586
+     }
+    },
+    "data_confidence": 0.735,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-024",
+   "bbox": [
+    -63.56744,
+    55.73333,
+    -63.03256,
+    56.03333
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -63.3,
+     55.88333
+    ]
+   },
+   "properties": {
+    "site_id": "EA-024",
+    "name": "Mistastin Lake impact structure",
+    "country": "Canada",
+    "group": "established",
+    "coord_kind": "crater centre (lake)",
+    "coord_source": "wiki:Mistastin crater",
+    "elevation_m": 334.5,
+    "slope_median_30m_deg": 5.1445,
+    "slope_p90_30m_deg": 9.6061,
+    "tri_30m_m": 7.0486,
+    "maat_c": -4.15,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 782.9333,
+    "aridity_index": 1.7941,
+    "permafrost_prob": 0.095,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.0011,
+    "fine_fraction": null,
+    "road_distance_m": 125439.5353,
+    "lithology_tags": [
+     "anorthosite_feldspathic",
+     "impact_breccia_melt",
+     "granitic_felsic"
+    ],
+    "process_tags": [
+     "impact",
+     "glacial"
+    ],
+    "landform_tags": [
+     "impact_crater",
+     "massif_highland"
+    ],
+    "resource_tags": [
+     "regolith_oxygen_feldspar"
+    ],
+    "best_moon_profile": "MOON_FIELD_GEOLOGY",
+    "best_moon_score": 51.13,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 40.85,
+    "operational_score": 65.53,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 14.14,
+      "fidelity_rank": 26,
+      "evidence_completeness": 1.0,
+      "confidence": 0.705,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 23.86,
+      "fidelity_rank": 22,
+      "evidence_completeness": 0.95,
+      "confidence": 0.754,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 14.64,
+      "fidelity_rank": 22,
+      "evidence_completeness": 1.0,
+      "confidence": 0.729,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 7.8,
+      "fidelity_rank": 28,
+      "evidence_completeness": 0.95,
+      "confidence": 0.654,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 40.85,
+      "fidelity_rank": 21,
+      "evidence_completeness": 0.95,
+      "confidence": 0.793,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 25.31,
+      "fidelity_rank": 19,
+      "evidence_completeness": 0.85,
+      "confidence": 0.76,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.03
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 51.13,
+      "fidelity_rank": 1,
+      "evidence_completeness": 1.0,
+      "confidence": 0.722,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 1.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 25.58,
+      "fidelity_rank": 8,
+      "evidence_completeness": 0.95,
+      "confidence": 0.72,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.155
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 15.07,
+      "fidelity_rank": 28,
+      "evidence_completeness": 0.95,
+      "confidence": 0.633,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 45.15,
+      "fidelity_rank": 23,
+      "evidence_completeness": 0.8,
+      "confidence": 0.802,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.657,
+    "limitations": [
+     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
+     "SoilGrids texture unavailable (masked/no response).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-025",
+   "bbox": [
+    -81.61996,
+    46.3,
+    -80.7467,
+    46.9
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -81.18333,
+     46.6
+    ]
+   },
+   "properties": {
+    "site_id": "EA-025",
+    "name": "Sudbury Basin",
+    "country": "Canada",
+    "group": "candidate",
+    "coord_kind": "basin reference point",
+    "coord_source": "wiki:Sudbury Basin",
+    "elevation_m": 301.3506,
+    "slope_median_30m_deg": 1.7957,
+    "slope_p90_30m_deg": 6.3448,
+    "tri_30m_m": 3.3447,
+    "maat_c": 4.25,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 858.3067,
+    "aridity_index": 1.1394,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.0029,
+    "fine_fraction": 0.471,
+    "road_distance_m": 3709.3425,
+    "lithology_tags": [
+     "impact_breccia_melt",
+     "norite_mafic_intrusive",
+     "metamorphic"
+    ],
+    "process_tags": [
+     "impact"
+    ],
+    "landform_tags": [
+     "impact_crater"
+    ],
+    "resource_tags": [
+     "metals_ni_fe"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 62.85,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 44.7,
+    "operational_score": 86.77,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 21.35,
+      "fidelity_rank": 21,
+      "evidence_completeness": 1.0,
+      "confidence": 0.682,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 27.21,
+      "fidelity_rank": 16,
+      "evidence_completeness": 0.95,
+      "confidence": 0.758,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 14.87,
+      "fidelity_rank": 21,
+      "evidence_completeness": 1.0,
+      "confidence": 0.725,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 13.99,
+      "fidelity_rank": 24,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 44.7,
+      "fidelity_rank": 17,
+      "evidence_completeness": 0.95,
+      "confidence": 0.789,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.001
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 28.41,
+      "fidelity_rank": 16,
+      "evidence_completeness": 1.0,
+      "confidence": 0.747,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.021
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 35.34,
+      "fidelity_rank": 4,
+      "evidence_completeness": 1.0,
+      "confidence": 0.723,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.979
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 25.35,
+      "fidelity_rank": 9,
+      "evidence_completeness": 1.0,
+      "confidence": 0.73,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.073
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 28.15,
+      "fidelity_rank": 23,
+      "evidence_completeness": 1.0,
+      "confidence": 0.7,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 62.85,
+      "fidelity_rank": 6,
+      "evidence_completeness": 0.95,
+      "confidence": 0.789,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.408
+     }
+    },
+    "data_confidence": 0.735,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-026",
+   "bbox": [
+    -6.70969,
+    37.58333,
+    -6.45697,
+    37.78333
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.58333,
+     37.68333
+    ]
+   },
+   "properties": {
+    "site_id": "EA-026",
+    "name": "Río Tinto headwaters (Minas de Riotinto mining district)",
+    "country": "Spain",
+    "group": "established",
+    "coord_kind": "town in headwater mining district",
+    "coord_source": "wiki:Minas de Riotinto (infobox coord 37°41′N 6°35′W)",
+    "elevation_m": 367.9135,
+    "slope_median_30m_deg": 8.0535,
+    "slope_p90_30m_deg": 16.7381,
+    "tri_30m_m": 11.5252,
+    "maat_c": 16.95,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 580.84,
+    "aridity_index": 0.4135,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.1775,
+    "fine_fraction": 0.61,
+    "road_distance_m": 6362.2638,
+    "lithology_tags": [
+     "iron_oxide",
+     "sulfate",
+     "sulfide"
+    ],
+    "process_tags": [
+     "acidic_aqueous",
+     "fluvial_lacustrine"
+    ],
+    "landform_tags": [
+     "valley_canyon"
+    ],
+    "resource_tags": [
+     "sulfates",
+     "iron_oxides"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 32.06,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 40.14,
+    "operational_score": 81.54,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 20.21,
+      "fidelity_rank": 22,
+      "evidence_completeness": 1.0,
+      "confidence": 0.72,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 15.8,
+      "fidelity_rank": 28,
+      "evidence_completeness": 0.95,
+      "confidence": 0.738,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 10.25,
+      "fidelity_rank": 28,
+      "evidence_completeness": 0.85,
+      "confidence": 0.738,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 8.03,
+      "fidelity_rank": 27,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 40.14,
+      "fidelity_rank": 22,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 16.97,
+      "fidelity_rank": 24,
+      "evidence_completeness": 1.0,
+      "confidence": 0.695,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 3.76,
+      "fidelity_rank": 27,
+      "evidence_completeness": 1.0,
+      "confidence": 0.768,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 18.16,
+      "fidelity_rank": 14,
+      "evidence_completeness": 1.0,
+      "confidence": 0.73,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 19.12,
+      "fidelity_rank": 26,
+      "evidence_completeness": 1.0,
+      "confidence": 0.67,
+      "matched_reference_id": "MOON-REF-05",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 32.06,
+      "fidelity_rank": 28,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.0
+     }
+    },
+    "data_confidence": 0.75,
+    "limitations": [
+     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-027",
+   "bbox": [
+    76.47558,
+    19.945,
+    76.53942,
+    20.005
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     76.5075,
+     19.975
+    ]
+   },
+   "properties": {
+    "site_id": "EA-027",
+    "name": "Lonar impact crater",
+    "country": "India",
+    "group": "candidate",
+    "coord_kind": "crater centre (lake)",
+    "coord_source": "wiki:Lonar Lake",
+    "elevation_m": 479.5,
+    "slope_median_30m_deg": 2.6646,
+    "slope_p90_30m_deg": 13.5125,
+    "tri_30m_m": 3.8848,
+    "maat_c": 26.25,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 903.11,
+    "aridity_index": 0.4953,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "MAAT_logistic_model",
+    "abiotic_fraction": 0.0023,
+    "fine_fraction": null,
+    "road_distance_m": 39755.2354,
+    "lithology_tags": [
+     "basalt_mafic",
+     "impact_breccia_melt"
+    ],
+    "process_tags": [
+     "impact",
+     "fluvial_lacustrine",
+     "evaporitic"
+    ],
+    "landform_tags": [
+     "impact_crater"
+    ],
+    "resource_tags": [],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 54.39,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 41.88,
+    "operational_score": 57.73,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 28.23,
+      "fidelity_rank": 14,
+      "evidence_completeness": 0.9,
+      "confidence": 0.701,
+      "matched_reference_id": "MARS-REF-02",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 25.94,
+      "fidelity_rank": 19,
+      "evidence_completeness": 0.95,
+      "confidence": 0.736,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 14.61,
+      "fidelity_rank": 23,
+      "evidence_completeness": 0.9,
+      "confidence": 0.661,
+      "matched_reference_id": "MARS-REF-07",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 16.62,
+      "fidelity_rank": 22,
+      "evidence_completeness": 0.95,
+      "confidence": 0.689,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 41.88,
+      "fidelity_rank": 20,
+      "evidence_completeness": 0.95,
+      "confidence": 0.797,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 10.53,
+      "fidelity_rank": 28,
+      "evidence_completeness": 0.85,
+      "confidence": 0.757,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 27.35,
+      "fidelity_rank": 5,
+      "evidence_completeness": 0.9,
+      "confidence": 0.769,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.818
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 19.3,
+      "fidelity_rank": 12,
+      "evidence_completeness": 0.9,
+      "confidence": 0.653,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.003
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 28.72,
+      "fidelity_rank": 22,
+      "evidence_completeness": 0.9,
+      "confidence": 0.722,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 54.39,
+      "fidelity_rank": 14,
+      "evidence_completeness": 0.8,
+      "confidence": 0.816,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 0.001
+     }
+    },
+    "data_confidence": 0.577,
+    "limitations": [
+     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "SoilGrids texture unavailable (masked/no response).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-028",
+   "bbox": [
+    -110.91951,
+    38.30646,
+    -110.66429,
+    38.50646
+   ],
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -110.7919,
+     38.40646
+    ]
+   },
+   "properties": {
+    "site_id": "EA-028",
+    "name": "Mars Desert Research Station area (San Rafael Swell margin)",
+    "country": "United States",
+    "group": "established",
+    "coord_kind": "station location",
+    "coord_source": "wiki:Mars Desert Research Station",
+    "elevation_m": 1373.4406,
+    "slope_median_30m_deg": 1.8669,
+    "slope_p90_30m_deg": 8.2242,
+    "tri_30m_m": 2.8558,
+    "maat_c": 13.85,
+    "maat_source": "CHELSA_V2.1_bio1",
+    "precip_mm_yr": 114.2833,
+    "aridity_index": 0.0711,
+    "permafrost_prob": 0.0,
+    "permafrost_source": "Obu2019_PERPROB",
+    "abiotic_fraction": 0.9607,
+    "fine_fraction": 0.437,
+    "road_distance_m": 49713.9699,
+    "lithology_tags": [
+     "sedimentary_clastic",
+     "clay_phyllosilicate"
+    ],
+    "process_tags": [
+     "fluvial_lacustrine",
+     "aeolian"
+    ],
+    "landform_tags": [
+     "layered_sedimentary_outcrop",
+     "plains"
+    ],
+    "resource_tags": [
+     "hydrated_minerals"
+    ],
+    "best_moon_profile": "MOON_ROVER_MOBILITY",
+    "best_moon_score": 77.24,
+    "best_mars_profile": "MARS_ROVER_MOBILITY",
+    "best_mars_score": 71.46,
+    "operational_score": 70.56,
+    "scores": {
+     "MARS_ASTROBIO_SEDIMENTS": {
+      "fidelity_score": 61.6,
+      "fidelity_rank": 1,
+      "evidence_completeness": 1.0,
+      "confidence": 0.547,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 1.0
+     },
+     "MARS_EVA_HABITAT": {
+      "fidelity_score": 45.83,
+      "fidelity_rank": 3,
+      "evidence_completeness": 0.95,
+      "confidence": 0.726,
+      "matched_reference_id": "MARS-REF-03",
+      "mc_top5_probability": 0.902
+     },
+     "MARS_ISRU_ICE": {
+      "fidelity_score": 29.41,
+      "fidelity_rank": 5,
+      "evidence_completeness": 0.85,
+      "confidence": 0.628,
+      "matched_reference_id": "MARS-REF-05",
+      "mc_top5_probability": 0.478
+     },
+     "MARS_LAVA_TUBE": {
+      "fidelity_score": 25.45,
+      "fidelity_rank": 12,
+      "evidence_completeness": 0.95,
+      "confidence": 0.654,
+      "matched_reference_id": "MARS-REF-06",
+      "mc_top5_probability": 0.0
+     },
+     "MARS_ROVER_MOBILITY": {
+      "fidelity_score": 71.46,
+      "fidelity_rank": 1,
+      "evidence_completeness": 0.95,
+      "confidence": 0.77,
+      "matched_reference_id": "MARS-REF-01",
+      "mc_top5_probability": 1.0
+     },
+     "MOON_EVA_HABITAT": {
+      "fidelity_score": 35.43,
+      "fidelity_rank": 8,
+      "evidence_completeness": 1.0,
+      "confidence": 0.695,
+      "matched_reference_id": "MOON-REF-03",
+      "mc_top5_probability": 0.113
+     },
+     "MOON_FIELD_GEOLOGY": {
+      "fidelity_score": 14.1,
+      "fidelity_rank": 16,
+      "evidence_completeness": 1.0,
+      "confidence": 0.542,
+      "matched_reference_id": "MOON-REF-01",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_ISRU_ICE": {
+      "fidelity_score": 20.14,
+      "fidelity_rank": 11,
+      "evidence_completeness": 1.0,
+      "confidence": 0.666,
+      "matched_reference_id": "MOON-REF-04",
+      "mc_top5_probability": 0.0
+     },
+     "MOON_LAVA_TUBE": {
+      "fidelity_score": 42.83,
+      "fidelity_rank": 10,
+      "evidence_completeness": 1.0,
+      "confidence": 0.599,
+      "matched_reference_id": "MOON-REF-06",
+      "mc_top5_probability": 0.012
+     },
+     "MOON_ROVER_MOBILITY": {
+      "fidelity_score": 77.24,
+      "fidelity_rank": 1,
+      "evidence_completeness": 0.95,
+      "confidence": 0.762,
+      "matched_reference_id": "MOON-REF-07",
+      "mc_top5_probability": 1.0
+     }
+    },
+    "data_confidence": 0.637,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
+    ],
+    "bbox_status": "approximate (sampling point ± bbox_half_deg; not a mapped boundary)",
+    "disclaimer": "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+   }
+  }
+ ]
+}

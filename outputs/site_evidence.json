@@ -191,9 +191,10 @@
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Antofagasta"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -390,9 +391,10 @@
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Resolute"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -617,9 +619,10 @@
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Las Vegas"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -880,13 +883,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=160.83333&lat=-77.55&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Scott Base"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -1088,13 +1092,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=13.304977&lat=79.431656&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Longyearbyen"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -1128,12 +1133,11 @@
     }
    },
    "limitations": [
-    "SoilGrids texture unavailable (masked/no response).",
     "No mapped road/track within search radius or Overpass unavailable.",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.639,
+    "score": 0.709,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -1276,13 +1280,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-16.83&lat=64.85&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Höfn"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -1324,11 +1329,10 @@
     }
    },
    "limitations": [
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.56,
+    "score": 0.63,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -1492,13 +1496,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-16.783&lat=65.033&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Akureyri"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -1676,13 +1681,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-13.79333&lat=28.99417&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Arrecife"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -1855,13 +1861,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-13.43889&lat=29.16111&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Arrecife"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -1904,11 +1911,10 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.577,
+    "score": 0.647,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -2105,13 +2111,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=40.3&lat=14.24167&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Adigrat"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -2138,11 +2145,10 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.652,
+    "score": 0.722,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -2286,13 +2292,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-67.48913&lat=-20.13378&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Villa Martin"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -2319,11 +2326,10 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.652,
+    "score": 0.722,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -2429,13 +2435,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-67.75&lat=-25.73333&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Cafayate"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -2462,11 +2469,10 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.577,
+    "score": 0.647,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -2656,13 +2662,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=119.437252&lat=-21.151759&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Port Hedland"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -2697,11 +2704,10 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.652,
+    "score": 0.722,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -2852,13 +2858,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=139.33611&lat=-30.31167&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Andamooka"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -2893,11 +2900,10 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.622,
+    "score": 0.692,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -3047,13 +3053,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=127.79556&lat=-19.17167&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Halls Creek"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -3088,11 +3095,10 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.592,
+    "score": 0.662,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -3217,13 +3223,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=144.59611&lat=-18.20111&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Georgetown"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -3258,11 +3265,10 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.577,
+    "score": 0.647,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -3425,13 +3431,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
-     "error": null
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=77.98333&lat=33.3&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
+     "error": "HTTPSConnectionPool(host='rest.isric.org', port=443): Read timed out. (read timeout=90)"
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Leh"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -3450,11 +3457,10 @@
    },
    "limitations": [
     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.642,
+    "score": 0.713,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -3625,13 +3631,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=94.45&lat=37.26667&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Golmud"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -3650,11 +3657,10 @@
    },
    "limitations": [
     "Sampling point is a region centroid; local terrain may not represent the best analog outcrops.",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.68,
+    "score": 0.75,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -3824,13 +3830,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-155.46806&lat=19.82056&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Hilo"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -3865,11 +3872,10 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.607,
+    "score": 0.677,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -4012,13 +4018,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-155.29667&lat=19.40861&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Hilo"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -4053,11 +4060,10 @@
    },
    "limitations": [
     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.577,
+    "score": 0.647,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -4201,13 +4207,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-121.50833&lat=41.71389&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Klamath Falls"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -4249,11 +4256,10 @@
     }
    },
    "limitations": [
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.68,
+    "score": 0.75,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -4397,13 +4403,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
-     "error": null
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-113.56271&lat=43.46167&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
+     "error": "HTTPSConnectionPool(host='rest.isric.org', port=443): Read timed out. (read timeout=90)"
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Burley"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -4445,11 +4452,10 @@
     }
    },
    "limitations": [
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.605,
+    "score": 0.675,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -4588,13 +4594,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-111.02333&lat=35.02806&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Winslow"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -4636,11 +4643,10 @@
     }
    },
    "limitations": [
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.665,
+    "score": 0.735,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -4793,13 +4799,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-63.3&lat=55.88333&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Nain"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -4959,13 +4966,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-81.18333&lat=46.6&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Sudbury"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -5007,11 +5015,10 @@
     }
    },
    "limitations": [
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.665,
+    "score": 0.735,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -5165,13 +5172,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-6.58333&lat=37.68333&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Huelva"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -5214,11 +5222,10 @@
    },
    "limitations": [
     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.68,
+    "score": 0.75,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   },
@@ -5353,13 +5360,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=76.5075&lat=19.975&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Parbhani"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -5523,13 +5531,14 @@
     "soil": {
      "dataset_id": "DS-SOILGRIDS",
      "provenance": "modeled",
-     "request": null,
+     "request": "https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-110.7919&lat=38.40646&property=sand&property=silt&property=clay&depth=0-5cm&value=mean&value=Q0.05&value=Q0.95",
      "error": null
     },
     "access": {
-     "dataset_id": "DS-OSM",
+     "dataset_id": "DS-NATEARTH",
      "provenance": "derived",
-     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."
+     "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track.",
+     "nearest_populated_place": "Moab"
     },
     "geology_map": {
      "dataset_id": "DS-MACROSTRAT",
@@ -5571,11 +5580,10 @@
     }
    },
    "limitations": [
-    "SoilGrids texture unavailable (masked/no response).",
     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements."
    ],
    "confidence": {
-    "score": 0.568,
+    "score": 0.637,
     "method": "mean of per-feature provenance confidence (scoring_config.provenance_confidence); missing = 0"
    }
   }

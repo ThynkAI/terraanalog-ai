@@ -52,6 +52,22 @@ Full column dictionary and JSON Schemas: `data_contract.md`, `schemas/*.schema.j
 ## 4. Current results snapshot
 
 <!-- RESULTS:START -->
+| Profile | #1 (score, completeness) | #2 | #3 | MC mean Spearman |
+|---|---|---|---|---|
+| MOON_ISRU_ICE | EA-002 Haughton impact crater (57.4, 1.00) | EA-004 McMurdo Dry Valleys (45.6, 0.90) | EA-005 Bockfjorden Volcanic Complex (42.0, 1.00) | 0.914 |
+| MOON_ROVER_MOBILITY | EA-028 Mars Desert Research Station area (77.2, 0.95) | EA-008 Timanfaya volcanic field (68.5, 0.80) | EA-011 Salar de Uyuni (67.3, 0.75) | 0.925 |
+| MOON_EVA_HABITAT | EA-004 McMurdo Dry Valleys (50.9, 0.75) | EA-005 Bockfjorden Volcanic Complex (44.7, 1.00) | EA-002 Haughton impact crater (39.5, 1.00) | 0.938 |
+| MOON_FIELD_GEOLOGY | EA-024 Mistastin Lake impact structure (51.1, 1.00) | EA-002 Haughton impact crater (44.5, 1.00) | EA-023 Meteor Crater (42.4, 1.00) | 0.952 |
+| MOON_LAVA_TUBE | EA-009 Cueva de los Verdes lava tube (74.3, 0.95) | EA-016 Undara lava tubes (69.1, 0.95) | EA-008 Timanfaya volcanic field (58.7, 0.90) | 0.97 |
+| MARS_ISRU_ICE | EA-002 Haughton impact crater (65.7, 1.00) | EA-004 McMurdo Dry Valleys (64.0, 0.80) | EA-005 Bockfjorden Volcanic Complex (43.2, 0.85) | 0.917 |
+| MARS_ROVER_MOBILITY | EA-028 Mars Desert Research Station area (71.5, 0.95) | EA-008 Timanfaya volcanic field (62.3, 0.95) | EA-006 Holuhraun lava field (61.7, 0.95) | 0.946 |
+| MARS_EVA_HABITAT | EA-002 Haughton impact crater (57.2, 0.95) | EA-018 Qaidam Basin (53.9, 0.95) | EA-028 Mars Desert Research Station area (45.8, 0.95) | 0.925 |
+| MARS_ASTROBIO_SEDIMENTS | EA-028 Mars Desert Research Station area (61.6, 1.00) | EA-003 Death Valley (51.6, 1.00) | EA-018 Qaidam Basin (50.3, 1.00) | 0.958 |
+| MARS_LAVA_TUBE | EA-009 Cueva de los Verdes lava tube (57.5, 0.95) | EA-016 Undara lava tubes (51.4, 0.95) | EA-008 Timanfaya volcanic field (45.3, 0.95) | 0.953 |
+
+Validation: **42/42 checks passed** (see `outputs/validation_report.md`).
+
+Scores are relative, profile-specific fidelity (0-100), not planetary equivalence. Completeness = share of profile weight with data.
 <!-- RESULTS:END -->
 
 ## 5. Known limitations to surface in the UI

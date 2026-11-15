@@ -1,0 +1,706 @@
+{
+ "type": "FeatureCollection",
+ "name": "planetary_reference_sites",
+ "crs_note": "NOT WGS84. Coordinates are planetocentric body-fixed lon/lat: Moon features use IAU_2015:30100 (Moon 2015 sphere), Mars features use IAU_2015:49900 (Mars 2015 planetocentric). Do not overlay on Earth basemaps; render on separate Moon/Mars basemaps (e.g., NASA Trek WMTS).",
+ "metadata": {
+  "schema_version": "1.0.0",
+  "generated": "2026-11-15"
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "id": "MOON-REF-01",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     0.0,
+     -90.0
+    ]
+   },
+   "properties": {
+    "ref_id": "MOON-REF-01",
+    "body": "Moon",
+    "name": "Lunar south polar highlands (pole-centred region containing Artemis III candidate regions)",
+    "crs": "IAU_2015:30100",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "candidate_region",
+    "status_note": "NASA lists nine Artemis III candidate landing regions near the south pole (Peak near Cabeus B, Haworth, Malapert Massif, Mons Mouton Plateau, Mons Mouton, Nobile Rim 1, Nobile Rim 2, de Gerlache Rim 2, Slater Plain); these are candidate regions, not selected sites and not approved permanent-base locations.",
+    "elevation_m": 1288.5188,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 22.7841,
+    "slope_p90_deg": 32.8041,
+    "slope_baseline_m": 90.0,
+    "relief_m": 2858.479,
+    "dem_product": "LRO LOLA LDEM_80S_80M (PDS3, LRO-L-LOLA-4-GDR-V1.0)",
+    "temperature_K": 223,
+    "temperature_provenance": "literature",
+    "illumination": "Peaks along the rim of Shackleton are illuminated about 80–90% of each lunar orbit (literature); PSRs never illuminated",
+    "ice_evidence": "Cold traps >80° latitude host most water-ice cold-trap area (Hayne et al. 2021 summarised in wiki:Lunar water).",
+    "hazards": "steep crater walls and massif slopes; long low-angle shadows; extreme thermal gradients between sunlit and shadowed terrain; no atmosphere; radiation; 1/6 g",
+    "mission_objectives": "crewed landing (Artemis III candidate regions); polar volatiles prospecting; sample of ancient crust; power from near-continuous illumination",
+    "lithology_tags": [
+     "anorthosite_feldspathic",
+     "impact_breccia_melt"
+    ],
+    "process_tags": [
+     "impact"
+    ],
+    "landform_tags": [
+     "massif_highland",
+     "impact_crater"
+    ],
+    "resource_tags": [
+     "water_ice_cold_traps",
+     "regolith_oxygen_feldspar"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MOON-REF-02",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     129.78,
+     -89.67
+    ]
+   },
+   "properties": {
+    "ref_id": "MOON-REF-02",
+    "body": "Moon",
+    "name": "Shackleton crater and rim vicinity",
+    "crs": "IAU_2015:30100",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "representative_region",
+    "status_note": "Frequently studied south-polar crater; 'Connecting Ridge' near Shackleton appeared on NASA's 2022 list of 13 regions but not on the 2024 refined list of nine (per The Register summary, 2024-10-29). Not an approved base site.",
+    "elevation_m": -2787.7197,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 27.4806,
+    "slope_p90_deg": 32.3128,
+    "slope_baseline_m": 90.0,
+    "relief_m": 4408.21,
+    "dem_product": "LRO LOLA LDEM_80S_80M (PDS3, LRO-L-LOLA-4-GDR-V1.0)",
+    "temperature_K": 90,
+    "temperature_provenance": "literature",
+    "illumination": "rim peaks ~80–90% illuminated; interior in perpetual darkness",
+    "ice_evidence": "LOLA reflectance analysis suggests up to 22% of Shackleton's surface may be covered in ice (wiki:Lunar water; Zuber et al. 2012).",
+    "hazards": "~4.2 km deep conical crater with steep walls; permanent shadow in interior; thermal extremes",
+    "mission_objectives": "PSR volatiles access; illuminated rim for power; ancient crust sampling",
+    "lithology_tags": [
+     "anorthosite_feldspathic",
+     "impact_breccia_melt",
+     "ground_ice"
+    ],
+    "process_tags": [
+     "impact"
+    ],
+    "landform_tags": [
+     "impact_crater",
+     "massif_highland"
+    ],
+    "resource_tags": [
+     "water_ice_cold_traps",
+     "regolith_oxygen_feldspar"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MOON-REF-03",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -2.93,
+     -85.99
+    ]
+   },
+   "properties": {
+    "ref_id": "MOON-REF-03",
+    "body": "Moon",
+    "name": "Malapert massif",
+    "crs": "IAU_2015:30100",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "candidate_region",
+    "status_note": "'Malapert Massif' is one of NASA's nine Artemis III candidate landing regions (NASA news release 2024-10-28).",
+    "elevation_m": 4837.9663,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 19.3877,
+    "slope_p90_deg": 24.0244,
+    "slope_baseline_m": 90.0,
+    "relief_m": 1827.2202,
+    "dem_product": "LRO LOLA LDEM_80S_80M (PDS3, LRO-L-LOLA-4-GDR-V1.0)",
+    "temperature_K": 223,
+    "temperature_provenance": "literature",
+    "illumination": "two ridge regions illuminated ~74% of the lunar year (Bussey et al. 2010 as cited by Allender et al. 2019)",
+    "ice_evidence": "Small-scale PSRs in surrounding area (Allender et al. 2019).",
+    "hazards": "massif rises ~5 km; slopes 15–25° on ridge approaches (Allender et al. 2019)",
+    "mission_objectives": "Artemis III candidate region; Earth line-of-sight communications; SPA basin rim material",
+    "lithology_tags": [
+     "anorthosite_feldspathic",
+     "impact_breccia_melt"
+    ],
+    "process_tags": [
+     "impact"
+    ],
+    "landform_tags": [
+     "massif_highland"
+    ],
+    "resource_tags": [
+     "water_ice_cold_traps"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MOON-REF-04",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -35.5,
+     -84.9
+    ]
+   },
+   "properties": {
+    "ref_id": "MOON-REF-04",
+    "body": "Moon",
+    "name": "Cabeus crater permanently shadowed region (LCROSS impact target)",
+    "crs": "IAU_2015:30100",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "verified_mission_site",
+    "status_note": "Verified LCROSS impact target (2009-10-09); a mission impact site, not a landing or base site.",
+    "elevation_m": -2847.3906,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 7.8694,
+    "slope_p90_deg": 13.0924,
+    "slope_baseline_m": 90.0,
+    "relief_m": 844.2612,
+    "dem_product": "LRO LOLA LDEM_80S_80M (PDS3, LRO-L-LOLA-4-GDR-V1.0)",
+    "temperature_K": 100,
+    "temperature_provenance": "literature",
+    "illumination": "main crater lit ~25% of lunar day; western part in permanent shadow",
+    "ice_evidence": "LCROSS ejecta water concentration 5.6 ± 2.9% by mass (Colaprete et al. 2010, as reported in wiki:Lunar water).",
+    "hazards": "permanent darkness; <100 K surfaces; crater walls",
+    "mission_objectives": "ISRU water-ice prospecting; volatile inventory",
+    "lithology_tags": [
+     "ground_ice",
+     "impact_breccia_melt",
+     "anorthosite_feldspathic"
+    ],
+    "process_tags": [
+     "impact"
+    ],
+    "landform_tags": [
+     "impact_crater"
+    ],
+    "resource_tags": [
+     "water_ice_cold_traps"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MOON-REF-05",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -56.7701,
+     14.0917
+    ]
+   },
+   "properties": {
+    "ref_id": "MOON-REF-05",
+    "body": "Moon",
+    "name": "Marius Hills pit (mare volcanic dome field)",
+    "crs": "IAU_2015:30100",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "representative_region",
+    "status_note": "Candidate lava-tube skylight identified by SELENE and confirmed with LROC; representative subsurface-access environment, not a mission site.",
+    "elevation_m": -3137.3457,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 1.8511,
+    "slope_p90_deg": 4.8463,
+    "slope_baseline_m": 90.0,
+    "relief_m": 316.9602,
+    "dem_product": "LRO LOLA global LDEM 118 m (USGS Astrogeology mosaic, Mar 2014)",
+    "temperature_K": 290,
+    "temperature_provenance": "modeled",
+    "illumination": "pit floor partly overhung (LROC Pits Atlas: Overhang=Y)",
+    "ice_evidence": "None reported.",
+    "hazards": "~40 m deep pit (LROC atlas); boulder-covered floor; overhangs",
+    "mission_objectives": "lava-tube / subsurface habitat scouting; radiation and thermal shelter",
+    "lithology_tags": [
+     "basalt_mafic"
+    ],
+    "process_tags": [
+     "volcanic_effusive"
+    ],
+    "landform_tags": [
+     "volcanic_cone_shield",
+     "pit_skylight",
+     "lava_tube_cave"
+    ],
+    "resource_tags": [
+     "ilmenite_mare_basalt"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MOON-REF-06",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.222,
+     8.3355
+    ]
+   },
+   "properties": {
+    "ref_id": "MOON-REF-06",
+    "body": "Moon",
+    "name": "Mare Tranquillitatis pit",
+    "crs": "IAU_2015:30100",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "representative_region",
+    "status_note": "Mare pit with possible cave extension (Horvath et al. 2022); representative subsurface environment.",
+    "elevation_m": -1573.4807,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 1.3024,
+    "slope_p90_deg": 6.059,
+    "slope_baseline_m": 90.0,
+    "relief_m": 162.8757,
+    "dem_product": "LRO LOLA global LDEM 118 m (USGS Astrogeology mosaic, Mar 2014)",
+    "temperature_K": 290,
+    "temperature_provenance": "modeled",
+    "illumination": "pit floor partly in permanent shadow beneath overhang",
+    "ice_evidence": "None reported.",
+    "hazards": "~100 m deep pit (NASA 2022 release); vertical walls; illuminated floor >420 K peak (modeled)",
+    "mission_objectives": "lava-tube / subsurface habitat scouting; thermal-stable shelter",
+    "lithology_tags": [
+     "basalt_mafic"
+    ],
+    "process_tags": [
+     "volcanic_effusive"
+    ],
+    "landform_tags": [
+     "pit_skylight",
+     "lava_tube_cave",
+     "plains"
+    ],
+    "resource_tags": [
+     "ilmenite_mare_basalt"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MOON-REF-07",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     23.43333,
+     0.6875
+    ]
+   },
+   "properties": {
+    "ref_id": "MOON-REF-07",
+    "body": "Moon",
+    "name": "Apollo 11 Tranquility Base (mare regolith plains)",
+    "crs": "IAU_2015:30100",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "verified_mission_site",
+    "status_note": "Verified 1969 crewed landing site (historic); not a base site.",
+    "elevation_m": -3831.9375,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 2.0708,
+    "slope_p90_deg": 4.4396,
+    "slope_baseline_m": 90.0,
+    "relief_m": 316.1899,
+    "dem_product": "LRO LOLA global LDEM 118 m (USGS Astrogeology mosaic, Mar 2014)",
+    "temperature_K": null,
+    "temperature_provenance": "unavailable",
+    "illumination": "equatorial day/night cycle (~29.5 Earth days synodic)",
+    "ice_evidence": "None.",
+    "hazards": "regolith dust; small craters and boulders",
+    "mission_objectives": "mare regolith handling; surface mobility on plains",
+    "lithology_tags": [
+     "basalt_mafic",
+     "regolith_fines"
+    ],
+    "process_tags": [
+     "volcanic_effusive",
+     "impact"
+    ],
+    "landform_tags": [
+     "plains",
+     "impact_crater"
+    ],
+    "resource_tags": [
+     "ilmenite_mare_basalt"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MARS-REF-01",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.45,
+     18.44
+    ]
+   },
+   "properties": {
+    "ref_id": "MARS-REF-01",
+    "body": "Mars",
+    "name": "Jezero crater delta (Perseverance landing site)",
+    "crs": "IAU_2015:49900",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "verified_mission_site",
+    "status_note": "Verified Mars 2020 Perseverance landing site (2021-02-18).",
+    "elevation_m": -2571.9534,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 1.3761,
+    "slope_p90_deg": 7.2531,
+    "slope_baseline_m": 450.0,
+    "relief_m": 934.2061,
+    "dem_product": "MGS MOLA global DEM 463 m (USGS Astrogeology mosaic)",
+    "temperature_K": 210,
+    "temperature_provenance": "literature",
+    "illumination": null,
+    "ice_evidence": "No near-surface ice targeted.",
+    "hazards": "delta scarps, boulder falls (wiki); dunes",
+    "mission_objectives": "astrobiology/biosignatures in lacustrine sediments; sample caching for return",
+    "lithology_tags": [
+     "clay_phyllosilicate",
+     "carbonate",
+     "basalt_mafic",
+     "sedimentary_clastic"
+    ],
+    "process_tags": [
+     "fluvial_lacustrine",
+     "impact",
+     "aeolian"
+    ],
+    "landform_tags": [
+     "alluvial_fan_delta",
+     "impact_crater",
+     "valley_canyon",
+     "layered_sedimentary_outcrop"
+    ],
+    "resource_tags": [
+     "hydrated_minerals"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MARS-REF-02",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     137.4417,
+     -4.5895
+    ]
+   },
+   "properties": {
+    "ref_id": "MARS-REF-02",
+    "body": "Mars",
+    "name": "Gale crater (Curiosity Bradbury Landing)",
+    "crs": "IAU_2015:49900",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "verified_mission_site",
+    "status_note": "Verified MSL Curiosity landing site (2012-08-06).",
+    "elevation_m": -4500.7319,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 1.6842,
+    "slope_p90_deg": 13.554,
+    "slope_baseline_m": 450.0,
+    "relief_m": 2315.3369,
+    "dem_product": "MGS MOLA global DEM 463 m (USGS Astrogeology mosaic)",
+    "temperature_K": 210,
+    "temperature_provenance": "literature",
+    "illumination": null,
+    "ice_evidence": "None targeted.",
+    "hazards": "sharp rocks (wheel damage reported in mission literature, not quantified here); dunes",
+    "mission_objectives": "habitability of ancient lakes; stratigraphy of Aeolis Mons",
+    "lithology_tags": [
+     "sedimentary_clastic",
+     "clay_phyllosilicate",
+     "sulfate",
+     "basalt_mafic"
+    ],
+    "process_tags": [
+     "fluvial_lacustrine",
+     "impact",
+     "aeolian"
+    ],
+    "landform_tags": [
+     "impact_crater",
+     "layered_sedimentary_outcrop",
+     "alluvial_fan_delta"
+    ],
+    "resource_tags": [
+     "hydrated_minerals",
+     "sulfates"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MARS-REF-03",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     135.6234,
+     4.5024
+    ]
+   },
+   "properties": {
+    "ref_id": "MARS-REF-03",
+    "body": "Mars",
+    "name": "Elysium Planitia volcanic plains (InSight landing site)",
+    "crs": "IAU_2015:49900",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "verified_mission_site",
+    "status_note": "Verified InSight landing site (2018-11-26).",
+    "elevation_m": -2615.2268,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 0.2764,
+    "slope_p90_deg": 0.4683,
+    "slope_baseline_m": 450.0,
+    "relief_m": 83.5815,
+    "dem_product": "MGS MOLA global DEM 463 m (USGS Astrogeology mosaic)",
+    "temperature_K": 210,
+    "temperature_provenance": "literature",
+    "illumination": null,
+    "ice_evidence": "Possible ash-covered water ice reported near 5°N 150°E (Mars Express, wiki:Elysium Planitia) - debated.",
+    "hazards": "low hazards; selected as smooth, flat plains",
+    "mission_objectives": "geophysics; safe landing on flat plains; habitat siting on low-slope terrain",
+    "lithology_tags": [
+     "basalt_mafic",
+     "regolith_fines"
+    ],
+    "process_tags": [
+     "volcanic_effusive",
+     "impact",
+     "aeolian"
+    ],
+    "landform_tags": [
+     "plains"
+    ],
+    "resource_tags": [
+     "water_ice_cold_traps"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MARS-REF-04",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.74922,
+     68.21883
+    ]
+   },
+   "properties": {
+    "ref_id": "MARS-REF-04",
+    "body": "Mars",
+    "name": "Vastitas Borealis periglacial plains (Phoenix landing site)",
+    "crs": "IAU_2015:49900",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "verified_mission_site",
+    "status_note": "Verified Phoenix landing site (2008-05-25).",
+    "elevation_m": -4125.772,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 0.535,
+    "slope_p90_deg": 1.359,
+    "slope_baseline_m": 450.0,
+    "relief_m": 229.2825,
+    "dem_product": "MGS MOLA global DEM 463 m (USGS Astrogeology mosaic)",
+    "temperature_K": 210,
+    "temperature_provenance": "literature",
+    "illumination": null,
+    "ice_evidence": "Phoenix sampled near-surface water ice (wiki:Phoenix).",
+    "hazards": "seasonal CO2 frost; polar night",
+    "mission_objectives": "ice-soil boundary habitability; ISRU ground ice",
+    "lithology_tags": [
+     "ground_ice",
+     "perchlorate_salts",
+     "regolith_fines"
+    ],
+    "process_tags": [
+     "periglacial",
+     "aeolian"
+    ],
+    "landform_tags": [
+     "patterned_ground",
+     "plains"
+    ],
+    "resource_tags": [
+     "ground_ice",
+     "perchlorate"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MARS-REF-05",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     15.0,
+     88.0
+    ]
+   },
+   "properties": {
+    "ref_id": "MARS-REF-05",
+    "body": "Mars",
+    "name": "Planum Boreum north polar layered deposits",
+    "crs": "IAU_2015:49900",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "representative_region",
+    "status_note": "Representative polar ice environment; no landing site.",
+    "elevation_m": -2414.02,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 0.4442,
+    "slope_p90_deg": 1.5413,
+    "slope_baseline_m": 450.0,
+    "relief_m": 180.7053,
+    "dem_product": "MGS MOLA global DEM 463 m (USGS Astrogeology mosaic)",
+    "temperature_K": null,
+    "temperature_provenance": "unavailable",
+    "illumination": null,
+    "ice_evidence": "Ice cap mostly water ice (~95%) with dust layers (wiki:Planum Boreum).",
+    "hazards": "scarps up to ~2 km; avalanches off scarps (HiRISE); polar night",
+    "mission_objectives": "climate record; ISRU water ice",
+    "lithology_tags": [
+     "ground_ice",
+     "regolith_fines"
+    ],
+    "process_tags": [
+     "periglacial",
+     "aeolian",
+     "glacial"
+    ],
+    "landform_tags": [
+     "layered_sedimentary_outcrop",
+     "valley_canyon",
+     "dune_field",
+     "plains"
+    ],
+    "resource_tags": [
+     "water_ice_cold_traps"
+    ],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MARS-REF-06",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -120.09,
+     -8.35
+    ]
+   },
+   "properties": {
+    "ref_id": "MARS-REF-06",
+    "body": "Mars",
+    "name": "Arsia Mons flank cave skylights (lava tubes / basaltic shield)",
+    "crs": "IAU_2015:49900",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "representative_region",
+    "status_note": "Seven putative cave entrances identified on Arsia flanks (Cushing et al. 2007 as summarised in wiki:Arsia Mons); some may be pits only.",
+    "elevation_m": 16264.8994,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 0.5375,
+    "slope_p90_deg": 2.1585,
+    "slope_baseline_m": 450.0,
+    "relief_m": 432.8779,
+    "dem_product": "MGS MOLA global DEM 463 m (USGS Astrogeology mosaic)",
+    "temperature_K": 210,
+    "temperature_provenance": "literature",
+    "illumination": null,
+    "ice_evidence": "Orographic water-ice cloud (atmospheric), not ground ice.",
+    "hazards": "high elevation, thin atmosphere for EDL; pit walls",
+    "mission_objectives": "subsurface habitat scouting; radiation shelter",
+    "lithology_tags": [
+     "basalt_mafic"
+    ],
+    "process_tags": [
+     "volcanic_effusive"
+    ],
+    "landform_tags": [
+     "volcanic_cone_shield",
+     "pit_skylight",
+     "lava_tube_cave",
+     "caldera"
+    ],
+    "resource_tags": [],
+    "not_an_approved_base_site": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "MARS-REF-07",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -175.7,
+     47.2
+    ]
+   },
+   "properties": {
+    "ref_id": "MARS-REF-07",
+    "body": "Mars",
+    "name": "Arcadia Planitia mid-latitude ground ice plains",
+    "crs": "IAU_2015:49900",
+    "coordinate_system": "planetocentric latitude, east-positive longitude in [-180,180]",
+    "status_class": "representative_region",
+    "status_note": "Described as an area of interest for potential exploration because of near-surface excess ice; not a selected landing site.",
+    "elevation_m": -4100.0615,
+    "elevation_datum": "Moon: height above 1737.4 km sphere; Mars: MOLA areoid",
+    "slope_median_deg": 0.2416,
+    "slope_p90_deg": 0.4976,
+    "slope_baseline_m": 450.0,
+    "relief_m": 60.2231,
+    "dem_product": "MGS MOLA global DEM 463 m (USGS Astrogeology mosaic)",
+    "temperature_K": 210,
+    "temperature_provenance": "literature",
+    "illumination": null,
+    "ice_evidence": "Excess ice widespread in mid-latitudes, especially Arcadia Planitia (wiki).",
+    "hazards": "ice-rich ground subsidence",
+    "mission_objectives": "ISRU ground ice for human missions; low-elevation EDL",
+    "lithology_tags": [
+     "ground_ice",
+     "regolith_fines"
+    ],
+    "process_tags": [
+     "periglacial",
+     "impact"
+    ],
+    "landform_tags": [
+     "plains",
+     "impact_crater"
+    ],
+    "resource_tags": [
+     "ground_ice"
+    ],
+    "not_an_approved_base_site": true
+   }
+  }
+ ]
+}

@@ -1,0 +1,482 @@
+{
+ "version": "1.0.0",
+ "generated": "2026-11-15",
+ "_doc": "Transparent multi-criteria (MCDA) configuration. AnalogScore = 100 * sum_i(w_i * sim_i) / sum_i(w_i over features available for that site-reference pair). Weights per mission profile sum to 1. Fidelity (surface/process analog) and operational suitability are separate scores and are never combined. A score is a relative ranking aid for one mission objective against one reference environment; it is NOT a measure of lunar or Martian equivalence (gravity, vacuum/atmosphere, radiation, day length and temperature regime cannot be reproduced by any Earth site).",
+ "vocabularies": {
+  "lithology": [
+   "basalt_mafic",
+   "anorthosite_feldspathic",
+   "norite_mafic_intrusive",
+   "impact_breccia_melt",
+   "sedimentary_clastic",
+   "clay_phyllosilicate",
+   "sulfate",
+   "sulfide",
+   "evaporite_salts",
+   "nitrate_perchlorate",
+   "perchlorate_salts",
+   "carbonate",
+   "silica_chert_sinter",
+   "iron_oxide",
+   "tephra_pyroclastic",
+   "ground_ice",
+   "granitic_felsic",
+   "metamorphic",
+   "regolith_fines"
+  ],
+  "process": [
+   "volcanic_effusive",
+   "volcanic_explosive",
+   "impact",
+   "fluvial_lacustrine",
+   "evaporitic",
+   "hydrothermal",
+   "glacial",
+   "periglacial",
+   "aeolian",
+   "acidic_aqueous"
+  ],
+  "landform": [
+   "lava_flow_field",
+   "lava_tube_cave",
+   "pit_skylight",
+   "impact_crater",
+   "alluvial_fan_delta",
+   "playa_salt_flat",
+   "patterned_ground",
+   "dune_field",
+   "volcanic_cone_shield",
+   "caldera",
+   "massif_highland",
+   "plains",
+   "valley_canyon",
+   "layered_sedimentary_outcrop",
+   "yardang_aeolian"
+  ],
+  "resource": [
+   "water_ice_cold_traps",
+   "ground_ice",
+   "cave_ice",
+   "hydrated_minerals",
+   "hydrated_salts",
+   "sulfates",
+   "perchlorate",
+   "iron_oxides",
+   "ilmenite_mare_basalt",
+   "regolith_oxygen_feldspar",
+   "metals_ni_fe",
+   "radioactive_minerals"
+  ]
+ },
+ "tag_equivalences": {
+  "_doc": "Tags treated as the same class when computing Jaccard similarity (planetary class <- Earth classes).",
+  "ground_ice": [
+   "ground_ice",
+   "water_ice_cold_traps",
+   "cave_ice"
+  ],
+  "water_ice_cold_traps": [
+   "ground_ice",
+   "water_ice_cold_traps",
+   "cave_ice"
+  ],
+  "perchlorate": [
+   "perchlorate",
+   "nitrate_perchlorate",
+   "perchlorate_salts"
+  ],
+  "perchlorate_salts": [
+   "perchlorate",
+   "nitrate_perchlorate",
+   "perchlorate_salts"
+  ],
+  "nitrate_perchlorate": [
+   "perchlorate",
+   "nitrate_perchlorate",
+   "perchlorate_salts"
+  ],
+  "hydrated_minerals": [
+   "hydrated_minerals",
+   "hydrated_salts"
+  ],
+  "hydrated_salts": [
+   "hydrated_minerals",
+   "hydrated_salts"
+  ],
+  "sulfate": [
+   "sulfate",
+   "sulfates"
+  ],
+  "sulfates": [
+   "sulfate",
+   "sulfates"
+  ],
+  "ilmenite_mare_basalt": [
+   "ilmenite_mare_basalt"
+  ],
+  "norite_mafic_intrusive": [
+   "norite_mafic_intrusive",
+   "basalt_mafic"
+  ]
+ },
+ "features": {
+  "lithology": {
+   "type": "categorical",
+   "similarity": "jaccard",
+   "earth_field": "lithology_tags",
+   "ref_field": "lithology_tags",
+   "group": "fidelity"
+  },
+  "process": {
+   "type": "categorical",
+   "similarity": "jaccard",
+   "earth_field": "process_tags",
+   "ref_field": "process_tags",
+   "group": "fidelity",
+   "note": "covers volcanic / impact / aqueous / periglacial process similarity"
+  },
+  "landform": {
+   "type": "categorical",
+   "similarity": "jaccard",
+   "earth_field": "landform_tags",
+   "ref_field": "landform_tags",
+   "group": "fidelity"
+  },
+  "resource": {
+   "type": "categorical",
+   "similarity": "jaccard",
+   "earth_field": "resource_tags",
+   "ref_field": "resource_tags",
+   "group": "fidelity"
+  },
+  "slope": {
+   "type": "numeric",
+   "similarity": "gaussian_pair",
+   "units": "deg",
+   "sigma_median_deg": 4.0,
+   "sigma_p90_deg": 6.0,
+   "baseline": {
+    "Moon": "t90m_r5km",
+    "Mars": "t450m_r15km"
+   },
+   "group": "fidelity",
+   "note": "sim = 0.5*exp(-0.5*(dmed/4)^2) + 0.5*exp(-0.5*(dp90/6)^2); slopes compared at matched DEM baselines (Moon refs 80-118 m DEM vs Earth 90 m grid; Mars 463 m vs Earth 450 m grid)"
+  },
+  "ruggedness": {
+   "type": "numeric",
+   "similarity": "log_ratio",
+   "units": "m",
+   "scale_ln": 1.0,
+   "baseline": {
+    "Moon": "t90m_r5km",
+    "Mars": "t450m_r15km"
+   },
+   "group": "fidelity",
+   "note": "sim = exp(-|ln(TRI_earth/TRI_ref)|), i.e. 0.5 at a factor-2 difference"
+  },
+  "thermal": {
+   "type": "numeric",
+   "similarity": "gaussian",
+   "units": "K",
+   "sigma_K": 30.0,
+   "group": "fidelity",
+   "note": "Earth: CHELSA bio1 (fallback ERA5 mean) for surface sites; for lava-tube references the Earth value is the same air-temperature normal used as a proxy for cave interior temperature (documented approximation). Ref: literature/modeled mean surface temperature."
+  },
+  "aridity": {
+   "type": "numeric",
+   "similarity": "aridity_combined",
+   "units": "AI = P/ET0 (dimensionless); P in mm/yr",
+   "threshold": 0.05,
+   "decay": 0.15,
+   "precip_threshold_mm": 50,
+   "precip_decay_mm": 200,
+   "group": "fidelity",
+   "note": "References have no liquid precipitation (AI = 0, P = 0). sim = 0.5*sim_AI + 0.5*sim_P with sim_AI = 1 if AI<=0.05 (UNEP hyper-arid) else exp(-(AI-0.05)/0.15) and sim_P = 1 if P<=50 mm/yr else exp(-(P-50)/200). The precipitation term is needed because P/ET0 classifies cold polar deserts (very low ET0) as humid. Both from ERA5 1991-2020."
+  },
+  "ice": {
+   "type": "numeric",
+   "similarity": "agreement",
+   "units": "probability 0-1",
+   "group": "fidelity",
+   "note": "sim = 1 - |I_earth - I_ref|; I_ref = 1 if the reference has literature ice evidence (ground_ice / water_ice_cold_traps tag), else 0; I_earth = max(permafrost probability (Obu 2019, or ERA5-MAAT logistic model where Obu unavailable), WorldCover snow/ice fraction)."
+  },
+  "abiotic_surface": {
+   "type": "numeric",
+   "similarity": "fraction",
+   "units": "fraction 0-1",
+   "group": "fidelity",
+   "note": "WorldCover bare/sparse + snow/ice fraction within 5 km (references are 100% unvegetated)."
+  },
+  "dust_sediment": {
+   "type": "numeric",
+   "similarity": "gaussian",
+   "units": "fraction <50 um (silt+clay)",
+   "sigma": 0.15,
+   "group": "fidelity",
+   "note": "SoilGrids 0-5 cm silt+clay vs reference fine fraction; only the Moon has a sourced value (≈50% by mass <60-80 um, wiki:Lunar regolith) -> approximated as 0.45 <50 um (derived, documented); Mars references are null so the feature drops out for Mars."
+  }
+ },
+ "operational": {
+  "_doc": "Operational test suitability (separate score). Not a fidelity measure.",
+  "weights": {
+   "access": 0.3,
+   "trafficability": 0.2,
+   "climate_workability": 0.2,
+   "regulatory": 0.15,
+   "infrastructure": 0.15
+  },
+  "access": {
+   "similarity": "exp_decay",
+   "units": "m",
+   "scale_m": 25000,
+   "note": "sim = exp(-d/25 km); d = distance to nearest mapped road. OSM Overpass was unreachable from the build host, so d comes from Natural Earth 1:10m roads (major roads only; upper bound). No road within 600 km (Antarctica) -> censored, sim ~ 0."
+  },
+  "trafficability": {
+   "note": "fraction of 30 m slopes < 15 deg within 2 km"
+  },
+  "climate_workability": {
+   "note": "fraction of months whose ERA5 1991-2020 mean 2 m temperature is within [-25, 35] deg C"
+  },
+  "regulatory": {
+   "unrestricted_or_unknown": 1.0,
+   "public_land_permit": 0.8,
+   "populated_or_mining": 0.7,
+   "private_land": 0.6,
+   "protected_area": 0.5,
+   "antarctic_treaty": 0.3
+  },
+  "infrastructure": {
+   "analog_research_station": 1.0,
+   "analog_research_history": 0.7,
+   "none_known": 0.4
+  }
+ },
+ "mission_profiles": {
+  "MOON_ISRU_ICE": {
+   "body": "Moon",
+   "references": [
+    "MOON-REF-04",
+    "MOON-REF-02"
+   ],
+   "description": "Cold-trap / volatile prospecting and ice-handling tests",
+   "weights": {
+    "ice": 0.25,
+    "thermal": 0.15,
+    "lithology": 0.1,
+    "process": 0.05,
+    "landform": 0.1,
+    "slope": 0.1,
+    "ruggedness": 0.05,
+    "aridity": 0.05,
+    "abiotic_surface": 0.05,
+    "dust_sediment": 0.05,
+    "resource": 0.05
+   }
+  },
+  "MOON_ROVER_MOBILITY": {
+   "body": "Moon",
+   "references": [
+    "MOON-REF-01",
+    "MOON-REF-03",
+    "MOON-REF-07"
+   ],
+   "description": "Rover/LTV trafficability on polar slopes and mare regolith",
+   "weights": {
+    "slope": 0.25,
+    "ruggedness": 0.2,
+    "dust_sediment": 0.15,
+    "abiotic_surface": 0.1,
+    "landform": 0.1,
+    "lithology": 0.05,
+    "process": 0.05,
+    "thermal": 0.05,
+    "aridity": 0.05
+   }
+  },
+  "MOON_EVA_HABITAT": {
+   "body": "Moon",
+   "references": [
+    "MOON-REF-01",
+    "MOON-REF-03"
+   ],
+   "description": "EVA and surface-habitat operations in polar highland terrain",
+   "weights": {
+    "thermal": 0.15,
+    "slope": 0.15,
+    "ruggedness": 0.1,
+    "dust_sediment": 0.15,
+    "abiotic_surface": 0.1,
+    "aridity": 0.1,
+    "lithology": 0.1,
+    "landform": 0.05,
+    "process": 0.05,
+    "ice": 0.05
+   }
+  },
+  "MOON_FIELD_GEOLOGY": {
+   "body": "Moon",
+   "references": [
+    "MOON-REF-01",
+    "MOON-REF-02"
+   ],
+   "description": "Astronaut field-geology training for impact-dominated highland crust (replaces astrobiology, which is not applicable to the Moon)",
+   "weights": {
+    "lithology": 0.3,
+    "process": 0.2,
+    "landform": 0.15,
+    "resource": 0.1,
+    "slope": 0.05,
+    "ruggedness": 0.05,
+    "abiotic_surface": 0.1,
+    "aridity": 0.05
+   }
+  },
+  "MOON_LAVA_TUBE": {
+   "body": "Moon",
+   "references": [
+    "MOON-REF-05",
+    "MOON-REF-06"
+   ],
+   "description": "Pit / lava-tube access and subsurface habitat scouting",
+   "weights": {
+    "landform": 0.25,
+    "lithology": 0.15,
+    "process": 0.15,
+    "thermal": 0.1,
+    "slope": 0.05,
+    "ruggedness": 0.05,
+    "abiotic_surface": 0.1,
+    "aridity": 0.05,
+    "resource": 0.05,
+    "dust_sediment": 0.05
+   }
+  },
+  "MARS_ISRU_ICE": {
+   "body": "Mars",
+   "references": [
+    "MARS-REF-04",
+    "MARS-REF-07",
+    "MARS-REF-05"
+   ],
+   "description": "Ground-ice prospecting, drilling and extraction tests",
+   "weights": {
+    "ice": 0.25,
+    "thermal": 0.15,
+    "aridity": 0.1,
+    "landform": 0.1,
+    "lithology": 0.1,
+    "process": 0.05,
+    "resource": 0.1,
+    "slope": 0.05,
+    "ruggedness": 0.05,
+    "abiotic_surface": 0.05
+   }
+  },
+  "MARS_ROVER_MOBILITY": {
+   "body": "Mars",
+   "references": [
+    "MARS-REF-02",
+    "MARS-REF-01"
+   ],
+   "description": "Rover traverse over crater-floor sedimentary terrain",
+   "weights": {
+    "slope": 0.25,
+    "ruggedness": 0.2,
+    "abiotic_surface": 0.15,
+    "landform": 0.1,
+    "lithology": 0.05,
+    "process": 0.05,
+    "aridity": 0.1,
+    "thermal": 0.05,
+    "dust_sediment": 0.05
+   }
+  },
+  "MARS_EVA_HABITAT": {
+   "body": "Mars",
+   "references": [
+    "MARS-REF-03",
+    "MARS-REF-07"
+   ],
+   "description": "Habitat siting and EVA on low-slope plains",
+   "weights": {
+    "slope": 0.15,
+    "ruggedness": 0.1,
+    "thermal": 0.15,
+    "aridity": 0.15,
+    "abiotic_surface": 0.1,
+    "ice": 0.1,
+    "landform": 0.1,
+    "lithology": 0.05,
+    "process": 0.05,
+    "dust_sediment": 0.05
+   }
+  },
+  "MARS_ASTROBIO_SEDIMENTS": {
+   "body": "Mars",
+   "references": [
+    "MARS-REF-01",
+    "MARS-REF-02"
+   ],
+   "description": "Biosignature search in lacustrine / deltaic / evaporitic sediments",
+   "weights": {
+    "lithology": 0.25,
+    "process": 0.2,
+    "landform": 0.15,
+    "resource": 0.1,
+    "aridity": 0.1,
+    "abiotic_surface": 0.1,
+    "thermal": 0.05,
+    "ice": 0.05
+   }
+  },
+  "MARS_LAVA_TUBE": {
+   "body": "Mars",
+   "references": [
+    "MARS-REF-06"
+   ],
+   "description": "Lava-tube / skylight access on basaltic shields",
+   "weights": {
+    "landform": 0.25,
+    "lithology": 0.15,
+    "process": 0.15,
+    "thermal": 0.1,
+    "aridity": 0.1,
+    "abiotic_surface": 0.1,
+    "slope": 0.05,
+    "ruggedness": 0.05,
+    "resource": 0.05
+   }
+  }
+ },
+ "aggregation": {
+  "over_references": "max",
+  "note": "Profile score = best-matching reference in the profile; the matched reference is reported. Per-reference scores are in data/processed/pair_scores.csv."
+ },
+ "provenance_confidence": {
+  "measured": 0.95,
+  "derived": 0.85,
+  "modeled": 0.7,
+  "literature": 0.75,
+  "hypothesized": 0.3,
+  "unavailable": 0.0
+ },
+ "sensitivity": {
+  "n_draws": 2000,
+  "dirichlet_concentration": 50,
+  "seed": 20261115,
+  "oat_perturbation": 0.2,
+  "top_k": 5
+ },
+ "lunar_regolith_fine_fraction": {
+  "value": 0.45,
+  "provenance": "derived",
+  "quote": "By mass 50% is particles smaller than 60-80μm, 10% smaller than 10μm, and 10% larger than 1mm.",
+  "source": "wiki:Lunar regolith",
+  "method": "Assume fraction <50 um is somewhat below the 50% passing 60-80 um -> 0.45 (uncertainty ~ +/-0.1)."
+ },
+ "permafrost_model": {
+  "formula": "p = 1/(1+exp((MAAT_C + 2)/1.0))",
+  "provenance": "modeled",
+  "note": "Used only where Obu et al. (2019) is unavailable (Southern Hemisphere / <25N). MAAT = CHELSA bio1 (fallback ERA5). Threshold near -2 C reflects the common observation that permafrost becomes likely below MAAT ~ -1 to -2 C; this is a coarse proxy, not a permafrost map."
+ }
+}

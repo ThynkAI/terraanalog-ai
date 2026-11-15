@@ -6,86 +6,83 @@
  },
  "profiles": {
   "MOON_ISRU_ICE": {
-   "mc_spearman_mean": 0.923,
-   "mc_spearman_p05": 0.792,
+   "mc_spearman_mean": 0.914,
+   "mc_spearman_p05": 0.8,
    "oat_max_rank_shift": {
-    "ice": 1,
-    "thermal": 0,
-    "lithology": 1,
-    "process": 1,
-    "landform": 2,
+    "ice": 2,
+    "thermal": 1,
+    "lithology": 2,
+    "process": 2,
+    "landform": 4,
     "slope": 2,
     "ruggedness": 2,
-    "aridity": 1,
+    "aridity": 3,
     "abiotic_surface": 2,
-    "dust_sediment": 1,
-    "resource": 1
+    "dust_sediment": 3,
+    "resource": 2
    },
    "lofo": {
     "ice": {
-     "spearman_vs_base": 0.894,
+     "spearman_vs_base": 0.863,
      "top5_changed": [
+      "EA-001",
       "EA-004",
       "EA-005",
       "EA-007",
-      "EA-023",
       "EA-024",
       "EA-025"
      ]
     },
     "thermal": {
-     "spearman_vs_base": 1.0,
+     "spearman_vs_base": 0.999,
      "top5_changed": []
     },
     "lithology": {
-     "spearman_vs_base": 0.99,
-     "top5_changed": []
-    },
-    "process": {
-     "spearman_vs_base": 0.986,
-     "top5_changed": []
-    },
-    "landform": {
-     "spearman_vs_base": 0.823,
-     "top5_changed": []
-    },
-    "slope": {
-     "spearman_vs_base": 0.888,
-     "top5_changed": [
-      "EA-001",
-      "EA-024"
-     ]
-    },
-    "ruggedness": {
-     "spearman_vs_base": 0.949,
+     "spearman_vs_base": 0.989,
      "top5_changed": [
       "EA-001",
       "EA-023"
      ]
     },
-    "aridity": {
-     "spearman_vs_base": 0.951,
+    "process": {
+     "spearman_vs_base": 0.984,
      "top5_changed": [
       "EA-001",
-      "EA-024"
+      "EA-023"
+     ]
+    },
+    "landform": {
+     "spearman_vs_base": 0.864,
+     "top5_changed": [
+      "EA-001",
+      "EA-023"
+     ]
+    },
+    "slope": {
+     "spearman_vs_base": 0.869,
+     "top5_changed": []
+    },
+    "ruggedness": {
+     "spearman_vs_base": 0.957,
+     "top5_changed": []
+    },
+    "aridity": {
+     "spearman_vs_base": 0.94,
+     "top5_changed": [
+      "EA-019",
+      "EA-023"
      ]
     },
     "abiotic_surface": {
-     "spearman_vs_base": 0.957,
-     "top5_changed": [
-      "EA-001",
-      "EA-024"
-     ]
+     "spearman_vs_base": 0.945,
+     "top5_changed": []
     },
     "dust_sediment": {
-     "spearman_vs_base": 0.99,
-     "top5_changed": [
-      "EA-001",
-      "EA-023"
-     ]
+     "spearman_vs_base": 0.986,
+     "top5_changed": []
     },
     "resource": {
-     "spearman_vs_base": 0.968,
+     "spearman_vs_base": 0.976,
      "top5_changed": []
     }
    },
@@ -94,58 +91,61 @@
     "EA-004",
     "EA-005",
     "EA-007",
-    "EA-001"
+    "EA-023"
    ]
   },
   "MOON_ROVER_MOBILITY": {
-   "mc_spearman_mean": 0.914,
-   "mc_spearman_p05": 0.794,
+   "mc_spearman_mean": 0.925,
+   "mc_spearman_p05": 0.84,
    "oat_max_rank_shift": {
     "slope": 4,
     "ruggedness": 3,
-    "dust_sediment": 0,
+    "dust_sediment": 2,
     "abiotic_surface": 3,
     "landform": 2,
     "lithology": 1,
     "process": 1,
-    "thermal": 0,
+    "thermal": 1,
     "aridity": 2
    },
    "lofo": {
     "slope": {
-     "spearman_vs_base": 0.632,
+     "spearman_vs_base": 0.755,
      "top5_changed": [
-      "EA-011",
+      "EA-006",
       "EA-017"
      ]
     },
     "ruggedness": {
-     "spearman_vs_base": 0.779,
+     "spearman_vs_base": 0.849,
      "top5_changed": [
-      "EA-006",
-      "EA-011",
-      "EA-018",
-      "EA-020"
+      "EA-008",
+      "EA-018"
      ]
     },
     "dust_sediment": {
-     "spearman_vs_base": 0.985,
-     "top5_changed": []
-    },
-    "abiotic_surface": {
-     "spearman_vs_base": 0.868,
+     "spearman_vs_base": 0.947,
      "top5_changed": [
       "EA-002",
+      "EA-006",
+      "EA-020",
+      "EA-023"
+     ]
+    },
+    "abiotic_surface": {
+     "spearman_vs_base": 0.861,
+     "top5_changed": [
+      "EA-006",
       "EA-011",
-      "EA-025",
-      "EA-027"
+      "EA-016",
+      "EA-025"
      ]
     },
     "landform": {
-     "spearman_vs_base": 0.945,
+     "spearman_vs_base": 0.965,
      "top5_changed": [
-      "EA-002",
-      "EA-021"
+      "EA-009",
+      "EA-023"
      ]
     },
     "lithology": {
@@ -153,98 +153,111 @@
      "top5_changed": []
     },
     "process": {
-     "spearman_vs_base": 0.985,
+     "spearman_vs_base": 0.989,
      "top5_changed": []
     },
     "thermal": {
-     "spearman_vs_base": 0.999,
+     "spearman_vs_base": 0.998,
      "top5_changed": []
     },
     "aridity": {
-     "spearman_vs_base": 0.968,
+     "spearman_vs_base": 0.959,
      "top5_changed": [
-      "EA-006",
-      "EA-011"
+      "EA-023",
+      "EA-025"
      ]
     }
    },
    "top5_base": [
     "EA-028",
     "EA-008",
-    "EA-020",
-    "EA-002",
-    "EA-011"
+    "EA-011",
+    "EA-023",
+    "EA-006"
    ]
   },
   "MOON_EVA_HABITAT": {
-   "mc_spearman_mean": 0.934,
-   "mc_spearman_p05": 0.843,
+   "mc_spearman_mean": 0.938,
+   "mc_spearman_p05": 0.861,
    "oat_max_rank_shift": {
     "thermal": 2,
-    "slope": 3,
-    "ruggedness": 3,
-    "dust_sediment": 2,
-    "abiotic_surface": 4,
-    "aridity": 4,
-    "lithology": 4,
+    "slope": 2,
+    "ruggedness": 2,
+    "dust_sediment": 4,
+    "abiotic_surface": 3,
+    "aridity": 2,
+    "lithology": 2,
     "landform": 2,
-    "process": 2,
+    "process": 3,
     "ice": 2
    },
    "lofo": {
     "thermal": {
-     "spearman_vs_base": 0.966,
+     "spearman_vs_base": 0.963,
      "top5_changed": [
-      "EA-003",
-      "EA-019"
+      "EA-002",
+      "EA-023"
      ]
     },
     "slope": {
-     "spearman_vs_base": 0.888,
+     "spearman_vs_base": 0.968,
      "top5_changed": [
-      "EA-018",
-      "EA-019"
+      "EA-019",
+      "EA-023"
      ]
     },
     "ruggedness": {
-     "spearman_vs_base": 0.955,
+     "spearman_vs_base": 0.98,
      "top5_changed": [
+      "EA-001",
       "EA-017",
-      "EA-019"
+      "EA-019",
+      "EA-023"
      ]
     },
     "dust_sediment": {
-     "spearman_vs_base": 0.975,
+     "spearman_vs_base": 0.876,
      "top5_changed": []
     },
     "abiotic_surface": {
-     "spearman_vs_base": 0.888,
+     "spearman_vs_base": 0.862,
      "top5_changed": [
+      "EA-001",
+      "EA-014",
       "EA-019",
-      "EA-024"
+      "EA-023"
      ]
     },
     "aridity": {
-     "spearman_vs_base": 0.901,
-     "top5_changed": []
+     "spearman_vs_base": 0.905,
+     "top5_changed": [
+      "EA-001",
+      "EA-017"
+     ]
     },
     "lithology": {
-     "spearman_vs_base": 0.966,
-     "top5_changed": []
+     "spearman_vs_base": 0.986,
+     "top5_changed": [
+      "EA-002",
+      "EA-017"
+     ]
     },
     "landform": {
-     "spearman_vs_base": 0.967,
+     "spearman_vs_base": 0.992,
      "top5_changed": []
     },
     "process": {
-     "spearman_vs_base": 0.967,
-     "top5_changed": []
+     "spearman_vs_base": 0.986,
+     "top5_changed": [
+      "EA-002",
+      "EA-017"
+     ]
     },
     "ice": {
-     "spearman_vs_base": 0.976,
+     "spearman_vs_base": 0.981,
      "top5_changed": [
-      "EA-017",
-      "EA-019"
+      "EA-002",
+      "EA-017"
      ]
     }
    },
@@ -318,65 +331,65 @@
    ]
   },
   "MOON_LAVA_TUBE": {
-   "mc_spearman_mean": 0.974,
-   "mc_spearman_p05": 0.923,
+   "mc_spearman_mean": 0.97,
+   "mc_spearman_p05": 0.922,
    "oat_max_rank_shift": {
     "landform": 2,
-    "lithology": 1,
-    "process": 1,
-    "thermal": 1,
+    "lithology": 3,
+    "process": 3,
+    "thermal": 2,
     "slope": 1,
     "ruggedness": 1,
-    "abiotic_surface": 2,
+    "abiotic_surface": 3,
     "aridity": 1,
     "resource": 1,
-    "dust_sediment": 1
+    "dust_sediment": 2
    },
    "lofo": {
     "landform": {
-     "spearman_vs_base": 0.956,
+     "spearman_vs_base": 0.97,
      "top5_changed": [
       "EA-006",
       "EA-022"
      ]
     },
     "lithology": {
-     "spearman_vs_base": 0.983,
+     "spearman_vs_base": 0.978,
      "top5_changed": []
     },
     "process": {
-     "spearman_vs_base": 0.988,
+     "spearman_vs_base": 0.983,
      "top5_changed": [
       "EA-006",
       "EA-021"
      ]
     },
     "thermal": {
-     "spearman_vs_base": 0.995,
+     "spearman_vs_base": 0.99,
      "top5_changed": []
     },
     "slope": {
-     "spearman_vs_base": 0.995,
+     "spearman_vs_base": 0.984,
      "top5_changed": []
     },
     "ruggedness": {
-     "spearman_vs_base": 0.997,
+     "spearman_vs_base": 0.996,
      "top5_changed": []
     },
     "abiotic_surface": {
-     "spearman_vs_base": 0.919,
+     "spearman_vs_base": 0.925,
      "top5_changed": []
     },
     "aridity": {
-     "spearman_vs_base": 0.982,
+     "spearman_vs_base": 0.97,
      "top5_changed": []
     },
     "resource": {
-     "spearman_vs_base": 0.998,
+     "spearman_vs_base": 0.997,
      "top5_changed": []
     },
     "dust_sediment": {
-     "spearman_vs_base": 0.998,
+     "spearman_vs_base": 0.994,
      "top5_changed": []
     }
    },
@@ -973,6 +986,191 @@
    "climate_workability": 1.0,
    "regulatory": 0.8,
    "infrastructure": 1.0
+  }
+ },
+ "strict_evidence_variant": {
+  "method": "categorical tags with provenance 'hypothesized' removed",
+  "profiles": {
+   "MOON_ISRU_ICE": {
+    "spearman_strict_vs_base": 0.973,
+    "top5_base": [
+     "EA-002",
+     "EA-004",
+     "EA-005",
+     "EA-007",
+     "EA-023"
+    ],
+    "top5_strict": [
+     "EA-002",
+     "EA-004",
+     "EA-005",
+     "EA-007",
+     "EA-019"
+    ],
+    "max_rank_shift": 9
+   },
+   "MOON_ROVER_MOBILITY": {
+    "spearman_strict_vs_base": 0.956,
+    "top5_base": [
+     "EA-028",
+     "EA-008",
+     "EA-011",
+     "EA-023",
+     "EA-006"
+    ],
+    "top5_strict": [
+     "EA-028",
+     "EA-008",
+     "EA-011",
+     "EA-002",
+     "EA-023"
+    ],
+    "max_rank_shift": 8
+   },
+   "MOON_EVA_HABITAT": {
+    "spearman_strict_vs_base": 0.971,
+    "top5_base": [
+     "EA-004",
+     "EA-005",
+     "EA-002",
+     "EA-001",
+     "EA-019"
+    ],
+    "top5_strict": [
+     "EA-004",
+     "EA-005",
+     "EA-001",
+     "EA-019",
+     "EA-017"
+    ],
+    "max_rank_shift": 6
+   },
+   "MOON_FIELD_GEOLOGY": {
+    "spearman_strict_vs_base": 0.951,
+    "top5_base": [
+     "EA-024",
+     "EA-002",
+     "EA-023",
+     "EA-025",
+     "EA-027"
+    ],
+    "top5_strict": [
+     "EA-024",
+     "EA-002",
+     "EA-015",
+     "EA-025",
+     "EA-023"
+    ],
+    "max_rank_shift": 9
+   },
+   "MOON_LAVA_TUBE": {
+    "spearman_strict_vs_base": 0.981,
+    "top5_base": [
+     "EA-009",
+     "EA-016",
+     "EA-008",
+     "EA-021",
+     "EA-022"
+    ],
+    "top5_strict": [
+     "EA-008",
+     "EA-009",
+     "EA-016",
+     "EA-021",
+     "EA-028"
+    ],
+    "max_rank_shift": 5
+   },
+   "MARS_ISRU_ICE": {
+    "spearman_strict_vs_base": 0.988,
+    "top5_base": [
+     "EA-002",
+     "EA-004",
+     "EA-005",
+     "EA-007",
+     "EA-028"
+    ],
+    "top5_strict": [
+     "EA-002",
+     "EA-004",
+     "EA-007",
+     "EA-005",
+     "EA-028"
+    ],
+    "max_rank_shift": 3
+   },
+   "MARS_ROVER_MOBILITY": {
+    "spearman_strict_vs_base": 0.993,
+    "top5_base": [
+     "EA-028",
+     "EA-008",
+     "EA-006",
+     "EA-001",
+     "EA-003"
+    ],
+    "top5_strict": [
+     "EA-028",
+     "EA-006",
+     "EA-008",
+     "EA-001",
+     "EA-003"
+    ],
+    "max_rank_shift": 2
+   },
+   "MARS_EVA_HABITAT": {
+    "spearman_strict_vs_base": 0.968,
+    "top5_base": [
+     "EA-002",
+     "EA-018",
+     "EA-028",
+     "EA-010",
+     "EA-011"
+    ],
+    "top5_strict": [
+     "EA-002",
+     "EA-018",
+     "EA-028",
+     "EA-010",
+     "EA-011"
+    ],
+    "max_rank_shift": 6
+   },
+   "MARS_ASTROBIO_SEDIMENTS": {
+    "spearman_strict_vs_base": 0.928,
+    "top5_base": [
+     "EA-028",
+     "EA-003",
+     "EA-018",
+     "EA-001",
+     "EA-011"
+    ],
+    "top5_strict": [
+     "EA-003",
+     "EA-018",
+     "EA-001",
+     "EA-023",
+     "EA-011"
+    ],
+    "max_rank_shift": 7
+   },
+   "MARS_LAVA_TUBE": {
+    "spearman_strict_vs_base": 0.964,
+    "top5_base": [
+     "EA-009",
+     "EA-016",
+     "EA-008",
+     "EA-021",
+     "EA-010"
+    ],
+    "top5_strict": [
+     "EA-008",
+     "EA-009",
+     "EA-021",
+     "EA-016",
+     "EA-010"
+    ],
+    "max_rank_shift": 7
+   }
   }
  }
 }
