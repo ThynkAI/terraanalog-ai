@@ -6,6 +6,8 @@ test("overview case cards and scientific section links form a complete review pa
   const mainNav = page.getByRole("navigation", { name: "Main", exact: true });
   const bounds = await mainNav.boundingBox();
   expect(bounds!.height).toBeLessThan(50);
+  await expect(page.getByText("Initialising globe…", { exact: true })).toBeHidden({ timeout: 30_000 });
+  await expect(page.getByTestId("earth-map").locator("canvas")).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath("final-homepage.png") });
   await page.getByRole("link", { name: /Investigate this case.*Undara/ }).click();
   await expect(page).toHaveURL(/case=undara-cave-robotics/);
