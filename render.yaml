@@ -1,5 +1,5 @@
 # Render Blueprint for TerraAnalog AI (https://render.com/docs/blueprint-spec).
-# One click: Render Dashboard → New → Blueprint → pick this repository. Creates two free web services:
+# One click: Render Dashboard → New → Blueprint → pick this repository. Creates two Starter web services (always-on):
 #   terraanalog-api  FastAPI scoring/data service (app/backend), serving the research dataset in app/data/research
 #   terraanalog-web  Next.js UI (app/web); its server-side /api/* proxy is wired to the API service below.
 # No secrets are needed.
@@ -7,7 +7,7 @@ services:
   - type: web
     name: terraanalog-api
     runtime: python
-    plan: free
+    plan: starter
     rootDir: app
     buildCommand: pip install -r backend/requirements.txt
     startCommand: uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port $PORT
@@ -23,7 +23,7 @@ services:
   - type: web
     name: terraanalog-web
     runtime: node
-    plan: free
+    plan: starter
     rootDir: app/web
     buildCommand: npm ci && npm run build
     startCommand: npm start           # next start honours $PORT
@@ -33,7 +33,7 @@ services:
         value: "22"
       - key: NEXT_TELEMETRY_DISABLED
         value: "1"
-      # Cap the V8 heap (applies to the build and to `next start`). Free instances have 512 MB RAM at runtime;
+      # Cap the V8 heap (applies to the build and to `next start`). Starter instances have 512 MB RAM at runtime;
       # Render builds run separately on the build pipeline (Starter tier: 8 GB RAM). Verified locally 2026-11-15
       # (app/docs/TEST_RESULTS.md): `next build` succeeds with this cap, and `next start` with this cap in a
       # 512 MB container peaked at 105 MB while serving every page, the API proxy and the PDF export.
