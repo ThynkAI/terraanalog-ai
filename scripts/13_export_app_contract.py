@@ -474,11 +474,11 @@ def main():
                      "status": STATUS.get(c["used_in_package"], c["used_in_package"]), "provenance": PROV.get(c["dataset_id"], "published"),
                      "notes": "; ".join(x for x in (c["limitations"], ("doi:" + c["citation_doi"]) if c["citation_doi"] else "", f"retrieved {c['retrieval_date']}") if x)})
     crow.append({"source_id": "TA-ENGINE", "name": "TerraAnalog AI scoring engine (similarities, operational score)", "provider": "ThynkAI / TerraAnalog AI",
-                 "url": "https://github.com/ThynkAI/terraanalog-ai", "license": "repository (private; licence not yet chosen)", "data_type": "derived values",
+                 "url": "https://github.com/ThynkAI/terraanalog-ai", "license": "MIT (code, see LICENSE); derived values CC BY 4.0", "data_type": "derived values",
                  "usage": "Similarity functions, MCDA fidelity, operational score", "status": "used", "provenance": "mixed",
                  "notes": f"scripts/similarity.py, scripts/05_score.py at commit {commit}"})
     crow.append({"source_id": "TA-PF-LOGISTIC", "name": "TerraAnalog MAAT-logistic permafrost fallback", "provider": "ThynkAI / TerraAnalog AI",
-                 "url": "https://github.com/ThynkAI/terraanalog-ai", "license": "repository", "data_type": "simple model output (probability 0-1)",
+                 "url": "https://github.com/ThynkAI/terraanalog-ai", "license": "MIT (code, see LICENSE); derived values CC BY 4.0", "data_type": "simple model output (probability 0-1)",
                  "usage": "Permafrost probability where Obu et al. 2019 has no coverage (Southern Hemisphere, <25N, nodata)", "status": "used", "provenance": "provisional",
                  "notes": "Documented in config/scoring_config.json permafrost_model; low confidence (0.5)"})
     with open(out / "dataset_catalog.csv", "w", newline="", encoding="utf-8") as fh:

@@ -102,6 +102,9 @@ docs/               architecture, data integration, deployment, pitch, demo scri
 - [Pitch](docs/PITCH.md) · [3-minute demo script](docs/DEMO_SCRIPT.md) · [Presentation outline](docs/PRESENTATION_OUTLINE.md)
 - [Test results](docs/TEST_RESULTS.md) · [Screenshots](docs/screenshots/)
 
+## Licence
+Code: [MIT](../LICENSE) (copyright 2026 Deep Kanabar / ThynkAI). Data files keep their upstream licences, and research text and derived values are CC BY 4.0 unless upstream says otherwise. See *Licence and data terms* in the [top-level README](../README.md).
+
 ## Attribution
 Planetary imagery: NASA Moon Trek (LRO WAC, NASA/GSFC/ASU) and NASA Mars Trek (Viking MDIM 2.1, NASA/JPL/USGS). Earth tiles: NASA GIBS
 (Blue Marble; ASTER GDEM shaded relief, NASA/METI). Land polygons: Natural Earth (public domain). Planetary coordinates: Gazetteer of

@@ -1,7 +1,7 @@
 # Handoff to Grok Bot 2: TerraAnalog AI web application
 
 **From:** TerraAnalog AI data/science build (Grok Bot), 2026-11-15
-**Repo:** `ThynkAI/terraanalog-ai` (private), branch `main`. The package root is the repo root.
+**Repo:** `ThynkAI/terraanalog-ai` (public; code under the MIT License, see `LICENSE`), branch `main`. The package root is the repo root.
 **Your job:** build an interactive web app that *displays and explains* these results. Do not recompute science in the front end, except to reproduce scores from `sim_*` columns for the "what-if weights" feature described below.
 
 ## 1. Non-negotiable display rules

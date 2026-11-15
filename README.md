@@ -202,4 +202,25 @@ For each mission profile, a site's fidelity is `100 · Σ wᵢ·simᵢ / Σ wᵢ
 
 ## Licence and data terms
 
-No licence file has been added for the code yet. The repository owner should choose one. Data products inherit their source terms, as listed in `outputs/dataset_catalog.csv` (`license_access`): Copernicus DEM licence (attribution), ESA WorldCover / CHELSA / SoilGrids / Macrostrat / Open-Meteo CC BY 4.0, Obu et al. permafrost CC BY 3.0, Natural Earth and NASA PDS/USGS products public domain, and quoted Wikipedia text CC BY-SA 4.0.
+* **Code** (research pipeline `scripts/`, the web app in `app/`, configs and tests): [MIT License](LICENSE), copyright 2026 Deep Kanabar / ThynkAI.
+* **Research text** written for this project (README, `scientific_methodology.md`, `data_contract.md`, `app/docs/`) and **values
+  derived by TerraAnalog** (similarity scores, rankings, completeness/confidence, the `TA-ENGINE` and `TA-PF-LOGISTIC` outputs):
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), unless an upstream licence below says otherwise.
+* **Data files keep their upstream licences** (see `outputs/dataset_catalog.csv`, column `license_access`, and
+  `app/data/research/dataset_catalog.csv`). Sources whose values or quotes appear in this repository:
+  | Source | Licence |
+  |---|---|
+  | Copernicus DEM GLO-30 | Copernicus DEM licence (free, attribution required) |
+  | ESA WorldCover 2021 v200 | CC BY 4.0 |
+  | CHELSA V2.1 | CC BY 4.0 |
+  | ERA5 via Open-Meteo | CC BY 4.0 (Open-Meteo); ERA5 under the Copernicus licence |
+  | ISRIC SoilGrids 2.0 | CC BY 4.0 |
+  | Macrostrat | CC BY 4.0 |
+  | Obu et al. 2019 permafrost (PANGAEA) | CC BY 3.0 |
+  | Natural Earth | public domain |
+  | LRO LOLA, MGS MOLA, USGS Astrogeology, NASA PDS products (incl. Diviner, LCROSS, LROC, THEMIS literature values) | public domain (US Government) |
+  | Wikipedia article text (quoted evidence sentences) | CC BY-SA 4.0 (each quote cites its article and revision) |
+
+  Catalogued but not used, and not redistributed: WorldClim 2.1 (free for research), OSM (ODbL), MODIS/AppEEARS/Earthdata, Landsat,
+  Sentinel-2, HiRISE, CTX, CRISM, PSA, OpenTopography, ESA CCI permafrost. Imagery tiles (NASA GIBS, NASA Moon/Mars Trek) load at runtime
+  from NASA and are not stored in this repository. Raw rasters (`data/raw/`) are not committed.

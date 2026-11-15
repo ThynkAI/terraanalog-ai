@@ -43,6 +43,13 @@ Residuals come from the exported values being rounded to 3 dp after the publishe
 | Playwright against compose (`BASE_URL=http://127.0.0.1:13000`) | **41 passed**, 0 failed (`playwright-docker-compose.txt`) |
 The stack was stopped afterwards (`docker compose -p terraanalog down`).
 
+## Render free-tier memory check (2026-11-15 ~14:00 EST, Docker cgroup limits on the dev box)
+| Check | Result |
+|---|---|
+| `next build` with `NODE_OPTIONS=--max-old-space-size=460` (no container memory limit) | **success** (exit 0), 11/11 pages; peak container memory ~1.0 GB |
+| `next build` inside a hard **512 MB** container (heap caps of 460 and 300 MB, with and without one build worker and webpack memory optimizations) | **fails**: the build worker is OOM-killed. A 512 MB machine cannot build this app. Render runs builds on its separate build pipeline (Starter tier: 2 CPU / 8 GB), so this does not block the Blueprint |
+| Runtime: API (`uvicorn`, data/research) and web (`next start`, `NODE_OPTIONS=--max-old-space-size=460`, `API_HOST=<api>:8000`), each in its own 512 MB container | all 8 pages, `/api/*` proxy, clusters, sensitivity and a 4-site PDF returned 200; desktop Playwright **31 passed** against the capped web container; peak memory **web 105 MB, API 72 MB**, 0 OOM kills |
+
 ## One-command setup scripts
 | Script | Result |
 |---|---|

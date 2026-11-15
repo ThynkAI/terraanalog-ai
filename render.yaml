@@ -33,6 +33,12 @@ services:
         value: "22"
       - key: NEXT_TELEMETRY_DISABLED
         value: "1"
+      # Cap the V8 heap (applies to the build and to `next start`). Free instances have 512 MB RAM at runtime;
+      # Render builds run separately on the build pipeline (Starter tier: 8 GB RAM). Verified locally 2026-11-15
+      # (app/docs/TEST_RESULTS.md): `next build` succeeds with this cap, and `next start` with this cap in a
+      # 512 MB container peaked at 105 MB while serving every page, the API proxy and the PDF export.
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=460
       # API wiring: the API's public hostname (free web services cannot receive private-network traffic).
       # The proxy turns it into https://<host>. On paid plans you can switch to the private network with
       #   fromService: { name: terraanalog-api, type: web, property: hostport }
