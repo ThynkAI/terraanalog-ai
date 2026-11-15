@@ -4,6 +4,7 @@ import { ANALOG_TYPE_COLORS, VALUE_TYPE_STYLE } from "@/lib/constants";
 import { scoreColor } from "@/lib/format";
 import type { Body } from "@/lib/types";
 import { useMeta } from "./MetaContext";
+import { SERVICE_WAKE_MESSAGE, looksLikeHtml } from "@/lib/api";
 
 export function DataStatusBadge() {
   const { meta, loading } = useMeta();
@@ -116,9 +117,10 @@ export function Loading({ label = "Loading…", rows = 3 }: { label?: string; ro
 
 export function ErrorNote({ error }: { error: string | null }) {
   if (!error) return null;
+  const text = looksLikeHtml(error) ? SERVICE_WAKE_MESSAGE : error;
   return (
     <div role="alert" className="rounded-lg border border-red-400/30 bg-red-500/10 px-3 py-2 text-sm text-red-200">
-      {error}
+      {text}
     </div>
   );
 }

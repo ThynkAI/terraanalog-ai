@@ -13,6 +13,13 @@ const API_URL = () => {
   return "http://127.0.0.1:8000";
 };
 const SAFE_SEGMENT = /^[A-Za-z0-9_.\-]+$/;
+const TRANSIENT = new Set([502, 503, 504]);
+const WAKE_DETAIL = "The research service is temporarily unavailable or waking from inactivity. Please retry shortly.";
+
+function looksLikeHtml(bytes: ArrayBuffer): boolean {
+  const head = new TextDecoder().decode(bytes.slice(0, 240)).trimStart().toLowerCase();
+  return head.startsWith("<!doctype") || head.startsWith("<html") || head.includes("<title>502") || head.includes("<title>503") || head.includes("<title>504");
+}
 
 async function forward(req: NextRequest, path: string[], method: "GET" | "POST") {
   if (!path.every((p) => SAFE_SEGMENT.test(p) && p !== ".." && p !== ".")) {
@@ -27,15 +34,22 @@ async function forward(req: NextRequest, path: string[], method: "GET" | "POST")
       cache: "no-store",
       signal: AbortSignal.timeout(20000),
     });
+    const body = await res.arrayBuffer();
+    const ct = (res.headers.get("content-type") || "").toLowerCase();
+    const isJson = ct.includes("application/json") || ct.includes("+json");
+    // Never forward Render (or other gateway) HTML error pages to the browser.
+    if (!res.ok && !isJson && (TRANSIENT.has(res.status) || ct.includes("text/html") || looksLikeHtml(body))) {
+      return NextResponse.json({ detail: WAKE_DETAIL }, { status: TRANSIENT.has(res.status) ? res.status : 502 });
+    }
     const headers = new Headers();
     for (const h of ["content-type", "content-disposition"]) {
       const v = res.headers.get(h);
       if (v) headers.set(h, v);
     }
     headers.set("cache-control", "no-store");
-    return new NextResponse(await res.arrayBuffer(), { status: res.status, headers });
+    return new NextResponse(body, { status: res.status, headers });
   } catch {
-    return NextResponse.json({ detail: "The research service is temporarily unavailable or waking from inactivity. Please retry shortly." }, { status: 502 });
+    return NextResponse.json({ detail: WAKE_DETAIL }, { status: 502 });
   }
 }
 

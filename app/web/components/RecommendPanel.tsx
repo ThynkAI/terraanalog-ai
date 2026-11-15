@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState, useId } from "react";
-import { apiPost } from "@/lib/api";
+import { apiPost, userErrorMessage } from "@/lib/api";
 import { EXAMPLE_QUERIES } from "@/lib/constants";
 import type { RecommendResponse } from "@/lib/types";
 import { AnalogTypeChip, ErrorNote, ScoreBar } from "./ui";
@@ -28,7 +28,7 @@ export function RecommendPanel({ compact = false, onPick }: { compact?: boolean;
       const result = await apiPost<RecommendResponse>("/recommend", { query, top_k: compact ? 3 : 5 }, request.signal);
       if (!request.signal.aborted) setRes(result);
     } catch (e) {
-      if (!request.signal.aborted) setErr((e as Error).message);
+      if (!request.signal.aborted) setErr(userErrorMessage(e));
     } finally {
       if (!request.signal.aborted) setBusy(false);
     }
