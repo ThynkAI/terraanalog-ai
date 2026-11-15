@@ -279,42 +279,82 @@ def haversine(lat1, lon1, lat2, lon2):
     return 2 * 6371008.8 * math.asin(math.sqrt(a))
 
 
+_NE = {}
+_OVERPASS_OK = None
+
+
+def _ne_layers():
+    if not _NE:
+        from shapely.geometry import shape
+        base = RAW / "basemap"; base.mkdir(parents=True, exist_ok=True)
+        for name in ("ne_10m_roads", "ne_10m_populated_places_simple"):
+            f = base / f"{name}.geojson"
+            if not f.exists():
+                url = f"https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/{name}.geojson"
+                r = requests.get(url, timeout=600); r.raise_for_status(); f.write_bytes(r.content)
+            _NE[name] = [(shape(ft["geometry"]), ft["properties"]) for ft in load_json(f)["features"] if ft.get("geometry")]
+    return _NE
+
+
+def _nearest_ne(s, layer, max_deg=6.0):
+    from shapely.geometry import box, Point
+    from shapely.ops import transform as stransform
+    from pyproj import Transformer
+    lat, lon = s["lat"], s["lon"]
+    dl = max_deg / max(math.cos(math.radians(lat)), 0.1)
+    win = box(lon - dl, max(-90, lat - max_deg), lon + dl, min(90, lat + max_deg))
+    tf = Transformer.from_crs("EPSG:4326", f"+proj=aeqd +lat_0={lat} +lon_0={lon} +datum=WGS84 +units=m", always_xy=True)
+    best, props = None, None
+    for geom, pr in _ne_layers()[layer]:
+        if not geom.intersects(win):
+            continue
+        g = geom if geom.geom_type == "Point" else geom.intersection(win)
+        d = stransform(tf.transform, g).distance(Point(0, 0))
+        if best is None or d < best:
+            best, props = d, pr
+    return best, props
+
+
 def osm_access(s):
+    """Field-access distance. Tries the OSM Overpass API first (10 s timeout). Overpass endpoints refused TLS from
+    the build host on 2026-11-15, so the fallback is Natural Earth 1:10m roads + populated places (public domain)."""
     p = cache("osm", s["site_id"])
     if p.exists() and not REFRESH:
         return load_json(p)
-    rec = {"site_id": s["site_id"], "retrieved": RETRIEVAL_DATE, "source": "OpenStreetMap via Overpass API (ODbL)"}
-    hw = "motorway|trunk|primary|secondary|tertiary|unclassified|residential|track|service"
-    for radius in (2000, 10000, 50000, 150000):
-        q = f'[out:json][timeout:120];way[highway~"^({hw})$"](around:{radius},{s["lat"]},{s["lon"]});out geom 400;'
-        for ep in ("https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"):
-            try:
-                r = requests.post(ep, data={"data": q}, headers=H, timeout=200)
-                if r.status_code == 200:
-                    els = r.json().get("elements", [])
-                    break
-            except Exception as e:
-                rec.setdefault("errors", []).append(str(e)); els = None
-        else:
-            els = None
-        if els is None:
-            rec["road_distance_m"] = None; rec["note"] = "Overpass unavailable"; break
-        if els:
-            best, kind = 1e12, None
-            for w in els:
-                for g in w.get("geometry", []):
-                    d = haversine(s["lat"], s["lon"], g["lat"], g["lon"])
-                    if d < best:
-                        best, kind = d, w.get("tags", {}).get("highway")
-            rec.update({"road_distance_m": best, "nearest_highway_class": kind, "search_radius_m": radius,
-                        "note": "distance to nearest mapped vertex of the nearest way (upper bound of true distance)"})
-            break
-        time.sleep(2)
+    rec = {"site_id": s["site_id"], "retrieved": RETRIEVAL_DATE}
+    q = f'[out:json][timeout:25];way[highway~"^(motorway|trunk|primary|secondary|tertiary|unclassified|track)$"](around:10000,{s["lat"]},{s["lon"]});out geom 200;'
+    global _OVERPASS_OK
+    els = None
+    if _OVERPASS_OK is not False:
+        try:
+            r = requests.post("https://overpass-api.de/api/interpreter", data={"data": q}, headers=H, timeout=10)
+            if r.status_code == 200:
+                els = r.json().get("elements", []); _OVERPASS_OK = True
+        except Exception as e:
+            rec["overpass_error"] = str(e)[:200]
+            if _OVERPASS_OK is None:
+                _OVERPASS_OK = False
     else:
-        rec.update({"road_distance_m": None, "road_distance_censored_gt_m": 150000,
-                    "note": "no mapped highway/track within 150 km (right-censored)"})
+        rec["overpass_error"] = "skipped: Overpass unreachable earlier in this run"
+    if els:
+        best, kind = 1e12, None
+        for w in els:
+            for g in w.get("geometry", []):
+                d = haversine(s["lat"], s["lon"], g["lat"], g["lon"])
+                if d < best:
+                    best, kind = d, w.get("tags", {}).get("highway")
+        rec.update({"road_distance_m": best, "nearest_highway_class": kind, "source": "OpenStreetMap Overpass (ODbL)", "dataset_id": "DS-OSM"})
+    else:
+        d, pr = _nearest_ne(s, "ne_10m_roads")
+        rec.update({"source": "Natural Earth 1:10m roads (public domain)", "dataset_id": "DS-NATEARTH",
+                    "note": "Overpass unavailable from build host; Natural Earth 1:10m maps major roads only, so the distance is an upper bound on access to any track."})
+        if d is None:
+            rec.update({"road_distance_m": None, "road_distance_censored_gt_m": 600000, "nearest_highway_class": None})
+        else:
+            rec.update({"road_distance_m": d, "nearest_highway_class": (pr or {}).get("type")})
+        dp, pp = _nearest_ne(s, "ne_10m_populated_places_simple", 15.0)
+        rec.update({"populated_place_distance_m": dp, "nearest_populated_place": (pp or {}).get("name")})
     save_json(rec, p)
-    time.sleep(2)
     return rec
 
 

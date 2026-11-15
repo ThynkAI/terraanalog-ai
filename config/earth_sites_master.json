@@ -16,12 +16,12 @@
    ],
    "lithology": [
     "evaporite_salts:salt",
-    "sedimentary_clastic:sediment",
-    "sulfate:sulfate",
+    "sedimentary_clastic:soil",
+    "sulfate:sulfate?",
     "nitrate_perchlorate:nitrate"
    ],
    "process": [
-    "aeolian:wind",
+    "aeolian:aeol",
     "evaporitic:salt",
     "fluvial_lacustrine:river"
    ],
@@ -87,17 +87,17 @@
    ],
    "lithology": [
     "evaporite_salts:salt",
-    "sedimentary_clastic:sediment",
+    "sedimentary_clastic:alluv",
     "sulfate:borax"
    ],
    "process": [
     "evaporitic:evaporat",
-    "aeolian:dune",
+    "aeolian:sand",
     "fluvial_lacustrine:lake"
    ],
    "landform": [
     "playa_salt_flat:salt flat",
-    "dune_field:dune",
+    "dune_field:sand",
     "valley_canyon:valley",
     "alluvial_fan_delta:alluvial fan"
    ],
@@ -163,13 +163,13 @@
    ],
    "lithology": [
     "basalt_mafic:basalt",
-    "carbonate:carbonate",
-    "ground_ice:permafrost"
+    "carbonate:carbonate?",
+    "ground_ice:permafrost?"
    ],
    "process": [
     "volcanic_effusive:volcan",
-    "hydrothermal:hot spring",
-    "periglacial:permafrost",
+    "hydrothermal:spring",
+    "periglacial:permafrost?",
     "glacial:glacier"
    ],
    "landform": [
@@ -572,7 +572,7 @@
    "lithology": [
     "evaporite_salts:salt",
     "sedimentary_clastic:sediment",
-    "sulfate:sulfate"
+    "sulfate:gypsum"
    ],
    "process": [
     "evaporitic:evaporite",
@@ -619,7 +619,7 @@
     "volcanic_cone_shield:cinder cone"
    ],
    "resource": [
-    "iron_oxides:hematite"
+    "iron_oxides:hematite?"
    ],
    "regulatory": "protected_area:conservation",
    "infrastructure": "none_known:"
@@ -729,7 +729,7 @@
     "Meteor Crater"
    ],
    "lithology": [
-    "impact_breccia_melt:breccia",
+    "impact_breccia_melt:breccia?",
     "sedimentary_clastic:sandstone",
     "carbonate:limestone"
    ],
@@ -823,7 +823,7 @@
    ],
    "lithology": [
     "iron_oxide:iron",
-    "sulfate:sulfate",
+    "sulfate:sulph",
     "sulfide:pyrite"
    ],
    "process": [
@@ -834,7 +834,7 @@
     "valley_canyon:river"
    ],
    "resource": [
-    "sulfates:sulfate",
+    "sulfates:sulph",
     "iron_oxides:iron"
    ],
    "regulatory": "populated_or_mining:mining",
@@ -883,11 +883,11 @@
     "Mars Desert Research Station"
    ],
    "lithology": [
-    "sedimentary_clastic:sandstone",
-    "clay_phyllosilicate:clay"
+    "sedimentary_clastic:sandstone?",
+    "clay_phyllosilicate:clay?"
    ],
    "process": [
-    "fluvial_lacustrine:river",
+    "fluvial_lacustrine:river?",
     "aeolian:wind"
    ],
    "landform": [
@@ -895,7 +895,7 @@
     "plains:desert"
    ],
    "resource": [
-    "hydrated_minerals:gypsum"
+    "hydrated_minerals:gypsum?"
    ],
    "regulatory": "public_land_permit:Bureau of Land Management",
    "infrastructure": "analog_research_station:Mars Society"
