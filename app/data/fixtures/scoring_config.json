@@ -1,0 +1,298 @@
+{
+  "meta": {
+    "version": "fixture-1.0",
+    "provenance": "synthetic",
+    "notice": "SYNTHETIC FIXTURE \u2014 NOT REAL DATA. Replace with Bot 1 research outputs (see docs/DATA_INTEGRATION.md).",
+    "basis": "Body weights for terrain/thermal/dust_aridity/illumination/operational/geology follow the AnalogSite prep pack v0 weights (person_a/SCORING_METHOD.md). ice_permafrost, subsurface_access, reference multipliers and objective multipliers are TerraAnalog fixture choices pending Bot 1's scoring_config.json.",
+    "generated": "2026-11-15"
+  },
+  "scale_min": 0,
+  "scale_max": 5,
+  "min_completeness": 0.7,
+  "criteria": [
+    {
+      "id": "terrain",
+      "label": "Terrain similarity",
+      "description": "Slope, roughness and trafficability relative to the reference terrain.",
+      "earth_proxy": "SRTM / Copernicus DEM slope & roughness in AOI",
+      "source_families": [
+        "Copernicus DEM",
+        "SRTM",
+        "LOLA (target)",
+        "MOLA (target)"
+      ]
+    },
+    {
+      "id": "geology",
+      "label": "Geological similarity",
+      "description": "Lithology / process match (basaltic, impact, aqueous alteration, glacial...).",
+      "earth_proxy": "USGS planetary analog resources + peer-reviewed literature",
+      "source_families": [
+        "USGS",
+        "literature"
+      ]
+    },
+    {
+      "id": "thermal",
+      "label": "Thermal / environmental similarity",
+      "description": "Thermal extremes and diurnal/seasonal swing.",
+      "earth_proxy": "MODIS / VIIRS land-surface temperature",
+      "source_families": [
+        "MODIS LST",
+        "Diviner (target)",
+        "THEMIS (target)"
+      ]
+    },
+    {
+      "id": "dust_aridity",
+      "label": "Dust & aridity",
+      "description": "Dryness, fine-grained dust, abrasion relevance.",
+      "earth_proxy": "Precipitation climatology, aridity index, SMAP",
+      "source_families": [
+        "Worldview",
+        "SMAP"
+      ]
+    },
+    {
+      "id": "illumination",
+      "label": "Illumination contrast",
+      "description": "Polar night / low sun angle / long shadow proxy (Moon-weighted).",
+      "earth_proxy": "Latitude + DEM hillshade / insolation models",
+      "source_families": [
+        "solar geometry",
+        "DEM"
+      ]
+    },
+    {
+      "id": "ice_permafrost",
+      "label": "Ice / permafrost relevance",
+      "description": "Presence of ground ice, permafrost or glacial ice as a process analog.",
+      "earth_proxy": "Permafrost maps, field reports",
+      "source_families": [
+        "permafrost maps",
+        "literature"
+      ]
+    },
+    {
+      "id": "subsurface_access",
+      "label": "Subsurface / cave access",
+      "description": "Accessible lava tubes, caves or skylights for subsurface robotics.",
+      "earth_proxy": "Cave surveys, park inventories",
+      "source_families": [
+        "cave surveys"
+      ]
+    },
+    {
+      "id": "operational",
+      "label": "Operational testing suitability",
+      "description": "Access, permits, logistics and safety for hardware/crew field tests.",
+      "earth_proxy": "OpenStreetMap + published field logistics",
+      "source_families": [
+        "OpenStreetMap",
+        "literature"
+      ]
+    }
+  ],
+  "body_weights": {
+    "moon": {
+      "terrain": 1.0,
+      "thermal": 1.0,
+      "dust_aridity": 0.7,
+      "illumination": 1.3,
+      "operational": 0.9,
+      "geology": 1.1,
+      "ice_permafrost": 1.2,
+      "subsurface_access": 0.6
+    },
+    "mars": {
+      "terrain": 1.0,
+      "thermal": 1.1,
+      "dust_aridity": 1.2,
+      "illumination": 0.4,
+      "operational": 0.9,
+      "geology": 1.1,
+      "ice_permafrost": 0.9,
+      "subsurface_access": 0.6
+    }
+  },
+  "reference_multipliers": {
+    "moon-south-pole-region": {
+      "illumination": 1.4,
+      "ice_permafrost": 1.5,
+      "thermal": 1.2
+    },
+    "moon-shackleton": {
+      "illumination": 1.5,
+      "ice_permafrost": 1.6,
+      "terrain": 1.2
+    },
+    "moon-malapert": {
+      "terrain": 1.3,
+      "illumination": 1.3,
+      "operational": 1.2
+    },
+    "moon-de-gerlache": {
+      "illumination": 1.4,
+      "ice_permafrost": 1.4,
+      "terrain": 1.2
+    },
+    "moon-mare-tranquillitatis": {
+      "geology": 1.5,
+      "terrain": 1.1,
+      "illumination": 0.5,
+      "ice_permafrost": 0.3
+    },
+    "moon-marius-hills": {
+      "geology": 1.5,
+      "subsurface_access": 1.8,
+      "illumination": 0.5,
+      "ice_permafrost": 0.3
+    },
+    "moon-rima-hadley": {
+      "geology": 1.4,
+      "terrain": 1.3,
+      "subsurface_access": 1.3,
+      "illumination": 0.5,
+      "ice_permafrost": 0.3
+    },
+    "mars-jezero": {
+      "geology": 1.6,
+      "dust_aridity": 1.1,
+      "terrain": 1.1
+    },
+    "mars-gale": {
+      "geology": 1.4,
+      "terrain": 1.3
+    },
+    "mars-elysium-planitia": {
+      "geology": 1.3,
+      "terrain": 1.2,
+      "operational": 1.1
+    },
+    "mars-utopia-planitia": {
+      "ice_permafrost": 2.0,
+      "thermal": 1.2
+    },
+    "mars-arsia-mons": {
+      "subsurface_access": 2.0,
+      "geology": 1.3
+    },
+    "mars-planum-australe": {
+      "ice_permafrost": 2.0,
+      "thermal": 1.5,
+      "illumination": 1.5
+    },
+    "mars-meridiani-planum": {
+      "geology": 1.4,
+      "dust_aridity": 1.1
+    }
+  },
+  "objectives": [
+    {
+      "id": "general",
+      "label": "General analog fidelity",
+      "description": "Balanced weights from the body profile.",
+      "multipliers": {}
+    },
+    {
+      "id": "rover_mobility",
+      "label": "Rover mobility",
+      "description": "Trafficability, slopes, dust and logistics for rover testing.",
+      "multipliers": {
+        "terrain": 1.6,
+        "dust_aridity": 1.2,
+        "operational": 1.2
+      }
+    },
+    {
+      "id": "drilling",
+      "label": "Drilling",
+      "description": "Subsurface sampling and drill hardware.",
+      "multipliers": {
+        "geology": 1.5,
+        "ice_permafrost": 1.4,
+        "terrain": 0.8
+      }
+    },
+    {
+      "id": "isru",
+      "label": "ISRU / resource prospecting",
+      "description": "Ice and resource prospecting, extraction tests.",
+      "multipliers": {
+        "ice_permafrost": 1.8,
+        "geology": 1.3
+      }
+    },
+    {
+      "id": "habitat",
+      "label": "Habitat testing",
+      "description": "Long-duration habitation, thermal stress and isolation logistics.",
+      "multipliers": {
+        "thermal": 1.5,
+        "operational": 1.4,
+        "illumination": 1.1
+      }
+    },
+    {
+      "id": "cave_exploration",
+      "label": "Cave exploration",
+      "description": "Subsurface robotics in lava tubes and caves.",
+      "multipliers": {
+        "subsurface_access": 2.5,
+        "terrain": 1.2,
+        "geology": 1.2,
+        "illumination": 0.8
+      }
+    },
+    {
+      "id": "astronaut_field_ops",
+      "label": "Astronaut field operations",
+      "description": "EVA procedures, field geology training and crew logistics.",
+      "multipliers": {
+        "operational": 1.5,
+        "terrain": 1.2,
+        "geology": 1.2
+      }
+    }
+  ],
+  "default_objective": "general",
+  "default_reference": {
+    "moon": "moon-south-pole-region",
+    "mars": "mars-jezero"
+  },
+  "value_type_confidence": {
+    "measured": 0.9,
+    "modeled": 0.7,
+    "provisional": 0.5,
+    "synthetic": 0.25,
+    "missing": 0.0
+  },
+  "non_replicable": {
+    "moon": [
+      "Lunar gravity (1/6 g) \u2014 affects mobility, dust settling, drilling reaction forces and human locomotion.",
+      "Hard vacuum \u2014 no convective cooling, outgassing, cold welding and vacuum-specific lubrication behaviour.",
+      "Cryogenic permanently shadowed regions far colder than any Earth environment.",
+      "Unweathered, sharp, electrostatically charged regolith grains.",
+      "Space radiation (solar particle events, galactic cosmic rays) without a magnetosphere or atmosphere.",
+      "~29.5-Earth-day synodic day/night cycle and extreme thermal cycling."
+    ],
+    "mars": [
+      "Martian gravity (~0.38 g).",
+      "Thin CO2 atmosphere (~0.6 kPa mean surface pressure) \u2014 affects heat transfer, aerodynamics, dust lofting.",
+      "Surface radiation environment (no global magnetic field, thin atmosphere).",
+      "Planet-wide oxidising/perchlorate-bearing regolith chemistry at Martian scale.",
+      "Global dust storms and their duration.",
+      "Earth sites are biologically active; planetary-protection contamination conditions cannot be reproduced."
+    ]
+  },
+  "analog_types": {
+    "polar_desert": "Polar desert",
+    "permafrost_ice": "Permafrost / ground ice",
+    "basaltic_volcanic": "Basaltic / volcanic",
+    "impact_crater": "Impact crater",
+    "lava_tube_cave": "Lava tube / cave",
+    "hyperarid_desert": "Arid / hyper-arid desert",
+    "acidic_aqueous": "Aqueous alteration",
+    "high_altitude": "High altitude"
+  }
+}

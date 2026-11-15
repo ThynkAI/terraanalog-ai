@@ -1,0 +1,1864 @@
+{
+ "type": "FeatureCollection",
+ "name": "earth_analog_sites",
+ "metadata": {
+  "synthetic": false,
+  "provenance": "mixed",
+  "source_commit": "195b7a8",
+  "generated": "2026-11-15",
+  "crs": "EPSG:4326 (RFC 7946)"
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "id": "EA-001",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -69.25,
+     -24.5
+    ]
+   },
+   "properties": {
+    "site_id": "EA-001",
+    "name": "Atacama Desert (hyperarid core)",
+    "country": "Chile",
+    "region": "",
+    "analog_types": [
+     "aqueous_alteration",
+     "evaporite_basin",
+     "arid_desert"
+    ],
+    "climate": "MAAT 11.3 deg C (CHELSA_V2.1_bio1); precipitation 40.0 mm/yr and P/ET0 0.022 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: Siliciclastic (small map). Lithology tags: evaporite_salts, sedimentary_clastic, sulfate, nitrate_perchlorate; process tags: aeolian, evaporitic, fluvial_lacustrine.",
+    "description": "Baseline TerraAnalog site. Landforms: plains, playa_salt_flat, valley_canyon. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ASTROBIO_SEDIMENTS, MARS_ROVER_MOBILITY, MOON_EVA_HABITAT, MOON_ISRU_ICE, MARS_ISRU_ICE.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_ASTROBIO_SEDIMENTS",
+     "MARS_ROVER_MOBILITY",
+     "MOON_EVA_HABITAT",
+     "MOON_ISRU_ICE",
+     "MARS_ISRU_ICE"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 2651.9,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 11.3,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 40.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.022,
+     "Freeze-thaw days per year (ERA5, modeled)": 52.5,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 1.0,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 7.67,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.339,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 38849.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 70.29,
+     "Group": "baseline",
+     "Sampling point": "region centroid (wiki:Atacama Desert)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 46.89 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 60.42 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 2651.9,
+    "limitations": [
+     "Sampling point is a region centroid; local terrain may not represent the best analog outcrops.",
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Atacama Desert' (revision 1384515026), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Atacama_Desert",
+     "Navarro-González et al. (2003) Mars-Like Soils in the Atacama Desert, Chile, and the Dry Limit of Microbial Life. Science. doi:10.1126/science.1089143"
+    ],
+    "coordinate_note": "WGS84 sampling point: region centroid (wiki:Atacama Desert).",
+    "group": "baseline",
+    "data_confidence": 0.711,
+    "terraanalog_site_id": "EA-001"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-002",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -89.66667,
+     75.38333
+    ]
+   },
+   "properties": {
+    "site_id": "EA-002",
+    "name": "Haughton impact crater, Devon Island",
+    "country": "Canada",
+    "region": "",
+    "analog_types": [
+     "impact_crater",
+     "permafrost_ice",
+     "polar_desert"
+    ],
+    "climate": "MAAT -16.6 deg C (CHELSA_V2.1_bio1); precipitation 161.0 mm/yr and P/ET0 0.729 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: sedimentary (small map). Lithology tags: impact_breccia_melt, carbonate, ground_ice; process tags: impact, periglacial.",
+    "description": "Baseline TerraAnalog site. Landforms: impact_crater, patterned_ground, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_EVA_HABITAT, MARS_ISRU_ICE, MOON_ISRU_ICE, MOON_FIELD_GEOLOGY, MOON_EVA_HABITAT, MARS_ROVER_MOBILITY, MOON_ROVER_MOBILITY.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_EVA_HABITAT",
+     "MARS_ISRU_ICE",
+     "MOON_ISRU_ICE",
+     "MOON_FIELD_GEOLOGY",
+     "MOON_EVA_HABITAT",
+     "MARS_ROVER_MOBILITY",
+     "MOON_ROVER_MOBILITY"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 126.3,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": -16.6,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 161.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.729,
+     "Freeze-thaw days per year (ERA5, modeled)": 29.1,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 1.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.859,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 3.36,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.634,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": null,
+     "Road distance censored beyond (m)": 600000.0,
+     "Operational score (0-100, separate from fidelity)": 63.06,
+     "Group": "baseline",
+     "Sampling point": "crater centre (wiki:Haughton impact crater)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 62.17 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ISRU_ICE 65.71 (completeness 1.0, vs MARS-REF-07)"
+    },
+    "elevation_m": 126.3,
+    "limitations": [
+     "No mapped road/track within search radius or Overpass unavailable.",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Haughton impact crater' (revision 1379912284), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Haughton_impact_crater",
+     "Wikipedia contributors, 'Devon Island' (revision 1367566900), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Devon_Island"
+    ],
+    "coordinate_note": "WGS84 sampling point: crater centre (wiki:Haughton impact crater).",
+    "group": "baseline",
+    "data_confidence": 0.72,
+    "terraanalog_site_id": "EA-002"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-003",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -116.82583,
+     36.25028
+    ]
+   },
+   "properties": {
+    "site_id": "EA-003",
+    "name": "Death Valley (Badwater Basin)",
+    "country": "United States",
+    "region": "",
+    "analog_types": [
+     "aqueous_alteration",
+     "evaporite_basin",
+     "arid_desert"
+    ],
+    "climate": "MAAT 26.4 deg C (CHELSA_V2.1_bio1); precipitation 137.0 mm/yr and P/ET0 0.078 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: unconsolidated (medium map). Lithology tags: evaporite_salts, sedimentary_clastic, sulfate; process tags: evaporitic, aeolian, fluvial_lacustrine.",
+    "description": "Baseline TerraAnalog site. Landforms: playa_salt_flat, dune_field, valley_canyon, alluvial_fan_delta. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ASTROBIO_SEDIMENTS, MARS_ROVER_MOBILITY.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_ASTROBIO_SEDIMENTS",
+     "MARS_ROVER_MOBILITY"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": -85.4,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 26.4,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 137.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.078,
+     "Freeze-thaw days per year (ERA5, modeled)": 0.1,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.999,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 0.1,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.606,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 15731.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 68.99,
+     "Group": "baseline",
+     "Sampling point": "named feature (wiki:Badwater Basin)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 46.24 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 60.03 (completeness 0.95, vs MARS-REF-02)"
+    },
+    "elevation_m": -85.4,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Badwater Basin' (revision 1381471389), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Badwater_Basin",
+     "Wikipedia contributors, 'Death Valley' (revision 1384420473), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Death_Valley"
+    ],
+    "coordinate_note": "WGS84 sampling point: named feature (wiki:Badwater Basin).",
+    "group": "baseline",
+    "data_confidence": 0.75,
+    "terraanalog_site_id": "EA-003"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-004",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     160.83333,
+     -77.55
+    ]
+   },
+   "properties": {
+    "site_id": "EA-004",
+    "name": "McMurdo Dry Valleys (Wright Valley)",
+    "country": "Antarctica (Antarctic Treaty area)",
+    "region": "",
+    "analog_types": [
+     "permafrost_ice",
+     "polar_desert",
+     "basaltic_volcanic",
+     "evaporite_basin"
+    ],
+    "climate": "MAAT -25.6 deg C (CHELSA_V2.1_bio1); precipitation 14.0 mm/yr and P/ET0 0.076 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: dolerite (medium map). Lithology tags: granitic_felsic, basalt_mafic, evaporite_salts, ground_ice, sedimentary_clastic; process tags: periglacial, glacial, aeolian, evaporitic.",
+    "description": "Established TerraAnalog site. Landforms: valley_canyon, patterned_ground, dune_field, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_EVA_HABITAT, MARS_ISRU_ICE, MOON_ISRU_ICE, MARS_EVA_HABITAT.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MOON_EVA_HABITAT",
+     "MARS_ISRU_ICE",
+     "MOON_ISRU_ICE",
+     "MARS_EVA_HABITAT"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 786.1,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": -25.6,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 14.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.076,
+     "Freeze-thaw days per year (ERA5, modeled)": 0.0,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 1.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": null,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 13.8,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": null,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": null,
+     "Road distance censored beyond (m)": 600000.0,
+     "Operational score (0-100, separate from fidelity)": 32.54,
+     "Group": "established",
+     "Sampling point": "valley reference point (wiki:Wright Valley (coord template))",
+     "Best Moon profile": "MOON_EVA_HABITAT 50.87 (completeness 0.75, vs MOON-REF-03)",
+     "Best Mars profile": "MARS_ISRU_ICE 63.99 (completeness 0.8, vs MARS-REF-05)"
+    },
+    "elevation_m": 786.1,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "SoilGrids texture unavailable (masked/no response).",
+     "No mapped road/track within search radius or Overpass unavailable.",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'McMurdo Dry Valleys' (revision 1384612766), retrieved 2026-11-15, https://en.wikipedia.org/wiki/McMurdo_Dry_Valleys",
+     "Doran et al. (2002) Valley floor climate observations from the McMurdo dry valleys, Antarctica, 1986–2000. Journal of Geophysical Research: Atmospheres. doi:10.1029/2001JD002045"
+    ],
+    "coordinate_note": "WGS84 sampling point: valley reference point (wiki:Wright Valley (coord template)).",
+    "group": "established",
+    "data_confidence": 0.567,
+    "terraanalog_site_id": "EA-004"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-005",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.304977,
+     79.431656
+    ]
+   },
+   "properties": {
+    "site_id": "EA-005",
+    "name": "Bockfjorden Volcanic Complex (Sverrefjellet), Svalbard",
+    "country": "Norway",
+    "region": "",
+    "analog_types": [
+     "permafrost_ice",
+     "basaltic_volcanic",
+     "aqueous_alteration"
+    ],
+    "climate": "MAAT -8.8 deg C (CHELSA_V2.1_bio1); precipitation 465.0 mm/yr and P/ET0 2.125 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: limestone, dolomite, shale, sandstone, quartzite, marble (small map). Lithology tags: basalt_mafic, carbonate, ground_ice; process tags: volcanic_effusive, hydrothermal, periglacial, glacial.",
+    "description": "Established TerraAnalog site. Landforms: volcanic_cone_shield, valley_canyon. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_EVA_HABITAT, MARS_ISRU_ICE, MOON_ISRU_ICE, MOON_FIELD_GEOLOGY.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MOON_EVA_HABITAT",
+     "MARS_ISRU_ICE",
+     "MOON_ISRU_ICE",
+     "MOON_FIELD_GEOLOGY"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 483.8,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": -8.8,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 465.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 2.125,
+     "Freeze-thaw days per year (ERA5, modeled)": 46.2,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 1.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.855,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 8.48,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.571,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": null,
+     "Road distance censored beyond (m)": 600000.0,
+     "Operational score (0-100, separate from fidelity)": 51.97,
+     "Group": "established",
+     "Sampling point": "volcano summit (wiki:Sverrefjellet)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 46.99 (completeness 1.0, vs MOON-REF-01)",
+     "Best Mars profile": "MARS_ISRU_ICE 43.2 (completeness 0.85, vs MARS-REF-05)"
+    },
+    "elevation_m": 483.8,
+    "limitations": [
+     "No mapped road/track within search radius or Overpass unavailable.",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Sverrefjellet' (revision 1360740028), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Sverrefjellet"
+    ],
+    "coordinate_note": "WGS84 sampling point: volcano summit (wiki:Sverrefjellet).",
+    "group": "established",
+    "data_confidence": 0.709,
+    "terraanalog_site_id": "EA-005"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-006",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.83,
+     64.85
+    ]
+   },
+   "properties": {
+    "site_id": "EA-006",
+    "name": "Holuhraun lava field",
+    "country": "Iceland",
+    "region": "",
+    "analog_types": [
+     "basaltic_volcanic"
+    ],
+    "climate": "MAAT -0.1 deg C (CHELSA_V2.1_bio1); precipitation 1332.0 mm/yr and P/ET0 3.283 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: basalt (medium map). Lithology tags: basalt_mafic, tephra_pyroclastic; process tags: volcanic_effusive, fluvial_lacustrine, glacial.",
+    "description": "Candidate TerraAnalog site. Landforms: lava_flow_field, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ROVER_MOBILITY, MOON_ROVER_MOBILITY, MOON_LAVA_TUBE.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_ROVER_MOBILITY",
+     "MOON_ROVER_MOBILITY",
+     "MOON_LAVA_TUBE"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 748.9,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": -0.1,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 1332.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 3.283,
+     "Freeze-thaw days per year (ERA5, modeled)": 103.3,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.07,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 1.0,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 0.82,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.468,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 64298.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 55.79,
+     "Group": "candidate",
+     "Sampling point": "lava field reference point (wiki:Holuhraun)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 64.33 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 61.72 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 748.9,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Holuhraun' (revision 1378630405), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Holuhraun"
+    ],
+    "coordinate_note": "WGS84 sampling point: lava field reference point (wiki:Holuhraun).",
+    "group": "candidate",
+    "data_confidence": 0.63,
+    "terraanalog_site_id": "EA-006"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-007",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.783,
+     65.033
+    ]
+   },
+   "properties": {
+    "site_id": "EA-007",
+    "name": "Askja caldera",
+    "country": "Iceland",
+    "region": "",
+    "analog_types": [
+     "permafrost_ice",
+     "basaltic_volcanic"
+    ],
+    "climate": "MAAT -1.8 deg C (CHELSA_V2.1_bio1); precipitation 1103.0 mm/yr and P/ET0 3.121 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: volcanic: mafic rocks (small map). Lithology tags: basalt_mafic, tephra_pyroclastic, ground_ice; process tags: volcanic_effusive, volcanic_explosive, periglacial.",
+    "description": "Established TerraAnalog site. Landforms: caldera, lava_flow_field, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ISRU_ICE, MOON_ISRU_ICE, MARS_LAVA_TUBE.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_ISRU_ICE",
+     "MOON_ISRU_ICE",
+     "MARS_LAVA_TUBE"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 1055.5,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": -1.8,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 1103.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 3.121,
+     "Freeze-thaw days per year (ERA5, modeled)": 102.6,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.7,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.994,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 1.7,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": null,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 47655.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 60.19,
+     "Group": "established",
+     "Sampling point": "volcano (wiki:Askja)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 48.44 (completeness 0.8, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 53.77 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 1055.5,
+    "limitations": [
+     "SoilGrids texture unavailable (masked/no response).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Askja' (revision 1382433494), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Askja"
+    ],
+    "coordinate_note": "WGS84 sampling point: volcano (wiki:Askja).",
+    "group": "established",
+    "data_confidence": 0.605,
+    "terraanalog_site_id": "EA-007"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-008",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.79333,
+     28.99417
+    ]
+   },
+   "properties": {
+    "site_id": "EA-008",
+    "name": "Timanfaya volcanic field, Lanzarote",
+    "country": "Spain",
+    "region": "",
+    "analog_types": [
+     "basaltic_volcanic",
+     "arid_desert"
+    ],
+    "climate": "MAAT 19.1 deg C (CHELSA_V2.1_bio1); precipitation 87.0 mm/yr and P/ET0 0.067 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: mafic volcanic rocks (medium map). Lithology tags: basalt_mafic, tephra_pyroclastic; process tags: volcanic_effusive, aeolian.",
+    "description": "Candidate TerraAnalog site. Landforms: lava_flow_field, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ROVER_MOBILITY, MOON_ROVER_MOBILITY, MARS_LAVA_TUBE, MOON_LAVA_TUBE.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_ROVER_MOBILITY",
+     "MOON_ROVER_MOBILITY",
+     "MARS_LAVA_TUBE",
+     "MOON_LAVA_TUBE"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 155.4,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 19.1,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 87.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.067,
+     "Freeze-thaw days per year (ERA5, modeled)": 0.0,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.928,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 3.18,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": null,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 148246.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 51.15,
+     "Group": "candidate",
+     "Sampling point": "park reference point (wiki:Timanfaya National Park)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 68.45 (completeness 0.8, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 62.26 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 155.4,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "SoilGrids texture unavailable (masked/no response).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Timanfaya National Park' (revision 1362942541), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Timanfaya_National_Park"
+    ],
+    "coordinate_note": "WGS84 sampling point: park reference point (wiki:Timanfaya National Park).",
+    "group": "candidate",
+    "data_confidence": 0.509,
+    "terraanalog_site_id": "EA-008"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-009",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.43889,
+     29.16111
+    ]
+   },
+   "properties": {
+    "site_id": "EA-009",
+    "name": "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+    "country": "Spain",
+    "region": "",
+    "analog_types": [
+     "lava_tube_cave",
+     "basaltic_volcanic",
+     "arid_desert"
+    ],
+    "climate": "MAAT 19.2 deg C (CHELSA_V2.1_bio1); precipitation 86.0 mm/yr and P/ET0 0.065 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: basalt (medium map). Lithology tags: basalt_mafic; process tags: volcanic_effusive.",
+    "description": "Candidate TerraAnalog site. Landforms: lava_tube_cave, pit_skylight, lava_flow_field. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_LAVA_TUBE, MOON_LAVA_TUBE.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_LAVA_TUBE",
+     "MOON_LAVA_TUBE"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 54.6,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 19.2,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 86.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.065,
+     "Freeze-thaw days per year (ERA5, modeled)": 0.0,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.278,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 3.22,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.515,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 145815.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 53.59,
+     "Group": "candidate",
+     "Sampling point": "cave entrance area (wiki:Cueva de los Verdes)",
+     "Best Moon profile": "MOON_LAVA_TUBE 74.31 (completeness 0.95, vs MOON-REF-05)",
+     "Best Mars profile": "MARS_LAVA_TUBE 57.51 (completeness 0.95, vs MARS-REF-06)"
+    },
+    "elevation_m": 54.6,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Cueva de los Verdes' (revision 1264610022), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Cueva_de_los_Verdes",
+     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288"
+    ],
+    "coordinate_note": "WGS84 sampling point: cave entrance area (wiki:Cueva de los Verdes).",
+    "group": "candidate",
+    "data_confidence": 0.647,
+    "terraanalog_site_id": "EA-009"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-010",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     40.3,
+     14.24167
+    ]
+   },
+   "properties": {
+    "site_id": "EA-010",
+    "name": "Dallol hydrothermal field, Danakil Depression",
+    "country": "Ethiopia",
+    "region": "",
+    "analog_types": [
+     "basaltic_volcanic",
+     "aqueous_alteration",
+     "evaporite_basin",
+     "arid_desert"
+    ],
+    "climate": "MAAT 32.9 deg C (CHELSA_V2.1_bio1); precipitation 79.0 mm/yr and P/ET0 0.033 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: volcanic (small map). Lithology tags: evaporite_salts, sulfate, iron_oxide, basalt_mafic; process tags: hydrothermal, evaporitic, acidic_aqueous, volcanic_effusive.",
+    "description": "Candidate TerraAnalog site. Landforms: playa_salt_flat, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_EVA_HABITAT, MARS_LAVA_TUBE, MARS_ASTROBIO_SEDIMENTS.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_EVA_HABITAT",
+     "MARS_LAVA_TUBE",
+     "MARS_ASTROBIO_SEDIMENTS"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": -93.5,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 32.9,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 79.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.033,
+     "Freeze-thaw days per year (ERA5, modeled)": 0.0,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.998,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 1.15,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.603,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 67938.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 54.65,
+     "Group": "candidate",
+     "Sampling point": "feature reference point (wiki:Dallol (hydrothermal system) (coord template))",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 50.17 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 48.94 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": -93.5,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Dallol (hydrothermal system)' (revision 1377192598), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Dallol_(hydrothermal_system)"
+    ],
+    "coordinate_note": "WGS84 sampling point: feature reference point (wiki:Dallol (hydrothermal system) (coord template)).",
+    "group": "candidate",
+    "data_confidence": 0.722,
+    "terraanalog_site_id": "EA-010"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-011",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -67.48913,
+     -20.13378
+    ]
+   },
+   "properties": {
+    "site_id": "EA-011",
+    "name": "Salar de Uyuni",
+    "country": "Bolivia",
+    "region": "",
+    "analog_types": [
+     "evaporite_basin",
+     "arid_desert",
+     "high_altitude"
+    ],
+    "climate": "MAAT 7.5 deg C (CHELSA_V2.1_bio1); precipitation 265.0 mm/yr and P/ET0 0.149 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: Evaporite (small map). Lithology tags: evaporite_salts, sedimentary_clastic; process tags: evaporitic, fluvial_lacustrine.",
+    "description": "Candidate TerraAnalog site. Landforms: playa_salt_flat, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_ROVER_MOBILITY, MARS_ASTROBIO_SEDIMENTS, MARS_EVA_HABITAT.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MOON_ROVER_MOBILITY",
+     "MARS_ASTROBIO_SEDIMENTS",
+     "MARS_EVA_HABITAT"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 3653.5,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 7.5,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 265.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.149,
+     "Freeze-thaw days per year (ERA5, modeled)": 203.5,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 1.0,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 0.0,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.412,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 56802.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 64.09,
+     "Group": "candidate",
+     "Sampling point": "salt flat reference point (wiki:Salar de Uyuni)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 67.26 (completeness 0.75, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 52.88 (completeness 0.75, vs MARS-REF-01)"
+    },
+    "elevation_m": 3653.5,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Salar de Uyuni' (revision 1369101391), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Salar_de_Uyuni"
+    ],
+    "coordinate_note": "WGS84 sampling point: salt flat reference point (wiki:Salar de Uyuni).",
+    "group": "candidate",
+    "data_confidence": 0.722,
+    "terraanalog_site_id": "EA-011"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-012",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -67.75,
+     -25.73333
+    ]
+   },
+   "properties": {
+    "site_id": "EA-012",
+    "name": "Salar de Antofalla (Puna de Atacama)",
+    "country": "Argentina",
+    "region": "",
+    "analog_types": [
+     "evaporite_basin",
+     "arid_desert",
+     "high_altitude"
+    ],
+    "climate": "MAAT 8.8 deg C (CHELSA_V2.1_bio1); precipitation 124.0 mm/yr and P/ET0 0.069 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: Evaporite (small map). Lithology tags: evaporite_salts; process tags: evaporitic.",
+    "description": "Candidate TerraAnalog site. Landforms: playa_salt_flat. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: none.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 3323.7,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 8.8,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 124.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.069,
+     "Freeze-thaw days per year (ERA5, modeled)": 116.4,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 1.0,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 0.09,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.324,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 46678.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 65.64,
+     "Group": "candidate",
+     "Sampling point": "salt flat reference point (wiki:Salar de Antofalla)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 48.5 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 52.25 (completeness 0.95, vs MARS-REF-02)"
+    },
+    "elevation_m": 3323.7,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Salar de Antofalla' (revision 1366623081), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Salar_de_Antofalla"
+    ],
+    "coordinate_note": "WGS84 sampling point: salt flat reference point (wiki:Salar de Antofalla).",
+    "group": "candidate",
+    "data_confidence": 0.647,
+    "terraanalog_site_id": "EA-012"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-013",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     119.437252,
+     -21.151759
+    ]
+   },
+   "properties": {
+    "site_id": "EA-013",
+    "name": "Dresser Formation (North Pole Dome), Pilbara",
+    "country": "Australia",
+    "region": "",
+    "analog_types": [
+     "basaltic_volcanic",
+     "aqueous_alteration",
+     "arid_desert"
+    ],
+    "climate": "MAAT 27.1 deg C (CHELSA_V2.1_bio1); precipitation 318.0 mm/yr and P/ET0 0.126 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: igneous mafic volcanic (small map). Lithology tags: basalt_mafic, silica_chert_sinter, carbonate, evaporite_salts, sedimentary_clastic, sulfate; process tags: hydrothermal, volcanic_effusive, fluvial_lacustrine.",
+    "description": "Candidate TerraAnalog site. Landforms: layered_sedimentary_outcrop, massif_highland. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: none.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 222.2,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 27.1,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 318.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.126,
+     "Freeze-thaw days per year (ERA5, modeled)": 0.0,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.016,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 8.72,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.339,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 36840.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 62.98,
+     "Group": "candidate",
+     "Sampling point": "formation reference point (wiki:Dresser Formation (coord template))",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 49.84 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 52.01 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 222.2,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Dresser Formation' (revision 1369613496), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Dresser_Formation",
+     "Djokic et al. (2017) Earliest signs of life on land preserved in ca. 3.5 Ga hot spring deposits. Nature Communications. doi:10.1038/ncomms15263"
+    ],
+    "coordinate_note": "WGS84 sampling point: formation reference point (wiki:Dresser Formation (coord template)).",
+    "group": "candidate",
+    "data_confidence": 0.722,
+    "terraanalog_site_id": "EA-013"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-014",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     139.33611,
+     -30.31167
+    ]
+   },
+   "properties": {
+    "site_id": "EA-014",
+    "name": "Arkaroola (Northern Flinders Ranges)",
+    "country": "Australia",
+    "region": "",
+    "analog_types": [
+     "aqueous_alteration",
+     "arid_desert"
+    ],
+    "climate": "MAAT 19.1 deg C (CHELSA_V2.1_bio1); precipitation 210.0 mm/yr and P/ET0 0.108 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: sedimentary (small map). Lithology tags: granitic_felsic, sedimentary_clastic, metamorphic; process tags: hydrothermal, fluvial_lacustrine.",
+    "description": "Candidate TerraAnalog site. Landforms: valley_canyon, massif_highland. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: none.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 343.1,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 19.1,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 210.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.108,
+     "Freeze-thaw days per year (ERA5, modeled)": 0.2,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.019,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 14.05,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.355,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 97357.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 49.21,
+     "Group": "candidate",
+     "Sampling point": "settlement/sanctuary reference point (wiki:Arkaroola)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 42.78 (completeness 1.0, vs MOON-REF-03)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 43.49 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 343.1,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Arkaroola' (revision 1377554632), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Arkaroola"
+    ],
+    "coordinate_note": "WGS84 sampling point: settlement/sanctuary reference point (wiki:Arkaroola).",
+    "group": "candidate",
+    "data_confidence": 0.692,
+    "terraanalog_site_id": "EA-014"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-015",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.79556,
+     -19.17167
+    ]
+   },
+   "properties": {
+    "site_id": "EA-015",
+    "name": "Wolfe Creek Crater",
+    "country": "Australia",
+    "region": "",
+    "analog_types": [
+     "impact_crater",
+     "arid_desert"
+    ],
+    "climate": "MAAT 27.2 deg C (CHELSA_V2.1_bio1); precipitation 419.0 mm/yr and P/ET0 0.16 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: sedimentary (small map). Lithology tags: impact_breccia_melt, sedimentary_clastic, iron_oxide; process tags: impact, aeolian.",
+    "description": "Candidate TerraAnalog site. Landforms: impact_crater, dune_field. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MOON_FIELD_GEOLOGY"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 323.5,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 27.2,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 419.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.16,
+     "Freeze-thaw days per year (ERA5, modeled)": 0.0,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.0,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 0.55,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.318,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 84166.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 54.23,
+     "Group": "candidate",
+     "Sampling point": "crater centre (wiki:Wolfe Creek Crater)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 44.96 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_EVA_HABITAT 33.93 (completeness 0.95, vs MARS-REF-07)"
+    },
+    "elevation_m": 323.5,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Wolfe Creek Crater' (revision 1384369003), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Wolfe_Creek_Crater"
+    ],
+    "coordinate_note": "WGS84 sampling point: crater centre (wiki:Wolfe Creek Crater).",
+    "group": "candidate",
+    "data_confidence": 0.662,
+    "terraanalog_site_id": "EA-015"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-016",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     144.59611,
+     -18.20111
+    ]
+   },
+   "properties": {
+    "site_id": "EA-016",
+    "name": "Undara lava tubes (McBride Basalt Province)",
+    "country": "Australia",
+    "region": "",
+    "analog_types": [
+     "lava_tube_cave",
+     "basaltic_volcanic"
+    ],
+    "climate": "MAAT 22.1 deg C (CHELSA_V2.1_bio1); precipitation 711.0 mm/yr and P/ET0 0.386 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: igneous mafic volcanic (small map). Lithology tags: basalt_mafic; process tags: volcanic_effusive.",
+    "description": "Candidate TerraAnalog site. Landforms: lava_tube_cave, volcanic_cone_shield, lava_flow_field. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_LAVA_TUBE, MOON_LAVA_TUBE.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_LAVA_TUBE",
+     "MOON_LAVA_TUBE"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 741.0,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 22.1,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 711.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.386,
+     "Freeze-thaw days per year (ERA5, modeled)": 0.0,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.0,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 0.98,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.526,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 6980.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 76.19,
+     "Group": "candidate",
+     "Sampling point": "park reference point (wiki:Undara Volcanic National Park)",
+     "Best Moon profile": "MOON_LAVA_TUBE 69.07 (completeness 0.95, vs MOON-REF-05)",
+     "Best Mars profile": "MARS_LAVA_TUBE 51.44 (completeness 0.95, vs MARS-REF-06)"
+    },
+    "elevation_m": 741.0,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Undara Volcanic National Park' (revision 1379753357), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Undara_Volcanic_National_Park",
+     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288"
+    ],
+    "coordinate_note": "WGS84 sampling point: park reference point (wiki:Undara Volcanic National Park).",
+    "group": "candidate",
+    "data_confidence": 0.647,
+    "terraanalog_site_id": "EA-016"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-017",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.98333,
+     33.3
+    ]
+   },
+   "properties": {
+    "site_id": "EA-017",
+    "name": "Tso Kar basin, Ladakh",
+    "country": "India",
+    "region": "",
+    "analog_types": [
+     "permafrost_ice",
+     "evaporite_basin",
+     "high_altitude"
+    ],
+    "climate": "MAAT -6.0 deg C (CHELSA_V2.1_bio1); precipitation 253.0 mm/yr and P/ET0 0.26 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: sedimentary rocks (tiny map). Lithology tags: evaporite_salts, sedimentary_clastic; process tags: evaporitic, fluvial_lacustrine, periglacial.",
+    "description": "Established TerraAnalog site. Landforms: playa_salt_flat, valley_canyon, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ASTROBIO_SEDIMENTS, MOON_EVA_HABITAT.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_ASTROBIO_SEDIMENTS",
+     "MOON_EVA_HABITAT"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 4539.0,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": -6.0,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 253.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.26,
+     "Freeze-thaw days per year (ERA5, modeled)": 109.2,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.04,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.928,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 1.12,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.524,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 18240.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 76.24,
+     "Group": "established",
+     "Sampling point": "lake centre (water body) (wiki:Tso Kar)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 57.22 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ASTROBIO_SEDIMENTS 39.45 (completeness 1.0, vs MARS-REF-01)"
+    },
+    "elevation_m": 4539.0,
+    "limitations": [
+     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Tso Kar' (revision 1366777018), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Tso_Kar"
+    ],
+    "coordinate_note": "WGS84 sampling point: lake centre (water body) (wiki:Tso Kar).",
+    "group": "established",
+    "data_confidence": 0.713,
+    "terraanalog_site_id": "EA-017"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-018",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     94.45,
+     37.26667
+    ]
+   },
+   "properties": {
+    "site_id": "EA-018",
+    "name": "Qaidam Basin",
+    "country": "China",
+    "region": "",
+    "analog_types": [
+     "aqueous_alteration",
+     "evaporite_basin",
+     "arid_desert"
+    ],
+    "climate": "MAAT 6.5 deg C (CHELSA_V2.1_bio1); precipitation 27.0 mm/yr and P/ET0 0.017 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: sedimentary rocks (tiny map). Lithology tags: evaporite_salts, sedimentary_clastic, sulfate; process tags: evaporitic, aeolian, fluvial_lacustrine.",
+    "description": "Established TerraAnalog site. Landforms: playa_salt_flat, plains, yardang_aeolian. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_EVA_HABITAT, MARS_ASTROBIO_SEDIMENTS, MARS_ISRU_ICE.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_EVA_HABITAT",
+     "MARS_ASTROBIO_SEDIMENTS",
+     "MARS_ISRU_ICE"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 2699.5,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 6.5,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 27.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.017,
+     "Freeze-thaw days per year (ERA5, modeled)": 141.8,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 1.0,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 0.53,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.544,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 79369.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 66.75,
+     "Group": "established",
+     "Sampling point": "basin centroid (wiki:Qaidam Basin)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 57.99 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_EVA_HABITAT 53.89 (completeness 0.95, vs MARS-REF-03)"
+    },
+    "elevation_m": 2699.5,
+    "limitations": [
+     "Sampling point is a region centroid; local terrain may not represent the best analog outcrops.",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Qaidam Basin' (revision 1366613413), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Qaidam_Basin",
+     "Xiao et al. (2017) A new terrestrial analogue site for Mars research: The Qaidam Basin, Tibetan Plateau (NW China). Earth-Science Reviews. doi:10.1016/j.earscirev.2016.11.003"
+    ],
+    "coordinate_note": "WGS84 sampling point: basin centroid (wiki:Qaidam Basin).",
+    "group": "established",
+    "data_confidence": 0.75,
+    "terraanalog_site_id": "EA-018"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-019",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -155.46806,
+     19.82056
+    ]
+   },
+   "properties": {
+    "site_id": "EA-019",
+    "name": "Mauna Kea (upper slopes)",
+    "country": "United States",
+    "region": "",
+    "analog_types": [
+     "permafrost_ice",
+     "basaltic_volcanic",
+     "high_altitude"
+    ],
+    "climate": "MAAT -0.1 deg C (CHELSA_V2.1_bio1); precipitation 814.0 mm/yr and P/ET0 0.79 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: Scoria cones; basaltic volcanic rocks (medium map). Lithology tags: basalt_mafic, tephra_pyroclastic, ground_ice; process tags: volcanic_effusive, volcanic_explosive, glacial, periglacial.",
+    "description": "Candidate TerraAnalog site. Landforms: volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_EVA_HABITAT, MOON_ISRU_ICE.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MOON_EVA_HABITAT",
+     "MOON_ISRU_ICE"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 4202.4,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": -0.1,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 814.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.79,
+     "Freeze-thaw days per year (ERA5, modeled)": 359.7,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.14,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.994,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 9.47,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.52,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 17443.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 63.12,
+     "Group": "candidate",
+     "Sampling point": "summit (wiki:Mauna Kea)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 43.24 (completeness 1.0, vs MOON-REF-03)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 36.63 (completeness 0.95, vs MARS-REF-02)"
+    },
+    "elevation_m": 4202.4,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Mauna Kea' (revision 1378293676), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Mauna_Kea"
+    ],
+    "coordinate_note": "WGS84 sampling point: summit (wiki:Mauna Kea).",
+    "group": "candidate",
+    "data_confidence": 0.677,
+    "terraanalog_site_id": "EA-019"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-020",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -155.29667,
+     19.40861
+    ]
+   },
+   "properties": {
+    "site_id": "EA-020",
+    "name": "Kaʻū Desert (Kīlauea)",
+    "country": "United States",
+    "region": "",
+    "analog_types": [
+     "basaltic_volcanic"
+    ],
+    "climate": "MAAT 16.8 deg C (CHELSA_V2.1_bio1); precipitation 2146.0 mm/yr and P/ET0 1.82 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: basalt (large map). Lithology tags: tephra_pyroclastic, basalt_mafic; process tags: volcanic_explosive, volcanic_effusive, aeolian.",
+    "description": "Candidate TerraAnalog site. Landforms: lava_flow_field, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_LAVA_TUBE.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MOON_LAVA_TUBE"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 1155.0,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 16.8,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 2146.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 1.82,
+     "Freeze-thaw days per year (ERA5, modeled)": 0.0,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.526,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 2.4,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.672,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 6525.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 75.35,
+     "Group": "candidate",
+     "Sampling point": "desert reference point (wiki:Kaʻū Desert (coord template))",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 61.71 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 45.37 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 1155.0,
+    "limitations": [
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Kaʻū Desert' (revision 1377421691), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Kaʻū_Desert"
+    ],
+    "coordinate_note": "WGS84 sampling point: desert reference point (wiki:Kaʻū Desert (coord template)).",
+    "group": "candidate",
+    "data_confidence": 0.647,
+    "terraanalog_site_id": "EA-020"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-021",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.50833,
+     41.71389
+    ]
+   },
+   "properties": {
+    "site_id": "EA-021",
+    "name": "Lava Beds National Monument",
+    "country": "United States",
+    "region": "",
+    "analog_types": [
+     "lava_tube_cave",
+     "basaltic_volcanic"
+    ],
+    "climate": "MAAT 8.9 deg C (CHELSA_V2.1_bio1); precipitation 544.0 mm/yr and P/ET0 0.454 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: volcanic (medium map). Lithology tags: basalt_mafic, tephra_pyroclastic; process tags: volcanic_effusive.",
+    "description": "Candidate TerraAnalog site. Landforms: lava_tube_cave, lava_flow_field, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_LAVA_TUBE, MOON_LAVA_TUBE.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_LAVA_TUBE",
+     "MOON_LAVA_TUBE"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 1451.2,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 8.9,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 544.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.454,
+     "Freeze-thaw days per year (ERA5, modeled)": 116.7,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.204,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 3.52,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.608,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 43029.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 58.06,
+     "Group": "candidate",
+     "Sampling point": "monument reference point (wiki:Lava Beds National Monument)",
+     "Best Moon profile": "MOON_LAVA_TUBE 57.96 (completeness 1.0, vs MOON-REF-05)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 45.69 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 1451.2,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Lava Beds National Monument' (revision 1373474447), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Lava_Beds_National_Monument",
+     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288"
+    ],
+    "coordinate_note": "WGS84 sampling point: monument reference point (wiki:Lava Beds National Monument).",
+    "group": "candidate",
+    "data_confidence": 0.75,
+    "terraanalog_site_id": "EA-021"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-022",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -113.56271,
+     43.46167
+    ]
+   },
+   "properties": {
+    "site_id": "EA-022",
+    "name": "Craters of the Moon lava field",
+    "country": "United States",
+    "region": "",
+    "analog_types": [
+     "lava_tube_cave",
+     "basaltic_volcanic"
+    ],
+    "climate": "MAAT 5.8 deg C (CHELSA_V2.1_bio1); precipitation 353.0 mm/yr and P/ET0 0.302 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: basalt, latite (medium map). Lithology tags: basalt_mafic, tephra_pyroclastic; process tags: volcanic_effusive, volcanic_explosive.",
+    "description": "Established TerraAnalog site. Landforms: lava_flow_field, lava_tube_cave, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_LAVA_TUBE, MARS_LAVA_TUBE, MARS_ROVER_MOBILITY.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MOON_LAVA_TUBE",
+     "MARS_LAVA_TUBE",
+     "MARS_ROVER_MOBILITY"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 1799.1,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 5.8,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 353.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.302,
+     "Freeze-thaw days per year (ERA5, modeled)": 99.9,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.386,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 4.45,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.615,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 1172.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 83.68,
+     "Group": "established",
+     "Sampling point": "monument reference point (wiki:Craters of the Moon National Monument and Preserve)",
+     "Best Moon profile": "MOON_LAVA_TUBE 54.29 (completeness 0.95, vs MOON-REF-05)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 55.95 (completeness 0.95, vs MARS-REF-02)"
+    },
+    "elevation_m": 1799.1,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Craters of the Moon National Monument and Preserve' (revision 1366646688), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Craters_of_the_Moon_National_Monument_and_Preserve",
+     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288"
+    ],
+    "coordinate_note": "WGS84 sampling point: monument reference point (wiki:Craters of the Moon National Monument and Preserve).",
+    "group": "established",
+    "data_confidence": 0.675,
+    "terraanalog_site_id": "EA-022"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-023",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -111.02333,
+     35.02806
+    ]
+   },
+   "properties": {
+    "site_id": "EA-023",
+    "name": "Meteor Crater (Barringer)",
+    "country": "United States",
+    "region": "",
+    "analog_types": [
+     "impact_crater",
+     "arid_desert"
+    ],
+    "climate": "MAAT 13.9 deg C (CHELSA_V2.1_bio1); precipitation 174.0 mm/yr and P/ET0 0.094 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: sedimentary, limestone, sandstone (medium map). Lithology tags: impact_breccia_melt, sedimentary_clastic, carbonate; process tags: impact.",
+    "description": "Established TerraAnalog site. Landforms: impact_crater. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY, MOON_ROVER_MOBILITY, MOON_ISRU_ICE, MARS_EVA_HABITAT, MOON_EVA_HABITAT.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MOON_FIELD_GEOLOGY",
+     "MOON_ROVER_MOBILITY",
+     "MOON_ISRU_ICE",
+     "MARS_EVA_HABITAT",
+     "MOON_EVA_HABITAT"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 1564.5,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 13.9,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 174.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.094,
+     "Freeze-thaw days per year (ERA5, modeled)": 65.1,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.395,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 1.3,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.47,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 8516.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 79.66,
+     "Group": "established",
+     "Sampling point": "crater centre (wiki:Meteor Crater)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 64.41 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 52.07 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 1564.5,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Meteor Crater' (revision 1383900662), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Meteor_Crater"
+    ],
+    "coordinate_note": "WGS84 sampling point: crater centre (wiki:Meteor Crater).",
+    "group": "established",
+    "data_confidence": 0.735,
+    "terraanalog_site_id": "EA-023"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-024",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -63.3,
+     55.88333
+    ]
+   },
+   "properties": {
+    "site_id": "EA-024",
+    "name": "Mistastin Lake impact structure",
+    "country": "Canada",
+    "region": "",
+    "analog_types": [
+     "impact_crater"
+    ],
+    "climate": "MAAT -4.2 deg C (CHELSA_V2.1_bio1); precipitation 783.0 mm/yr and P/ET0 1.794 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: intrusive igneous rocks (tiny map). Lithology tags: anorthosite_feldspathic, impact_breccia_melt, granitic_felsic; process tags: impact, glacial.",
+    "description": "Established TerraAnalog site. Landforms: impact_crater, massif_highland. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MOON_FIELD_GEOLOGY"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 334.5,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": -4.2,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 783.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 1.794,
+     "Freeze-thaw days per year (ERA5, modeled)": 61.8,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.1,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.001,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 5.14,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": null,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 125440.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 65.53,
+     "Group": "established",
+     "Sampling point": "crater centre (lake) (wiki:Mistastin crater)",
+     "Best Moon profile": "MOON_FIELD_GEOLOGY 51.13 (completeness 1.0, vs MOON-REF-01)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 40.85 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 334.5,
+    "limitations": [
+     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
+     "SoilGrids texture unavailable (masked/no response).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Mistastin crater' (revision 1372212697), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Mistastin_crater"
+    ],
+    "coordinate_note": "WGS84 sampling point: crater centre (lake) (wiki:Mistastin crater).",
+    "group": "established",
+    "data_confidence": 0.657,
+    "terraanalog_site_id": "EA-024"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-025",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -81.18333,
+     46.6
+    ]
+   },
+   "properties": {
+    "site_id": "EA-025",
+    "name": "Sudbury Basin",
+    "country": "Canada",
+    "region": "",
+    "analog_types": [
+     "impact_crater"
+    ],
+    "climate": "MAAT 4.2 deg C (CHELSA_V2.1_bio1); precipitation 858.0 mm/yr and P/ET0 1.139 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: wacke, minor siltstone (medium map). Lithology tags: impact_breccia_melt, norite_mafic_intrusive, metamorphic; process tags: impact.",
+    "description": "Candidate TerraAnalog site. Landforms: impact_crater. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY, MOON_ROVER_MOBILITY.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MOON_FIELD_GEOLOGY",
+     "MOON_ROVER_MOBILITY"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 301.4,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 4.2,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 858.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 1.139,
+     "Freeze-thaw days per year (ERA5, modeled)": 79.1,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.003,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 1.8,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.471,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 3709.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 86.77,
+     "Group": "candidate",
+     "Sampling point": "basin reference point (wiki:Sudbury Basin)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 62.85 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 44.7 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 301.4,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Sudbury Basin' (revision 1385640650), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Sudbury_Basin"
+    ],
+    "coordinate_note": "WGS84 sampling point: basin reference point (wiki:Sudbury Basin).",
+    "group": "candidate",
+    "data_confidence": 0.735,
+    "terraanalog_site_id": "EA-025"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-026",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -6.58333,
+     37.68333
+    ]
+   },
+   "properties": {
+    "site_id": "EA-026",
+    "name": "Río Tinto headwaters (Minas de Riotinto mining district)",
+    "country": "Spain",
+    "region": "",
+    "analog_types": [
+     "aqueous_alteration"
+    ],
+    "climate": "MAAT 16.9 deg C (CHELSA_V2.1_bio1); precipitation 581.0 mm/yr and P/ET0 0.413 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: volcanic (medium map). Lithology tags: iron_oxide, sulfate, sulfide; process tags: acidic_aqueous, fluvial_lacustrine.",
+    "description": "Established TerraAnalog site. Landforms: valley_canyon. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: none.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 367.9,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 16.9,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 581.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.413,
+     "Freeze-thaw days per year (ERA5, modeled)": 1.4,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.177,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 8.05,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.61,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 6362.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 81.54,
+     "Group": "established",
+     "Sampling point": "town in headwater mining district (wiki:Minas de Riotinto (infobox coord 37°41′N 6°35′W))",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 32.06 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 40.14 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 367.9,
+    "limitations": [
+     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Río Tinto' (revision 1384300948), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Río_Tinto"
+    ],
+    "coordinate_note": "WGS84 sampling point: town in headwater mining district (wiki:Minas de Riotinto (infobox coord 37°41′N 6°35′W)).",
+    "group": "established",
+    "data_confidence": 0.75,
+    "terraanalog_site_id": "EA-026"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-027",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     76.5075,
+     19.975
+    ]
+   },
+   "properties": {
+    "site_id": "EA-027",
+    "name": "Lonar impact crater",
+    "country": "India",
+    "region": "",
+    "analog_types": [
+     "impact_crater",
+     "basaltic_volcanic",
+     "evaporite_basin"
+    ],
+    "climate": "MAAT 26.2 deg C (CHELSA_V2.1_bio1); precipitation 903.0 mm/yr and P/ET0 0.495 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: flood basalt(s); mafic volcanic rocks; basalt (tiny map). Lithology tags: basalt_mafic, impact_breccia_melt; process tags: impact, fluvial_lacustrine, evaporitic.",
+    "description": "Candidate TerraAnalog site. Landforms: impact_crater. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MOON_FIELD_GEOLOGY"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 479.5,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 26.2,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 903.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.495,
+     "Freeze-thaw days per year (ERA5, modeled)": 0.0,
+     "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.002,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 2.66,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": null,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 39755.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 57.73,
+     "Group": "candidate",
+     "Sampling point": "crater centre (lake) (wiki:Lonar Lake)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 54.39 (completeness 0.8, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 41.88 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 479.5,
+    "limitations": [
+     "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
+     "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
+     "SoilGrids texture unavailable (masked/no response).",
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Lonar Lake' (revision 1385152403), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Lonar_Lake"
+    ],
+    "coordinate_note": "WGS84 sampling point: crater centre (lake) (wiki:Lonar Lake).",
+    "group": "candidate",
+    "data_confidence": 0.577,
+    "terraanalog_site_id": "EA-027"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-028",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -110.7919,
+     38.40646
+    ]
+   },
+   "properties": {
+    "site_id": "EA-028",
+    "name": "Mars Desert Research Station area (San Rafael Swell margin)",
+    "country": "United States",
+    "region": "",
+    "analog_types": [
+     "aqueous_alteration",
+     "arid_desert"
+    ],
+    "climate": "MAAT 13.8 deg C (CHELSA_V2.1_bio1); precipitation 114.0 mm/yr and P/ET0 0.071 (ERA5 1991-2020). Modeled values.",
+    "geology": "Macrostrat map unit: sandstone (medium map). Lithology tags: sedimentary_clastic, clay_phyllosilicate; process tags: fluvial_lacustrine, aeolian.",
+    "description": "Established TerraAnalog site. Landforms: layered_sedimentary_outcrop, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ASTROBIO_SEDIMENTS, MARS_ROVER_MOBILITY, MOON_ROVER_MOBILITY, MARS_EVA_HABITAT, MARS_ISRU_ICE.",
+    "target_bodies": [
+     "moon",
+     "mars"
+    ],
+    "mission_objectives": [
+     "MARS_ASTROBIO_SEDIMENTS",
+     "MARS_ROVER_MOBILITY",
+     "MOON_ROVER_MOBILITY",
+     "MARS_EVA_HABITAT",
+     "MARS_ISRU_ICE"
+    ],
+    "environment": {
+     "Elevation at point (m, Copernicus DEM, measured)": 1373.4,
+     "MAAT (deg C, CHELSA_V2.1_bio1, modeled)": 13.8,
+     "Annual precipitation (mm/yr, ERA5 1991-2020, modeled)": 114.0,
+     "Aridity index P/ET0 (ERA5, modeled)": 0.071,
+     "Freeze-thaw days per year (ERA5, modeled)": 84.3,
+     "Permafrost probability (Obu2019_PERPROB, modeled)": 0.0,
+     "Unvegetated fraction within 5 km (WorldCover 2021)": 0.961,
+     "Median slope 30 m within 2 km (deg, Copernicus DEM)": 1.87,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.437,
+     "Distance to mapped major road (m, Natural Earth, upper bound)": 49714.0,
+     "Road distance censored beyond (m)": null,
+     "Operational score (0-100, separate from fidelity)": 70.56,
+     "Group": "established",
+     "Sampling point": "station location (wiki:Mars Desert Research Station)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 77.24 (completeness 0.95, vs MOON-REF-07)",
+     "Best Mars profile": "MARS_ROVER_MOBILITY 71.46 (completeness 0.95, vs MARS-REF-01)"
+    },
+    "elevation_m": 1373.4,
+    "limitations": [
+     "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
+     "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
+    ],
+    "imagery": null,
+    "provenance": "mixed",
+    "citations": [
+     "Wikipedia contributors, 'Mars Desert Research Station' (revision 1373694615), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Mars_Desert_Research_Station"
+    ],
+    "coordinate_note": "WGS84 sampling point: station location (wiki:Mars Desert Research Station).",
+    "group": "established",
+    "data_confidence": 0.637,
+    "terraanalog_site_id": "EA-028"
+   }
+  }
+ ]
+}

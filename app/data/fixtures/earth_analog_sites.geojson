@@ -1,0 +1,785 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "synthetic": true,
+    "notice": "SYNTHETIC FIXTURE \u2014 NOT REAL DATA. Replace with Bot 1 research outputs (see docs/DATA_INTEGRATION.md).",
+    "crs": "WGS84 (EPSG:4326), [lon, lat] per RFC 7946",
+    "generated": "2026-11-15",
+    "sources": "Site list partly from the team AnalogSite prep pack (PREP_DRAFT); all scores synthetic/provisional."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.68,
+          75.37
+        ]
+      },
+      "properties": {
+        "site_id": "CA-HAU",
+        "name": "Haughton Impact Structure, Devon Island",
+        "country": "Canada",
+        "region": "Nunavut",
+        "analog_types": [
+          "impact_crater",
+          "polar_desert",
+          "permafrost_ice"
+        ],
+        "climate": "Polar desert / tundra",
+        "geology": "Impact breccias in sedimentary target rocks; periglacial terrain",
+        "target_bodies": [
+          "moon",
+          "mars"
+        ],
+        "mission_objectives": [
+          "rover_mobility",
+          "astronaut_field_ops",
+          "habitat",
+          "drilling",
+          "general"
+        ],
+        "description": "High-Arctic impact structure used for long-running Mars/Moon analog field campaigns.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Polar desert / tundra",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 1/6 g",
+          "Dense atmosphere vs hard vacuum",
+          "No cryogenic permanently-shadowed-region temperatures",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          162.9,
+          -77.5
+        ]
+      },
+      "properties": {
+        "site_id": "AQ-MDV",
+        "name": "McMurdo Dry Valleys",
+        "country": "Antarctica",
+        "region": "Victoria Land",
+        "analog_types": [
+          "polar_desert",
+          "permafrost_ice"
+        ],
+        "climate": "Polar desert (ice-free valleys)",
+        "geology": "Glacial tills, patterned ground, crystalline bedrock",
+        "target_bodies": [
+          "mars",
+          "moon"
+        ],
+        "mission_objectives": [
+          "drilling",
+          "isru",
+          "rover_mobility",
+          "general"
+        ],
+        "description": "Ice-free polar desert valleys; a classic cold, dry Mars analog.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Polar desert (ice-free valleys)",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 0.38 g",
+          "Thick N2/O2 atmosphere vs thin CO2 atmosphere",
+          "Biologically active environment (contamination)",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.92,
+          -24.08
+        ]
+      },
+      "properties": {
+        "site_id": "CL-ATA",
+        "name": "Atacama Desert (Yungay transect)",
+        "country": "Chile",
+        "region": "Antofagasta",
+        "analog_types": [
+          "hyperarid_desert"
+        ],
+        "climate": "Hyper-arid desert",
+        "geology": "Saline, oxidised hyper-arid soils; alluvial fans",
+        "target_bodies": [
+          "mars"
+        ],
+        "mission_objectives": [
+          "drilling",
+          "rover_mobility",
+          "astronaut_field_ops",
+          "general"
+        ],
+        "description": "One of the driest places on Earth; widely used for Mars soil and life-detection instrument tests.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Hyper-arid desert",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 0.38 g",
+          "Thick N2/O2 atmosphere vs thin CO2 atmosphere",
+          "Biologically active environment (contamination)",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.0,
+          35.0
+        ]
+      },
+      "properties": {
+        "site_id": "US-MOJ",
+        "name": "Mojave Desert (volcanic/playa AOIs)",
+        "country": "USA",
+        "region": "California",
+        "analog_types": [
+          "hyperarid_desert",
+          "basaltic_volcanic"
+        ],
+        "climate": "Arid desert",
+        "geology": "Basaltic flows, cinder cones and playas",
+        "target_bodies": [
+          "mars"
+        ],
+        "mission_objectives": [
+          "rover_mobility",
+          "astronaut_field_ops",
+          "habitat",
+          "general"
+        ],
+        "description": "Accessible desert with basaltic and playa terrains for rover and operations shakedowns.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Arid desert",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 0.38 g",
+          "Thick N2/O2 atmosphere vs thin CO2 atmosphere",
+          "Biologically active environment (contamination)",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.65,
+          35.35
+        ]
+      },
+      "properties": {
+        "site_id": "US-SFV",
+        "name": "San Francisco Volcanic Field / Flagstaff",
+        "country": "USA",
+        "region": "Arizona",
+        "analog_types": [
+          "basaltic_volcanic"
+        ],
+        "climate": "Semi-arid plateau",
+        "geology": "Basaltic cinder cones and lava flows",
+        "target_bodies": [
+          "moon"
+        ],
+        "mission_objectives": [
+          "astronaut_field_ops",
+          "rover_mobility",
+          "general"
+        ],
+        "description": "Volcanic field with a long history of astronaut geology training.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Semi-arid plateau",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 1/6 g",
+          "Dense atmosphere vs hard vacuum",
+          "No cryogenic permanently-shadowed-region temperatures",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -16.75,
+          65.03
+        ]
+      },
+      "properties": {
+        "site_id": "IS-ASK",
+        "name": "Iceland basaltic highlands (Askja/Krafla-class AOI)",
+        "country": "Iceland",
+        "region": "Highlands",
+        "analog_types": [
+          "basaltic_volcanic",
+          "permafrost_ice"
+        ],
+        "climate": "Subarctic highland",
+        "geology": "Basaltic lava fields, hyaloclastite, glacio-volcanic deposits",
+        "target_bodies": [
+          "mars",
+          "moon"
+        ],
+        "mission_objectives": [
+          "rover_mobility",
+          "astronaut_field_ops",
+          "drilling",
+          "general"
+        ],
+        "description": "Young basaltic terrains with glacio-volcanic features.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Subarctic highland",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 0.38 g",
+          "Thick N2/O2 atmosphere vs thin CO2 atmosphere",
+          "Biologically active environment (contamination)",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.6,
+          37.7
+        ]
+      },
+      "properties": {
+        "site_id": "ES-RIO",
+        "name": "Rio Tinto",
+        "country": "Spain",
+        "region": "Andalusia",
+        "analog_types": [
+          "acidic_aqueous"
+        ],
+        "climate": "Mediterranean",
+        "geology": "Acidic, iron- and sulfate-rich river system in a mining district",
+        "target_bodies": [
+          "mars"
+        ],
+        "mission_objectives": [
+          "drilling",
+          "general"
+        ],
+        "description": "Acidic, iron-rich river system studied as an aqueous-alteration Mars analog.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Mediterranean",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 0.38 g",
+          "Thick N2/O2 atmosphere vs thin CO2 atmosphere",
+          "Biologically active environment (contamination)",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.5,
+          79.45
+        ]
+      },
+      "properties": {
+        "site_id": "CA-AXE",
+        "name": "Axel Heiberg Island cold/evaporite AOIs",
+        "country": "Canada",
+        "region": "Nunavut",
+        "analog_types": [
+          "polar_desert",
+          "permafrost_ice"
+        ],
+        "climate": "High-Arctic polar desert",
+        "geology": "Permafrost, perennial cold springs, evaporites",
+        "target_bodies": [
+          "moon",
+          "mars"
+        ],
+        "mission_objectives": [
+          "drilling",
+          "isru",
+          "general"
+        ],
+        "description": "High-Arctic permafrost terrain with perennial cold springs.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "High-Arctic polar desert",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 1/6 g",
+          "Dense atmosphere vs hard vacuum",
+          "No cryogenic permanently-shadowed-region temperatures",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.51,
+          41.71
+        ]
+      },
+      "properties": {
+        "site_id": "US-LBN",
+        "name": "Lava Beds National Monument (tube/cave AOI)",
+        "country": "USA",
+        "region": "California",
+        "analog_types": [
+          "lava_tube_cave",
+          "basaltic_volcanic"
+        ],
+        "climate": "Semi-arid steppe",
+        "geology": "Basaltic lava tubes, collapse pits",
+        "target_bodies": [
+          "moon",
+          "mars"
+        ],
+        "mission_objectives": [
+          "cave_exploration",
+          "rover_mobility",
+          "astronaut_field_ops",
+          "general"
+        ],
+        "description": "Dense concentration of accessible basaltic lava tubes.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Semi-arid steppe",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 1/6 g",
+          "Dense atmosphere vs hard vacuum",
+          "No cryogenic permanently-shadowed-region temperatures",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0,
+          36.5
+        ]
+      },
+      "properties": {
+        "site_id": "US-DV",
+        "name": "Death Valley (selected basins)",
+        "country": "USA",
+        "region": "California",
+        "analog_types": [
+          "hyperarid_desert"
+        ],
+        "climate": "Hot desert",
+        "geology": "Evaporite basins, alluvial fans",
+        "target_bodies": [
+          "mars"
+        ],
+        "mission_objectives": [
+          "rover_mobility",
+          "habitat",
+          "general"
+        ],
+        "description": "Extreme-heat desert basins.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Hot desert",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 0.38 g",
+          "Thick N2/O2 atmosphere vs thin CO2 atmosphere",
+          "Biologically active environment (contamination)",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -155.47,
+          19.82
+        ]
+      },
+      "properties": {
+        "site_id": "US-HMK",
+        "name": "Mauna Kea high-elevation volcanic terrain",
+        "country": "USA",
+        "region": "Hawaii",
+        "analog_types": [
+          "basaltic_volcanic",
+          "high_altitude"
+        ],
+        "climate": "Alpine (high-elevation)",
+        "geology": "Basaltic tephra and lava",
+        "target_bodies": [
+          "moon"
+        ],
+        "mission_objectives": [
+          "rover_mobility",
+          "isru",
+          "general"
+        ],
+        "description": "High-elevation basaltic terrain.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Alpine (high-elevation)",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 1/6 g",
+          "Dense atmosphere vs hard vacuum",
+          "No cryogenic permanently-shadowed-region temperatures",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.0,
+          -21.0
+        ]
+      },
+      "properties": {
+        "site_id": "AU-PIL",
+        "name": "Pilbara ancient terrains (selected)",
+        "country": "Australia",
+        "region": "Western Australia",
+        "analog_types": [
+          "hyperarid_desert",
+          "acidic_aqueous"
+        ],
+        "climate": "Hot arid",
+        "geology": "Archean volcanic-sedimentary sequences",
+        "target_bodies": [
+          "mars"
+        ],
+        "mission_objectives": [
+          "drilling",
+          "general"
+        ],
+        "description": "Ancient terrains used in early-life and early-Mars analog studies.",
+        "provenance": "synthetic",
+        "score_status": "PREP_DRAFT (AnalogSite pack) + SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). From AnalogSite prep pack sites.csv.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Hot arid",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 0.38 g",
+          "Thick N2/O2 atmosphere vs thin CO2 atmosphere",
+          "Biologically active environment (contamination)",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.7919,
+          38.4064
+        ]
+      },
+      "properties": {
+        "site_id": "US-MDR",
+        "name": "Mars Desert Research Station area",
+        "country": "USA",
+        "region": "Utah",
+        "analog_types": [
+          "hyperarid_desert"
+        ],
+        "climate": "Cold desert",
+        "geology": "Sedimentary badlands (shales, sandstones)",
+        "target_bodies": [
+          "mars"
+        ],
+        "mission_objectives": [
+          "habitat",
+          "astronaut_field_ops",
+          "rover_mobility",
+          "general"
+        ],
+        "description": "Desert badlands hosting a long-running crewed Mars habitat simulation station.",
+        "provenance": "synthetic",
+        "score_status": "SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). Fixture placement of a well-known site; verify before use.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Cold desert",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 0.38 g",
+          "Thick N2/O2 atmosphere vs thin CO2 atmosphere",
+          "Biologically active environment (contamination)",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.0228,
+          35.0274
+        ]
+      },
+      "properties": {
+        "site_id": "US-MET",
+        "name": "Meteor Crater (Barringer)",
+        "country": "USA",
+        "region": "Arizona",
+        "analog_types": [
+          "impact_crater"
+        ],
+        "climate": "Semi-arid plateau",
+        "geology": "Simple impact crater in sedimentary rocks",
+        "target_bodies": [
+          "moon",
+          "mars"
+        ],
+        "mission_objectives": [
+          "astronaut_field_ops",
+          "rover_mobility",
+          "general"
+        ],
+        "description": "Well-preserved simple impact crater.",
+        "provenance": "synthetic",
+        "score_status": "SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). Fixture placement of a well-known site; verify before use.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Semi-arid plateau",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 1/6 g",
+          "Dense atmosphere vs hard vacuum",
+          "No cryogenic permanently-shadowed-region temperatures",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -13.44,
+          29.16
+        ]
+      },
+      "properties": {
+        "site_id": "ES-LAN",
+        "name": "Lanzarote lava tubes (La Corona system)",
+        "country": "Spain",
+        "region": "Canary Islands",
+        "analog_types": [
+          "lava_tube_cave",
+          "basaltic_volcanic"
+        ],
+        "climate": "Arid subtropical",
+        "geology": "Basaltic lava tube and young lava fields",
+        "target_bodies": [
+          "moon",
+          "mars"
+        ],
+        "mission_objectives": [
+          "cave_exploration",
+          "astronaut_field_ops",
+          "general"
+        ],
+        "description": "Long basaltic lava tube system used for cave-exploration training.",
+        "provenance": "synthetic",
+        "score_status": "SYNTHETIC",
+        "coordinate_note": "Approximate AOI centroid (WGS84). Fixture placement of a well-known site; verify before use.",
+        "elevation_m": null,
+        "environment": {
+          "climate_class": "Arid subtropical",
+          "elevation": "pending Copernicus DEM extract",
+          "land_surface_temperature": "pending MODIS LST extract",
+          "precipitation": "pending climatology extract"
+        },
+        "limitations": [
+          "1 g gravity vs 1/6 g",
+          "Dense atmosphere vs hard vacuum",
+          "No cryogenic permanently-shadowed-region temperatures",
+          "All scores for this site are synthetic or provisional placeholders."
+        ],
+        "imagery": null,
+        "citations": [
+          "citation pending from research dataset"
+        ]
+      }
+    }
+  ]
+}

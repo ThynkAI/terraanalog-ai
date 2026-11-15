@@ -1,0 +1,11 @@
+
+ RUN  v3.2.7 /workspace/terraanalog-ai/web
+
+ ✓ tests/clusterArcs.test.ts (3 tests) 8ms
+ ✓ tests/format.test.ts (11 tests) 4ms
+
+ Test Files  2 passed (2)
+      Tests  14 passed (14)
+   Start at  13:20:30
+   Duration  302ms (transform 69ms, setup 0ms, collect 83ms, tests 12ms, environment 0ms, prepare 258ms)
+

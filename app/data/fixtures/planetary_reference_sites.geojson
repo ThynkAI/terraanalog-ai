@@ -1,0 +1,498 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "synthetic": false,
+    "notice": "Coordinates are IAU/USGS Gazetteer values (planetocentric/IAU body-fixed, east-positive). NOT Earth WGS84. Geometry uses [lon_east, lat] for convenience only.",
+    "body_radii_km": {
+      "moon": "1737.4 (IAU mean radius)",
+      "mars": "3389.5 (IAU mean radius)"
+    },
+    "generated": "2026-11-15"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.0,
+          -90.0
+        ]
+      },
+      "properties": {
+        "ref_id": "moon-south-pole-region",
+        "body": "moon",
+        "name": "Lunar south polar region",
+        "region_type": "polar region",
+        "lon_east_360": 0.0,
+        "coordinate_system": "IAU lunar body-fixed frame; the south pole is -90\u00b0 latitude by definition",
+        "body_radius_km": 1737.4,
+        "diameter_km": null,
+        "gazetteer_feature_id": null,
+        "description": "Region surrounding the lunar south pole: extreme illumination contrast and permanently shadowed crater floors.",
+        "traits": [
+          "polar",
+          "low sun angle",
+          "permanently shadowed regions",
+          "cold traps"
+        ],
+        "analog_type_affinity": [
+          "polar_desert",
+          "permafrost_ice",
+          "impact_crater"
+        ],
+        "citation": "Pole position by definition of the IAU lunar body-fixed frame.",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.78,
+          -89.67
+        ]
+      },
+      "properties": {
+        "ref_id": "moon-shackleton",
+        "body": "moon",
+        "name": "Shackleton crater vicinity",
+        "region_type": "crater",
+        "lon_east_360": 129.78,
+        "coordinate_system": "Planetographic, +East, -180 - 180 (Gazetteer)",
+        "body_radius_km": 1737.4,
+        "diameter_km": 20.92,
+        "gazetteer_feature_id": "5450",
+        "description": "Crater located almost at the lunar south pole; its floor lies in permanent shadow.",
+        "traits": [
+          "polar",
+          "permanently shadowed interior",
+          "impact crater",
+          "cold trap"
+        ],
+        "analog_type_affinity": [
+          "impact_crater",
+          "polar_desert",
+          "permafrost_ice"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 5450, https://planetarynames.wr.usgs.gov/Feature/5450 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.4,
+          -85.0
+        ]
+      },
+      "properties": {
+        "ref_id": "moon-malapert",
+        "body": "moon",
+        "name": "Malapert crater & massif vicinity",
+        "region_type": "crater / massif",
+        "lon_east_360": 11.4,
+        "coordinate_system": "Planetographic, +East, -180 - 180 (Gazetteer)",
+        "body_radius_km": 1737.4,
+        "diameter_km": 72.38,
+        "gazetteer_feature_id": "3603",
+        "description": "South-polar crater; the neighbouring Malapert massif region was among NASA's 2022 Artemis III candidate landing regions.",
+        "traits": [
+          "polar",
+          "high-relief massif",
+          "low sun angle"
+        ],
+        "analog_type_affinity": [
+          "impact_crater",
+          "polar_desert"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 3603, https://planetarynames.wr.usgs.gov/Feature/3603 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.34,
+          -88.48
+        ]
+      },
+      "properties": {
+        "ref_id": "moon-de-gerlache",
+        "body": "moon",
+        "name": "de Gerlache crater rim",
+        "region_type": "crater",
+        "lon_east_360": 271.66,
+        "coordinate_system": "Planetographic, +East, -180 - 180 (Gazetteer)",
+        "body_radius_km": 1737.4,
+        "diameter_km": 32.71,
+        "gazetteer_feature_id": "1439",
+        "description": "South-polar crater near Shackleton; its rim was among NASA's 2022 Artemis III candidate regions.",
+        "traits": [
+          "polar",
+          "crater rim",
+          "illumination extremes"
+        ],
+        "analog_type_affinity": [
+          "impact_crater",
+          "polar_desert",
+          "permafrost_ice"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 1439, https://planetarynames.wr.usgs.gov/Feature/1439 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.83,
+          8.35
+        ]
+      },
+      "properties": {
+        "ref_id": "moon-mare-tranquillitatis",
+        "body": "moon",
+        "name": "Mare Tranquillitatis (mare basalt plains)",
+        "region_type": "mare",
+        "lon_east_360": 30.83,
+        "coordinate_system": "Planetographic, +East, -180 - 180 (Gazetteer)",
+        "body_radius_km": 1737.4,
+        "diameter_km": 875.75,
+        "gazetteer_feature_id": "3691",
+        "description": "Basaltic mare plain; Apollo 11 landing region. Representative lunar mare/volcanic environment.",
+        "traits": [
+          "basaltic plains",
+          "volcanic",
+          "equatorial"
+        ],
+        "analog_type_affinity": [
+          "basaltic_volcanic"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 3691, https://planetarynames.wr.usgs.gov/Feature/3691 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -50.84,
+          11.9
+        ]
+      },
+      "properties": {
+        "ref_id": "moon-marius-hills",
+        "body": "moon",
+        "name": "Marius Hills volcanic complex (anchored at Marius crater)",
+        "region_type": "volcanic domes",
+        "lon_east_360": 309.16,
+        "coordinate_system": "Planetographic, +East, -180 - 180 (Gazetteer, Marius crater)",
+        "body_radius_km": 1737.4,
+        "diameter_km": 40.09,
+        "gazetteer_feature_id": "3715",
+        "description": "Volcanic dome field in Oceanus Procellarum near Marius crater; a pit/skylight was reported there from Kaguya imagery. Coordinates are those of Marius crater (anchor), not the pit.",
+        "traits": [
+          "volcanic domes",
+          "lava tubes",
+          "skylight / pit"
+        ],
+        "analog_type_affinity": [
+          "basaltic_volcanic",
+          "lava_tube_cave"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 3715, https://planetarynames.wr.usgs.gov/Feature/3715 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.15,
+          25.72
+        ]
+      },
+      "properties": {
+        "ref_id": "moon-rima-hadley",
+        "body": "moon",
+        "name": "Rima Hadley (Hadley Rille)",
+        "region_type": "sinuous rille",
+        "lon_east_360": 3.15,
+        "coordinate_system": "Planetographic, +East, -180 - 180 (Gazetteer)",
+        "body_radius_km": 1737.4,
+        "diameter_km": 116.09,
+        "gazetteer_feature_id": "5064",
+        "description": "Sinuous volcanic rille at the edge of Mare Imbrium; Apollo 15 landing region.",
+        "traits": [
+          "volcanic channel",
+          "basaltic",
+          "mare edge"
+        ],
+        "analog_type_affinity": [
+          "basaltic_volcanic",
+          "lava_tube_cave"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 5064, https://planetarynames.wr.usgs.gov/Feature/5064 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.69,
+          18.41
+        ]
+      },
+      "properties": {
+        "ref_id": "mars-jezero",
+        "body": "mars",
+        "name": "Jezero crater",
+        "region_type": "crater / paleolake delta",
+        "lon_east_360": 77.69,
+        "coordinate_system": "Planetocentric, +East, 0 - 360 (Gazetteer)",
+        "body_radius_km": 3389.5,
+        "diameter_km": 47.52,
+        "gazetteer_feature_id": "14300",
+        "description": "Crater hosting an ancient river delta; Mars 2020 Perseverance landing site.",
+        "traits": [
+          "paleolake",
+          "delta deposits",
+          "aqueous alteration",
+          "impact crater"
+        ],
+        "analog_type_affinity": [
+          "acidic_aqueous",
+          "impact_crater",
+          "hyperarid_desert"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 14300, https://planetarynames.wr.usgs.gov/Feature/14300 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          137.81,
+          -5.37
+        ]
+      },
+      "properties": {
+        "ref_id": "mars-gale",
+        "body": "mars",
+        "name": "Gale crater",
+        "region_type": "crater / layered mound",
+        "lon_east_360": 137.81,
+        "coordinate_system": "Planetocentric, +East, 0 - 360 (Gazetteer)",
+        "body_radius_km": 3389.5,
+        "diameter_km": 154.08,
+        "gazetteer_feature_id": "2071",
+        "description": "Large crater with a central layered mound (Aeolis Mons); Curiosity rover landing site.",
+        "traits": [
+          "layered sediments",
+          "impact crater",
+          "aqueous history",
+          "dust"
+        ],
+        "analog_type_affinity": [
+          "impact_crater",
+          "hyperarid_desert",
+          "acidic_aqueous"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 2071, https://planetarynames.wr.usgs.gov/Feature/2071 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          154.74,
+          2.98
+        ]
+      },
+      "properties": {
+        "ref_id": "mars-elysium-planitia",
+        "body": "mars",
+        "name": "Elysium Planitia",
+        "region_type": "volcanic plains",
+        "lon_east_360": 154.74,
+        "coordinate_system": "Planetocentric, +East, 0 - 360 (Gazetteer)",
+        "body_radius_km": 3389.5,
+        "diameter_km": 3000.79,
+        "gazetteer_feature_id": "1784",
+        "description": "Broad volcanic plain; InSight landed in western Elysium Planitia.",
+        "traits": [
+          "volcanic plains",
+          "smooth terrain",
+          "basaltic"
+        ],
+        "analog_type_affinity": [
+          "basaltic_volcanic",
+          "hyperarid_desert"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 1784, https://planetarynames.wr.usgs.gov/Feature/1784 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.52,
+          46.74
+        ]
+      },
+      "properties": {
+        "ref_id": "mars-utopia-planitia",
+        "body": "mars",
+        "name": "Utopia Planitia",
+        "region_type": "plains / ground ice",
+        "lon_east_360": 117.52,
+        "coordinate_system": "Planetocentric, +East, 0 - 360 (Gazetteer)",
+        "body_radius_km": 3389.5,
+        "diameter_km": 3560.45,
+        "gazetteer_feature_id": "6260",
+        "description": "Northern plains with radar-detected subsurface ice in western Utopia; Viking 2 landing region.",
+        "traits": [
+          "ground ice",
+          "periglacial",
+          "plains"
+        ],
+        "analog_type_affinity": [
+          "permafrost_ice",
+          "polar_desert"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 6260, https://planetarynames.wr.usgs.gov/Feature/6260 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.09,
+          -8.26
+        ]
+      },
+      "properties": {
+        "ref_id": "mars-arsia-mons",
+        "body": "mars",
+        "name": "Arsia Mons (cave-skylight candidates)",
+        "region_type": "shield volcano",
+        "lon_east_360": 239.91,
+        "coordinate_system": "Planetocentric, +East, 0 - 360 (Gazetteer: 239.91\u00b0E)",
+        "body_radius_km": 3389.5,
+        "diameter_km": 470.0,
+        "gazetteer_feature_id": "394",
+        "description": "Tharsis shield volcano whose flanks host candidate cave skylights.",
+        "traits": [
+          "shield volcano",
+          "lava tubes",
+          "skylights"
+        ],
+        "analog_type_affinity": [
+          "basaltic_volcanic",
+          "lava_tube_cave"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 394, https://planetarynames.wr.usgs.gov/Feature/394 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          157.7,
+          -83.35
+        ]
+      },
+      "properties": {
+        "ref_id": "mars-planum-australe",
+        "body": "mars",
+        "name": "Planum Australe (south polar layered deposits)",
+        "region_type": "polar plateau",
+        "lon_east_360": 157.7,
+        "coordinate_system": "Planetocentric, +East, 0 - 360 (Gazetteer)",
+        "body_radius_km": 3389.5,
+        "diameter_km": 1429.87,
+        "gazetteer_feature_id": "4753",
+        "description": "South polar plateau of layered ice-rich deposits.",
+        "traits": [
+          "polar ice",
+          "layered deposits",
+          "extreme cold"
+        ],
+        "analog_type_affinity": [
+          "polar_desert",
+          "permafrost_ice"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 4753, https://planetarynames.wr.usgs.gov/Feature/4753 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.14,
+          -0.04
+        ]
+      },
+      "properties": {
+        "ref_id": "mars-meridiani-planum",
+        "body": "mars",
+        "name": "Meridiani Planum",
+        "region_type": "plains / sulfate-hematite",
+        "lon_east_360": 356.86,
+        "coordinate_system": "Planetocentric, +East, 0 - 360 (Gazetteer: 356.86\u00b0E)",
+        "body_radius_km": 3389.5,
+        "diameter_km": 1058.53,
+        "gazetteer_feature_id": "3854",
+        "description": "Plain with hematite and sulfate-bearing rocks; Opportunity rover landing site.",
+        "traits": [
+          "sulfates",
+          "hematite",
+          "aqueous alteration"
+        ],
+        "analog_type_affinity": [
+          "acidic_aqueous",
+          "hyperarid_desert"
+        ],
+        "citation": "Gazetteer of Planetary Nomenclature (IAU WGPSN / USGS Astrogeology), feature 3854, https://planetarynames.wr.usgs.gov/Feature/3854 (queried 2026-11-15)",
+        "provenance": "published",
+        "description_citation": "citation pending from research dataset"
+      }
+    }
+  ]
+}

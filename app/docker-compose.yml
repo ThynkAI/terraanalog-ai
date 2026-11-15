@@ -1,0 +1,18 @@
+# docker compose up --build   →   UI http://localhost:3000 , API http://localhost:8000/docs
+services:
+  api:
+    build: { context: ., dockerfile: backend/Dockerfile }
+    environment:
+      # Default: the bundled research outputs (data/research). Other data: mount into /app/data/real and set TERRA_DATA_DIR=/app/data/real
+      TERRA_DATA_DIR: ${TERRA_DATA_DIR:-/app/data/research}   # synthetic fallback: /app/data/fixtures
+      TERRA_CORS_ORIGINS: ${TERRA_CORS_ORIGINS:-http://localhost:3000}
+    volumes:
+      - ./data/real:/app/data/real:ro
+    ports: ["${API_PORT:-8000}:8000"]
+  web:
+    build: { context: ./web }
+    environment:
+      API_URL: http://api:8000
+    ports: ["${WEB_PORT:-3000}:3000"]
+    depends_on:
+      api: { condition: service_healthy }
