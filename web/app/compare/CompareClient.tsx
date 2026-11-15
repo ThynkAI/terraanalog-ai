@@ -6,8 +6,8 @@ import { fmtLat, fmtLonEarth, num, paramToWeights, pct, weightsToParam } from "@
 import { useUrlState } from "@/lib/useUrlState";
 import type { ClustersResponse, CompareResponse, RankingsResponse, SensitivityResponse, Site } from "@/lib/types";
 import { BreakdownBar, ClusterScatter, DistributionChart, RadarCompare, RankingChart, SensitivityChart, SERIES } from "@/components/Charts";
-import { useMeta } from "@/components/MetaContext";
-import { ObjectiveSelect, ReferenceSelect } from "@/components/Selectors";
+import { useFidelityFeatures, useMeta } from "@/components/MetaContext";
+import { ObjectiveSelect, RefNotes, ReferenceSelect } from "@/components/Selectors";
 import { ErrorNote, Loading, PageHeader, ScoreBar, StatusPill, ValueTypeBadge } from "@/components/ui";
 
 const ClusterArcMap = dynamic(() => import("@/components/ClusterArcMap"), { ssr: false, loading: () => <div className="aspect-[5/4] animate-pulse rounded-lg bg-white/5" /> });
@@ -20,12 +20,16 @@ const TABS = [
 ];
 
 export default function CompareClient() {
-  const { meta } = useMeta();
+  const { meta, refs } = useMeta();
   const u = useUrlState();
   const tab = u.get("tab", "compare");
-  const ids = u.get("ids", "CA-HAU,AQ-MDV,US-LBN").split(",").filter(Boolean).slice(0, 4);
-  const ref = u.get("ref", meta?.default_reference.moon ?? "moon-south-pole-region");
+  const ids = u.get("ids", (meta?.default_compare_ids ?? []).join(",")).split(",").filter(Boolean).slice(0, 4);
+  const refParam = u.get("ref");
+  const ref = refParam || meta?.default_reference.moon || "";
+  const refObj = refs.find((r) => r.ref_id === ref);
   const obj = u.get("obj", "general");
+  const objBody = meta?.objective_bodies?.[obj] ?? null;
+  const defaultNote = !refParam && refObj ? [`No planetary reference selected — using the ${refObj.body === "moon" ? "Moon" : "Mars"} default reference ${refObj.name}.`] : [];
   const weights = paramToWeights(u.get("w"));
   const wParam = weightsToParam(weights);
   const all = useApi<{ sites: Site[] }>("/sites", { sort: "name", order: "asc" });
@@ -44,8 +48,8 @@ export default function CompareClient() {
       </PageHeader>
 
       <div className="panel no-print mb-4 grid grid-cols-1 gap-3 p-3 md:grid-cols-12">
-        <div className="md:col-span-3"><ReferenceSelect value={ref} onChange={(v) => u.set({ ref: v })} /></div>
-        <div className="md:col-span-3"><ObjectiveSelect value={obj} onChange={(v) => u.set({ obj: v })} /></div>
+        <div className="md:col-span-3"><ReferenceSelect value={ref} onChange={(v) => { const rb = refs.find((r) => r.ref_id === v)?.body; u.set({ ref: v, ...(objBody && rb && objBody !== rb ? { obj: null } : {}) }); }} /></div>
+        <div className="md:col-span-3"><ObjectiveSelect value={obj} onChange={(v) => u.set({ obj: v })} body={refObj?.body} /></div>
         <fieldset className="md:col-span-6">
           <legend className="label">Sites to compare (max 4)</legend>
           <div className="flex max-h-24 flex-wrap gap-1 overflow-y-auto">
@@ -63,6 +67,8 @@ export default function CompareClient() {
         </fieldset>
       </div>
 
+      <RefNotes notes={defaultNote} className="no-print mb-3" />
+
       <div role="tablist" aria-label="Laboratory views" className="no-print mb-4 flex flex-wrap gap-1 border-b border-white/10">
         {TABS.map((t, i) => (
           <button key={t.id} id={`tab-${t.id}`} role="tab" aria-selected={tab === t.id} aria-controls={`panel-${t.id}`} tabIndex={tab === t.id ? 0 : -1}
@@ -74,10 +80,10 @@ export default function CompareClient() {
       </div>
 
       <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`}>
-        {tab === "compare" && <CompareTab ids={ids} refId={ref} obj={obj} wParam={wParam} />}
-        {tab === "weights" && <WeightLab refId={ref} obj={obj} weights={weights} setWeights={(w) => u.set({ w: weightsToParam(w) || null })} />}
-        {tab === "sensitivity" && <SensitivityTab refId={ref} obj={obj} wParam={wParam} />}
-        {tab === "discovery" && <DiscoveryTab refId={ref} obj={obj} />}
+        {tab === "compare" && ref && <CompareTab ids={ids} refId={ref} obj={obj} wParam={wParam} />}
+        {tab === "weights" && ref && <WeightLab refId={ref} obj={obj} weights={weights} setWeights={(w) => u.set({ w: weightsToParam(w) || null })} />}
+        {tab === "sensitivity" && ref && <SensitivityTab refId={ref} obj={obj} wParam={wParam} />}
+        {tab === "discovery" && ref && <DiscoveryTab refId={ref} obj={obj} />}
       </div>
     </div>
   );
@@ -88,8 +94,9 @@ function CompareTab({ ids, refId, obj, wParam }: { ids: string[]; refId: string;
   const { data, error, loading } = useApi<CompareResponse>(ids.length ? "/compare" : null, { ids: ids.join(","), ref_id: refId, objective: obj, weights: wParam || undefined });
   const radarData = useMemo(() => {
     if (!data) return [];
-    return data.matrix.map((m) => {
-      const row: Record<string, string | number | null> = { label: String(m.label).replace(" similarity", "").replace(" suitability", "") };
+    // only features that enter the fidelity score (zero-weight ones such as operational suitability are shown in the table only)
+    return data.matrix.filter((m) => m.in_score !== false).map((m) => {
+      const row: Record<string, string | number | null> = { label: String(m.label).replace(/ similarity$/, "").replace(" suitability", "").replace(/ \(.*\)$/, "") };
       data.sites.forEach((s) => (row[s.site_id] = (m[s.site_id] as number | null) ?? 0));
       return row;
     });
@@ -111,10 +118,11 @@ function CompareTab({ ids, refId, obj, wParam }: { ids: string[]; refId: string;
         <span className="text-xs text-lunar-400">Report: {data.reference_name} · {meta?.objectives.find((o) => o.id === obj)?.label}{wParam ? ` · custom weights (${wParam})` : ""}</span>
       </div>
       {data.synthetic && <p className="rounded border border-pink-400/30 bg-pink-500/10 px-3 py-1.5 text-xs text-pink-200">SYNTHETIC FIXTURE DATA — scores are placeholders, not measurements.</p>}
+      <RefNotes notes={(data.notes ?? []).filter((n) => !n.startsWith("No planetary reference selected"))} />
 
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
         <section className="panel p-4" aria-labelledby="radar-h">
-          <h2 id="radar-h" className="panel-title mb-2">Radar comparison (criterion values 0–5)</h2>
+          <h2 id="radar-h" className="panel-title mb-2">Radar comparison (feature values 0–5{data.criteria_mode === "per_reference" ? ` vs ${data.ref_id}` : ""})</h2>
           <RadarCompare data={radarData} series={data.sites.map((s) => ({ key: s.site_id, name: s.name.split(" (")[0] }))} />
           <p className="text-[11px] text-lunar-400">Missing values are drawn at 0 on the radar but are excluded from scores — see table.</p>
         </section>
@@ -139,12 +147,12 @@ function CompareTab({ ids, refId, obj, wParam }: { ids: string[]; refId: string;
       </div>
 
       <section className="panel overflow-x-auto p-4" aria-labelledby="table-h">
-        <h2 id="table-h" className="panel-title mb-2">Side-by-side criteria (value · value type)</h2>
+        <h2 id="table-h" className="panel-title mb-2">Side-by-side features (value · value type)</h2>
         <table className="table-base min-w-[720px]">
           <caption className="sr-only">Criterion values for each compared site with data value types</caption>
           <thead>
             <tr>
-              <th scope="col">Criterion</th>
+              <th scope="col">Feature</th>
               {data.sites.map((s) => <th scope="col" key={s.site_id}>{s.name.split(" (")[0]}</th>)}
               <th scope="col">Spread</th>
             </tr>
@@ -152,14 +160,14 @@ function CompareTab({ ids, refId, obj, wParam }: { ids: string[]; refId: string;
           <tbody>
             {data.matrix.map((m) => (
               <tr key={String(m.criterion_id)}>
-                <th scope="row" className="text-left font-normal text-lunar-200">{m.label}</th>
+                <th scope="row" className="text-left font-normal text-lunar-200">{m.label}{m.in_score === false && <span className="ml-1 text-[10px] text-lunar-400">(separate · not in score)</span>}</th>
                 {data.sites.map((s) => (
                   <td key={s.site_id}>
-                    <span className="mr-1.5 font-mono">{m[s.site_id] ?? "—"}</span>
+                    <span className="mr-1.5 font-mono" title={m[s.site_id] == null ? "not available: see data gaps" : undefined}>{m[s.site_id] ?? "—"}</span>
                     <ValueTypeBadge type={String(m[`${s.site_id}__type`])} compact />
                   </td>
                 ))}
-                <td className="font-mono text-lunar-300">{m.spread ?? "—"}</td>
+                <td className="font-mono text-lunar-300">{typeof m.spread === "number" ? +m.spread.toFixed(3) : "—"}</td>
               </tr>
             ))}
             <tr>
@@ -185,7 +193,7 @@ function CompareTab({ ids, refId, obj, wParam }: { ids: string[]; refId: string;
 }
 
 function WeightLab({ refId, obj, weights, setWeights }: { refId: string; obj: string; weights: Record<string, number>; setWeights: (w: Record<string, number>) => void }) {
-  const { meta } = useMeta();
+  const features = useFidelityFeatures();
   const [local, setLocal] = useState<Record<string, number>>(weights);
   const wParam = weightsToParam(local);
   const base = useApi<RankingsResponse>("/rankings", { ref_id: refId, objective: obj });
@@ -201,11 +209,11 @@ function WeightLab({ refId, obj, weights, setWeights }: { refId: string; obj: st
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
       <section className="panel p-4 lg:col-span-4" aria-labelledby="wl-h">
         <h2 id="wl-h" className="panel-title">Custom Weight Laboratory</h2>
-        <p className="mt-1 text-xs text-lunar-400">Multiply each criterion&apos;s documented weight (0× disables it). Rankings recalculate immediately via the scoring API.</p>
+        <p className="mt-1 text-xs text-lunar-400">Multiply each feature&apos;s documented weight (0× disables it) for the selected reference. Rankings recalculate immediately via the scoring API — user-weighted results are exploratory.</p>
         <div className="mt-3 space-y-3">
-          {(meta?.criteria ?? []).map((c) => {
+          {features.map((c) => {
             const v = local[c.id] ?? 1;
-            const eff = live.data?.effective_weights[c.id];
+            const eff = (live.data?.effective_feature_weights ?? live.data?.effective_weights)?.[c.id];
             return (
               <div key={c.id}>
                 <label htmlFor={`w-${c.id}`} className="flex justify-between text-xs text-lunar-200">
@@ -250,8 +258,9 @@ function WeightLab({ refId, obj, weights, setWeights }: { refId: string; obj: st
 }
 
 function SensitivityTab({ refId, obj, wParam }: { refId: string; obj: string; wParam: string }) {
-  const { meta } = useMeta();
-  const [crit, setCrit] = useState("geology");
+  const features = useFidelityFeatures();
+  const [critSel, setCrit] = useState("");
+  const crit = critSel || (features.find((f) => f.id === "geology") ?? features[0])?.id || "";
   const all = useApi<SensitivityResponse>("/sensitivity", { ref_id: refId, objective: obj, weights: wParam || undefined, top_n: 6 });
   const names = useApi<{ sites: Site[] }>("/sites");
   const nm: Record<string, string> = {};
@@ -261,11 +270,11 @@ function SensitivityTab({ refId, obj, wParam }: { refId: string; obj: string; wP
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
       <section className="panel p-4 lg:col-span-8" aria-labelledby="sens-h">
         <div className="mb-2 flex flex-wrap items-end justify-between gap-2">
-          <h2 id="sens-h" className="panel-title">Score response to one criterion&apos;s weight (0× → 2×)</h2>
+          <h2 id="sens-h" className="panel-title">Score response to one featureone criterion&apos;s weightapos;s weight (0× → 2×)</h2>
           <div className="w-60">
-            <label htmlFor="sens-crit" className="label">Criterion</label>
+            <label htmlFor="sens-crit" className="label">Feature</label>
             <select id="sens-crit" className="select" value={crit} onChange={(e) => setCrit(e.target.value)}>
-              {(meta?.criteria ?? []).map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
+              {features.map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
             </select>
           </div>
         </div>
@@ -274,9 +283,10 @@ function SensitivityTab({ refId, obj, wParam }: { refId: string; obj: string; wP
       </section>
       <section className="panel p-4 lg:col-span-4" aria-labelledby="stab-h">
         <h2 id="stab-h" className="panel-title mb-2">Rank stability (±50 % weight)</h2>
-        <p className="mb-2 text-xs text-lunar-400">Max rank shift among the top {all.data?.tracked_sites.length ?? 0} sites when each criterion weight is halved or increased by half. Lower = more robust.</p>
+        <RefNotes notes={(all.data?.notes ?? []).filter((n) => !n.startsWith("No planetary reference selected"))} className="mb-2" />
+        <p className="mb-2 text-xs text-lunar-400">Max rank shift among the top {all.data?.tracked_sites.length ?? 0} sites when each feature weight is halved or increased by half. Lower = more robust.</p>
         <ul className="space-y-1.5 text-sm">
-          {(meta?.criteria ?? []).map((c) => {
+          {features.map((c) => {
             const s = all.data?.max_rank_shift_by_criterion[c.id] ?? 0;
             return (
               <li key={c.id} className="flex items-center gap-2">
@@ -296,10 +306,14 @@ function DiscoveryTab({ refId, obj }: { refId: string; obj: string }) {
   const { meta } = useMeta();
   const scored = useApi<{ sites: Site[] }>("/sites", { ref_id: refId, objective: obj });
   const [k, setK] = useState(4);
-  const [x, setX] = useState("thermal");
-  const [y, setY] = useState("terrain");
-  const cl = useApi<ClustersResponse>("/clusters", { k });
-  const feats = useApi<{ sites: { site_id: string; name: string; values: Record<string, { value: number | null; value_type: string }> }[] }>("/features");
+  const crits = useFidelityFeatures();
+  const pick = (pref: string[], i: number) => (crits.find((c) => pref.includes(c.id)) ?? crits[i])?.id ?? "";
+  const [xSel, setX] = useState("");
+  const [ySel, setY] = useState("");
+  const x = xSel || pick(["thermal"], 0);
+  const y = ySel || pick(["terrain", "slope"], 1);
+  const cl = useApi<ClustersResponse>("/clusters", { k, ref_id: refId });
+  const feats = useApi<{ sites: { site_id: string; name: string; values: Record<string, { value: number | null; value_type: string }> }[] }>("/features", { ref_id: refId });
   const values: Record<string, Record<string, { v: number | null; t: string }>> = {};
   const nm: Record<string, string> = {};
   (feats.data?.sites ?? []).forEach((s) => {
@@ -312,8 +326,9 @@ function DiscoveryTab({ refId, obj }: { refId: string; obj: string }) {
     .map(([sid, v]) => ({ x: v[x].v as number, y: v[y].v as number, cluster: cl.data?.assignments[sid] ?? 0, name: nm[sid] ?? sid }));
   const excluded = Object.keys(values).length - points.length;
   const geo = useMemo(() => (cl.data && scored.data ? scored.data.sites.filter((s) => s.site_id in cl.data!.assignments).map((s) => ({ site_id: s.site_id, name: s.name, lat: s.lat, lon: s.lon, score: s.score ?? null, cluster: cl.data!.assignments[s.site_id] })) : []), [cl.data, scored.data]);
-  const dist = (meta?.criteria ?? []).map((c) => c.id);
-  const [dc, setDc] = useState("ice_permafrost");
+  const dist = crits.map((c) => c.id);
+  const [dcSel, setDc] = useState("");
+  const dc = dcSel || pick(["ice_permafrost", "ice"], 0);
   const hist = [0, 1, 2, 3, 4, 5].map((b) => {
     const row: Record<string, number | string> = { bin: String(b), provisional: 0, synthetic: 0, measured: 0, modeled: 0 };
     Object.values(values).forEach((v) => {
@@ -323,7 +338,6 @@ function DiscoveryTab({ refId, obj }: { refId: string; obj: string }) {
     return row;
   });
   const missingCount = Object.values(values).filter((v) => !v[dc] || v[dc].v === null).length;
-  const crits = meta?.criteria ?? [];
   const lbl = (id: string) => crits.find((c) => c.id === id)?.label ?? id;
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
@@ -357,7 +371,7 @@ function DiscoveryTab({ refId, obj }: { refId: string; obj: string }) {
       <section className="panel p-4 lg:col-span-5" aria-labelledby="dist-h">
         <div className="mb-2 flex flex-wrap items-end justify-between gap-2">
           <h2 id="dist-h" className="panel-title">Feature distribution across all sites (stacked by value type)</h2>
-          <div className="w-60"><label className="label" htmlFor="dc">Criterion</label><select id="dc" className="select" value={dc} onChange={(e) => setDc(e.target.value)}>{dist.map((c) => <option key={c} value={c}>{lbl(c)}</option>)}</select></div>
+          <div className="w-60"><label className="label" htmlFor="dc">Feature</label><select id="dc" className="select" value={dc} onChange={(e) => setDc(e.target.value)}>{dist.map((c) => <option key={c} value={c}>{lbl(c)}</option>)}</select></div>
         </div>
         <DistributionChart data={hist} />
         <p className="text-[11px] text-lunar-400">{missingCount} site(s) have no value for this criterion (shown as missing, not zero).</p>

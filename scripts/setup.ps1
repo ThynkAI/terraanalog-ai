@@ -7,6 +7,7 @@
   powershell -ExecutionPolicy Bypass -File scripts\setup.ps1 -Dev
   powershell -ExecutionPolicy Bypass -File scripts\setup.ps1 -NoStart -Tests
   powershell -ExecutionPolicy Bypass -File scripts\setup.ps1 -ApiPort 8001 -WebPort 3001
+  powershell -ExecutionPolicy Bypass -File scripts\setup.ps1 -DataDir data/fixtures   # synthetic fallback
 
 .NOTES
   Prerequisites: Python 3.11+ (python.org installer or "py" launcher) and Node.js 20+. Docker is NOT required.
@@ -19,7 +20,7 @@ param(
   [switch]$Tests,
   [int]$ApiPort = 8000,
   [int]$WebPort = 3000,
-  [string]$DataDir = "data/fixtures"
+  [string]$DataDir = "data/research"
 )
 $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent $PSScriptRoot

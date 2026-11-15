@@ -11,7 +11,7 @@ import { RankingChart } from "@/components/Charts";
 import { MapLegend } from "@/components/MapLegend";
 import { useMeta } from "@/components/MetaContext";
 import { RecommendPanel } from "@/components/RecommendPanel";
-import { ObjectiveSelect, ReferenceSelect } from "@/components/Selectors";
+import { ObjectiveSelect, RefNotes, ReferenceSelect } from "@/components/Selectors";
 import { SiteDetail } from "@/components/SiteDetail";
 import { AnalogIcon, ErrorNote, Loading, PageHeader, ScoreBar, StatusPill } from "@/components/ui";
 import type { Site } from "@/lib/types";
@@ -21,7 +21,8 @@ const EarthMap = dynamic(() => import("@/components/EarthMap"), { ssr: false, lo
 export default function ExplorerClient() {
   const { meta, refs } = useMeta();
   const u = useUrlState();
-  const ref = u.get("ref", meta?.default_reference.moon ?? "moon-south-pole-region");
+  const refParam = u.get("ref");
+  const ref = refParam || meta?.default_reference.moon || "";
   const obj = u.get("obj", "general");
   const body = u.get("body");
   const type = u.get("type");
@@ -42,7 +43,7 @@ export default function ExplorerClient() {
 
   const q = u.get("q");
   const coords = parseLatLon(q);
-  const { data, error, loading } = useApi<{ count: number; sites: Site[] }>(meta ? "/sites" : null, {
+  const { data, error, loading } = useApi<{ count: number; sites: Site[]; notes?: string[] }>(meta && ref ? "/sites" : null, {
     ref_id: ref, objective: obj, body, analog_type: type, climate, geology, mission_objective: mobj,
     min_score: minScore || undefined, min_confidence: minConf || undefined, include_insufficient: !hideInsufficient,
     q: coords ? undefined : q, near: coords ? `${coords.lat},${coords.lon}` : undefined, radius_km: coords ? radius : undefined,
@@ -50,6 +51,12 @@ export default function ExplorerClient() {
   });
   const sites = useMemo(() => data?.sites ?? [], [data]);
   const refObj = refs.find((r) => r.ref_id === ref);
+  const objBody = (o: string) => meta?.objective_bodies?.[o] ?? null;
+  const notes = [
+    ...(!refParam && refObj ? [`No planetary reference selected — using the ${refObj.body === "moon" ? "Moon" : "Mars"} default reference ${refObj.name}.`] : []),
+    ...(data?.notes ?? []).filter((n) => !n.startsWith("No planetary reference selected")),
+  ];
+  const manyClimates = (meta?.climates.length ?? 0) > 12;
 
   useEffect(() => {
     if (coords) setFocus({ lat: coords.lat, lon: coords.lon, zoom: 3 });
@@ -64,12 +71,17 @@ export default function ExplorerClient() {
 
   const setBody = (b: string) => {
     const patch: Record<string, string | null> = { body: b || null };
-    if (b && refObj && refObj.body !== b) patch.ref = meta?.default_reference[b as "moon" | "mars"] ?? null;
+    if (b && refObj && refObj.body !== b) {
+      patch.ref = meta?.default_reference[b as "moon" | "mars"] ?? null;
+      const ob = objBody(obj);
+      if (ob && ob !== b) patch.obj = null;
+    }
     u.set(patch);
   };
   const setRef = (r: string) => {
     const rb = refs.find((x) => x.ref_id === r)?.body;
-    u.set({ ref: r, body: body && rb && body !== rb ? rb : body || null });
+    const ob = objBody(obj);
+    u.set({ ref: r, body: body && rb && body !== rb ? rb : body || null, ...(ob && rb && ob !== rb ? { obj: null } : {}) });
   };
   const toggleCompare = (id: string) => {
     const next = compare.includes(id) ? compare.filter((x) => x !== id) : [...compare, id].slice(-4);
@@ -101,11 +113,15 @@ export default function ExplorerClient() {
         </select>
       </div>
       <div>
-        <label htmlFor="f-climate" className="label">Climate</label>
-        <select id="f-climate" className="select" value={climate} onChange={(e) => u.set({ climate: e.target.value })}>
-          <option value="">All climates</option>
-          {(meta?.climates ?? []).map((c) => <option key={c} value={c}>{c}</option>)}
-        </select>
+        <label htmlFor="f-climate" className="label">{manyClimates ? "Climate contains" : "Climate"}</label>
+        {manyClimates ? (
+          <input id="f-climate" className="input" value={climate} placeholder="e.g. permafrost, ERA5, arid" onChange={(e) => u.set({ climate: e.target.value || null })} />
+        ) : (
+          <select id="f-climate" className="select" value={climate} onChange={(e) => u.set({ climate: e.target.value })}>
+            <option value="">All climates</option>
+            {(meta?.climates ?? []).map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+        )}
       </div>
       <div>
         <label htmlFor="f-geo" className="label">Geology contains</label>
@@ -142,7 +158,7 @@ export default function ExplorerClient() {
 
       <div className="panel mb-4 grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-3"><ReferenceSelect value={ref} onChange={setRef} /></div>
-        <div className="lg:col-span-2"><ObjectiveSelect value={obj} onChange={(v) => u.set({ obj: v })} /></div>
+        <div className="lg:col-span-2"><ObjectiveSelect value={obj} onChange={(v) => u.set({ obj: v })} body={refObj?.body} /></div>
         <form className="lg:col-span-4" role="search" onSubmit={(e) => { e.preventDefault(); u.set({ q: search.trim() || null, r: String(radius) }); }}>
           <label htmlFor="geo-search" className="label">Geographic search — name, country, or “lat, lon”</label>
           <div className="flex gap-1.5">
@@ -171,6 +187,7 @@ export default function ExplorerClient() {
         </div>
       </div>
 
+      <RefNotes notes={notes} className="mb-3" />
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
         <aside className="space-y-4 lg:col-span-3" aria-label="Filters and ranked sites">
           <section className="panel p-3">

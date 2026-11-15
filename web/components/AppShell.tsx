@@ -93,6 +93,16 @@ function SyntheticBanner() {
   );
 }
 
+function ResearchNotice() {
+  const { meta } = useMeta();
+  if (!meta || meta.data_status.synthetic || !meta.notice) return null;
+  return (
+    <div role="note" data-testid="research-notice" className="no-print border-b border-emerald-400/15 bg-emerald-500/[0.05] px-4 py-1.5 text-center text-xs text-emerald-100/90">
+      <strong className="font-semibold">Research dataset.</strong> {meta.notice} <Link href="/data" className="underline underline-offset-2">Provenance details</Link>
+    </div>
+  );
+}
+
 function ServiceError() {
   const { error } = useMeta();
   if (!error) return null;
@@ -111,6 +121,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </a>
       <Header />
       <SyntheticBanner />
+      <ResearchNotice />
       <ServiceError />
       <main id="main" className="mx-auto max-w-[1600px] px-4 pb-16 pt-5">
         {children}

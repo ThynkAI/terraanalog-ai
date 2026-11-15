@@ -33,13 +33,13 @@ export function RankingChart({ rows, height }: { rows: { name: string; score: nu
   const data = rows.filter((r) => r.score !== null).map((r) => ({ ...r, err: [r.score! - r.low, r.high - r.score!] }));
   const h = height ?? Math.max(180, data.length * 30 + 40);
   return (
-    <div style={{ width: "100%", height: h }} role="img" aria-label={`Ranking bar chart: ${data.map((d) => `${d.name} ${d.score}`).join("; ")}`}>
+    <div style={{ width: "100%", height: h }} className="overflow-hidden" role="img" aria-label={`Ranking bar chart: ${data.map((d) => `${d.name} ${d.score}`).join("; ")}`}>
       <ResponsiveContainer>
         <BarChart data={data} layout="vertical" margin={{ left: 8, right: 24, top: 4, bottom: 4 }}>
           <CartesianGrid horizontal={false} stroke="rgba(255,255,255,0.06)" />
           <XAxis type="number" domain={[0, 100]} {...axis} />
           <YAxis type="category" dataKey="name" width={170} tick={{ fill: "#c9ced6", fontSize: 11 }} />
-          <Tooltip contentStyle={tooltipStyle} formatter={(v: number) => [v, "score"]} />
+          <Tooltip contentStyle={{ ...tooltipStyle, whiteSpace: "normal", maxWidth: 220 }} formatter={(v: number) => [v, "score"]} />
           <Bar dataKey="score" isAnimationActive={false} radius={[0, 4, 4, 0]}>
             {data.map((d) => <Cell key={d.name} fill={scoreColor(d.score)} />)}
             <ErrorBar dataKey="err" width={4} stroke="#e3e7ee" strokeWidth={1} direction="x" />

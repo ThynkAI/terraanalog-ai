@@ -20,7 +20,7 @@ test("mobile navigation menu opens and navigates", async ({ page }) => {
 });
 
 test("mobile explorer: filters collapse behind a toggle and detail panel is reachable", async ({ page }) => {
-  await page.goto("/explorer?site=US-LBN");
+  await page.goto("/explorer?site=EA-021");
   await expect(page.getByLabel("Analog type")).toBeHidden();
   await page.getByRole("button", { name: "Show" }).first().click();
   await expect(page.getByLabel("Analog type")).toBeVisible();

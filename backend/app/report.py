@@ -30,6 +30,13 @@ def _t(s) -> str:
     return escape(str(s if s is not None else "").translate(_TR)).encode("cp1252", "replace").decode("cp1252")
 
 
+def _val(v, dash="—"):
+    """Criterion value exactly as exported (up to 3 decimals, no rounding to 1 dp)."""
+    if v is None:
+        return dash
+    return f"{v:.3f}".rstrip("0").rstrip(".") if isinstance(v, float) else str(v)
+
+
 def _fmt(v, nd=1, dash="—"):
     if v is None:
         return dash
@@ -58,7 +65,7 @@ def build_compare_pdf(st, sids, ref, obj, ranked, user_weights) -> bytes:
     BANNER = ParagraphStyle("B", parent=P, textColor=WARN_FG, backColor=WARN_BG, borderPadding=4, alignment=TA_CENTER, fontName="Helvetica-Bold")
 
     cfg = st.scoring
-    crit = cfg.criteria
+    crit = cfg.active_criteria(ref.ref_id)  # per-reference configs: only this reference's criteria (+ shared ones)
     obj_label = next((o.label for o in cfg.objectives if o.id == obj), obj)
     eff = effective_weights(cfg, ref, obj, user_weights)
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -72,11 +79,18 @@ def build_compare_pdf(st, sids, ref, obj, ranked, user_weights) -> bytes:
         story.append(Paragraph("SYNTHETIC FIXTURE DATA — scores and criterion values in this report are placeholders or provisional expert "
                                "judgements, NOT measurements. Planetary reference coordinates are real (IAU/USGS Gazetteer).", BANNER))
         story.append(Spacer(1, 6))
+    else:
+        meta = cfg.meta if isinstance(cfg.meta, dict) else {}
+        notice = meta.get("notice") or "Research dataset."
+        src = f" Source: {meta.get('source_package')} @ {meta.get('source_commit')}." if meta.get("source_commit") else ""
+        story.append(Paragraph(_t(notice + src), ParagraphStyle("N", parent=P, textColor=INK, backColor=HEAD_BG, borderPadding=4)))
+        story.append(Spacer(1, 6))
 
     # Reference
     story.append(Paragraph("Planetary reference", H2))
     lon360 = f" ({ref.lon_east_360:.2f}°E, 0–360)" if ref.lon_east_360 is not None else ""
-    story.append(Paragraph(_t(f"{ref.name} — {ref.region_type or 'region'} on the {ref.body.title()}. "
+    story.append(Paragraph(_t(f"{ref.name} — {(ref.region_type or 'region').replace('_', ' ')} on the {ref.body.title()}"
+                              f"{' (not an approved base site)' if getattr(ref, 'not_an_approved_base_site', False) else ''}. "
                               f"Coordinates {_lat(ref.lat)}, {_lon(ref.lon_east)}{lon360} ({ref.coordinate_system or 'IAU body-fixed'}); "
                               f"body radius {ref.body_radius_km} km (not WGS84)."), P))
     if ref.description:
@@ -85,45 +99,55 @@ def build_compare_pdf(st, sids, ref, obj, ranked, user_weights) -> bytes:
 
     # Summary
     story.append(Paragraph("Overall analog scores", H2))
-    rows = [["Site", "Country", "Coordinates (WGS84)", "Rank", "Score /100", "Plausible range", "Completeness", "Confidence", "Status"]]
+    published = {p.site_id: p for p in st.published_rankings if p.ref_id == ref.ref_id and p.objective == obj}
+    rows = [["Site", "Country", "Coordinates (WGS84)", "Rank", "Score /100", "Published", "Plausible range", "Completeness", "Confidence", "Status"]]
     for sid in sids:
         s, r = st.sites[sid], ranked[sid]
-        rows.append([Paragraph(_t(f"{s.name} ({sid})"), C), _t(s.country), f"{_lat(s.lat)} {_lon(s.lon)}", _fmt(r.rank), _fmt(r.score),
+        pub = published.get(sid)
+        rows.append([Paragraph(_t(f"{s.name} ({sid})"), C), Paragraph(_t(s.country), C), f"{_lat(s.lat)} {_lon(s.lon)}", _fmt(r.rank),
+                     _fmt(r.score), _fmt(pub.score, 2) if pub and pub.score is not None and not user_weights else "—",
                      f"{r.score_low:.1f}–{r.score_high:.1f}", f"{r.completeness * 100:.0f}%", f"{r.confidence * 100:.0f}%",
                      _t(r.status.replace("_", " "))])
-    story.append(_table(rows, [70 * mm, 28 * mm, 38 * mm, 12 * mm, 20 * mm, 26 * mm, 22 * mm, 20 * mm, 30 * mm]))
+    story.append(_table(rows, [64 * mm, 26 * mm, 36 * mm, 11 * mm, 18 * mm, 18 * mm, 24 * mm, 22 * mm, 20 * mm, 30 * mm]))
+    if published and not user_weights:
+        story.append(Paragraph("Published = the research package's own score for this (reference, objective); live scores reproduce it "
+                               "(see docs/TEST_RESULTS.md).", S))
     story.append(Paragraph(_t(f"Scores use only criteria with data; sites below {cfg.min_completeness * 100:.0f}% weighted completeness are "
                               "reported as insufficient evidence with no score. The plausible range assumes every missing criterion at the "
                               "minimum / maximum value. Confidence = completeness x mean value-type confidence."), S))
 
     # Criterion matrix
-    story.append(Paragraph("Side-by-side criteria (value 0–5 · value type)", H2))
-    head = ["Criterion", "Eff. weight"] + [st.sites[sid].name.split(" (")[0] for sid in sids] + ["Spread"]
+    story.append(Paragraph("Side-by-side features (value 0–5 · value type)", H2))
+    head = ["Feature", "Eff. weight"] + [st.sites[sid].name.split(" (")[0] for sid in sids] + ["Spread"]
     rows = [[Paragraph(_t(h), C) for h in head]]
     for c in crit:
-        vals, row = [], [Paragraph(_t(c.label), C), f"{eff.get(c.id, 0):.2f}"]
+        w_c = eff.get(c.id, 0)
+        label = c.feature_label + ("" if w_c > 0 else " (not in score)")
+        vals, row = [], [Paragraph(_t(label), C), f"{w_c:.2f}"]
         for sid in sids:
             fv = st.features.get(sid, {}).get(c.id)
             if fv is None or fv.value is None:
                 row.append("missing")
             else:
                 vals.append(fv.value)
-                row.append(_t(f"{_fmt(fv.value)} · {fv.value_type}"))
-        row.append(_fmt(max(vals) - min(vals)) if len(vals) >= 2 else "—")
+                row.append(_t(f"{_val(fv.value)} · {fv.value_type}"))
+        row.append(_val(max(vals) - min(vals)) if len(vals) >= 2 else "—")
         rows.append(row)
     w_site = (269 - 50 - 22 - 18) / max(1, len(sids))
     story.append(_table(rows, [50 * mm, 22 * mm] + [w_site * mm] * len(sids) + [18 * mm]))
-    story.append(Paragraph("Missing values are shown as missing and are never imputed.", S))
+    story.append(Paragraph(_t("Missing values are shown as missing and are never imputed."
+                              + (f" Values are 5 x similarity to {ref.ref_id} (criteria {ref.ref_id}.<feature>)." if cfg.per_reference else "")
+                              + " Zero-weight rows (e.g. operational suitability) are displayed separately and never mixed into the score."), S))
 
     # Breakdown per site
     story.append(PageBreak())
     story.append(Paragraph("Transparent score breakdown", H2))
     for sid in sids:
         s, r = st.sites[sid], ranked[sid]
-        rows = [["Criterion", "Value", "Value type", "Effective weight", "Points contributed", "Source"]]
+        rows = [["Feature", "Value", "Value type", "Effective weight", "Points contributed", "Source"]]
         for b in r.breakdown:
-            rows.append([Paragraph(_t(b.label), C), _fmt(b.value, dash="missing"), _t(b.value_type), f"{b.effective_weight:.3f}",
-                         _fmt(b.contribution, 2), _t(b.source_id or "—")])
+            rows.append([Paragraph(_t(b.label + ("" if b.in_score else " (not in score)")), C), _val(b.value, dash="missing"),
+                         _t(b.value_type), f"{b.effective_weight:.3f}", _fmt(b.contribution, 2), _t(b.source_id or "—")])
         block = [Paragraph(_t(f"{s.name} — score {_fmt(r.score)} (rank {_fmt(r.rank)})"), ParagraphStyle("h3", parent=P, fontName="Helvetica-Bold")),
                  _table(rows, [70 * mm, 20 * mm, 30 * mm, 30 * mm, 32 * mm, 40 * mm])]
         if s.limitations:

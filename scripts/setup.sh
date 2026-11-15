@@ -6,7 +6,7 @@
 #   ./scripts/setup.sh --no-start install + build only
 #   ./scripts/setup.sh --tests    also install test deps (pytest, Playwright Chromium)
 #
-# Env overrides: API_PORT (8000), WEB_PORT (3000), TERRA_DATA_DIR (data/fixtures), PYTHON (python3).
+# Env overrides: API_PORT (8000), WEB_PORT (3000), TERRA_DATA_DIR (data/research; synthetic fallback data/fixtures), PYTHON (python3).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 ROOT=$(pwd)
@@ -44,7 +44,7 @@ fi
 say "Installing backend dependencies"
 .venv/bin/python -m pip install -q --upgrade pip
 if [ "$TESTS" = 1 ]; then .venv/bin/python -m pip install -q -r backend/requirements-dev.txt; else .venv/bin/python -m pip install -q -r backend/requirements.txt; fi
-.venv/bin/python scripts/validate_data.py "${TERRA_DATA_DIR:-data/fixtures}" >/dev/null && say "Data directory validated (${TERRA_DATA_DIR:-data/fixtures})"
+.venv/bin/python scripts/validate_data.py "${TERRA_DATA_DIR:-data/research}" >/dev/null && say "Data directory validated (${TERRA_DATA_DIR:-data/research})"
 
 # ---- frontend ------------------------------------------------------------------------
 say "Installing web dependencies (npm ci)"
@@ -62,7 +62,7 @@ port_busy() { (exec 3<>"/dev/tcp/127.0.0.1/$1") 2>/dev/null; }
 port_busy "$API_PORT" && die "Port $API_PORT is already in use. Re-run with API_PORT=<free port>."
 port_busy "$WEB_PORT" && die "Port $WEB_PORT is already in use. Re-run with WEB_PORT=<free port>."
 say "Starting API on http://127.0.0.1:$API_PORT (docs at /docs)"
-TERRA_DATA_DIR="${TERRA_DATA_DIR:-data/fixtures}" TERRA_CORS_ORIGINS="http://localhost:$WEB_PORT" \
+TERRA_DATA_DIR="${TERRA_DATA_DIR:-data/research}" TERRA_CORS_ORIGINS="http://localhost:$WEB_PORT" \
   .venv/bin/uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port "$API_PORT" &
 API_PID=$!
 trap 'kill $API_PID 2>/dev/null || true' EXIT INT TERM

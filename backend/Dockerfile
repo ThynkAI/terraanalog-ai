@@ -1,6 +1,6 @@
 # TerraAnalog AI — FastAPI data & scoring service. Build context: repository root.
 FROM python:3.12-slim
-ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 TERRA_DATA_DIR=/app/data/fixtures
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 TERRA_DATA_DIR=/app/data/research
 WORKDIR /app
 COPY backend/requirements.txt backend/requirements.txt
 RUN pip install --no-cache-dir -r backend/requirements.txt

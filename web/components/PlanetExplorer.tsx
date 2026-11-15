@@ -20,18 +20,16 @@ export function PlanetExplorer({ body }: { body: Body }) {
   const labels = useCriteriaLabels();
   const u = useUrlState();
   const bodyRefs = refs.filter((r) => r.body === body);
-  const selected = u.get("ref", meta?.default_reference[body] ?? (body === "moon" ? "moon-south-pole-region" : "mars-jezero"));
+  const selected = u.get("ref", meta?.default_reference[body] ?? bodyRefs[0]?.ref_id ?? "");
   const obj = u.get("obj", "general");
-  const { data, error, loading } = useApi<RefDetail>(`/planetary-references/${selected}`, { objective: obj, top_k: 15 });
+  const { data, error, loading } = useApi<RefDetail>(selected ? `/planetary-references/${selected}` : null, { objective: obj, top_k: 15 });
   const isMoon = body === "moon";
 
   return (
     <div>
       <PageHeader eyebrow={`Phase 3 · ${isMoon ? "Lunar" : "Martian"} reference viewer`} title={isMoon ? "Moon Reference Explorer" : "Mars Reference Explorer"}>
-        {isMoon
-          ? "Lunar south-polar regions (Shackleton, Malapert, de Gerlache) and representative mare/volcanic environments. Select a reference to see its matched Earth analog candidates."
-          : "Jezero, Gale, Elysium Planitia and additional Martian reference regions. Select a reference to see its matched Earth analog candidates."}{" "}
-        Coordinates: IAU/USGS Gazetteer, planetocentric latitude, east-positive longitude — no Earth geodetic assumptions.
+        {bodyRefs.length} {isMoon ? "lunar" : "Martian"} reference regions ({bodyRefs.slice(0, 4).map((r) => r.name.split(" (")[0]).join(", ")}{bodyRefs.length > 4 ? ", …" : ""}). Select a reference to see its matched Earth analog candidates.{" "}
+        Coordinates are planetocentric latitude, east-positive longitude on the IAU {isMoon ? "Moon" : "Mars"} sphere — never WGS84, never drawn on the Earth map.
       </PageHeader>
 
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
@@ -48,7 +46,7 @@ export function PlanetExplorer({ body }: { body: Body }) {
                     className={`w-full rounded-lg border px-3 py-2 text-left text-sm transition ${r.ref_id === selected ? (isMoon ? "border-lunar-300/60 bg-lunar-200/10" : "border-mars-400/60 bg-mars-500/10") : "border-white/10 hover:bg-white/[0.04]"}`}
                   >
                     <span className="block font-medium text-white">{r.name}</span>
-                    <span className="font-mono text-[11px] text-lunar-400">{fmtLat(r.lat)} {fmtLonEast(r.lon_east)} · {r.region_type}</span>
+                    <span className="font-mono text-[11px] text-lunar-400">{fmtLat(r.lat)} {fmtLonEast(r.lon_east)} · {(r.status_class || r.region_type).replace(/_/g, " ")}</span>
                   </button>
                 </li>
               ))}
@@ -62,7 +60,10 @@ export function PlanetExplorer({ body }: { body: Body }) {
           {data && (
             <>
               <article className="panel fade-in p-4" aria-labelledby="ref-title" data-testid="reference-detail">
-                <p className="panel-title">{data.region_type}</p>
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="chip bg-white/5 text-lunar-100 ring-white/15" data-testid="status-class">{(data.status_class || data.region_type || "region").replace(/_/g, " ")}</span>
+                  {data.not_an_approved_base_site && <span className="chip bg-amber-500/10 text-amber-200 ring-amber-400/30">not an approved base site</span>}
+                </div>
                 <h2 id="ref-title" className="mt-1 text-xl font-semibold text-white">{data.name}</h2>
                 <p className="mt-2 text-sm text-lunar-200">{data.description}</p>
                 <dl className="mt-3 grid grid-cols-2 gap-2 text-xs">
@@ -96,7 +97,7 @@ export function PlanetExplorer({ body }: { body: Body }) {
               <section className="panel p-4" aria-labelledby="matches-h">
                 <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
                   <h2 id="matches-h" className="panel-title">Analog Match Explorer — Earth candidates</h2>
-                  <div className="w-56"><ObjectiveSelect value={obj} onChange={(v) => u.set({ obj: v })} id={`obj-${body}`} /></div>
+                  <div className="w-56"><ObjectiveSelect value={obj} onChange={(v) => u.set({ obj: v })} id={`obj-${body}`} body={body} /></div>
                 </div>
                 <ol className="space-y-1.5" data-testid="match-list">
                   {data.matches.map((m) => (

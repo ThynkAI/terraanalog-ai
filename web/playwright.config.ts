@@ -22,6 +22,7 @@ export default defineConfig({
   ],
   webServer: managed
     ? [
+        // TERRA_DATA_DIR defaults to data/research (the e2e assertions use research ids)
         { command: `cd .. && .venv/bin/uvicorn app.main:app --app-dir backend --port ${API_PORT}`, url: `http://127.0.0.1:${API_PORT}/api/health`, reuseExistingServer: true },
         { command: "npm run build && npm start", url: BASE_URL, reuseExistingServer: true, timeout: 240_000, env: { API_URL: `http://127.0.0.1:${API_PORT}` } },
       ]

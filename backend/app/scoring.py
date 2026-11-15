@@ -37,6 +37,8 @@ class CriterionBreakdown:
     share: Optional[float]  # fraction of the score coming from this criterion
     missing: bool
     source_id: str = ""
+    feature: str = ""  # feature group (== criterion_id for shared criteria)
+    in_score: bool = True  # False for zero-weight criteria (e.g. operational suitability: displayed, never mixed in)
 
 
 @dataclass
@@ -55,6 +57,7 @@ class ScoreResult:
     trait_matches: list[str] = field(default_factory=list)
     body_relevant: bool = True
     rank: Optional[int] = None
+    score_raw: Optional[float] = None  # unrounded score, used for ranking (display uses 1 dp)
 
     def as_dict(self) -> dict:
         d = self.__dict__.copy()
@@ -70,8 +73,11 @@ def effective_weights(cfg: ScoringConfig, ref: PlanetaryReference, objective: st
     rm = cfg.reference_multipliers.get(ref.ref_id, {})
     user = user or {}
     out: dict[str, float] = {}
-    for c in cfg.criteria:
-        out[c.id] = bw.get(c.id, 0.0) * rm.get(c.id, 1.0) * obj.multipliers.get(c.id, 1.0) * max(0.0, user.get(c.id, 1.0))
+    # Only the selected reference's criteria (plus shared ones) are active; other references' criteria are excluded
+    # outright (equivalent to the research config's zeroing reference_multipliers, and robust if those are absent).
+    for c in cfg.active_criteria(ref.ref_id):
+        um = user.get(c.id, user.get(c.feature_id, 1.0))
+        out[c.id] = bw.get(c.id, 0.0) * rm.get(c.id, 1.0) * obj.multipliers.get(c.id, 1.0) * max(0.0, um)
     return out
 
 
@@ -93,7 +99,7 @@ def score_site(store: DataStore, site: EarthSite, ref: PlanetaryReference, objec
     missing_w = 0.0
     rows: list[CriterionBreakdown] = []
     missing: list[str] = []
-    for c in cfg.criteria:
+    for c in cfg.active_criteria(ref.ref_id):
         w = weights[c.id]
         fv = feats.get(c.id)
         val = fv.value if fv is not None else None
@@ -101,15 +107,16 @@ def score_site(store: DataStore, site: EarthSite, ref: PlanetaryReference, objec
             if w > 0:
                 missing.append(c.id)
             missing_w += w
-            rows.append(CriterionBreakdown(c.id, c.label, None, "missing", None, base.get(c.id, 0.0), w, None, None, True,
-                                           fv.source_id if fv else ""))
+            rows.append(CriterionBreakdown(c.id, c.feature_label, None, "missing", None, base.get(c.id, 0.0), w, None, None, True,
+                                           fv.source_id if fv else "", c.feature_id, w > 0))
             continue
         conf = fv.confidence if fv.confidence is not None else conf_map.get(fv.value_type, 0.25)
         norm = (val - smin) / span
         present_w += w
         weighted_sum += w * norm
         conf_sum += w * conf
-        rows.append(CriterionBreakdown(c.id, c.label, val, fv.value_type, conf, base.get(c.id, 0.0), w, None, None, False, fv.source_id))
+        rows.append(CriterionBreakdown(c.id, c.feature_label, val, fv.value_type, conf, base.get(c.id, 0.0), w, None, None, False,
+                                       fv.source_id, c.feature_id, w > 0))
 
     trait_matches = sorted(set(site.analog_types) & set(ref.analog_type_affinity))
     body_rel = ref.body in site.target_bodies if site.target_bodies else True
@@ -123,7 +130,7 @@ def score_site(store: DataStore, site: EarthSite, ref: PlanetaryReference, objec
     high = 100.0 * (weighted_sum + missing_w) / total_w
     confidence = completeness * (conf_sum / present_w)
     for r in rows:
-        if not r.missing and r.value is not None:
+        if not r.missing and r.value is not None and r.in_score:
             pts = 100.0 * r.effective_weight * ((r.value - smin) / span) / present_w
             r.contribution = round(pts, 2)
             r.share = round(pts / score, 4) if score > 0 else 0.0
@@ -132,7 +139,7 @@ def score_site(store: DataStore, site: EarthSite, ref: PlanetaryReference, objec
         site.site_id, ref.ref_id, objective,
         round(score, 1) if status == "scored" else None,
         round(low, 1), round(high, 1), round(completeness, 3), round(confidence, 3), status,
-        rows, missing, trait_matches, body_rel,
+        rows, missing, trait_matches, body_rel, score_raw=round(score, 4) if status == "scored" else None,
     )
 
 
@@ -142,7 +149,7 @@ def rank_sites(store: DataStore, ref: PlanetaryReference, objective: str, user_w
     results = [score_site(store, s, ref, objective, user_weights) for s in sites]
     if body_relevant_only:
         results = [r for r in results if r.body_relevant]
-    scored = sorted((r for r in results if r.score is not None), key=lambda r: (-r.score, -r.completeness, r.site_id))
+    scored = sorted((r for r in results if r.score is not None), key=lambda r: (-(r.score_raw if r.score_raw is not None else r.score), -r.completeness, r.site_id))
     rest = sorted((r for r in results if r.score is None), key=lambda r: (-r.completeness, r.site_id))
     for i, r in enumerate(scored, start=1):
         r.rank = i
@@ -150,7 +157,7 @@ def rank_sites(store: DataStore, ref: PlanetaryReference, objective: str, user_w
 
 
 def parse_weights(raw: Optional[str], valid: set[str]) -> dict[str, float]:
-    """Parse 'terrain:1.5,geology:0.5' into user multipliers (0..5)."""
+    """Parse 'terrain:1.5,geology:0.5' into user multipliers (0..5). Keys may be criterion ids or feature ids."""
     if not raw:
         return {}
     out: dict[str, float] = {}

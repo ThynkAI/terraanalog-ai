@@ -12,6 +12,12 @@ export function Markdown({ text }: { text: string }) {
           h1: ({ children }) => <h2 className="text-xl font-semibold text-white">{children}</h2>,
           h2: ({ children }) => <h3 className="mt-5 text-base font-semibold text-white">{children}</h3>,
           h3: ({ children }) => <h4 className="mt-4 text-sm font-semibold text-white">{children}</h4>,
+          // Wide research tables scroll inside their own focusable region instead of overflowing the page on mobile.
+          table: ({ children }) => (
+            <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Scrollable table">
+              <table>{children}</table>
+            </div>
+          ),
         }}
       >
         {text}

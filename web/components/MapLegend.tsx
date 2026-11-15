@@ -29,10 +29,10 @@ export function MapLegend() {
           <div>
             <p className="mb-1 text-lunar-400">Symbol = primary analog type</p>
             <ul className="space-y-1">
-              {Object.keys(ANALOG_TYPE_COLORS).map((t) => (
+              {(meta && Object.keys(meta.analog_types).length ? Object.keys(meta.analog_types) : Object.keys(ANALOG_TYPE_COLORS)).map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <AnalogIcon type={t} size={14} />
-                  <span className="text-lunar-200">{meta?.analog_types[t] ?? t}</span>
+                  <span className="text-lunar-200">{meta?.analog_types[t] ?? t.replace(/_/g, " ")}</span>
                 </li>
               ))}
             </ul>

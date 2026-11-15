@@ -5,11 +5,14 @@ import os
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_DATA_DIR = REPO_ROOT / "data" / "fixtures"
+RESEARCH_DATA_DIR = REPO_ROOT / "data" / "research"  # real research outputs (default)
+FIXTURE_DATA_DIR = REPO_ROOT / "data" / "fixtures"  # synthetic fallback
+DEFAULT_DATA_DIR = RESEARCH_DATA_DIR if (RESEARCH_DATA_DIR / "scoring_config.json").exists() else FIXTURE_DATA_DIR
 
 
 def data_dir() -> Path:
-    """Directory holding the 9 data-contract files. Point TERRA_DATA_DIR at Bot 1's output to swap in real data."""
+    """Directory holding the 9 data-contract files. Default: data/research (falls back to the synthetic data/fixtures
+    if the research files are absent). Override with TERRA_DATA_DIR."""
     return Path(os.environ.get("TERRA_DATA_DIR", str(DEFAULT_DATA_DIR))).expanduser().resolve()
 
 

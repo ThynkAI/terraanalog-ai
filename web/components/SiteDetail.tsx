@@ -11,10 +11,13 @@ import { AnalogTypeChip, BodyBadge, ErrorNote, Loading, ScoreBar, StatusPill, Va
 export function EvidenceInspector({ detail }: { detail: SiteDetailT }) {
   const { meta } = useMeta();
   const [open, setOpen] = useState<string | null>(null);
-  const crit = meta?.criteria ?? [];
+  // Per-reference datasets: only the selected reference's criteria, labelled by feature. Fixture shape: all criteria.
+  const crit = detail.active_criteria?.length
+    ? detail.active_criteria.map((a) => ({ id: a.criterion_id, label: a.label, earth_proxy: a.earth_proxy || meta?.criteria.find((c) => c.id === a.criterion_id)?.earth_proxy || "" }))
+    : (meta?.criteria ?? []).map((c) => ({ id: c.id, label: c.label, earth_proxy: c.earth_proxy }));
   return (
     <div>
-      <h3 className="panel-title mb-2">Evidence inspector</h3>
+      <h3 className="panel-title mb-2">Evidence inspector{detail.active_criteria?.length ? <span className="ml-1 normal-case tracking-normal text-lunar-400">· criteria for {detail.ref_id}</span> : null}</h3>
       <ul className="divide-y divide-white/5 rounded-lg border border-white/10">
         {crit.map((c) => {
           const fv = detail.features[c.id];
@@ -29,7 +32,7 @@ export function EvidenceInspector({ detail }: { detail: SiteDetailT }) {
                 onClick={() => setOpen(isOpen ? null : c.id)}
               >
                 <span className="flex-1 text-lunar-100">{c.label}</span>
-                <span className="font-mono text-xs text-lunar-200">{fv?.value ?? "—"}/5</span>
+                <span className="font-mono text-xs text-lunar-200" title={fv?.value == null ? "not available: see data gaps" : undefined}>{fv?.value ?? "—"}/5</span>
                 <ValueTypeBadge type={fv?.value_type ?? "missing"} />
                 <span aria-hidden="true" className="text-lunar-400">{isOpen ? "▾" : "▸"}</span>
               </button>
@@ -63,6 +66,9 @@ export function SiteDetail({ siteId, refId, objective, weights, onClose, onCompa
   if (error) return <div className="p-4"><ErrorNote error={error} /></div>;
   if (!data) return null;
   const s = data.score;
+  const inScore = s?.breakdown.filter((b) => b.in_score !== false) ?? [];
+  const separate = s?.breakdown.filter((b) => b.in_score === false) ?? [];
+  const published = data.published_rankings.filter((p) => p.ref_id === refId && p.objective === objective);
   const copyLink = async () => {
     const url = `${window.location.origin}/explorer?site=${data.site_id}&ref=${refId}&obj=${objective}`;
     try {
@@ -110,18 +116,30 @@ export function SiteDetail({ siteId, refId, objective, weights, onClose, onCompa
           <div className="mt-3"><BreakdownBar breakdown={s.breakdown} /></div>
           <table className="table-base mt-2 text-xs">
             <caption className="sr-only">Transparent score breakdown</caption>
-            <thead><tr><th scope="col">Criterion</th><th scope="col">Value</th><th scope="col">Weight</th><th scope="col">Points</th></tr></thead>
+            <thead><tr><th scope="col">Feature</th><th scope="col">Value</th><th scope="col">Weight</th><th scope="col">Points</th></tr></thead>
             <tbody>
-              {s.breakdown.map((b) => (
+              {inScore.map((b) => (
                 <tr key={b.criterion_id} className={b.missing ? "opacity-60" : ""}>
                   <td>{b.label}</td>
-                  <td className="whitespace-nowrap">{b.value ?? "—"} <ValueTypeBadge type={b.value_type} compact /></td>
+                  <td className="whitespace-nowrap" title={b.value == null ? "not available: see data gaps" : undefined}>{b.value ?? "—"} <ValueTypeBadge type={b.value_type} compact /></td>
                   <td className="font-mono">{num(b.effective_weight, 2)}</td>
                   <td className="font-mono">{b.contribution ?? (b.missing ? "missing" : "—")}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+          {separate.map((b) => (
+            <p key={b.criterion_id} className="mt-2 rounded border border-white/10 px-2 py-1 text-xs text-lunar-200" data-testid="separate-criterion">
+              <span className="text-lunar-400">{b.label} — {b.criterion_id === "operational_suitability" || /operational/i.test(b.criterion_id) ? "shown separately, never added to the fidelity score" : "weight 0 under this objective, not in the score"}:</span>{" "}
+              <span className="font-mono text-white">{b.value ?? "—"}/5</span> <ValueTypeBadge type={b.value_type} compact />
+            </p>
+          ))}
+          {published.length > 0 && !weights && (
+            <p className="mt-2 text-xs text-lunar-300" data-testid="published-score">
+              Published research score for this reference &amp; objective: <span className="font-mono text-white">{published[0].score ?? "—"}</span>
+              {published[0].rank ? ` (rank ${published[0].rank})` : ""} · live score reproduces it from the same values.
+            </p>
+          )}
           {s.trait_matches.length > 0 && <p className="mt-2 text-xs text-lunar-300">Shared traits with reference: {s.trait_matches.join(", ").replace(/_/g, " ")}</p>}
         </section>
       )}
@@ -178,7 +196,7 @@ export function SiteDetail({ siteId, refId, objective, weights, onClose, onCompa
         <h3 className="panel-title mb-1">Limitations — what Earth cannot replicate</h3>
         <ul className="list-disc space-y-0.5 pl-5 text-xs text-lunar-300">
           {Object.entries(data.cannot_replicate_on_earth ?? {}).flatMap(([b, items]) => (items ?? []).slice(0, 4).map((i) => <li key={b + i}><span className="text-lunar-400">{b}:</span> {i}</li>))}
-          {data.limitations.filter((l) => l.includes("synthetic")).map((l) => <li key={l} className="text-pink-200">{l}</li>)}
+          {data.limitations.map((l) => <li key={l} className={l.toLowerCase().includes("synthetic") ? "text-pink-200" : ""}>{l}</li>)}
         </ul>
         <p className="mt-2 text-xs text-lunar-400">Citations: {(data.citations ?? ["citation pending from research dataset"]).join("; ")}</p>
       </section>

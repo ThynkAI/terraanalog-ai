@@ -124,18 +124,44 @@ class EvidenceItem(BaseModel):
 
 
 class Criterion(BaseModel):
+    """A scoring criterion. Two shapes are supported:
+    * shared (fixture shape): one criterion per feature, used for every reference (ref_id/feature absent);
+    * per-reference (research shape): '<REF_ID>.<feature>' with ref_id + feature keys; only the selected reference's
+      criteria (plus shared ones with ref_id = null) are active for a score."""
+
+    model_config = ConfigDict(extra="allow")
     id: str = Field(pattern=ID_PATTERN)
     label: str
     description: str = ""
     earth_proxy: str = ""
     source_families: list[str] = Field(default_factory=list)
+    ref_id: Optional[str] = None
+    feature: Optional[str] = None
+
+    @property
+    def feature_id(self) -> str:
+        return self.feature or self.id
+
+    @property
+    def feature_label(self) -> str:
+        if self.ref_id is None and not self.feature:
+            return self.label
+        head = self.label.split(" - ")[0].strip()
+        return head[:-6].strip() if head.endswith(" match") else head
 
 
 class Objective(BaseModel):
+    model_config = ConfigDict(extra="allow")
     id: str = Field(pattern=ID_PATTERN)
     label: str
     description: str = ""
     multipliers: dict[str, float] = Field(default_factory=dict)
+    body: Optional[str] = None  # research shape: 'Moon' / 'Mars' mission profile
+    published_references: list[str] = Field(default_factory=list)
+
+    @property
+    def body_key(self) -> Optional[str]:
+        return self.body.lower() if self.body else None
 
     @field_validator("multipliers")
     @classmethod
@@ -182,6 +208,40 @@ class ScoringConfig(BaseModel):
         if self.default_objective not in {o.id for o in self.objectives}:
             raise ValueError("default_objective must be one of objectives")
         return self
+
+    # ---- per-reference criteria support ------------------------------------------------
+    @property
+    def per_reference(self) -> bool:
+        return any(c.ref_id for c in self.criteria)
+
+    def active_criteria(self, ref_id: Optional[str]) -> list[Criterion]:
+        """Criteria that apply to a reference: its own (ref_id == ref) plus shared ones (ref_id is None)."""
+        return [c for c in self.criteria if c.ref_id is None or c.ref_id == ref_id]
+
+    def features(self) -> list[dict[str, Any]]:
+        """Distinct features in criteria order, with readable labels (from the data, not invented)."""
+        out: dict[str, dict[str, Any]] = {}
+        for c in self.criteria:
+            f = c.feature_id
+            if f not in out:
+                desc = c.description
+                if c.ref_id:
+                    desc = desc.replace(c.ref_id, "the selected reference")
+                shared = c.ref_id is None
+                fidelity = any(w.get(c.id, 0) > 0 for w in self.body_weights.values())
+                out[f] = {"id": f, "label": c.feature_label, "description": desc, "earth_proxy": c.earth_proxy,
+                          "per_reference": not shared, "in_fidelity_score": fidelity}
+            elif any(w.get(c.id, 0) > 0 for w in self.body_weights.values()):
+                out[f]["in_fidelity_score"] = True
+        return list(out.values())
+
+    def feature_weights(self, ref_id: Optional[str], weights: dict[str, float]) -> dict[str, float]:
+        """Collapse criterion-keyed weights to feature keys for one reference."""
+        out: dict[str, float] = {}
+        for c in self.active_criteria(ref_id):
+            if c.id in weights:
+                out[c.feature_id] = out.get(c.feature_id, 0.0) + weights[c.id]
+        return out
 
 
 class RecommendRequest(BaseModel):

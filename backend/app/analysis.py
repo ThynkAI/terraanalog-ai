@@ -12,14 +12,16 @@ MULTIPLIERS = [0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
 
 
 def sensitivity(store: DataStore, ref: PlanetaryReference, objective: str, criterion: Optional[str], top_n: int = 6,
-                base_user: Optional[dict[str, float]] = None) -> dict:
+                base_user: Optional[dict[str, float]] = None, features: Optional[list[str]] = None) -> dict:
+    """Sweep one FEATURE's user multiplier (feature == criterion id for shared configs; for per-reference configs the
+    multiplier applies to the selected reference's criterion for that feature)."""
     cfg = store.scoring
     assert cfg is not None
     base_user = base_user or {}
     baseline = rank_sites(store, ref, objective, base_user)
     base_rank = {r.site_id: r.rank for r in baseline}
     tracked = [r.site_id for r in baseline if r.rank is not None][:top_n]
-    crits = [criterion] if criterion else [c.id for c in cfg.criteria]
+    crits = [criterion] if criterion else (features if features is not None else [c.feature_id for c in cfg.criteria])
 
     sweeps = {}
     stability = []
@@ -53,12 +55,15 @@ def _dist(a: dict[str, float], b: dict[str, float]) -> Optional[float]:
     return math.sqrt(sum((a[k] - b[k]) ** 2 for k in shared) / len(shared))
 
 
-def clusters(store: DataStore, k: int = 4, iters: int = 25) -> dict:
-    """Mask-aware k-means on criterion vectors: distance uses only criteria present in both vectors, so missing
-    values are never imputed. Deterministic farthest-point initialisation."""
+def clusters(store: DataStore, k: int = 4, criteria: Optional[list] = None, iters: int = 25) -> dict:
+    """Mask-aware k-means on feature vectors: distance uses only features present in both vectors, so missing
+    values are never imputed. Deterministic farthest-point initialisation. `criteria` = Criterion objects to use
+    (for per-reference configs: the selected reference's fidelity criteria); vectors are keyed by feature id."""
     cfg = store.scoring
-    crit = [c.id for c in cfg.criteria] if cfg else []
-    vecs = {sid: {c: fv.value for c, fv in store.features.get(sid, {}).items() if fv.value is not None and c in crit}
+    use = criteria if criteria is not None else (cfg.criteria if cfg else [])
+    fmap = {c.id: c.feature_id for c in use}
+    crit = list(dict.fromkeys(fmap.values()))
+    vecs = {sid: {fmap[c]: fv.value for c, fv in store.features.get(sid, {}).items() if fv.value is not None and c in fmap}
             for sid in sorted(store.sites)}
     vecs = {s: v for s, v in vecs.items() if v}
     ids = list(vecs)

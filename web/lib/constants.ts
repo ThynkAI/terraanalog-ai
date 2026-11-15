@@ -1,7 +1,7 @@
 export const VALUE_TYPE_STYLE: Record<string, { label: string; cls: string; desc: string }> = {
-  measured: { label: "Measured", cls: "bg-emerald-500/15 text-emerald-300 ring-emerald-400/40", desc: "Derived from an observational dataset" },
+  measured: { label: "Measured", cls: "bg-emerald-500/15 text-emerald-300 ring-emerald-400/40", desc: "Derived from instrument / observational data (e.g. DEMs)" },
   modeled: { label: "Modeled", cls: "bg-sky-500/15 text-sky-300 ring-sky-400/40", desc: "Output of a model or interpolation" },
-  provisional: { label: "Provisional", cls: "bg-amber-500/15 text-amber-300 ring-amber-400/40", desc: "Expert judgement pending data extraction (PREP_DRAFT)" },
+  provisional: { label: "Provisional", cls: "bg-amber-500/15 text-amber-300 ring-amber-400/40", desc: "Literature-derived tags, expert classes or simple models — not an instrument measurement" },
   synthetic: { label: "Synthetic", cls: "bg-pink-500/15 text-pink-300 ring-pink-400/40", desc: "Generated placeholder — not real data" },
   missing: { label: "Missing", cls: "bg-slate-500/10 text-slate-400 ring-slate-500/40 border-dashed", desc: "No value; never imputed" },
 };
@@ -15,6 +15,10 @@ export const ANALOG_TYPE_COLORS: Record<string, string> = {
   hyperarid_desert: "#fbbf24",
   acidic_aqueous: "#34d399",
   high_altitude: "#f472b6",
+  // research-dataset types
+  aqueous_alteration: "#34d399",
+  evaporite_basin: "#e5e7eb",
+  arid_desert: "#fbbf24",
 };
 
 export const BODY_COLORS = { moon: "#c9ced6", mars: "#e8743b" } as const;

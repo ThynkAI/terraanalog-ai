@@ -38,7 +38,7 @@ function TopList({ refId, title, accent }: { refId: string; title: string; accen
 }
 
 export default function OverviewClient() {
-  const { meta } = useMeta();
+  const { meta, refs } = useMeta();
   const c = meta?.data_status.counts;
   return (
     <div className="space-y-6">
@@ -65,15 +65,18 @@ export default function OverviewClient() {
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <Stat label="Earth analog sites" value={c?.earth_sites ?? "–"} sub="WGS84 GeoJSON" />
         <Stat label="Planetary references" value={c?.planetary_references ?? "–"} sub="IAU/USGS Gazetteer coordinates" />
-        <Stat label="Scoring criteria" value={meta?.criteria.length ?? "–"} sub="transparent, weighted" />
-        <Stat label="Mission objectives" value={meta ? meta.objectives.length - 1 : "–"} sub="rover · drilling · ISRU · habitat · caves · EVA" />
+        <Stat label="Scoring features" value={meta ? (meta.features?.filter((f) => f.in_fidelity_score).length || meta.criteria.length) : "–"} sub={meta?.criteria_mode === "per_reference" ? `per reference · ${meta.criteria.length} criteria` : "transparent, weighted"} />
+        <Stat label="Mission objectives" value={meta ? meta.objectives.filter((o) => o.id !== "general").length : "–"} sub={meta ? Array.from(new Set(meta.objectives.filter((o) => o.id !== "general").map((o) => o.label.replace(/^(Moon|Mars) /, "")))).slice(0, 6).join(" · ") : ""} />
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
         <div className="lg:col-span-7"><RecommendPanel /></div>
         <div className="space-y-4 lg:col-span-5">
-          <TopList refId="moon-shackleton" title="Top matches · Shackleton crater vicinity" accent="#c9ced6" />
-          <TopList refId="mars-jezero" title="Top matches · Jezero crater" accent="#f08a55" />
+          {(["moon", "mars"] as const).map((b) => {
+            const id = meta?.default_reference[b];
+            const r = refs.find((x) => x.ref_id === id);
+            return id ? <TopList key={b} refId={id} title={`Top matches · ${(r?.name ?? id).split(" (")[0]}`} accent={b === "moon" ? "#c9ced6" : "#f08a55"} /> : null;
+          })}
           <section className="panel p-4">
             <h3 className="panel-title">How it works</h3>
             <ol className="mt-2 space-y-2 text-sm text-lunar-200">

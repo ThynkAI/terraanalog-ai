@@ -11,7 +11,7 @@ fixtures:
 	.venv/bin/python scripts/build_fixtures.py
 
 validate:
-	.venv/bin/python scripts/validate_data.py $${DATA_DIR:-data/fixtures}
+	.venv/bin/python scripts/validate_data.py $${DATA_DIR:-data/research}
 
 test-api:
 	cd backend && ../.venv/bin/python -m pytest -q

@@ -1,0 +1,108 @@
+{
+  "data_dir": "data/research",
+  "rows_published": 588,
+  "rows_compared": 588,
+  "rows_unscorable": 0,
+  "score_abs_diff_unrounded": {
+    "max": 0.0111,
+    "mean": 0.0031,
+    "median": 0.003,
+    "within_0.05": 588,
+    "within_0.01": 587
+  },
+  "score_abs_diff_display_1dp": {
+    "max": 0.05,
+    "mean": 0.0256,
+    "exact": 58
+  },
+  "completeness_abs_diff": {
+    "max": 0.0,
+    "mean": 0.0
+  },
+  "rank_agreement": {
+    "compared": 588,
+    "mismatches": 4,
+    "examples": [
+      {
+        "ref_id": "MARS-REF-01",
+        "objective": "MARS_ASTROBIO_SEDIMENTS",
+        "site_id": "EA-006",
+        "published": 26.84,
+        "engine_raw": 26.8344,
+        "rank_pub": 14,
+        "rank_engine": 15
+      },
+      {
+        "ref_id": "MARS-REF-01",
+        "objective": "MARS_ASTROBIO_SEDIMENTS",
+        "site_id": "EA-027",
+        "published": 26.84,
+        "engine_raw": 26.8433,
+        "rank_pub": 15,
+        "rank_engine": 14
+      },
+      {
+        "ref_id": "MOON-REF-02",
+        "objective": "MOON_ISRU_ICE",
+        "site_id": "EA-018",
+        "published": 14.18,
+        "engine_raw": 14.177,
+        "rank_pub": 10,
+        "rank_engine": 11
+      },
+      {
+        "ref_id": "MOON-REF-02",
+        "objective": "MOON_ISRU_ICE",
+        "site_id": "EA-028",
+        "published": 14.18,
+        "engine_raw": 14.182,
+        "rank_pub": 11,
+        "rank_engine": 10
+      }
+    ]
+  },
+  "pairs": 21,
+  "worst_rows": [
+    {
+      "ref_id": "MOON-REF-01",
+      "objective": "MOON_FIELD_GEOLOGY",
+      "site_id": "EA-027",
+      "published": 27.35,
+      "engine_raw": 27.3389,
+      "abs_diff": 0.0111111111111164
+    },
+    {
+      "ref_id": "MOON-REF-03",
+      "objective": "MOON_EVA_HABITAT",
+      "site_id": "EA-004",
+      "published": 50.87,
+      "engine_raw": 50.88,
+      "abs_diff": 0.00999999999999801
+    },
+    {
+      "ref_id": "MOON-REF-07",
+      "objective": "MOON_ROVER_MOBILITY",
+      "site_id": "EA-009",
+      "published": 59.21,
+      "engine_raw": 59.22,
+      "abs_diff": 0.00999999999999801
+    },
+    {
+      "ref_id": "MARS-REF-02",
+      "objective": "MARS_ROVER_MOBILITY",
+      "site_id": "EA-016",
+      "published": 28.54,
+      "engine_raw": 28.5305,
+      "abs_diff": 0.009473684210533406
+    },
+    {
+      "ref_id": "MARS-REF-01",
+      "objective": "MARS_ROVER_MOBILITY",
+      "site_id": "EA-028",
+      "published": 71.46,
+      "engine_raw": 71.4505,
+      "abs_diff": 0.009473684210504985
+    }
+  ],
+  "problems": []
+}

@@ -68,11 +68,15 @@ export function AnalogIcon({ type, size = 16, color }: { type: string; size?: nu
     case "lava_tube_cave":
       return (<svg {...common}><path d="M2 17V10a8 8 0 0 1 16 0v7h-4v-6a4 4 0 0 0-8 0v6z" fill={c} /></svg>);
     case "hyperarid_desert":
+    case "arid_desert":
       return (<svg {...common}><circle cx="10" cy="7" r="3.5" fill={c} /><path d="M1 16c3-3 6-3 9 0s6 3 9 0" stroke={c} strokeWidth="2" fill="none" /></svg>);
     case "acidic_aqueous":
+    case "aqueous_alteration":
       return (<svg {...common}><path d="M10 2C10 2 4 9 4 13a6 6 0 0 0 12 0c0-4-6-11-6-11z" fill={c} /></svg>);
     case "high_altitude":
       return (<svg {...common}><path d="M1 17l6-10 3 5 3-7 6 12z" fill={c} /></svg>);
+    case "evaporite_basin":
+      return (<svg {...common}><polygon points="10,2 18,10 10,18 2,10" fill="none" stroke={c} strokeWidth="2" /><polygon points="10,6.5 13.5,10 10,13.5 6.5,10" fill={c} /></svg>);
     default:
       return (<svg {...common}><rect x="4" y="4" width="12" height="12" fill={c} /></svg>);
   }

@@ -16,7 +16,7 @@ from .loader import DataStore, get_store
 from .models import RecommendRequest
 from .recommend import recommend
 from .report import build_compare_pdf
-from .scoring import ScoringError, parse_weights, rank_sites, score_site
+from .scoring import ScoringError, effective_weights, parse_weights, rank_sites, score_site
 
 VERSION = "1.0.0"
 app = FastAPI(title="TerraAnalog AI API", version=VERSION,
@@ -61,7 +61,39 @@ def _objective(st: DataStore, objective: Optional[str]) -> str:
 
 
 def _weights(st: DataStore, raw: Optional[str]) -> dict[str, float]:
-    return parse_weights(raw, {c.id for c in st.scoring.criteria}) if st.scoring else {}
+    if not st.scoring:
+        return {}
+    valid = {c.id for c in st.scoring.criteria} | {c.feature_id for c in st.scoring.criteria}
+    return parse_weights(raw, valid)
+
+
+def _ref_context(st: DataStore, ref, ref_id: Optional[str], objective: Optional[str] = None) -> dict:
+    """Explain which reference/criteria are in use: defaulted reference, per-reference criteria, objective/body mismatch."""
+    out: dict = {"reference_defaulted": ref is not None and not ref_id, "notes": []}
+    if ref is not None and not ref_id:
+        out["notes"].append(f"No planetary reference selected; using the {ref.body.title()} default reference {ref.name} ({ref.ref_id}).")
+    cfg = st.scoring
+    if cfg and ref is not None:
+        out["criteria_mode"] = "per_reference" if cfg.per_reference else "shared"
+        if objective:
+            o = next((x for x in cfg.objectives if x.id == objective), None)
+            if o is not None and o.body_key and o.body_key != ref.body:
+                out["notes"].append(f"Objective {o.label} is a {o.body_key.title()} mission profile but {ref.name} is a "
+                                    f"{ref.body.title()} reference; its feature weights are applied here for exploration only.")
+            if o is not None and o.published_references and ref.ref_id not in o.published_references:
+                out["notes"].append(f"Published {o.label} scores exist for {', '.join(o.published_references)}; scores against "
+                                    f"{ref.ref_id} are computed live with the same method.")
+    return out
+
+
+def _feature_label_map(st: DataStore) -> dict[str, str]:
+    return {f["id"]: f["label"] for f in st.scoring.features()} if st.scoring else {}
+
+
+def _fidelity_criteria(st: DataStore, ref) -> list:
+    """Active criteria for a reference that can carry fidelity weight (excludes always-zero ones like operational)."""
+    cfg = st.scoring
+    return [c for c in cfg.active_criteria(ref.ref_id) if cfg.body_weights.get(ref.body, {}).get(c.id, 0) > 0]
 
 
 def _site_summary(st: DataStore, sid: str) -> dict:
@@ -105,9 +137,57 @@ def meta():
         "non_replicable": cfg.non_replicable if cfg else {},
         "analog_types": cfg.analog_types if cfg else {},
         "scoring_meta": cfg.meta if cfg else {},
+        "features": cfg.features() if cfg else [],
+        "criteria_mode": ("per_reference" if cfg.per_reference else "shared") if cfg else None,
+        "objective_bodies": {o.id: o.body_key for o in cfg.objectives} if cfg else {},
+        "objective_published_references": {o.id: o.published_references for o in cfg.objectives} if cfg else {},
+        "objective_feature_weights": _objective_feature_weights(st) if cfg else {},
+        "body_feature_weights": _body_feature_weights(st) if cfg else {},
+        "default_compare_ids": _default_compare_ids(st),
+        "notice": (cfg.meta.get("notice") if cfg and isinstance(cfg.meta, dict) else None),
         "climates": sorted({s.climate for s in st.sites.values() if s.climate}),
         "countries": sorted({s.country for s in st.sites.values() if s.country}),
     }
+
+
+def _default_ref(st: DataStore, body: str):
+    cfg = st.scoring
+    rid = cfg.default_reference.get(body) if cfg else None
+    return st.references.get(rid) if rid else next((r for r in st.references.values() if r.body == body), None)
+
+
+def _objective_feature_weights(st: DataStore) -> dict[str, dict[str, float]]:
+    """Objective multipliers collapsed to features (read from the body's default reference for per-reference configs)."""
+    cfg = st.scoring
+    out = {}
+    for o in cfg.objectives:
+        ref = _default_ref(st, o.body_key or "moon") if cfg.per_reference else None
+        crit = cfg.active_criteria(ref.ref_id if ref else None) if cfg.per_reference else cfg.criteria
+        out[o.id] = {c.feature_id: o.multipliers[c.id] for c in crit if c.id in o.multipliers}
+    return out
+
+
+def _body_feature_weights(st: DataStore) -> dict[str, dict[str, float]]:
+    cfg = st.scoring
+    out = {}
+    for body, w in cfg.body_weights.items():
+        ref = _default_ref(st, body) if cfg.per_reference else None
+        crit = cfg.active_criteria(ref.ref_id if ref else None) if cfg.per_reference else cfg.criteria
+        out[body] = {c.feature_id: w.get(c.id, 0.0) for c in crit}
+    return out
+
+
+def _default_compare_ids(st: DataStore, n: int = 3) -> list[str]:
+    cfg = st.scoring
+    if not cfg or not st.sites:
+        return sorted(st.sites)[:n]
+    ref = _default_ref(st, "moon")
+    if ref is None:
+        return sorted(st.sites)[:n]
+    try:
+        return [r.site_id for r in rank_sites(st, ref, cfg.default_objective) if r.rank][:n]
+    except ScoringError:
+        return sorted(st.sites)[:n]
 
 
 @app.get("/api/validation")
@@ -201,7 +281,8 @@ def list_sites(
         out.sort(key=key)
     else:
         out.sort(key=key, reverse=(order == "desc"))
-    return {"count": len(out), "ref_id": ref.ref_id if ref else None, "objective": obj, "synthetic": st.is_synthetic, "sites": out}
+    return {"count": len(out), "ref_id": ref.ref_id if ref else None, "objective": obj, "synthetic": st.is_synthetic,
+            **(_ref_context(st, ref, ref_id, obj) if ref else {}), "sites": out}
 
 
 @app.get("/api/sites/{site_id}")
@@ -213,7 +294,7 @@ def get_site(site_id: str, ref_id: Optional[str] = Query(None, pattern=ID_RE), o
         raise HTTPException(404, detail=f"site '{site_id}' not found")
     out = _site_summary(st, site_id)
     out["features"] = {c: fv.model_dump() for c, fv in st.features.get(site_id, {}).items()}
-    out["evidence"] = {c: [e.model_dump() for e in items] for c, items in st.evidence.get(site_id, {}).items()}
+    evidence = st.evidence.get(site_id, {})
     published = [r.model_dump() for r in st.published_rankings if r.site_id == site_id]
     out["published_rankings"] = published
     if st.scoring and st.references:
@@ -223,6 +304,12 @@ def get_site(site_id: str, ref_id: Optional[str] = Query(None, pattern=ID_RE), o
         if ref:
             ranked = rank_sites(st, ref, obj, uw, body_relevant_only=False)
             out["score"] = next(r.as_dict() for r in ranked if r.site_id == site_id)
+            out["ref_id"] = ref.ref_id
+            out.update(_ref_context(st, ref, ref_id, obj))
+            active = st.scoring.active_criteria(ref.ref_id)
+            out["active_criteria"] = [{"criterion_id": c.id, "feature": c.feature_id, "label": c.feature_label,
+                                       "earth_proxy": c.earth_proxy, "description": c.description} for c in active]
+            evidence = {c.id: evidence[c.id] for c in active if c.id in evidence}
         per_ref = []
         for r in st.references.values():
             res = next(x for x in rank_sites(st, r, obj, uw, body_relevant_only=False) if x.site_id == site_id)
@@ -231,6 +318,7 @@ def get_site(site_id: str, ref_id: Optional[str] = Query(None, pattern=ID_RE), o
         out["reference_scores"] = per_ref
         bodies = s.target_bodies or ["moon", "mars"]
         out["cannot_replicate_on_earth"] = {b: st.scoring.non_replicable.get(b, []) for b in bodies}
+    out["evidence"] = {c: [e.model_dump() for e in items] for c, items in evidence.items()}
     return out
 
 
@@ -252,7 +340,10 @@ def get_reference(ref_id: str, objective: Optional[str] = Query(None, pattern=ID
         ranked = rank_sites(st, ref, obj)
         out["matches"] = [{**r.as_dict(), "name": st.sites[r.site_id].name, "lat": st.sites[r.site_id].lat,
                            "lon": st.sites[r.site_id].lon, "analog_types": st.sites[r.site_id].analog_types} for r in ranked[:top_k]]
-        out["multipliers"] = st.scoring.reference_multipliers.get(ref.ref_id, {})
+        # per-reference configs zero every other reference's criteria; that is a selection, not a weighting worth listing
+        out["multipliers"] = {} if st.scoring.per_reference else st.scoring.reference_multipliers.get(ref.ref_id, {})
+        out["active_features"] = [{"criterion_id": c.id, "feature": c.feature_id, "label": c.feature_label}
+                                  for c in st.scoring.active_criteria(ref.ref_id)]
         out["cannot_replicate_on_earth"] = st.scoring.non_replicable.get(ref.body, [])
     return out
 
@@ -279,9 +370,11 @@ def rankings(ref_id: Optional[str] = Query(None, pattern=ID_RE), body: Optional[
         d["published"] = p.model_dump() if p else None
         rows.append(d)
     from .scoring import effective_weights
+    ew = effective_weights(st.scoring, ref, obj, uw)
     return {"ref_id": ref.ref_id, "reference_name": ref.name, "body": ref.body, "objective": obj, "user_weights": uw,
-            "effective_weights": effective_weights(st.scoring, ref, obj, uw), "min_completeness": st.scoring.min_completeness,
-            "synthetic": st.is_synthetic, "rankings": rows}
+            "effective_weights": ew, "effective_feature_weights": st.scoring.feature_weights(ref.ref_id, ew),
+            "min_completeness": st.scoring.min_completeness, "synthetic": st.is_synthetic,
+            **_ref_context(st, ref, ref_id, obj), "rankings": rows}
 
 
 def _compare(st: DataStore, ids: str, ref_id: Optional[str], objective: Optional[str], weights: Optional[str]):
@@ -304,15 +397,19 @@ def compare(ids: str = Query(..., max_length=400), ref_id: Optional[str] = Query
             objective: Optional[str] = Query(None, pattern=ID_RE), weights: Optional[str] = Query(None, max_length=400)):
     st = _store()
     sids, ref, obj, ranked = _compare(st, ids, ref_id, objective, weights)
-    crit = [c.model_dump() for c in st.scoring.criteria]
+    active = st.scoring.active_criteria(ref.ref_id)
+    crit = [c.model_dump() for c in active]
+    ew = effective_weights(st.scoring, ref, obj, _weights(st, weights))
     sites = []
     for sid in sids:
         s = st.sites[sid]
+        ev = st.evidence.get(sid, {})
         sites.append({**_site_summary(st, sid), "result": ranked[sid].as_dict(),
-                      "evidence": {c: [e.model_dump() for e in items] for c, items in st.evidence.get(sid, {}).items()}})
+                      "evidence": {c.id: [e.model_dump() for e in ev.get(c.id, [])] for c in active}})
     matrix = []
-    for c in st.scoring.criteria:
-        row = {"criterion_id": c.id, "label": c.label}
+    for c in active:
+        row = {"criterion_id": c.id, "feature": c.feature_id, "label": c.feature_label, "in_score": ew.get(c.id, 0) > 0,
+               "effective_weight": round(ew.get(c.id, 0.0), 4)}
         vals = []
         for sid in sids:
             fv = st.features.get(sid, {}).get(c.id)
@@ -320,10 +417,10 @@ def compare(ids: str = Query(..., max_length=400), ref_id: Optional[str] = Query
             row[f"{sid}__type"] = fv.value_type if fv else "missing"
             if fv and fv.value is not None:
                 vals.append(fv.value)
-        row["spread"] = (max(vals) - min(vals)) if len(vals) >= 2 else None
+        row["spread"] = round(max(vals) - min(vals), 6) if len(vals) >= 2 else None
         matrix.append(row)
     return {"ref_id": ref.ref_id, "reference_name": ref.name, "objective": obj, "criteria": crit, "sites": sites,
-            "matrix": matrix, "synthetic": st.is_synthetic}
+            "matrix": matrix, "synthetic": st.is_synthetic, **_ref_context(st, ref, ref_id, obj)}
 
 
 @app.get("/api/export/compare.csv")
@@ -337,12 +434,12 @@ def export_compare(ids: str = Query(..., max_length=400), ref_id: Optional[str] 
         w.writerow(["# SYNTHETIC FIXTURE DATA — NOT REAL MEASUREMENTS"])
     w.writerow(["# TerraAnalog AI comparison", f"reference={ref.ref_id}", f"objective={obj}"])
     w.writerow(["site_id", "name", "lat", "lon", "rank", "score", "score_low", "score_high", "completeness", "confidence", "status",
-                "criterion_id", "value", "value_type", "effective_weight", "contribution", "source_id"])
+                "criterion_id", "feature", "value", "value_type", "effective_weight", "contribution", "source_id"])
     for sid in sids:
         r, s = ranked[sid], st.sites[sid]
         for b in r.breakdown:
             w.writerow([sid, s.name, s.lat, s.lon, r.rank or "", r.score if r.score is not None else "", r.score_low, r.score_high,
-                        r.completeness, r.confidence, r.status, b.criterion_id, "" if b.value is None else b.value, b.value_type,
+                        r.completeness, r.confidence, r.status, b.criterion_id, b.feature, "" if b.value is None else b.value, b.value_type,
                         round(b.effective_weight, 4), "" if b.contribution is None else b.contribution, b.source_id])
     return Response(buf.getvalue(), media_type="text/csv",
                     headers={"Content-Disposition": f'attachment; filename="terraanalog_compare_{ref.ref_id}_{obj}.csv"'})
@@ -393,26 +490,39 @@ def get_sensitivity(ref_id: Optional[str] = Query(None, pattern=ID_RE), objectiv
     st = _store()
     _need_scoring(st)
     ref = _ref(st, ref_id, "moon")
-    if criterion and criterion not in {c.id for c in st.scoring.criteria}:
+    feats = [c.feature_id for c in _fidelity_criteria(st, ref)]
+    if criterion and criterion not in feats and criterion not in {c.id for c in st.scoring.criteria}:
         raise HTTPException(422, detail=f"unknown criterion '{criterion}'")
-    return sensitivity(st, ref, _objective(st, objective), criterion, top_n, _weights(st, weights))
+    crit = next((c.feature_id for c in st.scoring.criteria if c.id == criterion), criterion) if criterion else None
+    obj = _objective(st, objective)
+    return {**sensitivity(st, ref, obj, crit, top_n, _weights(st, weights), feats), **_ref_context(st, ref, ref_id, obj)}
 
 
 @app.get("/api/clusters")
-def get_clusters(k: int = Query(4, ge=1, le=10)):
+def get_clusters(k: int = Query(4, ge=1, le=10), ref_id: Optional[str] = Query(None, pattern=ID_RE)):
     st = _store()
     _need_scoring(st)
-    return clusters(st, k)
+    ref = _ref(st, ref_id, "moon")
+    crit = _fidelity_criteria(st, ref) if ref else st.scoring.criteria
+    return {**clusters(st, k, crit), "ref_id": ref.ref_id if ref else None, **(_ref_context(st, ref, ref_id) if ref else {})}
 
 
 @app.get("/api/features")
-def get_features():
-    """All criterion values per site (with value types) for distribution plots. Missing values are null."""
+def get_features(ref_id: Optional[str] = Query(None, pattern=ID_RE)):
+    """Criterion values per site (with value types) for distribution plots, keyed by FEATURE for the selected reference
+    (per-reference configs) or by criterion (shared configs, where feature == criterion). Missing values are null."""
     st = _store()
-    crit = [c.id for c in st.scoring.criteria] if st.scoring else sorted({c for d in st.features.values() for c in d})
+    ref = _ref(st, ref_id, "moon") if st.scoring else None
+    if st.scoring:
+        active = st.scoring.active_criteria(ref.ref_id if ref else None)
+        crit = [(c.id, c.feature_id) for c in active]
+    else:
+        crit = [(c, c) for c in sorted({c for d in st.features.values() for c in d})]
     out = []
     for sid, s in st.sites.items():
         feats = st.features.get(sid, {})
-        out.append({"site_id": sid, "name": s.name, "values": {c: {"value": feats[c].value if c in feats else None,
-                                                                    "value_type": feats[c].value_type if c in feats else "missing"} for c in crit}})
-    return {"criteria": crit, "sites": out, "synthetic": st.is_synthetic}
+        out.append({"site_id": sid, "name": s.name, "values": {f: {"value": feats[c].value if c in feats else None,
+                                                                    "value_type": feats[c].value_type if c in feats else "missing",
+                                                                    "criterion_id": c} for c, f in crit}})
+    return {"criteria": [f for _, f in crit], "ref_id": ref.ref_id if ref else None, "sites": out, "synthetic": st.is_synthetic,
+            **(_ref_context(st, ref, ref_id) if ref else {})}

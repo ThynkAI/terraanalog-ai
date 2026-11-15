@@ -108,4 +108,4 @@ def test_features_endpoint(client):
     d = client.get("/api/features").json()
     assert len(d["criteria"]) == 8 and len(d["sites"]) == 15
     rio = next(s for s in d["sites"] if s["site_id"] == "ES-RIO")
-    assert rio["values"]["ice_permafrost"] == {"value": None, "value_type": "missing"}
+    assert rio["values"]["ice_permafrost"] == {"value": None, "value_type": "missing", "criterion_id": "ice_permafrost"}

@@ -3,7 +3,7 @@
 ```
  Browser ──► Next.js 15 (web/)  ──/api/* server-side proxy──►  FastAPI (backend/)  ──►  DATA DIR (9 contract files)
            React 19 · Tailwind      app/api/[...path]/route.ts      loader → validation        GeoJSON · CSV · JSON · MD
-           MapLibre GL 5 (globe)    API_URL read at runtime         scoring · analysis         (fixtures or Bot 1 output)
+           MapLibre GL 5 (globe)    API_URL read at runtime         scoring · analysis         (data/research by default; data/fixtures synthetic fallback)
            Recharts                                                 recommend
 ```
 
@@ -28,11 +28,11 @@
 ## Backend modules (`backend/app/`)
 | Module | Responsibility |
 |---|---|
-| `config.py` | `TERRA_DATA_DIR`, `TERRA_CORS_ORIGINS`, list of contract files |
+| `config.py` | `TERRA_DATA_DIR` (default `data/research`, falls back to `data/fixtures`), `TERRA_CORS_ORIGINS`, list of contract files |
 | `models.py` | Pydantic schemas for every contract file (ranges, ID patterns, lon/lon_360 agreement, missing-value semantics, config integrity) |
 | `loader.py` | Loads each file independently; invalid rows/features are rejected and reported, missing files become empty; cross-file ID checks; mtime-based cache |
-| `scoring.py` | Weighted score, completeness, confidence, plausible range, ranking, weight parsing |
-| `analysis.py` | Weight sweeps / rank stability; mask-aware k-means clusters |
+| `scoring.py` | Weighted score over the reference's active criteria (`<REF_ID>.<feature>` + shared), completeness, confidence, plausible range, ranking on the unrounded score, feature-keyed weight parsing |
+| `analysis.py` | Feature-keyed weight sweeps / rank stability; mask-aware k-means clusters on per-reference feature vectors |
 | `recommend.py` | Keyword intent parser → structured filters → scoring → explanation assembly |
 | `main.py` | REST endpoints with validated parameters |
 

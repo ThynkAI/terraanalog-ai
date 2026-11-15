@@ -357,8 +357,8 @@ moon-marius-hills,habitat,ES-LAN,74.8,2,0.819,fixture-1.0,synthetic
 moon-marius-hills,habitat,AQ-MDV,73.8,3,1.0,fixture-1.0,synthetic
 moon-marius-hills,habitat,CA-HAU,73.1,4,1.0,fixture-1.0,synthetic
 moon-marius-hills,habitat,CA-AXE,68.2,5,1.0,fixture-1.0,synthetic
-moon-marius-hills,habitat,IS-ASK,67.8,6,1.0,fixture-1.0,synthetic
-moon-marius-hills,habitat,US-SFV,67.8,7,1.0,fixture-1.0,synthetic
+moon-marius-hills,habitat,US-SFV,67.8,6,1.0,fixture-1.0,synthetic
+moon-marius-hills,habitat,IS-ASK,67.8,7,1.0,fixture-1.0,synthetic
 moon-marius-hills,habitat,US-MET,58.6,8,1.0,fixture-1.0,synthetic
 moon-marius-hills,habitat,US-HMK,56.9,9,1.0,fixture-1.0,synthetic
 moon-marius-hills,cave_exploration,US-LBN,85.6,1,1.0,fixture-1.0,synthetic
@@ -392,8 +392,8 @@ moon-rima-hadley,rover_mobility,US-LBN,80.3,1,1.0,fixture-1.0,synthetic
 moon-rima-hadley,rover_mobility,CA-HAU,75.0,2,1.0,fixture-1.0,synthetic
 moon-rima-hadley,rover_mobility,ES-LAN,74.1,3,0.88,fixture-1.0,synthetic
 moon-rima-hadley,rover_mobility,AQ-MDV,73.2,4,1.0,fixture-1.0,synthetic
-moon-rima-hadley,rover_mobility,IS-ASK,70.0,5,1.0,fixture-1.0,synthetic
-moon-rima-hadley,rover_mobility,US-SFV,70.0,6,1.0,fixture-1.0,synthetic
+moon-rima-hadley,rover_mobility,US-SFV,70.0,5,1.0,fixture-1.0,synthetic
+moon-rima-hadley,rover_mobility,IS-ASK,70.0,6,1.0,fixture-1.0,synthetic
 moon-rima-hadley,rover_mobility,CA-AXE,67.0,7,1.0,fixture-1.0,synthetic
 moon-rima-hadley,rover_mobility,US-MET,62.5,8,1.0,fixture-1.0,synthetic
 moon-rima-hadley,rover_mobility,US-HMK,60.0,9,1.0,fixture-1.0,synthetic
@@ -708,8 +708,8 @@ mars-elysium-planitia,astronaut_field_ops,CA-HAU,74.6,3,1.0,fixture-1.0,syntheti
 mars-elysium-planitia,astronaut_field_ops,AU-PIL,68.8,4,0.83,fixture-1.0,synthetic
 mars-elysium-planitia,astronaut_field_ops,CA-AXE,68.7,5,1.0,fixture-1.0,synthetic
 mars-elysium-planitia,astronaut_field_ops,CL-ATA,68.4,6,1.0,fixture-1.0,synthetic
-mars-elysium-planitia,astronaut_field_ops,IS-ASK,68.1,7,1.0,fixture-1.0,synthetic
-mars-elysium-planitia,astronaut_field_ops,ES-LAN,68.1,8,0.876,fixture-1.0,synthetic
+mars-elysium-planitia,astronaut_field_ops,ES-LAN,68.1,7,0.876,fixture-1.0,synthetic
+mars-elysium-planitia,astronaut_field_ops,IS-ASK,68.1,8,1.0,fixture-1.0,synthetic
 mars-elysium-planitia,astronaut_field_ops,ES-RIO,67.3,9,0.83,fixture-1.0,synthetic
 mars-elysium-planitia,astronaut_field_ops,US-MOJ,66.5,10,1.0,fixture-1.0,synthetic
 mars-elysium-planitia,astronaut_field_ops,US-MDR,62.7,11,1.0,fixture-1.0,synthetic

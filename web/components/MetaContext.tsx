@@ -27,5 +27,19 @@ export function useCriteriaLabels() {
   const { meta } = useMeta();
   const out: Record<string, string> = {};
   meta?.criteria.forEach((c) => (out[c.id] = c.label));
+  meta?.features?.forEach((f) => (out[f.id] = f.label));
   return out;
+}
+
+/** Feature groups that carry fidelity weight (11 for the research dataset; all criteria for the fixture shape). */
+export function useFidelityFeatures() {
+  const { meta } = useMeta();
+  const feats = meta?.features?.length ? meta.features : (meta?.criteria ?? []).map((c) => ({ id: c.id, label: c.label, description: c.description, earth_proxy: c.earth_proxy, per_reference: false, in_fidelity_score: true }));
+  return feats.filter((f) => f.in_fidelity_score);
+}
+
+/** Objectives usable with a body: shared ones (no body) plus that body's mission profiles. */
+export function useObjectivesFor(body?: string | null) {
+  const { meta } = useMeta();
+  return (meta?.objectives ?? []).filter((o) => !body || !o.body || o.body.toLowerCase() === body);
 }

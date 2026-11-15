@@ -66,7 +66,10 @@ function markerHTML(s: MapSite, selected: boolean, compared: boolean) {
     hyperarid_desert: `<circle cx="10" cy="8" r="3" fill="${fill}"/><path d="M3.5 14.5c2.2-2.2 4.4-2.2 6.5 0s4.4 2.2 6.5 0" stroke="${fill}" stroke-width="1.8" fill="none"/>`,
     acidic_aqueous: `<path d="M10 3.5C10 3.5 5.5 9 5.5 12a4.5 4.5 0 0 0 9 0c0-3-4.5-8.5-4.5-8.5z" fill="${fill}"/>`,
     high_altitude: `<path d="M3 15.5l5-8.5 2.5 4 2.5-6 4.5 10.5z" fill="${fill}"/>`,
+    evaporite_basin: `<polygon points="10,3.5 16.5,10 10,16.5 3.5,10" fill="none" stroke="${fill}" stroke-width="2"/><polygon points="10,7.3 12.7,10 10,12.7 7.3,10" fill="${fill}"/>`,
   };
+  shapes.aqueous_alteration = shapes.acidic_aqueous;
+  shapes.arid_desert = shapes.hyperarid_desert;
   return `<svg width="${size}" height="${size}" viewBox="0 0 20 20" aria-hidden="true">
     <circle cx="10" cy="10" r="9.2" fill="#0a1020" fill-opacity="0.92" stroke="${ring}" stroke-width="${selected ? 1.8 : 1.3}"/>
     ${compared ? `<circle cx="10" cy="10" r="9.6" fill="none" stroke="#67d4ee" stroke-width="0.9" stroke-dasharray="2 1.4"/>` : ""}

@@ -6,10 +6,12 @@
 3. **Innovation** — Mission-objective-aware ranking against named planetary references; transparent breakdown; completeness/confidence and
    score ranges instead of false precision; evidence inspector; explainable (non-generative) recommendation engine; live weight lab,
    sensitivity, clustering; drop-in data contract.
-4. **Scientific method** — 8 criteria (terrain, geology, thermal, dust/aridity, illumination, ice/permafrost, subsurface access, operations);
-   weights = body × reference × objective × user; missing never imputed; min completeness 0.70; Gazetteer planetocentric coordinates,
-   IAU radii, no WGS84 on Moon/Mars; value types measured/modeled/provisional/synthetic. Data status today: synthetic fixtures.
-5. **Live demo** — follow `DEMO_SCRIPT.md` (3 min): recommend → Moon/Shackleton → Earth globe → Comparison Lab → export.
+4. **Scientific method** — 11 reference-specific similarity features (lithology, process, landform, resource, slope, ruggedness, thermal,
+   aridity, ice/permafrost, abiotic surface, fine sediment) × 14 references = 154 criteria, plus a separate operational-suitability score;
+   weights = body × reference × objective × user; missing never imputed; min completeness 0.50; planetocentric coordinates, IAU radii,
+   no WGS84 on Moon/Mars; 4,340 values (770 measured, 1,463 modeled, 1,647 provisional, 460 missing). All 588 published scores
+   reproduced within 0.011 points.
+5. **Live demo** — follow `DEMO_SCRIPT.md` (3 min): recommend → Moon/Shackleton → Earth globe → Comparison Lab → export (28 sites, research dataset).
 6. **Architecture & quality** — Next.js + MapLibre + Recharts UI; FastAPI scoring service; Docker; tests: pytest, vitest, Playwright + axe +
    mobile (see TEST_RESULTS.md for executed counts).
 7. **Impact** — faster, auditable campaign planning for Artemis-era and Mars teams; education/outreach; reusable open data contract.

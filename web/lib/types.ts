@@ -1,8 +1,11 @@
 export type Body = "moon" | "mars";
 export type ValueType = "measured" | "modeled" | "provisional" | "synthetic" | "missing";
 
-export interface Criterion { id: string; label: string; description: string; earth_proxy: string; source_families: string[] }
-export interface Objective { id: string; label: string; description: string; multipliers: Record<string, number> }
+export interface Criterion { id: string; label: string; description: string; earth_proxy: string; source_families: string[]; ref_id?: string | null; feature?: string | null }
+/** A feature group: equals the criterion for shared (fixture) configs; groups <REF_ID>.<feature> criteria for per-reference configs. */
+export interface Feature { id: string; label: string; description: string; earth_proxy: string; per_reference: boolean; in_fidelity_score: boolean }
+export interface RefContext { reference_defaulted?: boolean; notes?: string[]; criteria_mode?: "per_reference" | "shared" }
+export interface Objective { id: string; label: string; description: string; multipliers: Record<string, number>; body?: string | null; published_references?: string[] }
 
 export interface DataStatus {
   synthetic: boolean;
@@ -32,6 +35,14 @@ export interface Meta {
   scoring_meta: Record<string, unknown>;
   climates: string[];
   countries: string[];
+  features: Feature[];
+  criteria_mode: "per_reference" | "shared" | null;
+  objective_bodies: Record<string, string | null>;
+  objective_published_references: Record<string, string[]>;
+  objective_feature_weights: Record<string, Record<string, number>>;
+  body_feature_weights: Record<Body, Record<string, number>>;
+  default_compare_ids: string[];
+  notice: string | null;
 }
 
 export interface Breakdown {
@@ -46,6 +57,8 @@ export interface Breakdown {
   share: number | null;
   missing: boolean;
   source_id: string;
+  feature?: string;
+  in_score?: boolean;
 }
 
 export interface ScoreResult {
@@ -63,6 +76,7 @@ export interface ScoreResult {
   trait_matches: string[];
   body_relevant: boolean;
   rank: number | null;
+  score_raw?: number | null;
 }
 
 export interface Site {
@@ -103,7 +117,9 @@ export interface Site {
 export interface FeatureValue { site_id: string; criterion_id: string; value: number | null; unit: string; value_type: ValueType; confidence: number | null; source_id: string; notes: string }
 export interface EvidenceItem { statement: string; source_id: string; value_type: ValueType; confidence: number | null; citation: string }
 
-export interface SiteDetail extends Omit<Site, "score"> {
+export interface SiteDetail extends Omit<Site, "score">, RefContext {
+  active_criteria?: { criterion_id: string; feature: string; label: string; earth_proxy: string; description: string }[];
+  ref_id?: string;
   features: Record<string, FeatureValue>;
   evidence: Record<string, EvidenceItem[]>;
   published_rankings: { ref_id: string; objective: string; score: number | null; rank: number | null }[];
@@ -129,6 +145,8 @@ export interface PlanetaryReference {
   analog_type_affinity: string[];
   citation: string;
   provenance: string;
+  status_class?: string;
+  not_an_approved_base_site?: boolean;
 }
 
 export interface RankingRow extends ScoreResult {
@@ -140,7 +158,8 @@ export interface RankingRow extends ScoreResult {
   published: { score: number | null; rank: number | null } | null;
 }
 
-export interface RankingsResponse {
+export interface RankingsResponse extends RefContext {
+  effective_feature_weights?: Record<string, number>;
   ref_id: string;
   reference_name: string;
   body: Body;
@@ -152,13 +171,13 @@ export interface RankingsResponse {
   rankings: RankingRow[];
 }
 
-export interface CompareResponse {
+export interface CompareResponse extends RefContext {
   ref_id: string;
   reference_name: string;
   objective: string;
   criteria: Criterion[];
   sites: (Site & { result: ScoreResult; evidence: Record<string, EvidenceItem[]> })[];
-  matrix: Record<string, string | number | null>[];
+  matrix: Record<string, string | number | boolean | null>[];
   synthetic: boolean;
 }
 
@@ -177,13 +196,14 @@ export interface RecommendResponse {
   notes: string[];
 }
 
-export interface SensitivityResponse {
+export interface SensitivityResponse extends RefContext {
   ref_id: string; objective: string; tracked_sites: string[]; multipliers: number[];
   sweeps: Record<string, Record<string, number | null>[]>;
   max_rank_shift_by_criterion: Record<string, number>;
 }
 
-export interface ClustersResponse {
+export interface ClustersResponse extends RefContext {
+  ref_id?: string | null;
   k: number;
   clusters: { cluster: number; members: string[]; centroid: Record<string, number>; defining_criteria: string[]; dominant_analog_types: string[]; label: string }[];
   assignments: Record<string, number>;

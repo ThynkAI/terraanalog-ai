@@ -3,8 +3,8 @@ services:
   api:
     build: { context: ., dockerfile: backend/Dockerfile }
     environment:
-      # Point at Bot 1's research outputs by mounting them and changing this path, e.g. /app/data/real
-      TERRA_DATA_DIR: ${TERRA_DATA_DIR:-/app/data/fixtures}
+      # Default: the bundled research outputs (data/research). Other data: mount into /app/data/real and set TERRA_DATA_DIR=/app/data/real
+      TERRA_DATA_DIR: ${TERRA_DATA_DIR:-/app/data/research}   # synthetic fallback: /app/data/fixtures
       TERRA_CORS_ORIGINS: ${TERRA_CORS_ORIGINS:-http://localhost:3000}
     volumes:
       - ./data/real:/app/data/real:ro

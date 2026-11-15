@@ -13,12 +13,14 @@ const PAGES = [
 ];
 
 for (const p of PAGES) {
-  test(`page ${p.path} renders without runtime errors and shows the synthetic badge`, async ({ page }) => {
+  test(`page ${p.path} renders without runtime errors and shows the research-data badge (no synthetic badge)`, async ({ page }) => {
     const errors: string[] = [];
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(p.path);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(p.h1);
-    await expect(page.getByTestId("data-status-badge")).toHaveText(/Synthetic fixture data/);
+    await expect(page.getByTestId("data-status-badge")).toHaveText(/Research dataset/);
+    await expect(page.getByTestId("data-status-badge")).not.toHaveText(/Synthetic/);
+    await expect(page.getByTestId("research-notice")).toBeVisible();
     expect(errors).toEqual([]);
   });
 
@@ -44,7 +46,7 @@ test("skip link and keyboard navigation reach main content", async ({ page }) =>
 test("reduced-motion users get a working explorer", async ({ browser }) => {
   const ctx = await browser.newContext({ reducedMotion: "reduce", viewport: { width: 1440, height: 900 } });
   const page = await ctx.newPage();
-  await page.goto("/explorer?site=US-LBN");
+  await page.goto("/explorer?site=EA-021");
   await expect(page.getByTestId("site-detail")).toContainText("Lava Beds");
   await ctx.close();
 });
