@@ -61,10 +61,10 @@ export function EvidenceInspector({ detail }: { detail: SiteDetailT }) {
 export function SiteDetail({ siteId, refId, objective, weights, onClose, onCompare, inCompare }: {
   siteId: string; refId: string; objective: string; weights?: string; onClose?: () => void; onCompare?: (id: string) => void; inCompare?: boolean;
 }) {
-  const { data, error, loading } = useApi<SiteDetailT>(`/sites/${encodeURIComponent(siteId)}`, { ref_id: refId, objective, weights });
+  const { data, error, loading, retry } = useApi<SiteDetailT>(`/sites/${encodeURIComponent(siteId)}`, { ref_id: refId, objective, weights });
   const [copied, setCopied] = useState(false);
   if (loading && !data) return <div className="p-4"><Loading rows={8} /></div>;
-  if (error) return <div className="p-4"><ErrorNote error={error} /></div>;
+  if (error) return <div className="p-4"><ErrorNote error={error} /><button className="btn mt-2" onClick={retry}>Retry site evidence</button></div>;
   if (!data) return null;
   const s = data.score;
   const inScore = s?.breakdown.filter((b) => b.in_score !== false) ?? [];

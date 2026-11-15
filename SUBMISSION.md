@@ -5,6 +5,7 @@
 
 | Item | Link / status |
 |---|---|
+| Challenge review and latest change verification | [`app/docs/CHALLENGE_REVIEW.md`](app/docs/CHALLENGE_REVIEW.md) |
 | Public repository | https://github.com/ThynkAI/terraanalog-ai |
 | Live demo URL | https://terraanalog-web-cqgu.onrender.com (API: https://terraanalog-api-cqgu.onrender.com) |
 | 3-minute demo script | [`app/docs/DEMO_SCRIPT.md`](app/docs/DEMO_SCRIPT.md) |

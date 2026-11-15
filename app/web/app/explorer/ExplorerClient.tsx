@@ -27,6 +27,7 @@ export default function ExplorerClient() {
   const body = u.get("body");
   const type = u.get("type");
   const climate = u.get("climate");
+  const group = u.get("group");
   const aridity = u.get("aridity");
   const geology = u.get("geology");
   const mobj = u.get("mobj");
@@ -43,9 +44,10 @@ export default function ExplorerClient() {
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   const q = u.get("q");
+  useEffect(() => setSearch(q), [q]);
   const coords = parseLatLon(q);
-  const { data, error, loading } = useApi<{ count: number; sites: Site[]; notes?: string[] }>(meta && ref ? "/sites" : null, {
-    ref_id: ref, objective: obj, body, analog_type: type, climate, aridity, geology, mission_objective: mobj,
+  const { data, error, loading, retry } = useApi<{ count: number; sites: Site[]; notes?: string[] }>(meta && ref ? "/sites" : null, {
+    ref_id: ref, objective: obj, body, analog_type: type, catalog_group: group, climate, aridity, geology, mission_objective: mobj,
     min_score: minScore || undefined, min_confidence: minConf || undefined, include_insufficient: !hideInsufficient,
     q: coords ? undefined : q, near: coords ? `${coords.lat},${coords.lon}` : undefined, radius_km: coords ? radius : undefined,
     sort: coords ? "distance" : "score", order: coords ? "asc" : "desc",
@@ -91,7 +93,7 @@ export default function ExplorerClient() {
   const exportCsv = () => {
     downloadText(
       `terraanalog_rankings_${ref}_${obj}.csv`,
-      toCSV(sites.map((s) => ({ rank: s.rank ?? "", site_id: s.site_id, name: s.name, lat: s.lat, lon: s.lon, score: s.score ?? "", score_low: s.score_low, score_high: s.score_high, completeness: s.completeness, confidence: s.confidence, status: s.status, provenance: s.provenance })),
+      toCSV(sites.map((s) => ({ rank: s.rank ?? "", site_id: s.site_id, name: s.name, country: s.country, catalog_group: s.group ?? "", lat: s.lat, lon: s.lon, score: s.score ?? "", score_low: s.score_low, score_high: s.score_high, completeness: s.completeness, confidence: s.confidence, status: s.status, provenance: s.provenance })),
         meta?.data_status.synthetic ? "SYNTHETIC FIXTURE DATA — NOT REAL MEASUREMENTS" : undefined),
     );
   };
@@ -106,6 +108,16 @@ export default function ExplorerClient() {
           ))}
         </div>
       </fieldset>
+      <div>
+        <label htmlFor="f-group" className="label">Research catalog</label>
+        <select id="f-group" className="select" value={group} onChange={(e) => u.set({ group: e.target.value || null })}>
+          <option value="">All research sites</option>
+          <option value="candidate">Research candidates</option>
+          <option value="established">Established analogs</option>
+          <option value="baseline">Challenge benchmarks</option>
+        </select>
+        <p className="mt-1 text-[11px] leading-relaxed text-lunar-400">Curated catalog labels. Candidate status does not establish novelty or field validation.</p>
+      </div>
       <div>
         <label htmlFor="f-type" className="label">Analog type</label>
         <select id="f-type" className="select" value={type} onChange={(e) => u.set({ type: e.target.value })}>
@@ -156,17 +168,17 @@ export default function ExplorerClient() {
         <input type="checkbox" checked={hideInsufficient} onChange={(e) => u.set({ hideIns: e.target.checked ? "1" : null })} className="accent-mars-500" />
         Hide sites with insufficient evidence
       </label>
-      <button className="btn w-full text-xs" onClick={() => { setSearch(""); u.set({ body: null, type: null, climate: null, aridity: null, geology: null, mobj: null, minScore: null, minConf: null, hideIns: null, q: null }); }}>Reset filters</button>
+      <button className="btn w-full text-xs" onClick={() => { setSearch(""); u.set({ body: null, type: null, group: null, climate: null, aridity: null, geology: null, mobj: null, minScore: null, minConf: null, hideIns: null, q: null }); }}>Reset filters</button>
     </div>
   );
 
   return (
     <div>
-      <PageHeader eyebrow="Phase 2 · Interactive global map" title="Earth Analog Explorer">
+      <PageHeader eyebrow="Earth / Mission planning" title="Earth Analog Explorer">
         Choose a Moon or Mars reference and a mission objective; sites are ranked live with transparent scoring. Click a marker or list item for evidence.
       </PageHeader>
 
-      <div className="panel mb-4 grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 lg:grid-cols-12">
+      <div className="panel mb-4 grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 lg:grid-cols-12 [&>div]:min-w-0 [&>form]:min-w-0">
         <div className="lg:col-span-3"><ReferenceSelect value={ref} onChange={setRef} /></div>
         <div className="lg:col-span-2"><ObjectiveSelect value={obj} onChange={(v) => u.set({ obj: v })} body={refObj?.body} /></div>
         <form className="lg:col-span-4" role="search" onSubmit={(e) => { e.preventDefault(); u.set({ q: search.trim() || null, r: String(radius) }); }}>
@@ -199,7 +211,7 @@ export default function ExplorerClient() {
 
       <RefNotes notes={notes} className="mb-3" />
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
-        <aside className="space-y-4 lg:col-span-3" aria-label="Filters and ranked sites">
+        <aside className="order-3 min-w-0 space-y-4 lg:order-1 lg:col-span-3" aria-label="Filters and ranked sites">
           <section className="panel p-3">
             <div className="flex items-center justify-between">
               <h2 className="panel-title">Filters</h2>
@@ -213,9 +225,11 @@ export default function ExplorerClient() {
               <button className="btn btn-ghost px-2 py-0.5 text-xs" onClick={exportCsv} disabled={!sites.length}>CSV</button>
             </div>
             <ErrorNote error={error} />
+            {error && <button className="btn mt-2 text-xs" onClick={retry}>Retry rankings</button>}
+            {loading && <p role="status" className="mt-2 text-xs text-lunar-300">Updating rankings for the selected mission…</p>}
             {loading && !data ? <div className="mt-3"><Loading rows={6} /></div> : (
               <ol className="mt-2 max-h-[560px] space-y-1 overflow-y-auto pr-1" data-testid="ranked-list">
-                {sites.length === 0 && <li className="py-6 text-center text-sm text-lunar-400">No sites match these filters.</li>}
+                {sites.length === 0 && <li className="py-6 text-center text-sm text-lunar-400">No sites match these filters. Try a lower score threshold or reset filters.</li>}
                 {sites.map((s) => (
                   <li key={s.site_id} className={`rounded-lg border px-2 py-1.5 transition ${selected === s.site_id ? "border-mars-400/60 bg-mars-500/10" : "border-transparent hover:bg-white/[0.04]"}`}>
                     <div className="flex items-center gap-2">
@@ -239,7 +253,7 @@ export default function ExplorerClient() {
           </section>
         </aside>
 
-        <section className="space-y-4 lg:col-span-6" aria-label="Map">
+        <section className="order-1 min-w-0 space-y-4 lg:order-2 lg:col-span-6" aria-label="Map">
           <div className="panel relative h-[420px] overflow-hidden sm:h-[560px]">
             <EarthMap
               sites={sites}
@@ -258,7 +272,7 @@ export default function ExplorerClient() {
           </section>
         </section>
 
-        <aside className="lg:col-span-3" aria-label="Details">
+        <aside className="order-2 min-w-0 lg:order-3 lg:col-span-3" aria-label="Details">
           <div className="panel lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
             {selected ? (
               <SiteDetail siteId={selected} refId={ref} objective={obj} onClose={() => u.set({ site: null })} onCompare={toggleCompare} inCompare={compare.includes(selected)} />

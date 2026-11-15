@@ -1,0 +1,53 @@
+name: Application checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - 'app/**'
+      - '.github/workflows/app-checks.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: app/web/package-lock.json
+      - name: Install backend and test dependencies
+        working-directory: app
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install -r backend/requirements-dev.txt
+      - name: Backend and research-score regression tests
+        working-directory: app
+        run: .venv/bin/python -m pytest backend/tests -q
+      - name: Install frontend dependencies
+        working-directory: app/web
+        run: npm ci
+      - name: Frontend unit tests
+        working-directory: app/web
+        run: npm test
+      - name: Install Chromium
+        working-directory: app/web
+        run: npx playwright install --with-deps chromium
+      - name: Production build and desktop/mobile browser checks
+        working-directory: app/web
+        run: npm run test:e2e
+      - name: Upload browser results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-results
+          path: |
+            app/docs/test-results/e2e-results.json
+            app/web/test-results/
+          if-no-files-found: ignore
