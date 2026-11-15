@@ -27,6 +27,7 @@ export default function ExplorerClient() {
   const body = u.get("body");
   const type = u.get("type");
   const climate = u.get("climate");
+  const aridity = u.get("aridity");
   const geology = u.get("geology");
   const mobj = u.get("mobj");
   const minScore = Number(u.get("minScore", "0"));
@@ -44,7 +45,7 @@ export default function ExplorerClient() {
   const q = u.get("q");
   const coords = parseLatLon(q);
   const { data, error, loading } = useApi<{ count: number; sites: Site[]; notes?: string[] }>(meta && ref ? "/sites" : null, {
-    ref_id: ref, objective: obj, body, analog_type: type, climate, geology, mission_objective: mobj,
+    ref_id: ref, objective: obj, body, analog_type: type, climate, aridity, geology, mission_objective: mobj,
     min_score: minScore || undefined, min_confidence: minConf || undefined, include_insufficient: !hideInsufficient,
     q: coords ? undefined : q, near: coords ? `${coords.lat},${coords.lon}` : undefined, radius_km: coords ? radius : undefined,
     sort: coords ? "distance" : "score", order: coords ? "asc" : "desc",
@@ -56,7 +57,7 @@ export default function ExplorerClient() {
     ...(!refParam && refObj ? [`No planetary reference selected — using the ${refObj.body === "moon" ? "Moon" : "Mars"} default reference ${refObj.name}.`] : []),
     ...(data?.notes ?? []).filter((n) => !n.startsWith("No planetary reference selected")),
   ];
-  const manyClimates = (meta?.climates.length ?? 0) > 12;
+  const categoricalClimates = (meta?.climates.length ?? 0) > 0 && (meta?.climates ?? []).every((c) => c.length <= 12);
 
   useEffect(() => {
     if (coords) setFocus({ lat: coords.lat, lon: coords.lon, zoom: 3 });
@@ -113,16 +114,25 @@ export default function ExplorerClient() {
         </select>
       </div>
       <div>
-        <label htmlFor="f-climate" className="label">{manyClimates ? "Climate contains" : "Climate"}</label>
-        {manyClimates ? (
-          <input id="f-climate" className="input" value={climate} placeholder="e.g. permafrost, ERA5, arid" onChange={(e) => u.set({ climate: e.target.value || null })} />
-        ) : (
-          <select id="f-climate" className="select" value={climate} onChange={(e) => u.set({ climate: e.target.value })}>
+        <label htmlFor="f-climate" className="label">{categoricalClimates ? "Köppen–Geiger climate" : "Climate contains"}</label>
+        {categoricalClimates ? (
+          <select id="f-climate" className="select" value={climate} onChange={(e) => u.set({ climate: e.target.value || null })}>
             <option value="">All climates</option>
             {(meta?.climates ?? []).map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
+        ) : (
+          <input id="f-climate" className="input" value={climate} placeholder="e.g. permafrost, ERA5, arid" onChange={(e) => u.set({ climate: e.target.value || null })} />
         )}
       </div>
+      {(meta?.aridity_classes?.length ?? 0) > 0 && (
+        <div>
+          <label htmlFor="f-aridity" className="label">Aridity class</label>
+          <select id="f-aridity" className="select" value={aridity} onChange={(e) => u.set({ aridity: e.target.value || null })}>
+            <option value="">All aridity classes</option>
+            {(meta?.aridity_classes ?? []).map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+        </div>
+      )}
       <div>
         <label htmlFor="f-geo" className="label">Geology contains</label>
         <input id="f-geo" className="input" value={geology} placeholder="e.g. basalt, impact, permafrost" onChange={(e) => u.set({ geology: e.target.value })} />
@@ -146,7 +156,7 @@ export default function ExplorerClient() {
         <input type="checkbox" checked={hideInsufficient} onChange={(e) => u.set({ hideIns: e.target.checked ? "1" : null })} className="accent-mars-500" />
         Hide sites with insufficient evidence
       </label>
-      <button className="btn w-full text-xs" onClick={() => { setSearch(""); u.set({ body: null, type: null, climate: null, geology: null, mobj: null, minScore: null, minConf: null, hideIns: null, q: null }); }}>Reset filters</button>
+      <button className="btn w-full text-xs" onClick={() => { setSearch(""); u.set({ body: null, type: null, climate: null, aridity: null, geology: null, mobj: null, minScore: null, minConf: null, hideIns: null, q: null }); }}>Reset filters</button>
     </div>
   );
 

@@ -266,11 +266,54 @@ function SensitivityTab({ refId, obj, wParam }: { refId: string; obj: string; wP
   const nm: Record<string, string> = {};
   names.data?.sites.forEach((s) => (nm[s.site_id] = s.name.split(" (")[0]));
   const sweep = all.data?.sweeps[crit] ?? [];
+  const pub = all.data?.published_sensitivity;
+  const pubRadar = all.data?.published_radar;
+  const radarData = (pubRadar?.features ?? []).map((f) => {
+    const row: Record<string, string | number | null> = { label: features.find((x) => x.id === f)?.label ?? f };
+    for (const s of pubRadar?.sites ?? []) row[s.site_id] = s.values?.[f] ?? null;
+    return row;
+  });
   return (
+    <div className="space-y-4">
+      {pub && (
+        <section className="panel p-4" aria-labelledby="pub-sens-h">
+          <h2 id="pub-sens-h" className="panel-title">Published research sensitivity ({pub.profile?.replace(/_/g, " ")})</h2>
+          <p className="mt-1 text-[11px] text-lunar-400">
+            From the research package, not the live weight-lab sweep below.
+            {pub.method?.monte_carlo ? ` Monte Carlo: ${pub.method.monte_carlo}.` : ""}
+            {pub.method?.oat ? ` One-at-a-time: ${pub.method.oat}.` : ""}
+            {pub.method?.lofo ? ` Leave-one-feature-out: ${pub.method.lofo}.` : ""}
+          </p>
+          <dl className="mt-2 grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
+            <div><dt className="text-lunar-400">MC Spearman (mean)</dt><dd className="font-mono text-lunar-100">{pub.result?.mc_spearman_mean ?? "—"}</dd></div>
+            <div><dt className="text-lunar-400">MC Spearman (5th pct)</dt><dd className="font-mono text-lunar-100">{pub.result?.mc_spearman_p05 ?? "—"}</dd></div>
+          </dl>
+          {pub.result?.oat_max_rank_shift && (
+            <div className="mt-3">
+              <h3 className="text-[11px] uppercase tracking-wide text-lunar-400">Max rank shift (OAT ±20 %)</h3>
+              <ul className="mt-1 grid grid-cols-1 gap-1 sm:grid-cols-2">
+                {features.map((c) => (
+                  <li key={c.id} className="flex items-center gap-2 text-xs">
+                    <span className="flex-1 text-lunar-200">{c.label}</span>
+                    <span className="font-mono">{pub.result?.oat_max_rank_shift?.[c.id] ?? "—"}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
+      {pubRadar?.sites && pubRadar.sites.length > 0 && (
+        <section className="panel p-4" aria-labelledby="pub-radar-h">
+          <h2 id="pub-radar-h" className="panel-title">Published top-5 radar (per-feature similarity 0–1)</h2>
+          <p className="mb-2 text-[11px] text-lunar-400">{pubRadar.note || "Per-feature similarity to the matched reference; null = unavailable."} This is the research-package top five for the selected profile, not the live comparison of your selected sites.</p>
+          <RadarCompare data={radarData} series={pubRadar.sites.map((s) => ({ key: s.site_id, name: s.name.split(" (")[0] }))} domain={[0, 1]} />
+        </section>
+      )}
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
       <section className="panel p-4 lg:col-span-8" aria-labelledby="sens-h">
         <div className="mb-2 flex flex-wrap items-end justify-between gap-2">
-          <h2 id="sens-h" className="panel-title">Score response to one featureone criterion&apos;s weightapos;s weight (0× → 2×)</h2>
+          <h2 id="sens-h" className="panel-title">Score response to one feature&apos;s weight (0× → 2×)</h2>
           <div className="w-60">
             <label htmlFor="sens-crit" className="label">Feature</label>
             <select id="sens-crit" className="select" value={crit} onChange={(e) => setCrit(e.target.value)}>
@@ -298,6 +341,7 @@ function SensitivityTab({ refId, obj, wParam }: { refId: string; obj: string; wP
           })}
         </ul>
       </section>
+    </div>
     </div>
   );
 }

@@ -48,6 +48,12 @@ class DataStore:
     file_status: dict[str, str] = field(default_factory=dict)
     issues: list[Issue] = field(default_factory=list)
     collection_meta: dict[str, Any] = field(default_factory=dict)
+    # Optional research extras (data/research/supplementary/); empty when absent (fixtures).
+    data_gaps: dict[str, dict[str, Any]] = field(default_factory=dict)
+    profile_rankings: list[dict[str, Any]] = field(default_factory=list)
+    radar_chart: dict[str, Any] = field(default_factory=dict)
+    sensitivity_summary: dict[str, Any] = field(default_factory=dict)
+    site_bounds: dict[str, Any] = field(default_factory=dict)
 
     # ---- derived helpers -------------------------------------------------------------
     @property
@@ -258,8 +264,77 @@ def load_store(data_dir: Optional[Path] = None) -> DataStore:
             setattr(st, attr, _read_text(p))
             st.file_status[name] = "ok"
 
+    _load_supplementary(st, ddir)
     _cross_check(st)
     return st
+
+
+def _load_supplementary(st: DataStore, ddir: Path) -> None:
+    """Load optional extras from supplementary/ when present. Missing files are not issues."""
+    supp = ddir / "supplementary"
+    if not supp.is_dir():
+        return
+
+    def load_json(name: str) -> Optional[dict[str, Any]]:
+        p = supp / name
+        if not p.exists():
+            return None
+        try:
+            data = json.loads(_read_text(p))
+            return data if isinstance(data, dict) else None
+        except (OSError, json.JSONDecodeError) as e:
+            st.issues.append(Issue("warning", f"supplementary/{name}", f"could not read: {e}"))
+            return None
+
+    radar = load_json("radar_chart_data.json")
+    if radar:
+        st.radar_chart = radar
+    sens = load_json("sensitivity_summary.json")
+    if sens:
+        st.sensitivity_summary = sens
+    bounds = load_json("earth_analog_site_bounds.geojson")
+    if bounds:
+        st.site_bounds = bounds
+
+    gaps = supp / "data_gaps.csv"
+    if gaps.exists():
+        try:
+            with gaps.open(newline="", encoding="utf-8") as fh:
+                for r in csv.DictReader(_strip_comments(fh)):
+                    sid = (r.get("site_id") or "").strip()
+                    if sid:
+                        st.data_gaps[sid] = {k: (v.strip() if isinstance(v, str) else v) for k, v in r.items() if k}
+        except (OSError, csv.Error) as e:
+            st.issues.append(Issue("warning", "supplementary/data_gaps.csv", f"could not read: {e}"))
+
+    ranks = supp / "analog_profile_rankings.csv"
+    if ranks.exists():
+        try:
+            numeric = {
+                "fidelity_score", "evidence_completeness", "confidence", "operational_score",
+                "operational_completeness", "mc_score_p05", "mc_score_p95", "mc_top5_probability",
+                "sim_lithology", "sim_process", "sim_landform", "sim_resource", "sim_slope",
+                "sim_ruggedness", "sim_thermal", "sim_aridity", "sim_ice", "sim_abiotic_surface",
+                "sim_dust_sediment",
+            }
+            ints = {"fidelity_rank", "mc_rank_p05", "mc_rank_p95"}
+            with ranks.open(newline="", encoding="utf-8") as fh:
+                for r in csv.DictReader(_strip_comments(fh)):
+                    row: dict[str, Any] = {}
+                    for k, v in r.items():
+                        if not k:
+                            continue
+                        s = v.strip() if isinstance(v, str) else v
+                        if k in numeric:
+                            row[k] = _num(s)
+                        elif k in ints:
+                            row[k] = int(s) if s not in (None, "") else None
+                        else:
+                            row[k] = s
+                    if row.get("site_id"):
+                        st.profile_rankings.append(row)
+        except (OSError, csv.Error, ValueError) as e:
+            st.issues.append(Issue("warning", "supplementary/analog_profile_rankings.csv", f"could not read: {e}"))
 
 
 def _strip_comments(fh):
@@ -317,6 +392,11 @@ def _signature(ddir: Path) -> tuple:
     for f in config.CONTRACT_FILES:
         p = ddir / f
         out.append((f, p.stat().st_mtime_ns if p.exists() else None))
+    supp = ddir / "supplementary"
+    if supp.is_dir():
+        for p in sorted(supp.iterdir()):
+            if p.is_file():
+                out.append((f"supplementary/{p.name}", p.stat().st_mtime_ns))
     return tuple(out)
 
 

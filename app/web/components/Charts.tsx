@@ -10,14 +10,14 @@ export const SERIES = ["#e8743b", "#67d4ee", "#c9ced6", "#a78bfa", "#4ade80", "#
 const axis = { stroke: "#8b94a5", fontSize: 11 };
 const tooltipStyle = { background: "#0d1426", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 8, fontSize: 12, color: "#e3e7ee" };
 
-export function RadarCompare({ data, series, height = 340 }: { data: Record<string, string | number | null>[]; series: { key: string; name: string }[]; height?: number }) {
+export function RadarCompare({ data, series, height = 340, domain = [0, 5] }: { data: Record<string, string | number | null>[]; series: { key: string; name: string }[]; height?: number; domain?: [number, number] }) {
   return (
-    <div style={{ width: "100%", height }} role="img" aria-label={`Radar chart comparing ${series.map((s) => s.name).join(", ")} across criteria (0–5). Missing values are plotted at 0 and marked in the table.`}>
+    <div style={{ width: "100%", height }} role="img" aria-label={`Radar chart comparing ${series.map((s) => s.name).join(", ")} across criteria (${domain[0]}–${domain[1]}). Missing values are plotted at 0 and marked in the table.`}>
       <ResponsiveContainer>
         <RadarChart data={data} outerRadius="72%">
           <PolarGrid stroke="rgba(255,255,255,0.12)" />
           <PolarAngleAxis dataKey="label" tick={{ fill: "#c9ced6", fontSize: 11 }} />
-          <PolarRadiusAxis domain={[0, 5]} tickCount={6} tick={{ fill: "#8b94a5", fontSize: 10 }} angle={90} />
+          <PolarRadiusAxis domain={domain} tickCount={6} tick={{ fill: "#8b94a5", fontSize: 10 }} angle={90} />
           {series.map((s, i) => (
             <Radar key={s.key} name={s.name} dataKey={s.key} stroke={SERIES[i % SERIES.length]} fill={SERIES[i % SERIES.length]} fillOpacity={0.14} strokeWidth={2} isAnimationActive={false} />
           ))}

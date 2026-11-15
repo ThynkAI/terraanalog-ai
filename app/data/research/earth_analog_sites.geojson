@@ -4,7 +4,7 @@
  "metadata": {
   "synthetic": false,
   "provenance": "mixed",
-  "source_commit": "195b7a8",
+  "source_commit": "d2e464b",
   "generated": "2026-11-15",
   "crs": "EPSG:4326 (RFC 7946)"
  },
@@ -23,15 +23,19 @@
     "site_id": "EA-001",
     "name": "Atacama Desert (hyperarid core)",
     "country": "Chile",
-    "region": "",
+    "region": "Antofagasta",
+    "region_source": "Natural Earth 1:10m admin-1 (Region; CL-AN), point-in-polygon",
     "analog_types": [
      "aqueous_alteration",
      "evaporite_basin",
      "arid_desert"
     ],
-    "climate": "MAAT 11.3 deg C (CHELSA_V2.1_bio1); precipitation 40.0 mm/yr and P/ET0 0.022 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BWk",
+    "aridity_class": "hyper-arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BWk, hyper-arid (ERA5 grid cell). MAAT 11.3 deg C (CHELSA_V2.1_bio1); precipitation 40.0 mm/yr and P/ET0 0.022 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: Siliciclastic (small map). Lithology tags: evaporite_salts, sedimentary_clastic, sulfate, nitrate_perchlorate; process tags: aeolian, evaporitic, fluvial_lacustrine.",
-    "description": "Baseline TerraAnalog site. Landforms: plains, playa_salt_flat, valley_canyon. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ASTROBIO_SEDIMENTS, MARS_ROVER_MOBILITY, MOON_EVA_HABITAT, MOON_ISRU_ICE, MARS_ISRU_ICE.",
+    "description": "Baseline TerraAnalog site. Landforms: plains, playa_salt_flat, valley_canyon. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ASTROBIO_SEDIMENTS, MARS_ROVER_MOBILITY, MOON_EVA_HABITAT, MARS_ISRU_ICE, MOON_ISRU_ICE.",
     "target_bodies": [
      "moon",
      "mars"
@@ -40,8 +44,8 @@
      "MARS_ASTROBIO_SEDIMENTS",
      "MARS_ROVER_MOBILITY",
      "MOON_EVA_HABITAT",
-     "MOON_ISRU_ICE",
-     "MARS_ISRU_ICE"
+     "MARS_ISRU_ICE",
+     "MOON_ISRU_ICE"
     ],
     "environment": {
      "Elevation at point (m, Copernicus DEM, measured)": 2651.9,
@@ -68,11 +72,21 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Atacama.png",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "NASA / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Atacama.png",
+     "source": "Lead image of Wikipedia article 'Atacama Desert'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
      "Wikipedia contributors, 'Atacama Desert' (revision 1384515026), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Atacama_Desert",
-     "Navarro-González et al. (2003) Mars-Like Soils in the Atacama Desert, Chile, and the Dry Limit of Microbial Life. Science. doi:10.1126/science.1089143"
+     "Navarro-González et al. (2003) Mars-Like Soils in the Atacama Desert, Chile, and the Dry Limit of Microbial Life. Science. doi:10.1126/science.1089143",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: region centroid (wiki:Atacama Desert).",
     "group": "baseline",
@@ -94,13 +108,17 @@
     "site_id": "EA-002",
     "name": "Haughton impact crater, Devon Island",
     "country": "Canada",
-    "region": "",
+    "region": "Nunavut",
+    "region_source": "Natural Earth 1:10m admin-1 (Territory; CA-NU), point-in-polygon",
     "analog_types": [
      "impact_crater",
      "permafrost_ice",
      "polar_desert"
     ],
-    "climate": "MAAT -16.6 deg C (CHELSA_V2.1_bio1); precipitation 161.0 mm/yr and P/ET0 0.729 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "ET",
+    "aridity_class": "humid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen ET, humid (ERA5 grid cell). MAAT -16.6 deg C (CHELSA_V2.1_bio1); precipitation 161.0 mm/yr and P/ET0 0.729 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: sedimentary (small map). Lithology tags: impact_breccia_melt, carbonate, ground_ice; process tags: impact, periglacial.",
     "description": "Baseline TerraAnalog site. Landforms: impact_crater, patterned_ground, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_EVA_HABITAT, MARS_ISRU_ICE, MOON_ISRU_ICE, MOON_FIELD_GEOLOGY, MOON_EVA_HABITAT, MARS_ROVER_MOBILITY, MOON_ROVER_MOBILITY.",
     "target_bodies": [
@@ -140,11 +158,21 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Haughton_impact_crater_radar_image.jpg",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "Denni / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Haughton_impact_crater_radar_image.jpg",
+     "source": "Lead image of Wikipedia article 'Haughton impact crater'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
      "Wikipedia contributors, 'Haughton impact crater' (revision 1379912284), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Haughton_impact_crater",
-     "Wikipedia contributors, 'Devon Island' (revision 1367566900), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Devon_Island"
+     "Wikipedia contributors, 'Devon Island' (revision 1367566900), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Devon_Island",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: crater centre (wiki:Haughton impact crater).",
     "group": "baseline",
@@ -166,13 +194,17 @@
     "site_id": "EA-003",
     "name": "Death Valley (Badwater Basin)",
     "country": "United States",
-    "region": "",
+    "region": "California",
+    "region_source": "Natural Earth 1:10m admin-1 (State; US-CA), point-in-polygon",
     "analog_types": [
      "aqueous_alteration",
      "evaporite_basin",
      "arid_desert"
     ],
-    "climate": "MAAT 26.4 deg C (CHELSA_V2.1_bio1); precipitation 137.0 mm/yr and P/ET0 0.078 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BWh",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BWh, arid (ERA5 grid cell). MAAT 26.4 deg C (CHELSA_V2.1_bio1); precipitation 137.0 mm/yr and P/ET0 0.078 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: unconsolidated (medium map). Lithology tags: evaporite_salts, sedimentary_clastic, sulfate; process tags: evaporitic, aeolian, fluvial_lacustrine.",
     "description": "Baseline TerraAnalog site. Landforms: playa_salt_flat, dune_field, valley_canyon, alluvial_fan_delta. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ASTROBIO_SEDIMENTS, MARS_ROVER_MOBILITY.",
     "target_bodies": [
@@ -206,11 +238,21 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Badwater_Basin_from_Dante%27s_View_Overlook.JPG/1280px-Badwater_Basin_from_Dante%27s_View_Overlook.JPG",
+     "license": "CC BY 3.0",
+     "license_url": "https://creativecommons.org/licenses/by/3.0",
+     "credit": "HappyJake / Wikimedia Commons (CC BY 3.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Badwater_Basin_from_Dante%27s_View_Overlook.JPG",
+     "source": "Lead image of Wikipedia article 'Badwater Basin'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
      "Wikipedia contributors, 'Badwater Basin' (revision 1381471389), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Badwater_Basin",
-     "Wikipedia contributors, 'Death Valley' (revision 1384420473), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Death_Valley"
+     "Wikipedia contributors, 'Death Valley' (revision 1384420473), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Death_Valley",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: named feature (wiki:Badwater Basin).",
     "group": "baseline",
@@ -232,14 +274,18 @@
     "site_id": "EA-004",
     "name": "McMurdo Dry Valleys (Wright Valley)",
     "country": "Antarctica (Antarctic Treaty area)",
-    "region": "",
+    "region": "Antarctica (no first-level administrative division)",
+    "region_source": "Natural Earth 1:10m admin-1 (n/a; AQ-X01~), point-in-polygon",
     "analog_types": [
      "permafrost_ice",
      "polar_desert",
      "basaltic_volcanic",
      "evaporite_basin"
     ],
-    "climate": "MAAT -25.6 deg C (CHELSA_V2.1_bio1); precipitation 14.0 mm/yr and P/ET0 0.076 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "EF",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen EF, arid (ERA5 grid cell). MAAT -25.6 deg C (CHELSA_V2.1_bio1); precipitation 14.0 mm/yr and P/ET0 0.076 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: dolerite (medium map). Lithology tags: granitic_felsic, basalt_mafic, evaporite_salts, ground_ice, sedimentary_clastic; process tags: periglacial, glacial, aeolian, evaporitic.",
     "description": "Established TerraAnalog site. Landforms: valley_canyon, patterned_ground, dune_field, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_EVA_HABITAT, MARS_ISRU_ICE, MOON_ISRU_ICE, MARS_EVA_HABITAT.",
     "target_bodies": [
@@ -268,21 +314,31 @@
      "Group": "established",
      "Sampling point": "valley reference point (wiki:Wright Valley (coord template))",
      "Best Moon profile": "MOON_EVA_HABITAT 50.87 (completeness 0.75, vs MOON-REF-03)",
-     "Best Mars profile": "MARS_ISRU_ICE 63.99 (completeness 0.8, vs MARS-REF-05)"
+     "Best Mars profile": "MARS_ISRU_ICE 56.77 (completeness 0.95, vs MARS-REF-04)"
     },
     "elevation_m": 786.1,
     "limitations": [
      "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-     "SoilGrids texture unavailable (masked/no response).",
+     "SoilGrids texture unavailable (masked/no response, and no valid pixel within 10 km).",
      "No mapped road/track within search radius or Overpass unavailable.",
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Mcmurdo_sound_USGS_map.jpg",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "Meile / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Mcmurdo_sound_USGS_map.jpg",
+     "source": "Lead image of Wikipedia article 'McMurdo Dry Valleys'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
      "Wikipedia contributors, 'McMurdo Dry Valleys' (revision 1384612766), retrieved 2026-11-15, https://en.wikipedia.org/wiki/McMurdo_Dry_Valleys",
-     "Doran et al. (2002) Valley floor climate observations from the McMurdo dry valleys, Antarctica, 1986–2000. Journal of Geophysical Research: Atmospheres. doi:10.1029/2001JD002045"
+     "Doran et al. (2002) Valley floor climate observations from the McMurdo dry valleys, Antarctica, 1986–2000. Journal of Geophysical Research: Atmospheres. doi:10.1029/2001JD002045",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: valley reference point (wiki:Wright Valley (coord template)).",
     "group": "established",
@@ -304,15 +360,19 @@
     "site_id": "EA-005",
     "name": "Bockfjorden Volcanic Complex (Sverrefjellet), Svalbard",
     "country": "Norway",
-    "region": "",
+    "region": "Svalbard",
+    "region_source": "Natural Earth 1:10m admin-1 (Territory; NO-21), point-in-polygon",
     "analog_types": [
      "permafrost_ice",
      "basaltic_volcanic",
      "aqueous_alteration"
     ],
-    "climate": "MAAT -8.8 deg C (CHELSA_V2.1_bio1); precipitation 465.0 mm/yr and P/ET0 2.125 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "ET",
+    "aridity_class": "humid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen ET, humid (ERA5 grid cell). MAAT -8.8 deg C (CHELSA_V2.1_bio1); precipitation 465.0 mm/yr and P/ET0 2.125 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: limestone, dolomite, shale, sandstone, quartzite, marble (small map). Lithology tags: basalt_mafic, carbonate, ground_ice; process tags: volcanic_effusive, hydrothermal, periglacial, glacial.",
-    "description": "Established TerraAnalog site. Landforms: volcanic_cone_shield, valley_canyon. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_EVA_HABITAT, MARS_ISRU_ICE, MOON_ISRU_ICE, MOON_FIELD_GEOLOGY.",
+    "description": "Established TerraAnalog site. Landforms: volcanic_cone_shield, valley_canyon. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_EVA_HABITAT, MARS_ISRU_ICE, MOON_ISRU_ICE.",
     "target_bodies": [
      "moon",
      "mars"
@@ -320,8 +380,7 @@
     "mission_objectives": [
      "MOON_EVA_HABITAT",
      "MARS_ISRU_ICE",
-     "MOON_ISRU_ICE",
-     "MOON_FIELD_GEOLOGY"
+     "MOON_ISRU_ICE"
     ],
     "environment": {
      "Elevation at point (m, Copernicus DEM, measured)": 483.8,
@@ -339,7 +398,7 @@
      "Group": "established",
      "Sampling point": "volcano summit (wiki:Sverrefjellet)",
      "Best Moon profile": "MOON_ROVER_MOBILITY 46.99 (completeness 1.0, vs MOON-REF-01)",
-     "Best Mars profile": "MARS_ISRU_ICE 43.2 (completeness 0.85, vs MARS-REF-05)"
+     "Best Mars profile": "MARS_ISRU_ICE 36.74 (completeness 1.0, vs MARS-REF-05)"
     },
     "elevation_m": 483.8,
     "limitations": [
@@ -347,10 +406,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Haakon_VII_Land_Sverrefjellet_Trolltindane_Adolfbreen_Williamstaarnet_behind_Roosflya_IMG_5500.JPG/1280px-Haakon_VII_Land_Sverrefjellet_Trolltindane_Adolfbreen_Williamstaarnet_behind_Roosflya_IMG_5500.JPG",
+     "license": "CC BY-SA 3.0",
+     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+     "credit": "Bjoertvedt / Wikimedia Commons (CC BY-SA 3.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Haakon_VII_Land_Sverrefjellet_Trolltindane_Adolfbreen_Williamstaarnet_behind_Roosflya_IMG_5500.JPG",
+     "source": "Lead image of Wikipedia article 'Sverrefjellet'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Sverrefjellet' (revision 1360740028), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Sverrefjellet"
+     "Wikipedia contributors, 'Sverrefjellet' (revision 1360740028), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Sverrefjellet",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: volcano summit (wiki:Sverrefjellet).",
     "group": "established",
@@ -372,21 +441,25 @@
     "site_id": "EA-006",
     "name": "Holuhraun lava field",
     "country": "Iceland",
-    "region": "",
+    "region": "Norðurland eystra",
+    "region_source": "Natural Earth 1:10m admin-1 (Region; IS-6), point-in-polygon",
     "analog_types": [
      "basaltic_volcanic"
     ],
-    "climate": "MAAT -0.1 deg C (CHELSA_V2.1_bio1); precipitation 1332.0 mm/yr and P/ET0 3.283 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "ET",
+    "aridity_class": "humid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen ET, humid (ERA5 grid cell). MAAT -0.1 deg C (CHELSA_V2.1_bio1); precipitation 1332.0 mm/yr and P/ET0 3.283 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: basalt (medium map). Lithology tags: basalt_mafic, tephra_pyroclastic; process tags: volcanic_effusive, fluvial_lacustrine, glacial.",
-    "description": "Candidate TerraAnalog site. Landforms: lava_flow_field, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ROVER_MOBILITY, MOON_ROVER_MOBILITY, MOON_LAVA_TUBE.",
+    "description": "Candidate TerraAnalog site. Landforms: lava_flow_field, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ROVER_MOBILITY, MOON_LAVA_TUBE, MOON_ROVER_MOBILITY.",
     "target_bodies": [
      "moon",
      "mars"
     ],
     "mission_objectives": [
      "MARS_ROVER_MOBILITY",
-     "MOON_ROVER_MOBILITY",
-     "MOON_LAVA_TUBE"
+     "MOON_LAVA_TUBE",
+     "MOON_ROVER_MOBILITY"
     ],
     "environment": {
      "Elevation at point (m, Copernicus DEM, measured)": 748.9,
@@ -411,10 +484,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/B%C3%A1r%C3%B0arbunga_Volcano%2C_September_4_2014_-_15145875322.jpg/1280px-B%C3%A1r%C3%B0arbunga_Volcano%2C_September_4_2014_-_15145875322.jpg",
+     "license": "CC BY-SA 2.0",
+     "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+     "credit": "peterhartree / Wikimedia Commons (CC BY-SA 2.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:B%C3%A1r%C3%B0arbunga_Volcano,_September_4_2014_-_15145875322.jpg",
+     "source": "Lead image of Wikipedia article 'Holuhraun'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Holuhraun' (revision 1378630405), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Holuhraun"
+     "Wikipedia contributors, 'Holuhraun' (revision 1378630405), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Holuhraun",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: lava field reference point (wiki:Holuhraun).",
     "group": "candidate",
@@ -436,14 +519,18 @@
     "site_id": "EA-007",
     "name": "Askja caldera",
     "country": "Iceland",
-    "region": "",
+    "region": "Norðurland eystra",
+    "region_source": "Natural Earth 1:10m admin-1 (Region; IS-6), point-in-polygon",
     "analog_types": [
      "permafrost_ice",
      "basaltic_volcanic"
     ],
-    "climate": "MAAT -1.8 deg C (CHELSA_V2.1_bio1); precipitation 1103.0 mm/yr and P/ET0 3.121 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "ET",
+    "aridity_class": "humid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen ET, humid (ERA5 grid cell). MAAT -1.8 deg C (CHELSA_V2.1_bio1); precipitation 1103.0 mm/yr and P/ET0 3.121 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: volcanic: mafic rocks (small map). Lithology tags: basalt_mafic, tephra_pyroclastic, ground_ice; process tags: volcanic_effusive, volcanic_explosive, periglacial.",
-    "description": "Established TerraAnalog site. Landforms: caldera, lava_flow_field, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ISRU_ICE, MOON_ISRU_ICE, MARS_LAVA_TUBE.",
+    "description": "Established TerraAnalog site. Landforms: caldera, lava_flow_field, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ISRU_ICE, MOON_ISRU_ICE, MOON_EVA_HABITAT, MARS_LAVA_TUBE, MOON_FIELD_GEOLOGY.",
     "target_bodies": [
      "moon",
      "mars"
@@ -451,7 +538,9 @@
     "mission_objectives": [
      "MARS_ISRU_ICE",
      "MOON_ISRU_ICE",
-     "MARS_LAVA_TUBE"
+     "MOON_EVA_HABITAT",
+     "MARS_LAVA_TUBE",
+     "MOON_FIELD_GEOLOGY"
     ],
     "environment": {
      "Elevation at point (m, Copernicus DEM, measured)": 1055.5,
@@ -462,29 +551,39 @@
      "Permafrost probability (Obu2019_PERPROB, modeled)": 0.7,
      "Unvegetated fraction within 5 km (WorldCover 2021)": 0.994,
      "Median slope 30 m within 2 km (deg, Copernicus DEM)": 1.7,
-     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": null,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.45,
      "Distance to mapped major road (m, Natural Earth, upper bound)": 47655.0,
      "Road distance censored beyond (m)": null,
      "Operational score (0-100, separate from fidelity)": 60.19,
      "Group": "established",
      "Sampling point": "volcano (wiki:Askja)",
-     "Best Moon profile": "MOON_ROVER_MOBILITY 48.44 (completeness 0.8, vs MOON-REF-07)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 56.58 (completeness 0.95, vs MOON-REF-07)",
      "Best Mars profile": "MARS_ROVER_MOBILITY 53.77 (completeness 0.95, vs MARS-REF-01)"
     },
     "elevation_m": 1055.5,
     "limitations": [
-     "SoilGrids texture unavailable (masked/no response).",
+     "SoilGrids texture taken from the nearest valid 250 m pixel, 0.547 km from the point (point pixel masked).",
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Askja.jpg",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "Michael Ryan / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Askja.jpg",
+     "source": "Lead image of Wikipedia article 'Askja'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Askja' (revision 1382433494), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Askja"
+     "Wikipedia contributors, 'Askja' (revision 1382433494), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Askja",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: volcano (wiki:Askja).",
     "group": "established",
-    "data_confidence": 0.605,
+    "data_confidence": 0.75,
     "terraanalog_site_id": "EA-007"
    }
   },
@@ -502,12 +601,16 @@
     "site_id": "EA-008",
     "name": "Timanfaya volcanic field, Lanzarote",
     "country": "Spain",
-    "region": "",
+    "region": "Las Palmas",
+    "region_source": "Natural Earth 1:10m admin-1 (Autonomous Community; ES-GC), point-in-polygon",
     "analog_types": [
      "basaltic_volcanic",
      "arid_desert"
     ],
-    "climate": "MAAT 19.1 deg C (CHELSA_V2.1_bio1); precipitation 87.0 mm/yr and P/ET0 0.067 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BWk",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BWk, arid (ERA5 grid cell). MAAT 19.1 deg C (CHELSA_V2.1_bio1); precipitation 87.0 mm/yr and P/ET0 0.067 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: mafic volcanic rocks (medium map). Lithology tags: basalt_mafic, tephra_pyroclastic; process tags: volcanic_effusive, aeolian.",
     "description": "Candidate TerraAnalog site. Landforms: lava_flow_field, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ROVER_MOBILITY, MOON_ROVER_MOBILITY, MARS_LAVA_TUBE, MOON_LAVA_TUBE.",
     "target_bodies": [
@@ -529,30 +632,40 @@
      "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
      "Unvegetated fraction within 5 km (WorldCover 2021)": 0.928,
      "Median slope 30 m within 2 km (deg, Copernicus DEM)": 3.18,
-     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": null,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.55,
      "Distance to mapped major road (m, Natural Earth, upper bound)": 148246.0,
      "Road distance censored beyond (m)": null,
      "Operational score (0-100, separate from fidelity)": 51.15,
      "Group": "candidate",
      "Sampling point": "park reference point (wiki:Timanfaya National Park)",
-     "Best Moon profile": "MOON_ROVER_MOBILITY 68.45 (completeness 0.8, vs MOON-REF-07)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 70.29 (completeness 0.95, vs MOON-REF-07)",
      "Best Mars profile": "MARS_ROVER_MOBILITY 62.26 (completeness 0.95, vs MARS-REF-01)"
     },
     "elevation_m": 155.4,
     "limitations": [
      "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-     "SoilGrids texture unavailable (masked/no response).",
+     "SoilGrids texture taken from the nearest valid 250 m pixel, 0.68 km from the point (point pixel masked).",
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Timanfaya_National_Park_landscape.jpg/1280px-Timanfaya_National_Park_landscape.jpg",
+     "license": "CC BY-SA 4.0",
+     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+     "credit": "MiljenkoSuljic / Wikimedia Commons (CC BY-SA 4.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Timanfaya_National_Park_landscape.jpg",
+     "source": "Lead image of Wikipedia article 'Timanfaya National Park'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Timanfaya National Park' (revision 1362942541), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Timanfaya_National_Park"
+     "Wikipedia contributors, 'Timanfaya National Park' (revision 1362942541), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Timanfaya_National_Park",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: park reference point (wiki:Timanfaya National Park).",
     "group": "candidate",
-    "data_confidence": 0.509,
+    "data_confidence": 0.58,
     "terraanalog_site_id": "EA-008"
    }
   },
@@ -570,13 +683,17 @@
     "site_id": "EA-009",
     "name": "Cueva de los Verdes lava tube (La Corona), Lanzarote",
     "country": "Spain",
-    "region": "",
+    "region": "Las Palmas",
+    "region_source": "Natural Earth 1:10m admin-1 (Autonomous Community; ES-GC), point-in-polygon",
     "analog_types": [
      "lava_tube_cave",
      "basaltic_volcanic",
      "arid_desert"
     ],
-    "climate": "MAAT 19.2 deg C (CHELSA_V2.1_bio1); precipitation 86.0 mm/yr and P/ET0 0.065 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BWh",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BWh, arid (ERA5 grid cell). MAAT 19.2 deg C (CHELSA_V2.1_bio1); precipitation 86.0 mm/yr and P/ET0 0.065 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: basalt (medium map). Lithology tags: basalt_mafic; process tags: volcanic_effusive.",
     "description": "Candidate TerraAnalog site. Landforms: lava_tube_cave, pit_skylight, lava_flow_field. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_LAVA_TUBE, MOON_LAVA_TUBE.",
     "target_bodies": [
@@ -611,11 +728,21 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Lanzarote_5_Luc_Viatour.jpg/1280px-Lanzarote_5_Luc_Viatour.jpg",
+     "license": "CC BY-SA 3.0",
+     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+     "credit": "Lviatour / Wikimedia Commons (CC BY-SA 3.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Lanzarote_5_Luc_Viatour.jpg",
+     "source": "Lead image of Wikipedia article 'Cueva de los Verdes'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
      "Wikipedia contributors, 'Cueva de los Verdes' (revision 1264610022), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Cueva_de_los_Verdes",
-     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288"
+     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: cave entrance area (wiki:Cueva de los Verdes).",
     "group": "candidate",
@@ -637,14 +764,18 @@
     "site_id": "EA-010",
     "name": "Dallol hydrothermal field, Danakil Depression",
     "country": "Ethiopia",
-    "region": "",
+    "region": "Afar",
+    "region_source": "Natural Earth 1:10m admin-1 (Administrative State; ET-AF), point-in-polygon",
     "analog_types": [
      "basaltic_volcanic",
      "aqueous_alteration",
      "evaporite_basin",
      "arid_desert"
     ],
-    "climate": "MAAT 32.9 deg C (CHELSA_V2.1_bio1); precipitation 79.0 mm/yr and P/ET0 0.033 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BWh",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BWh, arid (ERA5 grid cell). MAAT 32.9 deg C (CHELSA_V2.1_bio1); precipitation 79.0 mm/yr and P/ET0 0.033 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: volcanic (small map). Lithology tags: evaporite_salts, sulfate, iron_oxide, basalt_mafic; process tags: hydrothermal, evaporitic, acidic_aqueous, volcanic_effusive.",
     "description": "Candidate TerraAnalog site. Landforms: playa_salt_flat, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_EVA_HABITAT, MARS_LAVA_TUBE, MARS_ASTROBIO_SEDIMENTS.",
     "target_bodies": [
@@ -680,10 +811,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/ET_Afar_asv2018-01_img48_Dallol.jpg/1280px-ET_Afar_asv2018-01_img48_Dallol.jpg",
+     "license": "FAL",
+     "license_url": "http://artlibre.org/licence/lal/en",
+     "credit": "A.Savin / Wikimedia Commons (FAL)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:ET_Afar_asv2018-01_img48_Dallol.jpg",
+     "source": "Lead image of Wikipedia article 'Dallol (hydrothermal system)'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Dallol (hydrothermal system)' (revision 1377192598), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Dallol_(hydrothermal_system)"
+     "Wikipedia contributors, 'Dallol (hydrothermal system)' (revision 1377192598), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Dallol_(hydrothermal_system)",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: feature reference point (wiki:Dallol (hydrothermal system) (coord template)).",
     "group": "candidate",
@@ -705,13 +846,17 @@
     "site_id": "EA-011",
     "name": "Salar de Uyuni",
     "country": "Bolivia",
-    "region": "",
+    "region": "Potosí",
+    "region_source": "Natural Earth 1:10m admin-1 (Department; BO-P), point-in-polygon",
     "analog_types": [
      "evaporite_basin",
      "arid_desert",
      "high_altitude"
     ],
-    "climate": "MAAT 7.5 deg C (CHELSA_V2.1_bio1); precipitation 265.0 mm/yr and P/ET0 0.149 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BSk",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BSk, arid (ERA5 grid cell). MAAT 7.5 deg C (CHELSA_V2.1_bio1); precipitation 265.0 mm/yr and P/ET0 0.149 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: Evaporite (small map). Lithology tags: evaporite_salts, sedimentary_clastic; process tags: evaporitic, fluvial_lacustrine.",
     "description": "Candidate TerraAnalog site. Landforms: playa_salt_flat, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_ROVER_MOBILITY, MARS_ASTROBIO_SEDIMENTS, MARS_EVA_HABITAT.",
     "target_bodies": [
@@ -747,10 +892,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Salar_Uyuni_au01.jpg",
+     "license": "FAL",
+     "license_url": "http://artlibre.org/licence/lal/en",
+     "credit": "Anouchka Unel / Wikimedia Commons (FAL)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Salar_Uyuni_au01.jpg",
+     "source": "Lead image of Wikipedia article 'Salar de Uyuni'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Salar de Uyuni' (revision 1369101391), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Salar_de_Uyuni"
+     "Wikipedia contributors, 'Salar de Uyuni' (revision 1369101391), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Salar_de_Uyuni",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: salt flat reference point (wiki:Salar de Uyuni).",
     "group": "candidate",
@@ -772,13 +927,17 @@
     "site_id": "EA-012",
     "name": "Salar de Antofalla (Puna de Atacama)",
     "country": "Argentina",
-    "region": "",
+    "region": "Catamarca",
+    "region_source": "Natural Earth 1:10m admin-1 (Province; AR-K), point-in-polygon",
     "analog_types": [
      "evaporite_basin",
      "arid_desert",
      "high_altitude"
     ],
-    "climate": "MAAT 8.8 deg C (CHELSA_V2.1_bio1); precipitation 124.0 mm/yr and P/ET0 0.069 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BWk",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BWk, arid (ERA5 grid cell). MAAT 8.8 deg C (CHELSA_V2.1_bio1); precipitation 124.0 mm/yr and P/ET0 0.069 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: Evaporite (small map). Lithology tags: evaporite_salts; process tags: evaporitic.",
     "description": "Candidate TerraAnalog site. Landforms: playa_salt_flat. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: none.",
     "target_bodies": [
@@ -813,7 +972,9 @@
     "imagery": null,
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Salar de Antofalla' (revision 1366623081), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Salar_de_Antofalla"
+     "Wikipedia contributors, 'Salar de Antofalla' (revision 1366623081), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Salar_de_Antofalla",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: salt flat reference point (wiki:Salar de Antofalla).",
     "group": "candidate",
@@ -835,13 +996,17 @@
     "site_id": "EA-013",
     "name": "Dresser Formation (North Pole Dome), Pilbara",
     "country": "Australia",
-    "region": "",
+    "region": "Western Australia",
+    "region_source": "Natural Earth 1:10m admin-1 (State; AU-WA), point-in-polygon",
     "analog_types": [
      "basaltic_volcanic",
      "aqueous_alteration",
      "arid_desert"
     ],
-    "climate": "MAAT 27.1 deg C (CHELSA_V2.1_bio1); precipitation 318.0 mm/yr and P/ET0 0.126 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BWh",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BWh, arid (ERA5 grid cell). MAAT 27.1 deg C (CHELSA_V2.1_bio1); precipitation 318.0 mm/yr and P/ET0 0.126 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: igneous mafic volcanic (small map). Lithology tags: basalt_mafic, silica_chert_sinter, carbonate, evaporite_salts, sedimentary_clastic, sulfate; process tags: hydrothermal, volcanic_effusive, fluvial_lacustrine.",
     "description": "Candidate TerraAnalog site. Landforms: layered_sedimentary_outcrop, massif_highland. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: none.",
     "target_bodies": [
@@ -877,7 +1042,9 @@
     "provenance": "mixed",
     "citations": [
      "Wikipedia contributors, 'Dresser Formation' (revision 1369613496), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Dresser_Formation",
-     "Djokic et al. (2017) Earliest signs of life on land preserved in ca. 3.5 Ga hot spring deposits. Nature Communications. doi:10.1038/ncomms15263"
+     "Djokic et al. (2017) Earliest signs of life on land preserved in ca. 3.5 Ga hot spring deposits. Nature Communications. doi:10.1038/ncomms15263",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: formation reference point (wiki:Dresser Formation (coord template)).",
     "group": "candidate",
@@ -899,12 +1066,16 @@
     "site_id": "EA-014",
     "name": "Arkaroola (Northern Flinders Ranges)",
     "country": "Australia",
-    "region": "",
+    "region": "South Australia",
+    "region_source": "Natural Earth 1:10m admin-1 (State; AU-SA), point-in-polygon",
     "analog_types": [
      "aqueous_alteration",
      "arid_desert"
     ],
-    "climate": "MAAT 19.1 deg C (CHELSA_V2.1_bio1); precipitation 210.0 mm/yr and P/ET0 0.108 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BWh",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BWh, arid (ERA5 grid cell). MAAT 19.1 deg C (CHELSA_V2.1_bio1); precipitation 210.0 mm/yr and P/ET0 0.108 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: sedimentary (small map). Lithology tags: granitic_felsic, sedimentary_clastic, metamorphic; process tags: hydrothermal, fluvial_lacustrine.",
     "description": "Candidate TerraAnalog site. Landforms: valley_canyon, massif_highland. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: none.",
     "target_bodies": [
@@ -936,10 +1107,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/1/10/ArkaroolaAir.jpg",
+     "license": "CC BY-SA 3.0",
+     "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+     "credit": "Kdliss / Wikimedia Commons (CC BY-SA 3.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:ArkaroolaAir.jpg",
+     "source": "Lead image of Wikipedia article 'Arkaroola'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Arkaroola' (revision 1377554632), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Arkaroola"
+     "Wikipedia contributors, 'Arkaroola' (revision 1377554632), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Arkaroola",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: settlement/sanctuary reference point (wiki:Arkaroola).",
     "group": "candidate",
@@ -961,12 +1142,16 @@
     "site_id": "EA-015",
     "name": "Wolfe Creek Crater",
     "country": "Australia",
-    "region": "",
+    "region": "Western Australia",
+    "region_source": "Natural Earth 1:10m admin-1 (State; AU-WA), point-in-polygon",
     "analog_types": [
      "impact_crater",
      "arid_desert"
     ],
-    "climate": "MAAT 27.2 deg C (CHELSA_V2.1_bio1); precipitation 419.0 mm/yr and P/ET0 0.16 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BSh",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BSh, arid (ERA5 grid cell). MAAT 27.2 deg C (CHELSA_V2.1_bio1); precipitation 419.0 mm/yr and P/ET0 0.16 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: sedimentary (small map). Lithology tags: impact_breccia_melt, sedimentary_clastic, iron_oxide; process tags: impact, aeolian.",
     "description": "Candidate TerraAnalog site. Landforms: impact_crater, dune_field. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY.",
     "target_bodies": [
@@ -1000,10 +1185,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/Wolfe_creek_crater.jpg",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "author not recorded in Commons metadata / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Wolfe_creek_crater.jpg",
+     "source": "Lead image of Wikipedia article 'Wolfe Creek Crater'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Wolfe Creek Crater' (revision 1384369003), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Wolfe_Creek_Crater"
+     "Wikipedia contributors, 'Wolfe Creek Crater' (revision 1384369003), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Wolfe_Creek_Crater",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: crater centre (wiki:Wolfe Creek Crater).",
     "group": "candidate",
@@ -1025,12 +1220,16 @@
     "site_id": "EA-016",
     "name": "Undara lava tubes (McBride Basalt Province)",
     "country": "Australia",
-    "region": "",
+    "region": "Queensland",
+    "region_source": "Natural Earth 1:10m admin-1 (State; AU-QLD), point-in-polygon",
     "analog_types": [
      "lava_tube_cave",
      "basaltic_volcanic"
     ],
-    "climate": "MAAT 22.1 deg C (CHELSA_V2.1_bio1); precipitation 711.0 mm/yr and P/ET0 0.386 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BSh",
+    "aridity_class": "semi-arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BSh, semi-arid (ERA5 grid cell). MAAT 22.1 deg C (CHELSA_V2.1_bio1); precipitation 711.0 mm/yr and P/ET0 0.386 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: igneous mafic volcanic (small map). Lithology tags: basalt_mafic; process tags: volcanic_effusive.",
     "description": "Candidate TerraAnalog site. Landforms: lava_tube_cave, volcanic_cone_shield, lava_flow_field. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_LAVA_TUBE, MOON_LAVA_TUBE.",
     "target_bodies": [
@@ -1065,11 +1264,21 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Undara_Lava_Tubes_-_panoramio_%2811%29.jpg/1280px-Undara_Lava_Tubes_-_panoramio_%2811%29.jpg",
+     "license": "CC BY-SA 3.0",
+     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+     "credit": "Lobster1 / Wikimedia Commons (CC BY-SA 3.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Undara_Lava_Tubes_-_panoramio_(11).jpg",
+     "source": "Lead image of Wikipedia article 'Undara Volcanic National Park'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
      "Wikipedia contributors, 'Undara Volcanic National Park' (revision 1379753357), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Undara_Volcanic_National_Park",
-     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288"
+     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: park reference point (wiki:Undara Volcanic National Park).",
     "group": "candidate",
@@ -1091,13 +1300,17 @@
     "site_id": "EA-017",
     "name": "Tso Kar basin, Ladakh",
     "country": "India",
-    "region": "",
+    "region": "Ladakh",
+    "region_source": "Natural Earth 1:10m admin-1 (Union Territory; IN-LA), point-in-polygon",
     "analog_types": [
      "permafrost_ice",
      "evaporite_basin",
      "high_altitude"
     ],
-    "climate": "MAAT -6.0 deg C (CHELSA_V2.1_bio1); precipitation 253.0 mm/yr and P/ET0 0.26 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "ET",
+    "aridity_class": "semi-arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen ET, semi-arid (ERA5 grid cell). MAAT -6.0 deg C (CHELSA_V2.1_bio1); precipitation 253.0 mm/yr and P/ET0 0.26 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: sedimentary rocks (tiny map). Lithology tags: evaporite_salts, sedimentary_clastic; process tags: evaporitic, fluvial_lacustrine, periglacial.",
     "description": "Established TerraAnalog site. Landforms: playa_salt_flat, valley_canyon, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ASTROBIO_SEDIMENTS, MOON_EVA_HABITAT.",
     "target_bodies": [
@@ -1132,10 +1345,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Tsokar.jpg/1280px-Tsokar.jpg",
+     "license": "CC BY-SA 3.0",
+     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+     "credit": "GerthMichael / Wikimedia Commons (CC BY-SA 3.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Tsokar.jpg",
+     "source": "Lead image of Wikipedia article 'Tso Kar'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Tso Kar' (revision 1366777018), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Tso_Kar"
+     "Wikipedia contributors, 'Tso Kar' (revision 1366777018), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Tso_Kar",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: lake centre (water body) (wiki:Tso Kar).",
     "group": "established",
@@ -1157,13 +1380,17 @@
     "site_id": "EA-018",
     "name": "Qaidam Basin",
     "country": "China",
-    "region": "",
+    "region": "Qinghai",
+    "region_source": "Natural Earth 1:10m admin-1 (Province; CN-QH), point-in-polygon",
     "analog_types": [
      "aqueous_alteration",
      "evaporite_basin",
      "arid_desert"
     ],
-    "climate": "MAAT 6.5 deg C (CHELSA_V2.1_bio1); precipitation 27.0 mm/yr and P/ET0 0.017 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BWk",
+    "aridity_class": "hyper-arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BWk, hyper-arid (ERA5 grid cell). MAAT 6.5 deg C (CHELSA_V2.1_bio1); precipitation 27.0 mm/yr and P/ET0 0.017 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: sedimentary rocks (tiny map). Lithology tags: evaporite_salts, sedimentary_clastic, sulfate; process tags: evaporitic, aeolian, fluvial_lacustrine.",
     "description": "Established TerraAnalog site. Landforms: playa_salt_flat, plains, yardang_aeolian. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_EVA_HABITAT, MARS_ASTROBIO_SEDIMENTS, MARS_ISRU_ICE.",
     "target_bodies": [
@@ -1199,11 +1426,21 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Qaidam-basin-china.jpg",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "NASA / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Qaidam-basin-china.jpg",
+     "source": "Lead image of Wikipedia article 'Qaidam Basin'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
      "Wikipedia contributors, 'Qaidam Basin' (revision 1366613413), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Qaidam_Basin",
-     "Xiao et al. (2017) A new terrestrial analogue site for Mars research: The Qaidam Basin, Tibetan Plateau (NW China). Earth-Science Reviews. doi:10.1016/j.earscirev.2016.11.003"
+     "Xiao et al. (2017) A new terrestrial analogue site for Mars research: The Qaidam Basin, Tibetan Plateau (NW China). Earth-Science Reviews. doi:10.1016/j.earscirev.2016.11.003",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: basin centroid (wiki:Qaidam Basin).",
     "group": "established",
@@ -1225,22 +1462,25 @@
     "site_id": "EA-019",
     "name": "Mauna Kea (upper slopes)",
     "country": "United States",
-    "region": "",
+    "region": "Hawaii",
+    "region_source": "Natural Earth 1:10m admin-1 (State; US-HI), point-in-polygon",
     "analog_types": [
      "permafrost_ice",
      "basaltic_volcanic",
      "high_altitude"
     ],
-    "climate": "MAAT -0.1 deg C (CHELSA_V2.1_bio1); precipitation 814.0 mm/yr and P/ET0 0.79 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "Csb",
+    "aridity_class": "humid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen Csb, humid (ERA5 grid cell). MAAT -0.1 deg C (CHELSA_V2.1_bio1); precipitation 814.0 mm/yr and P/ET0 0.79 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: Scoria cones; basaltic volcanic rocks (medium map). Lithology tags: basalt_mafic, tephra_pyroclastic, ground_ice; process tags: volcanic_effusive, volcanic_explosive, glacial, periglacial.",
-    "description": "Candidate TerraAnalog site. Landforms: volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_EVA_HABITAT, MOON_ISRU_ICE.",
+    "description": "Candidate TerraAnalog site. Landforms: volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_EVA_HABITAT.",
     "target_bodies": [
      "moon",
      "mars"
     ],
     "mission_objectives": [
-     "MOON_EVA_HABITAT",
-     "MOON_ISRU_ICE"
+     "MOON_EVA_HABITAT"
     ],
     "environment": {
      "Elevation at point (m, Copernicus DEM, measured)": 4202.4,
@@ -1266,10 +1506,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Mauna_Kea_from_the_ocean.jpg/1280px-Mauna_Kea_from_the_ocean.jpg",
+     "license": "CC BY 2.0",
+     "license_url": "https://creativecommons.org/licenses/by/2.0",
+     "credit": "Vadim Kurland / Wikimedia Commons (CC BY 2.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Mauna_Kea_from_the_ocean.jpg",
+     "source": "Lead image of Wikipedia article 'Mauna Kea'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Mauna Kea' (revision 1378293676), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Mauna_Kea"
+     "Wikipedia contributors, 'Mauna Kea' (revision 1378293676), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Mauna_Kea",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: summit (wiki:Mauna Kea).",
     "group": "candidate",
@@ -1291,11 +1541,15 @@
     "site_id": "EA-020",
     "name": "Kaʻū Desert (Kīlauea)",
     "country": "United States",
-    "region": "",
+    "region": "Hawaii",
+    "region_source": "Natural Earth 1:10m admin-1 (State; US-HI), point-in-polygon",
     "analog_types": [
      "basaltic_volcanic"
     ],
-    "climate": "MAAT 16.8 deg C (CHELSA_V2.1_bio1); precipitation 2146.0 mm/yr and P/ET0 1.82 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "Cfb",
+    "aridity_class": "humid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen Cfb, humid (ERA5 grid cell). MAAT 16.8 deg C (CHELSA_V2.1_bio1); precipitation 2146.0 mm/yr and P/ET0 1.82 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: basalt (large map). Lithology tags: tephra_pyroclastic, basalt_mafic; process tags: volcanic_explosive, volcanic_effusive, aeolian.",
     "description": "Candidate TerraAnalog site. Landforms: lava_flow_field, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_LAVA_TUBE.",
     "target_bodies": [
@@ -1329,10 +1583,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Kau_desert.jpg",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "S.R. Brantley, USGS / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Kau_desert.jpg",
+     "source": "Lead image of Wikipedia article 'Kaʻū Desert'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Kaʻū Desert' (revision 1377421691), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Kaʻū_Desert"
+     "Wikipedia contributors, 'Kaʻū Desert' (revision 1377421691), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Kaʻū_Desert",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: desert reference point (wiki:Kaʻū Desert (coord template)).",
     "group": "candidate",
@@ -1354,12 +1618,16 @@
     "site_id": "EA-021",
     "name": "Lava Beds National Monument",
     "country": "United States",
-    "region": "",
+    "region": "California",
+    "region_source": "Natural Earth 1:10m admin-1 (State; US-CA), point-in-polygon",
     "analog_types": [
      "lava_tube_cave",
      "basaltic_volcanic"
     ],
-    "climate": "MAAT 8.9 deg C (CHELSA_V2.1_bio1); precipitation 544.0 mm/yr and P/ET0 0.454 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "Csa",
+    "aridity_class": "semi-arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen Csa, semi-arid (ERA5 grid cell). MAAT 8.9 deg C (CHELSA_V2.1_bio1); precipitation 544.0 mm/yr and P/ET0 0.454 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: volcanic (medium map). Lithology tags: basalt_mafic, tephra_pyroclastic; process tags: volcanic_effusive.",
     "description": "Candidate TerraAnalog site. Landforms: lava_tube_cave, lava_flow_field, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_LAVA_TUBE, MOON_LAVA_TUBE.",
     "target_bodies": [
@@ -1393,11 +1661,21 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Lava_Beds_Cave_collapse_trench.jpg",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "U.S. National Park Service / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Lava_Beds_Cave_collapse_trench.jpg",
+     "source": "Lead image of Wikipedia article 'Lava Beds National Monument'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
      "Wikipedia contributors, 'Lava Beds National Monument' (revision 1373474447), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Lava_Beds_National_Monument",
-     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288"
+     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: monument reference point (wiki:Lava Beds National Monument).",
     "group": "candidate",
@@ -1419,21 +1697,25 @@
     "site_id": "EA-022",
     "name": "Craters of the Moon lava field",
     "country": "United States",
-    "region": "",
+    "region": "Idaho",
+    "region_source": "Natural Earth 1:10m admin-1 (State; US-ID), point-in-polygon",
     "analog_types": [
      "lava_tube_cave",
      "basaltic_volcanic"
     ],
-    "climate": "MAAT 5.8 deg C (CHELSA_V2.1_bio1); precipitation 353.0 mm/yr and P/ET0 0.302 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "Dsa",
+    "aridity_class": "semi-arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen Dsa, semi-arid (ERA5 grid cell). MAAT 5.8 deg C (CHELSA_V2.1_bio1); precipitation 353.0 mm/yr and P/ET0 0.302 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: basalt, latite (medium map). Lithology tags: basalt_mafic, tephra_pyroclastic; process tags: volcanic_effusive, volcanic_explosive.",
-    "description": "Established TerraAnalog site. Landforms: lava_flow_field, lava_tube_cave, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_LAVA_TUBE, MARS_LAVA_TUBE, MARS_ROVER_MOBILITY.",
+    "description": "Established TerraAnalog site. Landforms: lava_flow_field, lava_tube_cave, volcanic_cone_shield. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_LAVA_TUBE, MOON_LAVA_TUBE, MARS_ROVER_MOBILITY.",
     "target_bodies": [
      "moon",
      "mars"
     ],
     "mission_objectives": [
-     "MOON_LAVA_TUBE",
      "MARS_LAVA_TUBE",
+     "MOON_LAVA_TUBE",
      "MARS_ROVER_MOBILITY"
     ],
     "environment": {
@@ -1451,7 +1733,7 @@
      "Operational score (0-100, separate from fidelity)": 83.68,
      "Group": "established",
      "Sampling point": "monument reference point (wiki:Craters of the Moon National Monument and Preserve)",
-     "Best Moon profile": "MOON_LAVA_TUBE 54.29 (completeness 0.95, vs MOON-REF-05)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 52.01 (completeness 0.95, vs MOON-REF-07)",
      "Best Mars profile": "MARS_ROVER_MOBILITY 55.95 (completeness 0.95, vs MARS-REF-02)"
     },
     "elevation_m": 1799.1,
@@ -1459,15 +1741,25 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/CratersDrone1.jpg/1280px-CratersDrone1.jpg",
+     "license": "CC BY-SA 4.0",
+     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+     "credit": "BroMcjoe / Wikimedia Commons (CC BY-SA 4.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:CratersDrone1.jpg",
+     "source": "Lead image of Wikipedia article 'Craters of the Moon National Monument and Preserve'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
      "Wikipedia contributors, 'Craters of the Moon National Monument and Preserve' (revision 1366646688), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Craters_of_the_Moon_National_Monument_and_Preserve",
-     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288"
+     "Sauro et al. (2020) Lava tubes on Earth, Moon and Mars: A review on their size and morphology revealed by comparative planetology. Earth-Science Reviews. doi:10.1016/j.earscirev.2020.103288",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: monument reference point (wiki:Craters of the Moon National Monument and Preserve).",
     "group": "established",
-    "data_confidence": 0.675,
+    "data_confidence": 0.75,
     "terraanalog_site_id": "EA-022"
    }
   },
@@ -1485,14 +1777,18 @@
     "site_id": "EA-023",
     "name": "Meteor Crater (Barringer)",
     "country": "United States",
-    "region": "",
+    "region": "Arizona",
+    "region_source": "Natural Earth 1:10m admin-1 (State; US-AZ), point-in-polygon",
     "analog_types": [
      "impact_crater",
      "arid_desert"
     ],
-    "climate": "MAAT 13.9 deg C (CHELSA_V2.1_bio1); precipitation 174.0 mm/yr and P/ET0 0.094 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BWk",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BWk, arid (ERA5 grid cell). MAAT 13.9 deg C (CHELSA_V2.1_bio1); precipitation 174.0 mm/yr and P/ET0 0.094 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: sedimentary, limestone, sandstone (medium map). Lithology tags: impact_breccia_melt, sedimentary_clastic, carbonate; process tags: impact.",
-    "description": "Established TerraAnalog site. Landforms: impact_crater. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY, MOON_ROVER_MOBILITY, MOON_ISRU_ICE, MARS_EVA_HABITAT, MOON_EVA_HABITAT.",
+    "description": "Established TerraAnalog site. Landforms: impact_crater. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY, MOON_ROVER_MOBILITY, MOON_ISRU_ICE, MARS_EVA_HABITAT.",
     "target_bodies": [
      "moon",
      "mars"
@@ -1501,8 +1797,7 @@
      "MOON_FIELD_GEOLOGY",
      "MOON_ROVER_MOBILITY",
      "MOON_ISRU_ICE",
-     "MARS_EVA_HABITAT",
-     "MOON_EVA_HABITAT"
+     "MARS_EVA_HABITAT"
     ],
     "environment": {
      "Elevation at point (m, Copernicus DEM, measured)": 1564.5,
@@ -1527,10 +1822,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Meteor_Crater_-_Arizona.jpg/1280px-Meteor_Crater_-_Arizona.jpg",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "National Map Seamless Server / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Meteor_Crater_-_Arizona.jpg",
+     "source": "Lead image of Wikipedia article 'Meteor Crater'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Meteor Crater' (revision 1383900662), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Meteor_Crater"
+     "Wikipedia contributors, 'Meteor Crater' (revision 1383900662), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Meteor_Crater",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: crater centre (wiki:Meteor Crater).",
     "group": "established",
@@ -1552,19 +1857,24 @@
     "site_id": "EA-024",
     "name": "Mistastin Lake impact structure",
     "country": "Canada",
-    "region": "",
+    "region": "Newfoundland and Labrador",
+    "region_source": "Natural Earth 1:10m admin-1 (Province; CA-NL), point-in-polygon",
     "analog_types": [
      "impact_crater"
     ],
-    "climate": "MAAT -4.2 deg C (CHELSA_V2.1_bio1); precipitation 783.0 mm/yr and P/ET0 1.794 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "Dfc",
+    "aridity_class": "humid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen Dfc, humid (ERA5 grid cell). MAAT -4.2 deg C (CHELSA_V2.1_bio1); precipitation 783.0 mm/yr and P/ET0 1.794 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: intrusive igneous rocks (tiny map). Lithology tags: anorthosite_feldspathic, impact_breccia_melt, granitic_felsic; process tags: impact, glacial.",
-    "description": "Established TerraAnalog site. Landforms: impact_crater, massif_highland. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY.",
+    "description": "Established TerraAnalog site. Landforms: impact_crater, massif_highland. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY, MOON_ISRU_ICE.",
     "target_bodies": [
      "moon",
      "mars"
     ],
     "mission_objectives": [
-     "MOON_FIELD_GEOLOGY"
+     "MOON_FIELD_GEOLOGY",
+     "MOON_ISRU_ICE"
     ],
     "environment": {
      "Elevation at point (m, Copernicus DEM, measured)": 334.5,
@@ -1575,30 +1885,40 @@
      "Permafrost probability (Obu2019_PERPROB, modeled)": 0.1,
      "Unvegetated fraction within 5 km (WorldCover 2021)": 0.001,
      "Median slope 30 m within 2 km (deg, Copernicus DEM)": 5.14,
-     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": null,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.535,
      "Distance to mapped major road (m, Natural Earth, upper bound)": 125440.0,
      "Road distance censored beyond (m)": null,
      "Operational score (0-100, separate from fidelity)": 65.53,
      "Group": "established",
      "Sampling point": "crater centre (lake) (wiki:Mistastin crater)",
-     "Best Moon profile": "MOON_FIELD_GEOLOGY 51.13 (completeness 1.0, vs MOON-REF-01)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 51.47 (completeness 0.95, vs MOON-REF-07)",
      "Best Mars profile": "MARS_ROVER_MOBILITY 40.85 (completeness 0.95, vs MARS-REF-01)"
     },
     "elevation_m": 334.5,
     "limitations": [
      "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
-     "SoilGrids texture unavailable (masked/no response).",
+     "SoilGrids texture taken from the nearest valid 250 m pixel, 0.858 km from the point (point pixel masked).",
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Mistastin_crater_L1C_T20UMG_T20VMH_A026091_20200620T152632.jpg/1280px-Mistastin_crater_L1C_T20UMG_T20VMH_A026091_20200620T152632.jpg",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "NASA/USGS / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Mistastin_crater_L1C_T20UMG_T20VMH_A026091_20200620T152632.jpg",
+     "source": "Lead image of Wikipedia article 'Mistastin crater'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Mistastin crater' (revision 1372212697), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Mistastin_crater"
+     "Wikipedia contributors, 'Mistastin crater' (revision 1372212697), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Mistastin_crater",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: crater centre (lake) (wiki:Mistastin crater).",
     "group": "established",
-    "data_confidence": 0.657,
+    "data_confidence": 0.727,
     "terraanalog_site_id": "EA-024"
    }
   },
@@ -1616,11 +1936,15 @@
     "site_id": "EA-025",
     "name": "Sudbury Basin",
     "country": "Canada",
-    "region": "",
+    "region": "Ontario",
+    "region_source": "Natural Earth 1:10m admin-1 (Province; CA-ON), point-in-polygon",
     "analog_types": [
      "impact_crater"
     ],
-    "climate": "MAAT 4.2 deg C (CHELSA_V2.1_bio1); precipitation 858.0 mm/yr and P/ET0 1.139 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "Dfb",
+    "aridity_class": "humid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen Dfb, humid (ERA5 grid cell). MAAT 4.2 deg C (CHELSA_V2.1_bio1); precipitation 858.0 mm/yr and P/ET0 1.139 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: wacke, minor siltstone (medium map). Lithology tags: impact_breccia_melt, norite_mafic_intrusive, metamorphic; process tags: impact.",
     "description": "Candidate TerraAnalog site. Landforms: impact_crater. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY, MOON_ROVER_MOBILITY.",
     "target_bodies": [
@@ -1654,10 +1978,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Sudbury_Wanapitei_WorldWind.jpg",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "User:Vesta / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Sudbury_Wanapitei_WorldWind.jpg",
+     "source": "Lead image of Wikipedia article 'Sudbury Basin'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Sudbury Basin' (revision 1385640650), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Sudbury_Basin"
+     "Wikipedia contributors, 'Sudbury Basin' (revision 1385640650), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Sudbury_Basin",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: basin reference point (wiki:Sudbury Basin).",
     "group": "candidate",
@@ -1679,11 +2013,15 @@
     "site_id": "EA-026",
     "name": "Río Tinto headwaters (Minas de Riotinto mining district)",
     "country": "Spain",
-    "region": "",
+    "region": "Huelva",
+    "region_source": "Natural Earth 1:10m admin-1 (Autonomous Community; ES-H), point-in-polygon",
     "analog_types": [
      "aqueous_alteration"
     ],
-    "climate": "MAAT 16.9 deg C (CHELSA_V2.1_bio1); precipitation 581.0 mm/yr and P/ET0 0.413 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "Csa",
+    "aridity_class": "semi-arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen Csa, semi-arid (ERA5 grid cell). MAAT 16.9 deg C (CHELSA_V2.1_bio1); precipitation 581.0 mm/yr and P/ET0 0.413 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: volcanic (medium map). Lithology tags: iron_oxide, sulfate, sulfide; process tags: acidic_aqueous, fluvial_lacustrine.",
     "description": "Established TerraAnalog site. Landforms: valley_canyon. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: none.",
     "target_bodies": [
@@ -1715,10 +2053,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Rio_tinto_river_CarolStoker_NASA_Ames_Research_Center.jpg",
+     "license": "Public domain",
+     "license_url": null,
+     "credit": "Carol Stoker, NASA / Wikimedia Commons (Public domain)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Rio_tinto_river_CarolStoker_NASA_Ames_Research_Center.jpg",
+     "source": "Lead image of Wikipedia article 'Río Tinto'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Río Tinto' (revision 1384300948), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Río_Tinto"
+     "Wikipedia contributors, 'Río Tinto' (revision 1384300948), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Río_Tinto",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: town in headwater mining district (wiki:Minas de Riotinto (infobox coord 37°41′N 6°35′W)).",
     "group": "established",
@@ -1740,13 +2088,17 @@
     "site_id": "EA-027",
     "name": "Lonar impact crater",
     "country": "India",
-    "region": "",
+    "region": "Maharashtra",
+    "region_source": "Natural Earth 1:10m admin-1 (State; IN-MH), point-in-polygon",
     "analog_types": [
      "impact_crater",
      "basaltic_volcanic",
      "evaporite_basin"
     ],
-    "climate": "MAAT 26.2 deg C (CHELSA_V2.1_bio1); precipitation 903.0 mm/yr and P/ET0 0.495 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "Aw",
+    "aridity_class": "semi-arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen Aw, semi-arid (ERA5 grid cell). MAAT 26.2 deg C (CHELSA_V2.1_bio1); precipitation 903.0 mm/yr and P/ET0 0.495 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: flood basalt(s); mafic volcanic rocks; basalt (tiny map). Lithology tags: basalt_mafic, impact_breccia_melt; process tags: impact, fluvial_lacustrine, evaporitic.",
     "description": "Candidate TerraAnalog site. Landforms: impact_crater. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MOON_FIELD_GEOLOGY.",
     "target_bodies": [
@@ -1765,31 +2117,41 @@
      "Permafrost probability (MAAT_logistic_model, modeled)": 0.0,
      "Unvegetated fraction within 5 km (WorldCover 2021)": 0.002,
      "Median slope 30 m within 2 km (deg, Copernicus DEM)": 2.66,
-     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": null,
+     "Fine (silt+clay) fraction 0-5 cm (SoilGrids, modeled)": 0.775,
      "Distance to mapped major road (m, Natural Earth, upper bound)": 39755.0,
      "Road distance censored beyond (m)": null,
      "Operational score (0-100, separate from fidelity)": 57.73,
      "Group": "candidate",
      "Sampling point": "crater centre (lake) (wiki:Lonar Lake)",
-     "Best Moon profile": "MOON_ROVER_MOBILITY 54.39 (completeness 0.8, vs MOON-REF-07)",
+     "Best Moon profile": "MOON_ROVER_MOBILITY 47.31 (completeness 0.95, vs MOON-REF-07)",
      "Best Mars profile": "MARS_ROVER_MOBILITY 41.88 (completeness 0.95, vs MARS-REF-01)"
     },
     "elevation_m": 479.5,
     "limitations": [
      "Reference point lies on a water body; terrain metrics use water-masked DEM (WorldCover class 80).",
      "Permafrost probability is a coarse MAAT-based model (Obu 2019 covers only >=25°N).",
-     "SoilGrids texture unavailable (masked/no response).",
+     "SoilGrids texture taken from the nearest valid 250 m pixel, 0.586 km from the point (point pixel masked).",
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Lonar_Crater%2C_Panorama.jpg/1280px-Lonar_Crater%2C_Panorama.jpg",
+     "license": "CC BY-SA 3.0",
+     "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+     "credit": "Aditya Laghate / Wikimedia Commons (CC BY-SA 3.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Lonar_Crater,_Panorama.jpg",
+     "source": "Lead image of Wikipedia article 'Lonar Lake'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Lonar Lake' (revision 1385152403), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Lonar_Lake"
+     "Wikipedia contributors, 'Lonar Lake' (revision 1385152403), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Lonar_Lake",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: crater centre (lake) (wiki:Lonar Lake).",
     "group": "candidate",
-    "data_confidence": 0.577,
+    "data_confidence": 0.647,
     "terraanalog_site_id": "EA-027"
    }
   },
@@ -1807,12 +2169,16 @@
     "site_id": "EA-028",
     "name": "Mars Desert Research Station area (San Rafael Swell margin)",
     "country": "United States",
-    "region": "",
+    "region": "Utah",
+    "region_source": "Natural Earth 1:10m admin-1 (State; US-UT), point-in-polygon",
     "analog_types": [
      "aqueous_alteration",
      "arid_desert"
     ],
-    "climate": "MAAT 13.8 deg C (CHELSA_V2.1_bio1); precipitation 114.0 mm/yr and P/ET0 0.071 (ERA5 1991-2020). Modeled values.",
+    "climate_class": "BWk",
+    "aridity_class": "arid",
+    "climate_class_source": "Koppen-Geiger per Peel et al. (2007) Table 1, from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell (scripts/02d_climate_class.py); aridity class of ERA5 P/ET0 per the UNEP scheme in Zomer et al. (2022)",
+    "climate": "Koppen BWk, arid (ERA5 grid cell). MAAT 13.8 deg C (CHELSA_V2.1_bio1); precipitation 114.0 mm/yr and P/ET0 0.071 (ERA5 1991-2020). Modeled values.",
     "geology": "Macrostrat map unit: sandstone (medium map). Lithology tags: sedimentary_clastic, clay_phyllosilicate; process tags: fluvial_lacustrine, aeolian.",
     "description": "Established TerraAnalog site. Landforms: layered_sedimentary_outcrop, plains. Top-quartile (rank <= 7 of 28) TerraAnalog profiles: MARS_ASTROBIO_SEDIMENTS, MARS_ROVER_MOBILITY, MOON_ROVER_MOBILITY, MARS_EVA_HABITAT, MARS_ISRU_ICE.",
     "target_bodies": [
@@ -1849,10 +2215,20 @@
      "ERA5 (0.25°) and CHELSA (30 arc-s) are modeled climate fields, not station measurements.",
      "Scores rank relative analog fidelity for one mission objective; not a measure of planetary equivalence."
     ],
-    "imagery": null,
+    "imagery": {
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Mars_Desert_Research_Station_2020.jpg/1280px-Mars_Desert_Research_Station_2020.jpg",
+     "license": "CC BY-SA 4.0",
+     "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+     "credit": "The Mars Society / MDRS / Wikimedia Commons (CC BY-SA 4.0)",
+     "attribution_page": "https://commons.wikimedia.org/wiki/File:Mars_Desert_Research_Station_2020.jpg",
+     "source": "Lead image of Wikipedia article 'Mars Desert Research Station'",
+     "url_checked": "HTTP 200 on 2026-11-15"
+    },
     "provenance": "mixed",
     "citations": [
-     "Wikipedia contributors, 'Mars Desert Research Station' (revision 1373694615), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Mars_Desert_Research_Station"
+     "Wikipedia contributors, 'Mars Desert Research Station' (revision 1373694615), retrieved 2026-11-15, https://en.wikipedia.org/wiki/Mars_Desert_Research_Station",
+     "Peel et al. (2007) Updated world map of the Köppen-Geiger climate classification. Hydrology and Earth System Sciences. doi:10.5194/hess-11-1633-2007",
+     "Zomer et al. (2022) Version 3 of the Global Aridity Index and Potential Evapotranspiration Database. Scientific Data. doi:10.1038/s41597-022-01493-1"
     ],
     "coordinate_note": "WGS84 sampling point: station location (wiki:Mars Desert Research Station).",
     "group": "established",

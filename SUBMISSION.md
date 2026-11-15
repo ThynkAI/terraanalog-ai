@@ -6,7 +6,7 @@
 | Item | Link / status |
 |---|---|
 | Public repository | https://github.com/ThynkAI/terraanalog-ai |
-| Live demo URL | **TBD — not deployed yet.** Deploy with the Render Blueprint ([`render.yaml`](render.yaml); README → *Deploy*), then paste the `terraanalog-web` URL here |
+| Live demo URL | https://terraanalog-web-cqgu.onrender.com (API: https://terraanalog-api-cqgu.onrender.com) |
 | 3-minute demo script | [`app/docs/DEMO_SCRIPT.md`](app/docs/DEMO_SCRIPT.md) |
 | Pitch (~150 words) | [`app/docs/PITCH.md`](app/docs/PITCH.md) |
 | Presentation outline (6–8 slides) | [`app/docs/PRESENTATION_OUTLINE.md`](app/docs/PRESENTATION_OUTLINE.md) |
@@ -20,7 +20,7 @@
 | Run locally | README → *Quick start* (Windows `setup.ps1`, macOS/Linux `setup.sh`, Docker) |
 
 ## Before submitting
-- [ ] Deploy (Render Blueprint) and replace the **TBD** demo URL above, and in the README *Deploy* section.
+- [x] Deploy (Render Blueprint) and replace the **TBD** demo URL above, and in the README *Deploy* section. Live as of 15 November 2026, America/Toronto: https://terraanalog-web-cqgu.onrender.com
 - [ ] Open the demo URL in a private window and walk through `DEMO_SCRIPT.md` once (allow ~1 min for free-tier services to wake).
 - [ ] Record the 3-minute demo video if the challenge form asks for one, and add its link here: **TBD**.
 - [ ] Paste the repo link, the demo link, the pitch and the team names into the Space Apps project page.

@@ -70,8 +70,24 @@ export function PlanetExplorer({ body }: { body: Body }) {
                   <div><dt className="text-lunar-400">Latitude (planetocentric)</dt><dd className="font-mono text-lunar-100">{data.lat.toFixed(2)}°</dd></div>
                   <div><dt className="text-lunar-400">Longitude (+East)</dt><dd className="font-mono text-lunar-100">{data.lon_east.toFixed(2)}° / {data.lon_east_360?.toFixed(2)}° (0–360)</dd></div>
                   <div><dt className="text-lunar-400">Body radius (IAU mean)</dt><dd className="font-mono text-lunar-100">{data.body_radius_km} km</dd></div>
-                  <div><dt className="text-lunar-400">Feature diameter</dt><dd className="font-mono text-lunar-100">{data.diameter_km ? `${data.diameter_km} km` : "—"}</dd></div>
+                  <div><dt className="text-lunar-400">Feature diameter</dt><dd className="font-mono text-lunar-100">{data.diameter_km ? `${data.diameter_km} km` : (data.diameter_wiki_km ? `${data.diameter_wiki_km} km (wiki)` : "—")}</dd></div>
                   <div className="col-span-2"><dt className="text-lunar-400">Source coordinate system</dt><dd className="text-lunar-100">{data.coordinate_system}</dd></div>
+                  <div className="col-span-2">
+                    <dt className="text-lunar-400">IAU Gazetteer</dt>
+                    <dd className="text-lunar-100" data-testid="gazetteer">
+                      {data.gazetteer_feature_id ? (
+                        <>
+                          <a className="link" href={data.gazetteer_url || `https://planetarynames.wr.usgs.gov/Feature/${data.gazetteer_feature_id}`} target="_blank" rel="noreferrer">
+                            {data.gazetteer_feature_name || data.gazetteer_feature_id} (#{data.gazetteer_feature_id})
+                          </a>
+                          {data.gazetteer_match ? <span className="text-lunar-400"> · match: {data.gazetteer_match}</span> : null}
+                          {data.gazetteer_note ? <span className="block text-lunar-400">{data.gazetteer_note}</span> : null}
+                        </>
+                      ) : (
+                        <span>{data.gazetteer_note || "No named IAU Gazetteer feature for this reference."}</span>
+                      )}
+                    </dd>
+                  </div>
                   {data.lat <= -80 && (
                     <div className="col-span-2"><dt className="text-lunar-400">Great-circle distance to pole (sphere)</dt><dd className="font-mono text-lunar-100">{(((90 + data.lat) * Math.PI) / 180 * data.body_radius_km).toFixed(1)} km</dd></div>
                   )}

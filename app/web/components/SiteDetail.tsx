@@ -42,7 +42,8 @@ export function EvidenceInspector({ detail }: { detail: SiteDetailT }) {
                   <p><span className="text-lunar-400">Source ID:</span> <span className="font-mono">{fv?.source_id || "—"}</span> · <span className="text-lunar-400">confidence:</span> {fv?.confidence ?? "—"}</p>
                   {ev.length === 0 && <p className="italic text-lunar-400">No evidence record for this criterion.</p>}
                   {ev.map((e, i) => (
-                    <div key={i} className="rounded border border-white/10 p-2">
+                    <div key={i} className={`rounded border p-2 ${e.value_type === "missing" ? "border-amber-400/30 bg-amber-500/5" : "border-white/10"}`}>
+                      {e.value_type === "missing" && <p className="mb-1 text-[10px] uppercase tracking-wide text-amber-200/80">Explained gap</p>}
                       <p>{e.statement}</p>
                       <p className="mt-1 text-lunar-400">Citation: {e.citation}</p>
                     </div>
@@ -95,6 +96,7 @@ export function SiteDetail({ siteId, refId, objective, weights, onClose, onCompa
       <div className="flex flex-wrap gap-1.5">
         {data.target_bodies.map((b) => <BodyBadge key={b} body={b} />)}
         {data.analog_types.map((t) => <AnalogTypeChip key={t} type={t} />)}
+        {data.climate_class ? <span className="chip bg-white/5 text-lunar-100 ring-white/15" title={data.climate_class_source || "Köppen–Geiger class"}>{data.climate_class}{data.aridity_class ? ` · ${data.aridity_class}` : ""}</span> : null}
         <span className="chip bg-pink-500/10 text-pink-200 ring-pink-400/30" title={data.score_status}>provenance: {data.provenance}</span>
       </div>
 
@@ -129,10 +131,19 @@ export function SiteDetail({ siteId, refId, objective, weights, onClose, onCompa
             </tbody>
           </table>
           {separate.map((b) => (
-            <p key={b.criterion_id} className="mt-2 rounded border border-white/10 px-2 py-1 text-xs text-lunar-200" data-testid="separate-criterion">
-              <span className="text-lunar-400">{b.label} — {b.criterion_id === "operational_suitability" || /operational/i.test(b.criterion_id) ? "shown separately, never added to the fidelity score" : "weight 0 under this objective, not in the score"}:</span>{" "}
-              <span className="font-mono text-white">{b.value ?? "—"}/5</span> <ValueTypeBadge type={b.value_type} compact />
-            </p>
+            <div key={b.criterion_id} className="mt-2 rounded border border-white/10 px-2 py-1 text-xs text-lunar-200" data-testid="separate-criterion">
+              <p>
+                <span className="text-lunar-400">{b.label} — {b.criterion_id === "operational_suitability" || /operational/i.test(b.criterion_id) ? "shown separately, never added to the fidelity score" : "weight 0 under this objective, not in the score"}:</span>{" "}
+                <span className="font-mono text-white">{b.value ?? "—"}/5</span> <ValueTypeBadge type={b.value_type} compact />
+                {b.criterion_id === "operational_suitability" && b.confidence != null ? <span className="ml-1 text-lunar-300">· confidence {pct(b.confidence)}</span> : null}
+              </p>
+              {b.criterion_id === "operational_suitability" && data.operational_components ? (
+                <p className="mt-1 text-[11px] text-lunar-400">Components: {Object.entries(data.operational_components).map(([k, v]) => `${k.replace(/_/g, " ")} ${v}`).join(" · ")}</p>
+              ) : null}
+              {b.criterion_id === "operational_suitability" && data.operational_confidence_method ? (
+                <p className="mt-1 text-[11px] text-lunar-400">{data.operational_confidence_method}</p>
+              ) : null}
+            </div>
           ))}
           {published.length > 0 && !weights && (
             <p className="mt-2 text-xs text-lunar-300" data-testid="published-score">
@@ -146,7 +157,23 @@ export function SiteDetail({ siteId, refId, objective, weights, onClose, onCompa
 
       <section className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2" aria-label="Site characteristics">
         <div><h3 className="panel-title">Geology</h3><p className="mt-1 text-lunar-200">{data.geology || "—"}</p></div>
-        <div><h3 className="panel-title">Climate</h3><p className="mt-1 text-lunar-200">{data.climate || "—"}</p></div>
+        <div>
+          <h3 className="panel-title">Climate</h3>
+          {(data.climate_class || data.aridity_class) ? (
+            <p className="mt-1 text-lunar-200">
+              <span className="font-medium text-white">Köppen–Geiger {data.climate_class || "—"}</span>
+              {" · "}
+              <span className="font-medium text-white">aridity {data.aridity_class || "—"}</span>
+            </p>
+          ) : null}
+          {data.aridity_class === "humid" && data.climate_class && /^E/i.test(data.climate_class) ? (
+            <p className="mt-1 text-[11px] text-lunar-400">Aridity is the UNEP P/ET0 class of the ERA5 grid cell. Cold polar sites can be classed “humid” even when they are dry in everyday terms, because evaporation is low.</p>
+          ) : data.aridity_class ? (
+            <p className="mt-1 text-[11px] text-lunar-400">Aridity is the UNEP P/ET0 class of the ERA5 grid cell, shown next to the Köppen–Geiger class because the two can disagree (for example a polar site classed humid).</p>
+          ) : null}
+          {data.climate_class_source ? <p className="mt-1 text-[11px] text-lunar-400">{data.climate_class_source}</p> : null}
+          <p className="mt-1 text-lunar-200">{data.climate || "—"}</p>
+        </div>
         <div className="sm:col-span-2">
           <h3 className="panel-title">Environmental characteristics</h3>
           <dl className="mt-1 grid grid-cols-1 gap-x-4 gap-y-1 text-xs sm:grid-cols-2">
@@ -168,9 +195,18 @@ export function SiteDetail({ siteId, refId, objective, weights, onClose, onCompa
         <div className="sm:col-span-2"><h3 className="panel-title">Imagery</h3>
           {data.imagery ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <figure><img src={data.imagery.url} alt={`${data.name} imagery`} className="mt-1 rounded" /><figcaption className="text-xs text-lunar-400">{data.imagery.credit} · {data.imagery.license}</figcaption></figure>
+            <figure>
+              <img src={data.imagery.url} alt={`${data.name} imagery`} className="mt-1 rounded" />
+              <figcaption className="mt-1 text-xs text-lunar-400">
+                {data.imagery.credit}
+                {" · "}
+                {data.imagery.license_url ? <a className="link" href={data.imagery.license_url} target="_blank" rel="noreferrer">{data.imagery.license}</a> : data.imagery.license}
+                {data.imagery.attribution_page ? <>{" · "}<a className="link" href={data.imagery.attribution_page} target="_blank" rel="noreferrer">Source page</a></> : null}
+                {data.imagery.source ? <span className="block text-lunar-500">{data.imagery.source}</span> : null}
+              </figcaption>
+            </figure>
           ) : (
-            <p className="mt-1 text-xs italic text-lunar-400">No licensed imagery supplied in the dataset. Use the satellite basemap layer (NASA GIBS) on the map.</p>
+            <p className="mt-1 text-xs italic text-lunar-400">No licensed imagery is supplied for this site in the dataset (Salar de Antofalla and the Dresser Formation have none). Use the satellite basemap layer (NASA GIBS) on the map.</p>
           )}
         </div>
       </section>
@@ -189,6 +225,42 @@ export function SiteDetail({ siteId, refId, objective, weights, onClose, onCompa
               </li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {data.profile_rankings && data.profile_rankings.length > 0 && (
+        <section>
+          <h3 className="panel-title mb-2">Published profile rankings (research package)</h3>
+          <p className="mb-2 text-[11px] text-lunar-400">Each mission profile takes the best matched reference. Monte Carlo intervals are from 2000 Dirichlet weight draws in the research export, not a live recompute.</p>
+          <div className="overflow-x-auto">
+            <table className="table-base text-xs">
+              <thead><tr><th scope="col">Profile</th><th scope="col">Matched ref</th><th scope="col">Score</th><th scope="col">Rank</th><th scope="col">MC 5–95%</th><th scope="col">P(top 5)</th></tr></thead>
+              <tbody>
+                {data.profile_rankings.map((r) => (
+                  <tr key={`${r.body}-${r.mission_profile}`}>
+                    <td>{(r.mission_profile || "").replace(/_/g, " ")}</td>
+                    <td className="font-mono">{r.matched_reference_id || "—"}</td>
+                    <td className="font-mono">{r.fidelity_score ?? "—"}</td>
+                    <td className="font-mono">{r.fidelity_rank ?? "—"}</td>
+                    <td className="font-mono">{r.mc_score_p05 != null && r.mc_score_p95 != null ? `${r.mc_score_p05}–${r.mc_score_p95}` : "—"}</td>
+                    <td className="font-mono">{r.mc_top5_probability != null ? pct(r.mc_top5_probability) : "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      {data.data_gaps && (
+        <section>
+          <h3 className="panel-title mb-1">Documented data gaps</h3>
+          <dl className="mt-1 space-y-1 text-xs text-lunar-200">
+            {data.data_gaps.missing_numeric ? <div><dt className="text-lunar-400">Missing numeric inputs</dt><dd>{data.data_gaps.missing_numeric}</dd></div> : null}
+            {data.data_gaps.hypothesized_tags ? <div><dt className="text-lunar-400">Hypothesized tags</dt><dd>{data.data_gaps.hypothesized_tags}</dd></div> : null}
+            {data.data_gaps.permafrost_source ? <div><dt className="text-lunar-400">Permafrost source</dt><dd>{data.data_gaps.permafrost_source}</dd></div> : null}
+            {data.data_gaps.recommended_field_measurements ? <div><dt className="text-lunar-400">Recommended field measurements</dt><dd>{data.data_gaps.recommended_field_measurements}</dd></div> : null}
+          </dl>
         </section>
       )}
 

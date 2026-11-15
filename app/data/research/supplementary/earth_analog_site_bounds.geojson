@@ -1,0 +1,1048 @@
+{
+ "type": "FeatureCollection",
+ "name": "earth_analog_site_bounds",
+ "metadata": {
+  "schema_version": "1.0.0",
+  "generated": "2026-11-15",
+  "crs": "WGS84 lon/lat (EPSG:4326, RFC 7946 default)",
+  "note": "Approximate bounding boxes only."
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "id": "EA-001",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -69.79947,
+       -25.0
+      ],
+      [
+       -68.70053,
+       -25.0
+      ],
+      [
+       -68.70053,
+       -24.0
+      ],
+      [
+       -69.79947,
+       -24.0
+      ],
+      [
+       -69.79947,
+       -25.0
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-001",
+    "name": "Atacama Desert (hyperarid core)",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.5
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-002",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -90.65735,
+       75.13333
+      ],
+      [
+       -88.67599,
+       75.13333
+      ],
+      [
+       -88.67599,
+       75.63333
+      ],
+      [
+       -90.65735,
+       75.63333
+      ],
+      [
+       -90.65735,
+       75.13333
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-002",
+    "name": "Haughton impact crater, Devon Island",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.25
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-003",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -117.19783,
+       35.95028
+      ],
+      [
+       -116.45383,
+       35.95028
+      ],
+      [
+       -116.45383,
+       36.55028
+      ],
+      [
+       -117.19783,
+       36.55028
+      ],
+      [
+       -117.19783,
+       35.95028
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-003",
+    "name": "Death Valley (Badwater Basin)",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.3
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-004",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       159.44178,
+       -77.85
+      ],
+      [
+       162.22488,
+       -77.85
+      ],
+      [
+       162.22488,
+       -77.25
+      ],
+      [
+       159.44178,
+       -77.25
+      ],
+      [
+       159.44178,
+       -77.85
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-004",
+    "name": "McMurdo Dry Valleys (Wright Valley)",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.3
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-005",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       12.80498,
+       79.33166
+      ],
+      [
+       13.80498,
+       79.33166
+      ],
+      [
+       13.80498,
+       79.53166
+      ],
+      [
+       12.80498,
+       79.53166
+      ],
+      [
+       12.80498,
+       79.33166
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-005",
+    "name": "Bockfjorden Volcanic Complex (Sverrefjellet), Svalbard",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.1
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-006",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -17.18295,
+       64.7
+      ],
+      [
+       -16.47705,
+       64.7
+      ],
+      [
+       -16.47705,
+       65.0
+      ],
+      [
+       -17.18295,
+       65.0
+      ],
+      [
+       -17.18295,
+       64.7
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-006",
+    "name": "Holuhraun lava field",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.15
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-007",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -17.13837,
+       64.883
+      ],
+      [
+       -16.42763,
+       64.883
+      ],
+      [
+       -16.42763,
+       65.183
+      ],
+      [
+       -17.13837,
+       65.183
+      ],
+      [
+       -17.13837,
+       64.883
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-007",
+    "name": "Askja caldera",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.15
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-008",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -13.90766,
+       28.89417
+      ],
+      [
+       -13.679,
+       28.89417
+      ],
+      [
+       -13.679,
+       29.09417
+      ],
+      [
+       -13.90766,
+       29.09417
+      ],
+      [
+       -13.90766,
+       28.89417
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-008",
+    "name": "Timanfaya volcanic field, Lanzarote",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.1
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-009",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -13.49615,
+       29.11111
+      ],
+      [
+       -13.38163,
+       29.11111
+      ],
+      [
+       -13.38163,
+       29.21111
+      ],
+      [
+       -13.49615,
+       29.21111
+      ],
+      [
+       -13.49615,
+       29.11111
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-009",
+    "name": "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.05
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-010",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       40.24841,
+       14.19167
+      ],
+      [
+       40.35159,
+       14.19167
+      ],
+      [
+       40.35159,
+       14.29167
+      ],
+      [
+       40.24841,
+       14.29167
+      ],
+      [
+       40.24841,
+       14.19167
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-010",
+    "name": "Dallol hydrothermal field, Danakil Depression",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.05
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-011",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -68.02167,
+       -20.63378
+      ],
+      [
+       -66.95659,
+       -20.63378
+      ],
+      [
+       -66.95659,
+       -19.63378
+      ],
+      [
+       -68.02167,
+       -19.63378
+      ],
+      [
+       -68.02167,
+       -20.63378
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-011",
+    "name": "Salar de Uyuni",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.5
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-012",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -68.08303,
+       -26.03333
+      ],
+      [
+       -67.41697,
+       -26.03333
+      ],
+      [
+       -67.41697,
+       -25.43333
+      ],
+      [
+       -68.08303,
+       -25.43333
+      ],
+      [
+       -68.08303,
+       -26.03333
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-012",
+    "name": "Salar de Antofalla (Puna de Atacama)",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.3
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-013",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       119.33003,
+       -21.25176
+      ],
+      [
+       119.54448,
+       -21.25176
+      ],
+      [
+       119.54448,
+       -21.05176
+      ],
+      [
+       119.33003,
+       -21.05176
+      ],
+      [
+       119.33003,
+       -21.25176
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-013",
+    "name": "Dresser Formation (North Pole Dome), Pilbara",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.1
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-014",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       139.16236,
+       -30.46167
+      ],
+      [
+       139.50986,
+       -30.46167
+      ],
+      [
+       139.50986,
+       -30.16167
+      ],
+      [
+       139.16236,
+       -30.16167
+      ],
+      [
+       139.16236,
+       -30.46167
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-014",
+    "name": "Arkaroola (Northern Flinders Ranges)",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.15
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-015",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       127.74262,
+       -19.22167
+      ],
+      [
+       127.8485,
+       -19.22167
+      ],
+      [
+       127.8485,
+       -19.12167
+      ],
+      [
+       127.74262,
+       -19.12167
+      ],
+      [
+       127.74262,
+       -19.22167
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-015",
+    "name": "Wolfe Creek Crater",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.05
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-016",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       144.43821,
+       -18.35111
+      ],
+      [
+       144.75401,
+       -18.35111
+      ],
+      [
+       144.75401,
+       -18.05111
+      ],
+      [
+       144.43821,
+       -18.05111
+      ],
+      [
+       144.43821,
+       -18.35111
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-016",
+    "name": "Undara lava tubes (McBride Basalt Province)",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.15
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-017",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       77.86369,
+       33.2
+      ],
+      [
+       78.10297,
+       33.2
+      ],
+      [
+       78.10297,
+       33.4
+      ],
+      [
+       77.86369,
+       33.4
+      ],
+      [
+       77.86369,
+       33.2
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-017",
+    "name": "Tso Kar basin, Ladakh",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.1
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-018",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       93.19344,
+       36.26667
+      ],
+      [
+       95.70656,
+       36.26667
+      ],
+      [
+       95.70656,
+       38.26667
+      ],
+      [
+       93.19344,
+       38.26667
+      ],
+      [
+       93.19344,
+       36.26667
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-018",
+    "name": "Qaidam Basin",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 1.0
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-019",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -155.62751,
+       19.67056
+      ],
+      [
+       -155.30861,
+       19.67056
+      ],
+      [
+       -155.30861,
+       19.97056
+      ],
+      [
+       -155.62751,
+       19.97056
+      ],
+      [
+       -155.62751,
+       19.67056
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-019",
+    "name": "Mauna Kea (upper slopes)",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.15
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-020",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -155.4027,
+       19.30861
+      ],
+      [
+       -155.19064,
+       19.30861
+      ],
+      [
+       -155.19064,
+       19.50861
+      ],
+      [
+       -155.4027,
+       19.50861
+      ],
+      [
+       -155.4027,
+       19.30861
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-020",
+    "name": "Kaʻū Desert (Kīlauea)",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.1
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-021",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -121.64229,
+       41.61389
+      ],
+      [
+       -121.37437,
+       41.61389
+      ],
+      [
+       -121.37437,
+       41.81389
+      ],
+      [
+       -121.64229,
+       41.81389
+      ],
+      [
+       -121.64229,
+       41.61389
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-021",
+    "name": "Lava Beds National Monument",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.1
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-022",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -113.83825,
+       43.26167
+      ],
+      [
+       -113.28717,
+       43.26167
+      ],
+      [
+       -113.28717,
+       43.66167
+      ],
+      [
+       -113.83825,
+       43.66167
+      ],
+      [
+       -113.83825,
+       43.26167
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-022",
+    "name": "Craters of the Moon lava field",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.2
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-023",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -111.08439,
+       34.97806
+      ],
+      [
+       -110.96227,
+       34.97806
+      ],
+      [
+       -110.96227,
+       35.07806
+      ],
+      [
+       -111.08439,
+       35.07806
+      ],
+      [
+       -111.08439,
+       34.97806
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-023",
+    "name": "Meteor Crater (Barringer)",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.05
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-024",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -63.56744,
+       55.73333
+      ],
+      [
+       -63.03256,
+       55.73333
+      ],
+      [
+       -63.03256,
+       56.03333
+      ],
+      [
+       -63.56744,
+       56.03333
+      ],
+      [
+       -63.56744,
+       55.73333
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-024",
+    "name": "Mistastin Lake impact structure",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.15
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-025",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -81.61996,
+       46.3
+      ],
+      [
+       -80.7467,
+       46.3
+      ],
+      [
+       -80.7467,
+       46.9
+      ],
+      [
+       -81.61996,
+       46.9
+      ],
+      [
+       -81.61996,
+       46.3
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-025",
+    "name": "Sudbury Basin",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.3
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-026",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -6.70969,
+       37.58333
+      ],
+      [
+       -6.45697,
+       37.58333
+      ],
+      [
+       -6.45697,
+       37.78333
+      ],
+      [
+       -6.70969,
+       37.78333
+      ],
+      [
+       -6.70969,
+       37.58333
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-026",
+    "name": "Río Tinto headwaters (Minas de Riotinto mining district)",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.1
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-027",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       76.47558,
+       19.945
+      ],
+      [
+       76.53942,
+       19.945
+      ],
+      [
+       76.53942,
+       20.005
+      ],
+      [
+       76.47558,
+       20.005
+      ],
+      [
+       76.47558,
+       19.945
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-027",
+    "name": "Lonar impact crater",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.03
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "EA-028",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -110.91951,
+       38.30646
+      ],
+      [
+       -110.66429,
+       38.30646
+      ],
+      [
+       -110.66429,
+       38.50646
+      ],
+      [
+       -110.91951,
+       38.50646
+      ],
+      [
+       -110.91951,
+       38.30646
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "site_id": "EA-028",
+    "name": "Mars Desert Research Station area (San Rafael Swell margin)",
+    "boundary_status": "approximate_bbox",
+    "half_width_deg_lat": 0.1
+   }
+  }
+ ]
+}

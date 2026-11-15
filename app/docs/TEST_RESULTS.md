@@ -1,12 +1,13 @@
 # Test results
 
-Recorded 2026-11-15 13:20 EST (America/Toronto) on the dev box, with the **research dataset** (`data/research/`, the default
-`TERRA_DATA_DIR`). These counts come from actual runs. Raw outputs are in `docs/test-results/`.
+Recorded 2026-11-15 13:20 EST (America/Toronto) on the dev box, then updated **2026-11-15 14:20 EST (America/Toronto)** after
+ingesting the corrected research export (`data/research/`, package `@ d2e464b`, plus `supplementary/`). These counts come from
+actual runs. Raw outputs are in `docs/test-results/`.
 
 ## Local (API :8710 via uvicorn on data/research, UI :3710 via `PORT=3710 npm start`)
 | Suite | Command | Result |
 |---|---|---|
-| Backend unit/API (pytest) | `.venv/bin/python -m pytest -q backend` | **84 passed**, 0 failed (68 on the synthetic fixtures, incl. 4 PDF tests, for backward compatibility + 16 on the research data) |
+| Backend unit/API (pytest) | `.venv/bin/python -m pytest -q backend` | **85 passed**, 0 failed (68 on the synthetic fixtures, incl. 4 PDF tests, for backward compatibility + 17 on the research data) |
 | TypeScript | `cd web && npx tsc --noEmit` | **0 errors** |
 | Frontend unit (Vitest), incl. 3 deck.gl cluster-arc tests | `cd web && npx vitest run` | **14 passed** (2 files) |
 | Production build | `cd web && npx next build` | **success**, 11/11 static pages |
@@ -15,11 +16,11 @@ Recorded 2026-11-15 13:20 EST (America/Toronto) on the dev box, with the **resea
 | Published-score reproduction | `python scripts/verify_published.py data/research --json docs/test-results/published_reproduction.json` | see below; exit 0 |
 | Screenshots | `BASE_URL=… node web/scripts/screenshots.mjs` | 16 app screenshots + 1 PDF page render in `docs/screenshots/`, all from research data |
 
-The 16 research-data tests (`backend/tests/test_research_data.py`) cover: synthetic flag false and *Research dataset* label; counts
-(28 sites, 14 references, 155 criteria, 4,340 values, 460 missing, no synthetic value types); missing values never imputed; per-reference
+The 17 research-data tests (`backend/tests/test_research_data.py`) cover: synthetic flag false and *Research dataset* label; counts
+(28 sites, 14 references, 155 criteria, 4,340 values, 378 missing, no synthetic value types); missing values never imputed; per-reference
 active criteria (12 per reference, other references excluded); feature grouping with readable labels; compare/CSV/PDF limited to the
 selected reference; default-reference note; objective/body mismatch note; feature-keyed sensitivity and clusters; status_class on
-references; the recommendation engine choosing a published reference; and reproduction of all 588 published scores.
+references; the recommendation engine choosing a published reference; reproduction of all 588 published scores; and the corrected-export fields (Köppen/aridity classes, region, imagery attribution, Gazetteer, operational confidence, explained missing-evidence statements, and supplementary profile rankings / published sensitivity / radar).
 
 Backward compatibility: the synthetic fallback (`TERRA_DATA_DIR=data/fixtures`) still passes the 68 original backend tests, and a
 headless smoke run of all pages on fixtures (API :8711, UI :3711) showed the *Synthetic fixture data* badge and no page errors.
@@ -28,12 +29,11 @@ headless smoke run of all pages on fixtures (API :8711, UI :3711) showed the *Sy
 | Metric | Value |
 |---|---|
 | Rows compared / unscorable | 588 / 0 |
-| abs(engine score − published score), unrounded | max **0.0111**, mean **0.0031**, median 0.0030; 588/588 within 0.05, 587/588 within 0.01 |
-| abs diff of the 1-dp display value | max 0.05, mean 0.0256 |
+| abs(engine score − published score), unrounded | max **0.0**, mean **0.0**, median 0.0; 588/588 within 0.01 (floating-point residuals ~5×10⁻⁵) |
+| abs diff of the 1-dp display value | max 0.05, mean 0.0258, 4 exact |
 | Completeness difference | 0 (all rows identical) |
-| Rank agreement | 584/588; the 4 differing rows are 2 swaps where the published scores tie at 2 dp (MARS-REF-01/MARS_ASTROBIO_SEDIMENTS EA-006 vs EA-027 at 26.84; MOON-REF-02/MOON_ISRU_ICE EA-018 vs EA-028 at 14.18) |
-Residuals come from the exported values being rounded to 3 dp after the published scores were computed. Full report:
-`docs/test-results/published_reproduction.json`.
+| Rank agreement | **588/588** (0 mismatches) |
+Full report: `docs/test-results/published_reproduction.json`.
 
 ## Docker Compose (Docker Compose v5.7.1, Docker Engine 29.1.4)
 | Step | Result |
@@ -57,7 +57,22 @@ The stack was stopped afterwards (`docker compose -p terraanalog down`).
 | `scripts/setup.ps1` | parsed with 0 errors under PowerShell 7.7.0 on Linux; full install/start was run in the previous round |
 | `scripts/setup.ps1` on **Windows PowerShell 5.1** | **not executed** (no Windows machine available). The script avoids PS 7-only syntax (`&&`, ternary, `??`) |
 
-## Not executed
-- No cloud deployment (no credentials). The repo contains no deployment URL.
+## Live Render deployment (verified 2026-11-15 ~13:56–13:58 EST, America/Toronto)
+Both Blueprint services were Live on commit `7238b1e` before this data update. Measured with curl (services were already warm from
+deploy health checks; a true free-tier cold start was not observed and can take ~1 minute after idle sleep).
+
+| Check | Result |
+|---|---|
+| API `GET /api/health` | HTTP 200 in 0.089 s, then 0.078 s; `{"status":"ok","version":"1.0.0","synthetic":false,"sites":28,"references":14,"errors":0}` |
+| API `GET /api/sites` | HTTP 200 in 0.095 s / 0.106 s; 28 sites; first site EA-014 |
+| Web `/` (first / second) | HTTP 200, 0.116 s / 0.081 s, 14 465 bytes, title TerraAnalog AI — Earth as a Testbed for Moon and Mars |
+| Web `/explorer` `/compare` `/data` `/impact` `/mars` `/moon` `/methodology` | all HTTP 200 in 0.074–0.089 s, correct titles |
+| Web proxy `/api/health` and `/api/sites` | HTTP 200, 0.427 s and 0.202 s; same JSON as the API (`synthetic: false`, 28 sites) |
+| API and web-proxy `/api/export/compare.pdf?ids=EA-014,EA-001` | HTTP 200, 13 298 bytes, `Content-Type: application/pdf`, magic `%PDF-1.4` |
+
+Live URLs: https://terraanalog-web-cqgu.onrender.com and https://terraanalog-api-cqgu.onrender.com. A later push of this data update retriggers auto-deploy; re-verify after that deploy is Live.
+
+## Not re-executed in the 14:20 EST data-update pass
+- Playwright e2e (previously 41 passed against research data and Docker Compose) and a fresh `next build` / Docker Compose run.
 - Scores are research-package similarity proxies (measured / modeled / provisional values, with missing values shown as missing).
   They are decision support, not landing-site selections.

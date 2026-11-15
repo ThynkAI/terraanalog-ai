@@ -1,8 +1,8 @@
 # Scientific data integration guide
 
 The platform reads nine files from one directory (`TERRA_DATA_DIR`). **Default: `data/research/`** — the research bot's outputs
-(package `ThynkAI/terraanalog-ai @ 195b7a8`, contract `terraanalog-app-contract-1.0.0`), copied byte-for-byte from the research
-workspace. If that folder is absent the API falls back to the synthetic `data/fixtures/`; you can also select it explicitly with
+(package `ThynkAI/terraanalog-ai @ d2e464b`, contract `terraanalog-app-contract-1.0.0`), copied byte-for-byte from the research
+workspace, plus optional `supplementary/` extras. If that folder is absent the API falls back to the synthetic `data/fixtures/`; you can also select it explicitly with
 `TERRA_DATA_DIR=data/fixtures` (setup.sh), `-DataDir data/fixtures` (setup.ps1) or `TERRA_DATA_DIR=/app/data/fixtures` (Docker).
 
 ## What is loaded by default (data/research)
@@ -11,10 +11,10 @@ workspace. If that folder is absent the API falls back to the synthetic `data/fi
 | Earth analog sites (WGS84) | 28 (EA-001 … EA-028), all relevant to both bodies |
 | Planetary references | 14 (MOON-REF-01…07, MARS-REF-01…07), with `status_class` candidate_region / representative_region / verified_mission_site |
 | Criteria | 155 = 11 similarity features × 14 references (`<REF_ID>.<feature>`) + `operational_suitability` (weight 0, shown separately) |
-| Feature values | 4,340: measured 770 · modeled 1,463 · provisional 1,647 · missing 460 (never imputed) |
+| Feature values | 4,340: measured 770 · modeled 1,519 · provisional 1,673 · missing 378 (never imputed) |
 | Mission objectives | 11 (`general` + 5 Moon + 5 Mars profiles) |
 | Published rankings | 588 rows over 21 (reference, objective) pairs |
-| Dataset catalog | 37 sources |
+| Dataset catalog | 40 sources |
 `python scripts/validate_data.py data/research` exits 0 (no schema or ID-consistency errors).
 
 ### Per-reference criteria (`<REF_ID>.<feature>`)
@@ -31,9 +31,8 @@ extra keys `ref_id` and `feature`. The engine handles this generically:
 
 ### Published-score reproduction
 `python scripts/verify_published.py data/research --json docs/test-results/published_reproduction.json` recomputes all 588
-published rows independently. Current result: max |diff| 0.0111, mean 0.0031 (588/588 ≤ 0.05), completeness identical. The residual
-comes from the published scores being computed before values were rounded to 3 dp for export. Ranking uses the unrounded score;
-4 rows (2 pairs) differ in rank only where the published scores are tied at 2 dp.
+published rows independently. Current result: max |diff| **0.0**, mean **0.0**, completeness identical, **0 rank mismatches**
+(floating-point residuals are ~5×10⁻⁵, reported as 0.0 at 4 decimal places).
 
 ## Loading other research outputs
 ```bash
@@ -54,22 +53,26 @@ Lines beginning with `#` at the top of CSV files are ignored (used for warning b
 | property | type | notes |
 |---|---|---|
 | `site_id` | string `^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$` | unique; key used everywhere |
-| `name`, `country`, `region` | string | |
+| `name`, `country`, `region` | string | `region` is the Natural Earth admin-1 name; `region_source` explains the match |
 | `analog_types` | string[] | keys of `scoring_config.analog_types` (first one drives the map symbol) |
-| `climate`, `geology`, `description` | string | |
+| `climate`, `geology`, `description` | string | `climate` is the long provenance sentence |
+| `climate_class`, `aridity_class` | string | Köppen–Geiger (Peel et al. 2007) and UNEP P/ET0 aridity of the ERA5 cell; show them together (polar sites can be classed humid) |
+| `climate_class_source` | string | method/source sentence for those classes |
 | `target_bodies` | `["moon"|"mars"]` | rankings show sites relevant to the reference's body |
 | `mission_objectives` | string[] | objective IDs the site supports (filter) |
 | `environment` | object | free-form key → value (shown in detail panel) |
 | `elevation_m` | number \| null | |
 | `limitations` | string[] | |
-| `imagery` | `{url, credit, license}` \| null | only licensed imagery |
+| `imagery` | `{url, credit, license, license_url?, attribution_page?, source?}` \| null | licensed imagery with author/licence attribution; may be null |
+| `data_confidence` | number \| null | site-level 0–1 confidence |
 | `provenance` | `measured|modeled|provisional|synthetic|mixed|published` | |
 | `citations` | string[] | |
 Optional `metadata` at collection level (e.g. `{"synthetic": false}`).
 
 ### 2. `planetary_reference_sites.geojson` — Points `[lon_east, lat]` in the **body's** frame (not WGS84)
-`ref_id`, `body` (`moon|mars`), `name`, `region_type`, `lon_east_360` (0–360, must agree with geometry), `coordinate_system` (verbatim),
-`body_radius_km`, `diameter_km`, `gazetteer_feature_id`, `description`, `traits[]`, `analog_type_affinity[]` (analog types sought), `citation`.
+`ref_id`, `body` (`moon|mars`), `name`, `region_type`, `lon_east` (geometry; also in properties), `lon_east_360` (0–360, must agree with geometry), `coordinate_system` (verbatim),
+`body_radius_km`, `diameter_km`, `gazetteer_feature_id`, `gazetteer_feature_name`, `gazetteer_match`, `gazetteer_url`, `gazetteer_note`, `description`, `traits[]`, `analog_type_affinity[]` (analog types sought), `citation`.
+A reference may have no Gazetteer id (the lunar south pole region is not a named IAU feature); `gazetteer_note` explains that.
 
 ### 3. `analog_features.csv` — long format, one row per site × criterion
 `site_id, criterion_id, value, unit, value_type, confidence, source_id, notes` (extra research columns such as `ref_id`, `feature` are accepted)
@@ -109,21 +112,30 @@ Rendered on the Methodology and Data & Provenance pages.
 `make fixtures` (runs `scripts/build_fixtures.py`). The script documents exactly which values are real (Gazetteer coordinates),
 provisional (AnalogSite PREP_DRAFT expert judgement) or synthetic.
 
-## Known data issues in the research package (reported back to the research bot)
-Observed in `data/research/` as delivered; the app displays them honestly and does not patch them.
-1. `dust_sediment` is missing for 231 of 392 site × reference values (59 %); `resource` 145, `thermal` 56, `abiotic_surface` 14 and
-   `ruggedness` 14 missing (one site's worth each).
-2. 145 (site, criterion) entries in `site_evidence.json` have zero evidence items.
-3. `region` is empty and `imagery` is null for all 28 sites.
-4. The 28 `operational_suitability` rows have blank `confidence`.
-5. `gazetteer_feature_id` is null for all 14 references; `lon_east` is absent from properties (only geometry and `lon_east_360`).
-6. 17 `dataset_catalog.csv` rows have an empty `usage`.
-7. Mission-profile multipliers also list the other body's 77 criteria, so a Moon profile applies silently to Mars references
-   (the app now notes this and filters objectives by body).
-8. Published scores (2 dp) were computed from unrounded values, while exported values are rounded to 3 dp, which gives up to
-   0.011 points of difference; ties at 2 dp make the published rank order ambiguous for 2 pairs.
-9. 784 evidence citations have an empty author segment (`"… -  et al. (2022) …"`), and 27 evidence statements contain empty
-   parentheses `()` left over from text extraction.
-10. Climate strings are unique long sentences per site, so they cannot work as a categorical filter (the UI uses a "contains" box).
-11. The handoff describes an `outputs/` layout and extra files (`data_gaps.csv`, `radar_chart_data.json`, `sensitivity_summary.json`,
-    `mc_*` columns, site bounds) that are not in the 9 delivered contract files.
+## Optional `supplementary/` extras (not part of the 9-file contract)
+If `data/research/supplementary/` is present the loader reads it; missing files are not errors (fixtures have none).
+
+| file | how the app uses it |
+|---|---|
+| `analog_profile_rankings.csv` | Published per-profile ranks (best matched reference) with Monte Carlo score/rank intervals, shown on the site detail page |
+| `sensitivity_summary.json` | Published MC / OAT / LOFO results for the selected mission profile, shown on the Sensitivity tab above the live weight sweep |
+| `radar_chart_data.json` | Published top-5 per-feature similarities (0–1) for the selected profile, shown as a radar on the Sensitivity tab |
+| `data_gaps.csv` | Per-site missing inputs and recommended field measurements, shown on the site detail page |
+| `earth_analog_site_bounds.geojson` | Loaded for completeness; approximate site extents |
+| `README.md` | File inventory |
+
+## Known data issues in the research package (export @ d2e464b)
+The 15 November 2026 re-export (research commits `3be5e92` fixes, `d2e464b` export) resolved the previously reported issues:
+empty `region`/`imagery`, blank operational confidence, null Gazetteer ids and missing `lon_east` properties, empty catalog `usage`,
+empty citation authors and leftover `()`, unique-sentence climate filters, rounding drift in published scores (max |diff| was 0.0111
+with two tie-related rank swaps), empty evidence items, cross-body profile multipliers, and the missing `outputs/` extras.
+`scripts/validate_data.py data/research` exits 0 with **0 errors and 0 warnings**. All 588 published ranks match.
+
+The app displays the remaining gaps honestly and does not invent or impute values.
+
+1. **378 missing feature values**, each with an evidence item of the form `No evidence: value missing - <reason>`. None are imputed.
+   By feature (of 392 site × reference cells): `dust_sediment` 203, `resource` 119, `thermal` 28, `abiotic_surface` 14, `ruggedness` 14.
+2. **No licensed imagery** for EA-012 Salar de Antofalla (Puna de Atacama) and EA-013 Dresser Formation (North Pole Dome, Pilbara).
+   The other 26 sites have Wikimedia Commons images with licence and author credit.
+3. **The lunar south pole (MOON-REF-01)** has no IAU Gazetteer feature (`gazetteer_match: none`; note: "The lunar south pole region is not a named IAU feature").
+   The other 13 references have a `gazetteer_feature_id`, name, URL and `lon_east`.

@@ -1,0 +1,988 @@
+{
+ "features": [
+  "lithology",
+  "process",
+  "landform",
+  "resource",
+  "slope",
+  "ruggedness",
+  "thermal",
+  "aridity",
+  "ice",
+  "abiotic_surface",
+  "dust_sediment"
+ ],
+ "note": "Per-feature similarity (0-1) to the matched reference; null = unavailable.",
+ "profiles": {
+  "MOON_ISRU_ICE": [
+   {
+    "site_id": "EA-002",
+    "name": "Haughton impact crater, Devon Island",
+    "matched_reference_id": "MOON-REF-04",
+    "fidelity_score": 57.42,
+    "values": {
+     "lithology": 0.5,
+     "process": 0.5,
+     "landform": 0.3333,
+     "resource": 1.0,
+     "slope": 0.6044,
+     "ruggedness": 0.4847,
+     "thermal": 0.0,
+     "aridity": 0.2926,
+     "ice": 1.0,
+     "abiotic_surface": 0.8591,
+     "dust_sediment": 0.4713
+    }
+   },
+   {
+    "site_id": "EA-004",
+    "name": "McMurdo Dry Valleys (Wright Valley)",
+    "matched_reference_id": "MOON-REF-04",
+    "fidelity_score": 45.64,
+    "values": {
+     "lithology": 0.1429,
+     "process": 0.0,
+     "landform": 0.0,
+     "resource": 0.5,
+     "slope": 0.4323,
+     "ruggedness": 0.6438,
+     "thermal": 0.0,
+     "aridity": 0.9216,
+     "ice": 1.0,
+     "abiotic_surface": null,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-007",
+    "name": "Askja caldera",
+    "matched_reference_id": "MOON-REF-04",
+    "fidelity_score": 42.56,
+    "values": {
+     "lithology": 0.2,
+     "process": 0.0,
+     "landform": 0.0,
+     "resource": 1.0,
+     "slope": 0.5915,
+     "ruggedness": 0.4191,
+     "thermal": 0.0,
+     "aridity": 0.0026,
+     "ice": 0.7029,
+     "abiotic_surface": 0.9937,
+     "dust_sediment": 1.0
+    }
+   },
+   {
+    "site_id": "EA-005",
+    "name": "Bockfjorden Volcanic Complex (Sverrefjellet), Svalbard",
+    "matched_reference_id": "MOON-REF-02",
+    "fidelity_score": 42.05,
+    "values": {
+     "lithology": 0.2,
+     "process": 0.0,
+     "landform": 0.0,
+     "resource": 0.0,
+     "slope": 0.4147,
+     "ruggedness": 0.5413,
+     "thermal": 0.0,
+     "aridity": 0.0627,
+     "ice": 1.0,
+     "abiotic_surface": 0.8545,
+     "dust_sediment": 0.7223
+    }
+   },
+   {
+    "site_id": "EA-023",
+    "name": "Meteor Crater (Barringer)",
+    "matched_reference_id": "MOON-REF-04",
+    "fidelity_score": 29.66,
+    "values": {
+     "lithology": 0.2,
+     "process": 1.0,
+     "landform": 1.0,
+     "resource": 0.0,
+     "slope": 0.1947,
+     "ruggedness": 0.1136,
+     "thermal": 0.0,
+     "aridity": 0.6426,
+     "ice": 0.0,
+     "abiotic_surface": 0.3948,
+     "dust_sediment": 0.9912
+    }
+   }
+  ],
+  "MOON_ROVER_MOBILITY": [
+   {
+    "site_id": "EA-028",
+    "name": "Mars Desert Research Station area (San Rafael Swell margin)",
+    "matched_reference_id": "MOON-REF-07",
+    "fidelity_score": 77.24,
+    "values": {
+     "lithology": 0.0,
+     "process": 0.0,
+     "landform": 0.3333,
+     "resource": null,
+     "slope": 0.9461,
+     "ruggedness": 0.8929,
+     "thermal": null,
+     "aridity": 0.797,
+     "ice": null,
+     "abiotic_surface": 0.9607,
+     "dust_sediment": 0.9963
+    }
+   },
+   {
+    "site_id": "EA-008",
+    "name": "Timanfaya volcanic field, Lanzarote",
+    "matched_reference_id": "MOON-REF-07",
+    "fidelity_score": 70.29,
+    "values": {
+     "lithology": 0.3333,
+     "process": 0.3333,
+     "landform": 0.0,
+     "resource": null,
+     "slope": 0.9206,
+     "ruggedness": 0.7408,
+     "thermal": null,
+     "aridity": 0.8643,
+     "ice": null,
+     "abiotic_surface": 0.9276,
+     "dust_sediment": 0.8007
+    }
+   },
+   {
+    "site_id": "EA-011",
+    "name": "Salar de Uyuni",
+    "matched_reference_id": "MOON-REF-07",
+    "fidelity_score": 67.26,
+    "values": {
+     "lithology": 0.0,
+     "process": 0.0,
+     "landform": 0.3333,
+     "resource": null,
+     "slope": 0.8176,
+     "ruggedness": null,
+     "thermal": null,
+     "aridity": 0.4298,
+     "ice": null,
+     "abiotic_surface": 1.0,
+     "dust_sediment": 0.9684
+    }
+   },
+   {
+    "site_id": "EA-023",
+    "name": "Meteor Crater (Barringer)",
+    "matched_reference_id": "MOON-REF-07",
+    "fidelity_score": 64.41,
+    "values": {
+     "lithology": 0.0,
+     "process": 0.5,
+     "landform": 0.5,
+     "resource": null,
+     "slope": 0.9348,
+     "ruggedness": 0.4146,
+     "thermal": null,
+     "aridity": 0.6426,
+     "ice": null,
+     "abiotic_surface": 0.3948,
+     "dust_sediment": 0.9912
+    }
+   },
+   {
+    "site_id": "EA-006",
+    "name": "Holuhraun lava field",
+    "matched_reference_id": "MOON-REF-07",
+    "fidelity_score": 64.33,
+    "values": {
+     "lithology": 0.3333,
+     "process": 0.25,
+     "landform": 0.3333,
+     "resource": null,
+     "slope": 0.9544,
+     "ruggedness": 0.3056,
+     "thermal": null,
+     "aridity": 0.0008,
+     "ice": null,
+     "abiotic_surface": 1.0,
+     "dust_sediment": 0.9928
+    }
+   }
+  ],
+  "MOON_EVA_HABITAT": [
+   {
+    "site_id": "EA-004",
+    "name": "McMurdo Dry Valleys (Wright Valley)",
+    "matched_reference_id": "MOON-REF-03",
+    "fidelity_score": 50.87,
+    "values": {
+     "lithology": 0.0,
+     "process": 0.0,
+     "landform": 0.0,
+     "resource": null,
+     "slope": 0.4717,
+     "ruggedness": 0.6148,
+     "thermal": 0.7145,
+     "aridity": 0.9216,
+     "ice": 1.0,
+     "abiotic_surface": null,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-005",
+    "name": "Bockfjorden Volcanic Complex (Sverrefjellet), Svalbard",
+    "matched_reference_id": "MOON-REF-01",
+    "fidelity_score": 44.7,
+    "values": {
+     "lithology": 0.0,
+     "process": 0.0,
+     "landform": 0.0,
+     "resource": null,
+     "slope": 0.4774,
+     "ruggedness": 0.6713,
+     "thermal": 0.3877,
+     "aridity": 0.0627,
+     "ice": 1.0,
+     "abiotic_surface": 0.8545,
+     "dust_sediment": 0.7223
+    }
+   },
+   {
+    "site_id": "EA-002",
+    "name": "Haughton impact crater, Devon Island",
+    "matched_reference_id": "MOON-REF-01",
+    "fidelity_score": 39.49,
+    "values": {
+     "lithology": 0.25,
+     "process": 0.5,
+     "landform": 0.25,
+     "resource": null,
+     "slope": 0.0001,
+     "ruggedness": 0.1608,
+     "thermal": 0.5361,
+     "aridity": 0.2926,
+     "ice": 1.0,
+     "abiotic_surface": 0.8591,
+     "dust_sediment": 0.4713
+    }
+   },
+   {
+    "site_id": "EA-001",
+    "name": "Atacama Desert (hyperarid core)",
+    "matched_reference_id": "MOON-REF-03",
+    "fidelity_score": 38.88,
+    "values": {
+     "lithology": 0.0,
+     "process": 0.0,
+     "landform": 0.0,
+     "resource": null,
+     "slope": 0.1419,
+     "ruggedness": 0.3509,
+     "thermal": 0.1223,
+     "aridity": 1.0,
+     "ice": 0.0,
+     "abiotic_surface": 1.0,
+     "dust_sediment": 0.7605
+    }
+   },
+   {
+    "site_id": "EA-007",
+    "name": "Askja caldera",
+    "matched_reference_id": "MOON-REF-03",
+    "fidelity_score": 38.71,
+    "values": {
+     "lithology": 0.0,
+     "process": 0.0,
+     "landform": 0.0,
+     "resource": null,
+     "slope": 0.2994,
+     "ruggedness": 0.1659,
+     "thermal": 0.2721,
+     "aridity": 0.0026,
+     "ice": 0.7029,
+     "abiotic_surface": 0.9937,
+     "dust_sediment": 1.0
+    }
+   }
+  ],
+  "MOON_FIELD_GEOLOGY": [
+   {
+    "site_id": "EA-024",
+    "name": "Mistastin Lake impact structure",
+    "matched_reference_id": "MOON-REF-01",
+    "fidelity_score": 51.13,
+    "values": {
+     "lithology": 0.6667,
+     "process": 0.5,
+     "landform": 1.0,
+     "resource": 0.5,
+     "slope": 0.0001,
+     "ruggedness": 0.2101,
+     "thermal": null,
+     "aridity": 0.0128,
+     "ice": null,
+     "abiotic_surface": 0.0011,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-002",
+    "name": "Haughton impact crater, Devon Island",
+    "matched_reference_id": "MOON-REF-02",
+    "fidelity_score": 44.45,
+    "values": {
+     "lithology": 0.5,
+     "process": 0.5,
+     "landform": 0.25,
+     "resource": 0.5,
+     "slope": 0.0002,
+     "ruggedness": 0.1297,
+     "thermal": null,
+     "aridity": 0.2926,
+     "ice": null,
+     "abiotic_surface": 0.8591,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-023",
+    "name": "Meteor Crater (Barringer)",
+    "matched_reference_id": "MOON-REF-01",
+    "fidelity_score": 42.35,
+    "values": {
+     "lithology": 0.25,
+     "process": 1.0,
+     "landform": 0.5,
+     "resource": 0.0,
+     "slope": 0.0,
+     "ruggedness": 0.0377,
+     "thermal": null,
+     "aridity": 0.6426,
+     "ice": null,
+     "abiotic_surface": 0.3948,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-025",
+    "name": "Sudbury Basin",
+    "matched_reference_id": "MOON-REF-01",
+    "fidelity_score": 35.34,
+    "values": {
+     "lithology": 0.25,
+     "process": 1.0,
+     "landform": 0.5,
+     "resource": 0.0,
+     "slope": 0.0,
+     "ruggedness": 0.0534,
+     "thermal": null,
+     "aridity": 0.0091,
+     "ice": null,
+     "abiotic_surface": 0.0029,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-027",
+    "name": "Lonar impact crater",
+    "matched_reference_id": "MOON-REF-01",
+    "fidelity_score": 27.35,
+    "values": {
+     "lithology": 0.3333,
+     "process": 0.3333,
+     "landform": 0.5,
+     "resource": null,
+     "slope": 0.0,
+     "ruggedness": 0.0518,
+     "thermal": null,
+     "aridity": 0.0327,
+     "ice": null,
+     "abiotic_surface": 0.0023,
+     "dust_sediment": null
+    }
+   }
+  ],
+  "MOON_LAVA_TUBE": [
+   {
+    "site_id": "EA-009",
+    "name": "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+    "matched_reference_id": "MOON-REF-05",
+    "fidelity_score": 74.31,
+    "values": {
+     "lithology": 1.0,
+     "process": 1.0,
+     "landform": 0.5,
+     "resource": null,
+     "slope": 0.7542,
+     "ruggedness": 0.533,
+     "thermal": 0.9968,
+     "aridity": 0.8714,
+     "ice": null,
+     "abiotic_surface": 0.2778,
+     "dust_sediment": 0.9104
+    }
+   },
+   {
+    "site_id": "EA-016",
+    "name": "Undara lava tubes (McBride Basalt Province)",
+    "matched_reference_id": "MOON-REF-05",
+    "fidelity_score": 69.07,
+    "values": {
+     "lithology": 1.0,
+     "process": 1.0,
+     "landform": 0.5,
+     "resource": null,
+     "slope": 0.983,
+     "ruggedness": 0.7191,
+     "thermal": 0.9845,
+     "aridity": 0.0715,
+     "ice": null,
+     "abiotic_surface": 0.0001,
+     "dust_sediment": 0.8795
+    }
+   },
+   {
+    "site_id": "EA-008",
+    "name": "Timanfaya volcanic field, Lanzarote",
+    "matched_reference_id": "MOON-REF-05",
+    "fidelity_score": 59.79,
+    "values": {
+     "lithology": 0.5,
+     "process": 0.5,
+     "landform": 0.25,
+     "resource": null,
+     "slope": 0.9313,
+     "ruggedness": 0.6644,
+     "thermal": 0.9973,
+     "aridity": 0.8643,
+     "ice": null,
+     "abiotic_surface": 0.9276,
+     "dust_sediment": 0.8007
+    }
+   },
+   {
+    "site_id": "EA-021",
+    "name": "Lava Beds National Monument",
+    "matched_reference_id": "MOON-REF-05",
+    "fidelity_score": 57.96,
+    "values": {
+     "lithology": 0.5,
+     "process": 1.0,
+     "landform": 0.5,
+     "resource": 0.0,
+     "slope": 0.9512,
+     "ruggedness": 0.6516,
+     "thermal": 0.9659,
+     "aridity": 0.076,
+     "ice": null,
+     "abiotic_surface": 0.2039,
+     "dust_sediment": 0.5742
+    }
+   },
+   {
+    "site_id": "EA-006",
+    "name": "Holuhraun lava field",
+    "matched_reference_id": "MOON-REF-06",
+    "fidelity_score": 51.69,
+    "values": {
+     "lithology": 0.5,
+     "process": 0.3333,
+     "landform": 0.25,
+     "resource": null,
+     "slope": 0.9382,
+     "ruggedness": 0.4334,
+     "thermal": 0.8533,
+     "aridity": 0.0008,
+     "ice": null,
+     "abiotic_surface": 1.0,
+     "dust_sediment": 0.9928
+    }
+   }
+  ],
+  "MARS_ISRU_ICE": [
+   {
+    "site_id": "EA-002",
+    "name": "Haughton impact crater, Devon Island",
+    "matched_reference_id": "MARS-REF-07",
+    "fidelity_score": 65.71,
+    "values": {
+     "lithology": 0.25,
+     "process": 1.0,
+     "landform": 0.6667,
+     "resource": 1.0,
+     "slope": 0.8594,
+     "ruggedness": 0.1017,
+     "thermal": 0.3008,
+     "aridity": 0.2926,
+     "ice": 1.0,
+     "abiotic_surface": 0.8591,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-004",
+    "name": "McMurdo Dry Valleys (Wright Valley)",
+    "matched_reference_id": "MARS-REF-04",
+    "fidelity_score": 56.77,
+    "values": {
+     "lithology": 0.1429,
+     "process": 0.5,
+     "landform": 0.5,
+     "resource": 0.3333,
+     "slope": 0.0701,
+     "ruggedness": 0.0525,
+     "thermal": 0.4559,
+     "aridity": 0.9216,
+     "ice": 1.0,
+     "abiotic_surface": null,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-007",
+    "name": "Askja caldera",
+    "matched_reference_id": "MARS-REF-07",
+    "fidelity_score": 41.96,
+    "values": {
+     "lithology": 0.25,
+     "process": 0.25,
+     "landform": 0.0,
+     "resource": 1.0,
+     "slope": 0.6648,
+     "ruggedness": 0.0953,
+     "thermal": 0.1231,
+     "aridity": 0.0026,
+     "ice": 0.7029,
+     "abiotic_surface": 0.9937,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-005",
+    "name": "Bockfjorden Volcanic Complex (Sverrefjellet), Svalbard",
+    "matched_reference_id": "MARS-REF-05",
+    "fidelity_score": 36.74,
+    "values": {
+     "lithology": 0.25,
+     "process": 0.4,
+     "landform": 0.2,
+     "resource": 0.0,
+     "slope": 0.0318,
+     "ruggedness": 0.033,
+     "thermal": 0.0013,
+     "aridity": 0.0627,
+     "ice": 1.0,
+     "abiotic_surface": 0.8545,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-001",
+    "name": "Atacama Desert (hyperarid core)",
+    "matched_reference_id": "MARS-REF-04",
+    "fidelity_score": 27.56,
+    "values": {
+     "lithology": 0.1667,
+     "process": 0.25,
+     "landform": 0.25,
+     "resource": 0.3333,
+     "slope": 0.5043,
+     "ruggedness": 0.1212,
+     "thermal": 0.0458,
+     "aridity": 1.0,
+     "ice": 0.0,
+     "abiotic_surface": 1.0,
+     "dust_sediment": null
+    }
+   }
+  ],
+  "MARS_ROVER_MOBILITY": [
+   {
+    "site_id": "EA-028",
+    "name": "Mars Desert Research Station area (San Rafael Swell margin)",
+    "matched_reference_id": "MARS-REF-01",
+    "fidelity_score": 71.46,
+    "values": {
+     "lithology": 0.5,
+     "process": 0.6667,
+     "landform": 0.2,
+     "resource": null,
+     "slope": 0.9106,
+     "ruggedness": 0.7359,
+     "thermal": 0.0371,
+     "aridity": 0.797,
+     "ice": null,
+     "abiotic_surface": 0.9607,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-008",
+    "name": "Timanfaya volcanic field, Lanzarote",
+    "matched_reference_id": "MARS-REF-01",
+    "fidelity_score": 62.26,
+    "values": {
+     "lithology": 0.2,
+     "process": 0.25,
+     "landform": 0.0,
+     "resource": null,
+     "slope": 0.9751,
+     "ruggedness": 0.4922,
+     "thermal": 0.0234,
+     "aridity": 0.8643,
+     "ice": null,
+     "abiotic_surface": 0.9276,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-006",
+    "name": "Holuhraun lava field",
+    "matched_reference_id": "MARS-REF-01",
+    "fidelity_score": 61.72,
+    "values": {
+     "lithology": 0.2,
+     "process": 0.2,
+     "landform": 0.0,
+     "resource": null,
+     "slope": 0.9028,
+     "ruggedness": 0.9254,
+     "thermal": 0.1095,
+     "aridity": 0.0008,
+     "ice": null,
+     "abiotic_surface": 1.0,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-001",
+    "name": "Atacama Desert (hyperarid core)",
+    "matched_reference_id": "MARS-REF-01",
+    "fidelity_score": 60.42,
+    "values": {
+     "lithology": 0.1429,
+     "process": 0.5,
+     "landform": 0.1667,
+     "resource": null,
+     "slope": 0.8372,
+     "ruggedness": 0.3182,
+     "thermal": 0.0458,
+     "aridity": 1.0,
+     "ice": null,
+     "abiotic_surface": 1.0,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-003",
+    "name": "Death Valley (Badwater Basin)",
+    "matched_reference_id": "MARS-REF-02",
+    "fidelity_score": 60.03,
+    "values": {
+     "lithology": 0.4,
+     "process": 0.5,
+     "landform": 0.1667,
+     "resource": null,
+     "slope": 0.8254,
+     "ruggedness": 0.3898,
+     "thermal": 0.0117,
+     "aridity": 0.7392,
+     "ice": null,
+     "abiotic_surface": 0.999,
+     "dust_sediment": null
+    }
+   }
+  ],
+  "MARS_EVA_HABITAT": [
+   {
+    "site_id": "EA-002",
+    "name": "Haughton impact crater, Devon Island",
+    "matched_reference_id": "MARS-REF-07",
+    "fidelity_score": 57.18,
+    "values": {
+     "lithology": 0.25,
+     "process": 1.0,
+     "landform": 0.6667,
+     "resource": null,
+     "slope": 0.8594,
+     "ruggedness": 0.1017,
+     "thermal": 0.3008,
+     "aridity": 0.2926,
+     "ice": 1.0,
+     "abiotic_surface": 0.8591,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-018",
+    "name": "Qaidam Basin",
+    "matched_reference_id": "MARS-REF-03",
+    "fidelity_score": 53.89,
+    "values": {
+     "lithology": 0.0,
+     "process": 0.2,
+     "landform": 0.3333,
+     "resource": null,
+     "slope": 0.9996,
+     "ruggedness": 0.5854,
+     "thermal": 0.0673,
+     "aridity": 1.0,
+     "ice": 0.0,
+     "abiotic_surface": 1.0,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-028",
+    "name": "Mars Desert Research Station area (San Rafael Swell margin)",
+    "matched_reference_id": "MARS-REF-03",
+    "fidelity_score": 45.83,
+    "values": {
+     "lithology": 0.0,
+     "process": 0.25,
+     "landform": 0.5,
+     "resource": null,
+     "slope": 0.9172,
+     "ruggedness": 0.1415,
+     "thermal": 0.0371,
+     "aridity": 0.797,
+     "ice": 0.0,
+     "abiotic_surface": 0.9607,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-010",
+    "name": "Dallol hydrothermal field, Danakil Depression",
+    "matched_reference_id": "MARS-REF-03",
+    "fidelity_score": 44.64,
+    "values": {
+     "lithology": 0.2,
+     "process": 0.1667,
+     "landform": 0.0,
+     "resource": null,
+     "slope": 0.976,
+     "ruggedness": 0.1876,
+     "thermal": 0.006,
+     "aridity": 0.9329,
+     "ice": 0.0,
+     "abiotic_surface": 0.9976,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-011",
+    "name": "Salar de Uyuni",
+    "matched_reference_id": "MARS-REF-03",
+    "fidelity_score": 43.94,
+    "values": {
+     "lithology": 0.0,
+     "process": 0.0,
+     "landform": 0.5,
+     "resource": null,
+     "slope": 0.9973,
+     "ruggedness": null,
+     "thermal": 0.0627,
+     "aridity": 0.4298,
+     "ice": 0.0001,
+     "abiotic_surface": 1.0,
+     "dust_sediment": null
+    }
+   }
+  ],
+  "MARS_ASTROBIO_SEDIMENTS": [
+   {
+    "site_id": "EA-028",
+    "name": "Mars Desert Research Station area (San Rafael Swell margin)",
+    "matched_reference_id": "MARS-REF-01",
+    "fidelity_score": 61.6,
+    "values": {
+     "lithology": 0.5,
+     "process": 0.6667,
+     "landform": 0.2,
+     "resource": 1.0,
+     "slope": null,
+     "ruggedness": null,
+     "thermal": 0.0371,
+     "aridity": 0.797,
+     "ice": 1.0,
+     "abiotic_surface": 0.9607,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-003",
+    "name": "Death Valley (Badwater Basin)",
+    "matched_reference_id": "MARS-REF-01",
+    "fidelity_score": 51.61,
+    "values": {
+     "lithology": 0.1667,
+     "process": 0.5,
+     "landform": 0.3333,
+     "resource": 1.0,
+     "slope": null,
+     "ruggedness": null,
+     "thermal": 0.0117,
+     "aridity": 0.7392,
+     "ice": 1.0,
+     "abiotic_surface": 0.999,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-018",
+    "name": "Qaidam Basin",
+    "matched_reference_id": "MARS-REF-02",
+    "fidelity_score": 50.34,
+    "values": {
+     "lithology": 0.4,
+     "process": 0.5,
+     "landform": 0.0,
+     "resource": 0.5,
+     "slope": null,
+     "ruggedness": null,
+     "thermal": 0.0673,
+     "aridity": 1.0,
+     "ice": 1.0,
+     "abiotic_surface": 1.0,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-001",
+    "name": "Atacama Desert (hyperarid core)",
+    "matched_reference_id": "MARS-REF-02",
+    "fidelity_score": 46.9,
+    "values": {
+     "lithology": 0.3333,
+     "process": 0.5,
+     "landform": 0.0,
+     "resource": 0.3333,
+     "slope": null,
+     "ruggedness": null,
+     "thermal": 0.0458,
+     "aridity": 1.0,
+     "ice": 1.0,
+     "abiotic_surface": 1.0,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-011",
+    "name": "Salar de Uyuni",
+    "matched_reference_id": "MARS-REF-01",
+    "fidelity_score": 39.61,
+    "values": {
+     "lithology": 0.2,
+     "process": 0.25,
+     "landform": 0.0,
+     "resource": 1.0,
+     "slope": null,
+     "ruggedness": null,
+     "thermal": 0.0627,
+     "aridity": 0.4298,
+     "ice": 0.9999,
+     "abiotic_surface": 1.0,
+     "dust_sediment": null
+    }
+   }
+  ],
+  "MARS_LAVA_TUBE": [
+   {
+    "site_id": "EA-009",
+    "name": "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+    "matched_reference_id": "MARS-REF-06",
+    "fidelity_score": 57.51,
+    "values": {
+     "lithology": 1.0,
+     "process": 1.0,
+     "landform": 0.4,
+     "resource": null,
+     "slope": 0.4859,
+     "ruggedness": 0.096,
+     "thermal": 0.023,
+     "aridity": 0.8714,
+     "ice": null,
+     "abiotic_surface": 0.2778,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-016",
+    "name": "Undara lava tubes (McBride Basalt Province)",
+    "matched_reference_id": "MARS-REF-06",
+    "fidelity_score": 51.44,
+    "values": {
+     "lithology": 1.0,
+     "process": 1.0,
+     "landform": 0.4,
+     "resource": null,
+     "slope": 0.9987,
+     "ruggedness": 0.5969,
+     "thermal": 0.0176,
+     "aridity": 0.0715,
+     "ice": null,
+     "abiotic_surface": 0.0001,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-008",
+    "name": "Timanfaya volcanic field, Lanzarote",
+    "matched_reference_id": "MARS-REF-06",
+    "fidelity_score": 45.31,
+    "values": {
+     "lithology": 0.5,
+     "process": 0.5,
+     "landform": 0.2,
+     "resource": null,
+     "slope": 0.7961,
+     "ruggedness": 0.1819,
+     "thermal": 0.0234,
+     "aridity": 0.8643,
+     "ice": null,
+     "abiotic_surface": 0.9276,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-021",
+    "name": "Lava Beds National Monument",
+    "matched_reference_id": "MARS-REF-06",
+    "fidelity_score": 43.72,
+    "values": {
+     "lithology": 0.5,
+     "process": 1.0,
+     "landform": 0.4,
+     "resource": null,
+     "slope": 0.8834,
+     "ruggedness": 0.2521,
+     "thermal": 0.0557,
+     "aridity": 0.076,
+     "ice": null,
+     "abiotic_surface": 0.2039,
+     "dust_sediment": null
+    }
+   },
+   {
+    "site_id": "EA-010",
+    "name": "Dallol hydrothermal field, Danakil Depression",
+    "matched_reference_id": "MARS-REF-06",
+    "fidelity_score": 39.3,
+    "values": {
+     "lithology": 0.25,
+     "process": 0.25,
+     "landform": 0.2,
+     "resource": null,
+     "slope": 0.996,
+     "ruggedness": 0.0976,
+     "thermal": 0.006,
+     "aridity": 0.9329,
+     "ice": null,
+     "abiotic_surface": 0.9976,
+     "dust_sediment": null
+    }
+   }
+  ]
+ }
+}

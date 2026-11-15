@@ -94,7 +94,11 @@ two free web services:
 
 No secrets or environment values need to be entered. Free Render services sleep when idle, so the first request after a pause can take
 about a minute. Other options include any Docker host (`app/docker-compose.yml`) and the notes in
-[`app/docs/DEPLOYMENT.md`](app/docs/DEPLOYMENT.md). No public deployment URL exists yet.
+[`app/docs/DEPLOYMENT.md`](app/docs/DEPLOYMENT.md).
+
+**Live demo (verified 15 November 2026, America/Toronto):**
+* App: https://terraanalog-web-cqgu.onrender.com
+* API: https://terraanalog-api-cqgu.onrender.com (`/api/health` returns `synthetic: false`, 28 sites, 14 references)
 
 ## Team and NASA Space Apps
 Built for the NASA Space Apps Challenge 2026 by Deep Kanabar (lead), with AI assistants for the planetary-science and geospatial

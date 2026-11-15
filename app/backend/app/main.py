@@ -25,6 +25,21 @@ app.add_middleware(CORSMiddleware, allow_origins=config.cors_origins(), allow_me
 
 ID_RE = r"^[A-Za-z0-9][A-Za-z0-9_.\-]{0,63}$"
 
+# From scientific_methodology.md ("Operational confidence") in the research export — shown, not recomputed.
+OPERATIONAL_CONFIDENCE_METHOD = (
+    "Operational-suitability confidence is the weighted mean of component confidences over the components present "
+    "(same weights as the operational score: access 0.30, trafficability 0.20, climate workability 0.20, "
+    "regulatory 0.15, infrastructure 0.15), multiplied by operational completeness. Component confidences: "
+    "access 0.5 (Natural Earth major roads, an upper bound) or 0.3 when the distance is censored; "
+    "trafficability 0.85 (DEM-derived); climate workability 0.70 (ERA5, modeled); regulatory/infrastructure "
+    "0.75 when a supporting sentence was found in the fetched source, else 0.30 (hypothesized)."
+)
+
+
+def _climate_hay(site) -> str:
+    parts = [site.climate or "", site.climate_class or "", site.aridity_class or ""]
+    return " ".join(parts).lower()
+
 
 @app.exception_handler(ScoringError)
 async def _scoring_error(_, exc: ScoringError):
@@ -145,7 +160,13 @@ def meta():
         "body_feature_weights": _body_feature_weights(st) if cfg else {},
         "default_compare_ids": _default_compare_ids(st),
         "notice": (cfg.meta.get("notice") if cfg and isinstance(cfg.meta, dict) else None),
-        "climates": sorted({s.climate for s in st.sites.values() if s.climate}),
+        "climates": sorted({(s.climate_class or s.climate) for s in st.sites.values() if (s.climate_class or s.climate)}),
+        "aridity_classes": sorted({s.aridity_class for s in st.sites.values() if s.aridity_class}),
+        "has_supplementary": bool(st.profile_rankings or st.radar_chart or st.sensitivity_summary or st.data_gaps),
+        "operational_confidence_method": OPERATIONAL_CONFIDENCE_METHOD if any(
+            cid == "operational_suitability" and fv.confidence is not None
+            for feats in st.features.values() for cid, fv in feats.items()
+        ) else None,
         "countries": sorted({s.country for s in st.sites.values() if s.country}),
     }
 
@@ -200,6 +221,7 @@ def list_sites(
     body: Optional[str] = Query(None, pattern="^(moon|mars)$"),
     analog_type: Optional[str] = Query(None, max_length=64),
     climate: Optional[str] = Query(None, max_length=64),
+    aridity: Optional[str] = Query(None, max_length=64),
     geology: Optional[str] = Query(None, max_length=64),
     objective: Optional[str] = Query(None, pattern=ID_RE, description="scoring objective"),
     mission_objective: Optional[str] = Query(None, pattern=ID_RE, description="filter: site supports this objective"),
@@ -238,14 +260,17 @@ def list_sites(
             continue
         if analog_type and analog_type not in s.analog_types:
             continue
-        if climate and climate.lower() not in s.climate.lower():
+        if climate and climate.lower() not in _climate_hay(s):
+            continue
+        if aridity and aridity.lower() != (s.aridity_class or "").lower() and aridity.lower() not in (s.climate or "").lower():
             continue
         if geology and geology.lower() not in s.geology.lower():
             continue
         if mission_objective and mission_objective not in s.mission_objectives:
             continue
         if q:
-            hay = " ".join([s.name, s.country, s.region, s.site_id, " ".join(s.analog_types)]).lower()
+            hay = " ".join([s.name, s.country, s.region, s.site_id, s.climate_class or "", s.aridity_class or "",
+                            " ".join(s.analog_types)]).lower()
             if not all(tok in hay for tok in q.lower().split()):
                 continue
         item = _site_summary(st, sid)
@@ -319,6 +344,15 @@ def get_site(site_id: str, ref_id: Optional[str] = Query(None, pattern=ID_RE), o
         bodies = s.target_bodies or ["moon", "mars"]
         out["cannot_replicate_on_earth"] = {b: st.scoring.non_replicable.get(b, []) for b in bodies}
     out["evidence"] = {c: [e.model_dump() for e in items] for c, items in evidence.items()}
+    if st.data_gaps.get(site_id):
+        out["data_gaps"] = st.data_gaps[site_id]
+    out["profile_rankings"] = [r for r in st.profile_rankings if r.get("site_id") == site_id]
+    op = st.features.get(site_id, {}).get("operational_suitability")
+    if op is not None:
+        out["operational_confidence_method"] = OPERATIONAL_CONFIDENCE_METHOD
+        comps = (st.sensitivity_summary.get("operational_components") or {}).get(site_id)
+        if comps:
+            out["operational_components"] = comps
     return out
 
 
@@ -495,7 +529,22 @@ def get_sensitivity(ref_id: Optional[str] = Query(None, pattern=ID_RE), objectiv
         raise HTTPException(422, detail=f"unknown criterion '{criterion}'")
     crit = next((c.feature_id for c in st.scoring.criteria if c.id == criterion), criterion) if criterion else None
     obj = _objective(st, objective)
-    return {**sensitivity(st, ref, obj, crit, top_n, _weights(st, weights), feats), **_ref_context(st, ref, ref_id, obj)}
+    out = {**sensitivity(st, ref, obj, crit, top_n, _weights(st, weights), feats), **_ref_context(st, ref, ref_id, obj)}
+    if st.sensitivity_summary and obj in (st.sensitivity_summary.get("profiles") or {}):
+        out["published_sensitivity"] = {
+            "method": st.sensitivity_summary.get("method"),
+            "profile": obj,
+            "result": st.sensitivity_summary["profiles"][obj],
+            "strict_evidence_variant": (st.sensitivity_summary.get("strict_evidence_variant") or {}).get("profiles", {}).get(obj),
+            "strict_evidence_method": (st.sensitivity_summary.get("strict_evidence_variant") or {}).get("method"),
+        }
+    if st.radar_chart and obj in (st.radar_chart.get("profiles") or {}):
+        out["published_radar"] = {
+            "features": st.radar_chart.get("features"),
+            "note": st.radar_chart.get("note"),
+            "sites": st.radar_chart["profiles"][obj],
+        }
+    return out
 
 
 @app.get("/api/clusters")

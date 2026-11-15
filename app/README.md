@@ -6,10 +6,10 @@ a globe, with a transparent score breakdown, evidence completeness, confidence, 
 what Earth cannot replicate.
 
 > **Data status: RESEARCH DATASET (default).** `data/research/` holds the research bot's 9 contract files (TerraAnalog research
-> package `ThynkAI/terraanalog-ai @ 195b7a8`, copied unmodified): 28 Earth analog sites, 14 Moon/Mars references, 155 criteria
+> package `ThynkAI/terraanalog-ai @ d2e464b`, copied unmodified, plus `supplementary/`): 28 Earth analog sites, 14 Moon/Mars references, 155 criteria
 > (11 reference-specific similarity features × 14 references + a separate operational-suitability score), 4,340 values
-> (770 measured · 1,463 modeled · 1,647 provisional · 460 missing, never imputed) and 588 published rankings, which the engine
-> reproduces to within 0.011 points ([docs/TEST_RESULTS.md](docs/TEST_RESULTS.md)). The UI shows a *Research dataset* badge and the
+> (770 measured · 1,519 modeled · 1,673 provisional · 378 missing, never imputed) and 588 published rankings, which the engine
+> reproduces exactly (max |diff| 0.0; [docs/TEST_RESULTS.md](docs/TEST_RESULTS.md)). The UI shows a *Research dataset* badge and the
 > research notice on every page. `data/fixtures/` is kept as a clearly-labelled **synthetic fallback**
 > (`TERRA_DATA_DIR=data/fixtures`; the *Synthetic fixture data* badge then appears). See [docs/DATA_INTEGRATION.md](docs/DATA_INTEGRATION.md).
 
@@ -97,13 +97,18 @@ scripts/            setup.sh / setup.ps1 (one-command setup), dev.sh, build_fixt
 docs/               architecture, data integration, deployment, pitch, demo script, presentation outline, screenshots
 ```
 
+## Live demo
+- App: https://terraanalog-web-cqgu.onrender.com
+- API: https://terraanalog-api-cqgu.onrender.com/api/health
+Free Render services sleep when idle; the first request after a pause can take about a minute.
+
 ## Documentation
 - [Architecture](docs/ARCHITECTURE.md) · [Data integration guide](docs/DATA_INTEGRATION.md) · [Deployment](docs/DEPLOYMENT.md)
 - [Pitch](docs/PITCH.md) · [3-minute demo script](docs/DEMO_SCRIPT.md) · [Presentation outline](docs/PRESENTATION_OUTLINE.md)
 - [Test results](docs/TEST_RESULTS.md) · [Screenshots](docs/screenshots/)
 
 ## Licence
-Code: [MIT](../LICENSE) (copyright 2026 Deep Kanabar / ThynkAI). Data files keep their upstream licences, and research text and derived values are CC BY 4.0 unless upstream says otherwise. See *Licence and data terms* in the [top-level README](../README.md).
+Code: [MIT](LICENSE) (copyright 2026 Deep Kanabar / ThynkAI). Data files keep their upstream licences, and research text and derived values are CC BY 4.0 unless upstream says otherwise. See *Licence and data terms* in the monorepo README (https://github.com/ThynkAI/terraanalog-ai).
 
 ## Attribution
 Planetary imagery: NASA Moon Trek (LRO WAC, NASA/GSFC/ASU) and NASA Mars Trek (Viking MDIM 2.1, NASA/JPL/USGS). Earth tiles: NASA GIBS

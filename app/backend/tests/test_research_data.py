@@ -29,7 +29,7 @@ def test_store_counts_and_value_types(research_store):
     vt = Counter(fv.value_type for feats in st.features.values() for fv in feats.values())
     assert sum(vt.values()) == 4340
     assert set(vt) <= {"measured", "modeled", "provisional", "missing"} and "synthetic" not in vt
-    assert vt["missing"] == 460
+    assert vt["missing"] == 378
 
 
 def test_missing_values_are_never_imputed(research_store):
@@ -154,7 +154,8 @@ def test_verify_published_script(tmp_path):
     assert p.returncode == 0, p.stdout + p.stderr
     import json
     d = json.loads(out.read_text())
-    assert d["rows_compared"] == 588 and d["rows_unscorable"] == 0 and d["score_abs_diff_unrounded"]["max"] <= 0.05
+    assert d["rows_compared"] == 588 and d["rows_unscorable"] == 0 and d["score_abs_diff_unrounded"]["max"] <= 0.001
+    assert d["rank_agreement"]["mismatches"] == 0
 
 
 def test_recommend_picks_published_reference(research_client):
@@ -166,3 +167,51 @@ def test_recommend_picks_published_reference(research_client):
 def test_reference_status_class_present(research_client):
     for ref in research_client.get("/api/planetary-references").json()["references"]:
         assert ref["status_class"] in {"candidate_region", "representative_region", "verified_mission_site"}
+
+
+def test_corrected_export_fields_and_supplementary(research_store, research_client):
+    st = research_store
+    # Köppen-Geiger + UNEP aridity on every Earth site; region filled
+    assert all(s.climate_class and s.aridity_class and s.region for s in st.sites.values())
+    polar = st.sites["EA-002"]  # Haughton: ET / humid (cold polar)
+    assert polar.climate_class == "ET" and polar.aridity_class == "humid" and polar.region == "Nunavut"
+    # No licensed imagery for Antofalla or Dresser; others have credit + licence
+    assert st.sites["EA-012"].imagery is None and st.sites["EA-013"].imagery is None
+    img = st.sites["EA-001"].imagery
+    assert img and img.credit and img.license and img.url
+    assert img.attribution_page or img.source
+    # Gazetteer: lunar south pole has no named IAU feature; others have an id and lon_east
+    south = st.references["MOON-REF-01"]
+    assert south.gazetteer_feature_id is None and south.gazetteer_match == "none"
+    assert "not a named IAU feature" in (south.gazetteer_note or "")
+    shackleton = st.references["MOON-REF-02"]
+    assert shackleton.gazetteer_feature_id == "5450" and shackleton.gazetteer_feature_name == "Shackleton"
+    assert shackleton.gazetteer_url and shackleton.lon_east is not None
+    # Operational confidence is filled and documented
+    op = st.features["EA-001"]["operational_suitability"]
+    assert op.confidence is not None and 0 <= op.confidence <= 1
+    # Missing values have an explained evidence statement
+    ev = st.evidence["EA-001"]["MARS-REF-01.dust_sediment"]
+    assert ev and ev[0].value_type == "missing"
+    assert ev[0].statement.startswith("No evidence: value missing - ")
+    # Supplementary files loaded
+    assert st.data_gaps and st.profile_rankings and st.radar_chart and st.sensitivity_summary
+    meta = research_client.get("/api/meta").json()
+    assert "ET" in meta["climates"] and "humid" in meta["aridity_classes"] and meta["has_supplementary"] is True
+    # Climate filter uses the Köppen class (ET would not uniquely match the long climate sentence alone as a category)
+    et = research_client.get("/api/sites", params={"climate": "ET"}).json()
+    assert et["count"] >= 1 and all(s.get("climate_class") == "ET" or "ET" in (s.get("climate") or "") for s in et["sites"])
+    humid = research_client.get("/api/sites", params={"aridity": "humid"}).json()
+    assert humid["count"] >= 1 and all(s.get("aridity_class") == "humid" for s in humid["sites"])
+    detail = research_client.get("/api/sites/EA-002").json()
+    assert detail["climate_class"] == "ET" and detail["aridity_class"] == "humid"
+    assert detail["region"] == "Nunavut"
+    assert detail.get("operational_confidence_method")
+    assert detail.get("profile_rankings")
+    sens = research_client.get("/api/sensitivity", params={"ref_id": "MOON-REF-04", "objective": "MOON_ISRU_ICE"}).json()
+    assert sens.get("published_sensitivity", {}).get("profile") == "MOON_ISRU_ICE"
+    assert sens.get("published_radar", {}).get("sites")
+    pole = research_client.get("/api/planetary-references/MOON-REF-01").json()
+    assert pole["gazetteer_feature_id"] is None and "not a named IAU feature" in (pole.get("gazetteer_note") or "")
+    sh = research_client.get("/api/planetary-references/MOON-REF-02").json()
+    assert sh["gazetteer_feature_id"] == "5450" and sh["lon_east"] is not None

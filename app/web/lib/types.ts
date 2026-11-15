@@ -34,6 +34,9 @@ export interface Meta {
   analog_types: Record<string, string>;
   scoring_meta: Record<string, unknown>;
   climates: string[];
+  aridity_classes?: string[];
+  has_supplementary?: boolean;
+  operational_confidence_method?: string | null;
   countries: string[];
   features: Feature[];
   criteria_mode: "per_reference" | "shared" | null;
@@ -88,6 +91,11 @@ export interface Site {
   lon: number;
   analog_types: string[];
   climate: string;
+  climate_class?: string | null;
+  aridity_class?: string | null;
+  climate_class_source?: string | null;
+  region_source?: string | null;
+  data_confidence?: number | null;
   geology: string;
   target_bodies: Body[];
   mission_objectives: string[];
@@ -95,7 +103,7 @@ export interface Site {
   elevation_m: number | null;
   description: string;
   limitations: string[];
-  imagery: { url: string; credit: string; license: string } | null;
+  imagery: { url: string; credit: string; license: string; license_url?: string | null; attribution_page?: string | null; source?: string | null; url_checked?: string | null } | null;
   provenance: string;
   coordinate_note: string;
   feature_count: number;
@@ -126,6 +134,17 @@ export interface SiteDetail extends Omit<Site, "score">, RefContext {
   score?: ScoreResult & Record<string, unknown>;
   reference_scores?: { ref_id: string; name: string; body: Body; score: number | null; rank: number | null; completeness: number; status: string; body_relevant: boolean }[];
   cannot_replicate_on_earth?: Partial<Record<Body, string[]>>;
+  data_gaps?: { site_id?: string; name?: string; missing_numeric?: string; hypothesized_tags?: string; permafrost_source?: string; data_confidence?: string; recommended_field_measurements?: string } | null;
+  profile_rankings?: ProfileRanking[];
+  operational_confidence_method?: string | null;
+  operational_components?: Record<string, number>;
+}
+
+export interface ProfileRanking {
+  site_id: string; name?: string; body?: string; mission_profile?: string; matched_reference_id?: string;
+  fidelity_score?: number | null; fidelity_rank?: number | null; evidence_completeness?: number | null;
+  confidence?: number | null; operational_score?: number | null; mc_score_p05?: number | null; mc_score_p95?: number | null;
+  mc_rank_p05?: number | null; mc_rank_p95?: number | null; mc_top5_probability?: number | null;
 }
 
 export interface PlanetaryReference {
@@ -140,6 +159,11 @@ export interface PlanetaryReference {
   body_radius_km: number;
   diameter_km: number | null;
   gazetteer_feature_id: string | null;
+  gazetteer_feature_name?: string | null;
+  gazetteer_match?: string | null;
+  gazetteer_url?: string | null;
+  gazetteer_note?: string | null;
+  diameter_wiki_km?: number | null;
   description: string;
   traits: string[];
   analog_type_affinity: string[];
@@ -200,6 +224,14 @@ export interface SensitivityResponse extends RefContext {
   ref_id: string; objective: string; tracked_sites: string[]; multipliers: number[];
   sweeps: Record<string, Record<string, number | null>[]>;
   max_rank_shift_by_criterion: Record<string, number>;
+  published_sensitivity?: {
+    method?: { monte_carlo?: string; oat?: string; lofo?: string };
+    profile?: string;
+    result?: { mc_spearman_mean?: number; mc_spearman_p05?: number; oat_max_rank_shift?: Record<string, number>; lofo?: Record<string, { spearman_vs_base?: number; top5_changed?: string[] }> };
+    strict_evidence_variant?: unknown;
+    strict_evidence_method?: string;
+  };
+  published_radar?: { features?: string[]; note?: string; sites?: { site_id: string; name: string; matched_reference_id?: string; fidelity_score?: number; values?: Record<string, number | null> }[] };
 }
 
 export interface ClustersResponse extends RefContext {

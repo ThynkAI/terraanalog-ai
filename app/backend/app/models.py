@@ -12,9 +12,14 @@ ID_PATTERN = r"^[A-Za-z0-9][A-Za-z0-9_.\-]{0,63}$"
 
 
 class Imagery(BaseModel):
+    model_config = ConfigDict(extra="allow")
     url: str
     credit: str
     license: str
+    license_url: Optional[str] = None
+    attribution_page: Optional[str] = None
+    source: Optional[str] = None
+    url_checked: Optional[str] = None
 
 
 class EarthSite(BaseModel):
@@ -39,6 +44,11 @@ class EarthSite(BaseModel):
     imagery: Optional[Imagery] = None
     provenance: Provenance = "synthetic"
     coordinate_note: str = ""
+    climate_class: Optional[str] = None
+    aridity_class: Optional[str] = None
+    climate_class_source: Optional[str] = None
+    region_source: Optional[str] = None
+    data_confidence: Optional[float] = Field(default=None, ge=0, le=1)
 
 
 class PlanetaryReference(BaseModel):
@@ -56,6 +66,11 @@ class PlanetaryReference(BaseModel):
     body_radius_km: float = Field(gt=0)
     diameter_km: Optional[float] = Field(default=None, ge=0)
     gazetteer_feature_id: Optional[str] = None
+    gazetteer_feature_name: Optional[str] = None
+    gazetteer_match: Optional[str] = None
+    gazetteer_url: Optional[str] = None
+    gazetteer_note: Optional[str] = None
+    diameter_wiki_km: Optional[float] = Field(default=None, ge=0)
     description: str = ""
     traits: list[str] = Field(default_factory=list)
     analog_type_affinity: list[str] = Field(default_factory=list)

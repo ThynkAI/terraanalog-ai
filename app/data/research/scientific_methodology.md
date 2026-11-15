@@ -124,9 +124,11 @@ There is no labelled "true analog" dataset, so **no supervised model is trained 
 8. Similarity widths (σ) are documented choices. The sensitivity analysis covers the weights but not the σ values. A σ sweep is recommended future work.
 
 
-## App data-contract export (scripts/13_export_app_contract.py, source commit 195b7a8)
+## App data-contract export (scripts/13_export_app_contract.py, source commit d2e464b)
 
-**Criteria.** The app's score is `100 * sum(w_c * x_c/5) / sum_present(w_c)` with one value per (site, criterion). TerraAnalog fidelity is a similarity to a specific reference, so the export uses **reference-specific criteria** `<REF_ID>.<feature>` (11 features x 14 references = 154) with `x = 5 x similarity`. `body_weights` = 1 for criteria of that body's references, `reference_multipliers[ref]` = 0 for the other references of the same body, and each objective's multipliers are the TerraAnalog mission-profile feature weights (`general` = equal weights; it is not a TerraAnalog profile). With this setup the app's live score for (reference, profile) equals the published fidelity in `analog_rankings.csv`. `min_completeness` = 0.5 (the lowest TerraAnalog pair completeness is 0.70, so no published score is suppressed).
+**Criteria.** The app's score is `100 * sum(w_c * x_c/5) / sum_present(w_c)` with one value per (site, criterion). TerraAnalog fidelity is a similarity to a specific reference, so the export uses **reference-specific criteria** `<REF_ID>.<feature>` (11 features x 14 references = 154) with `x = 5 x similarity`. `body_weights` = 1 for criteria of that body's references, `reference_multipliers[ref]` = 0 for the other references of the same body, and each objective's multipliers are the TerraAnalog mission-profile feature weights, **listed only for that profile's own body** (a Moon profile has no multipliers for Mars criteria, so applying it to a Mars reference falls back to equal weights; the app flags that combination). `general` = equal weights; it is not a TerraAnalog profile.
+
+**Published scores and ties.** `analog_rankings.csv` scores are recomputed by this script from the exported values (4 dp) with the app's formula, in config criteria order, and stored at 4 dp (completeness at 3 dp). Recomputing from `analog_features.csv` therefore reproduces them to within 0.00005 (rounding of the 4th decimal). They differ from the package's own fidelity in `data/processed/pair_scores.csv` (stored at 2 dp) by at most the amount stated in the CSV banner (about 0.006, mostly that 2 dp rounding); the export stops if the difference exceeds 0.01. Ranks use the deterministic key (-score, -completeness, site_id), the same key as the app. `min_completeness` = 0.5 (the lowest TerraAnalog pair completeness is 0.70, so no published score is suppressed).
 **Operational separation.** `operational_suitability` (= operational score / 20) has weight 0 everywhere. It is displayed and is never part of fidelity.
 
 **value_type mapping** (TerraAnalog provenance -> app):
@@ -157,10 +159,27 @@ Thermal values are always `modeled`, even where the reference temperature is a p
 
 `mission_objectives` lists the TerraAnalog profiles where the site ranks in the top quartile (rank <= 7 of 28).
 
-**Known contract mismatches.**
-1. 155 criteria instead of a handful. This keeps the app's live score identical to the TerraAnalog fidelity, at the cost of long criterion lists in the UI. The app may group criteria by the extra `ref_id` and `feature` keys on each criterion.
-2. `region` is empty, because no region field was sourced.
-3. `imagery` is null, because no licensed imagery was gathered.
-4. `gazetteer_feature_id` is null, because the USGS Gazetteer was not queried by this package.
-5. `diameter_km` is null except where a fetched source states it.
-6. `target_bodies` lists both bodies for every site, because every site is scored against both.
+**Evidence.** Every (site, criterion) has at least one evidence item. Where the value is missing the item starts with "No evidence: value missing -" and states why. Wikipedia quotes whose plain-text extract contained empty parentheses (where pronunciation markup was dropped) have them removed and are flagged in the statement. Citations with no named author in the DOI metadata use the registrant/publisher (e.g. "European Space Agency (2022) Copernicus DEM"); authors are never invented.
+
+**Operational confidence.** `confidence` of `operational_suitability` = weighted mean of component confidences over the components present (same weights as the operational score: access 0.30, trafficability 0.20, climate workability 0.20, regulatory 0.15, infrastructure 0.15), multiplied by operational completeness. Component confidences: access 0.5 (Natural Earth major roads, an upper bound) or 0.3 when the distance is censored; trafficability 0.85 (DEM-derived); climate workability 0.70 (ERA5, modeled); regulatory/infrastructure 0.75 when a supporting sentence was found in the fetched source, else 0.30 (hypothesized).
+
+**Fine sediment fallback.** Where the SoilGrids point pixel is masked, the nearest valid 250 m pixel within 10 km is used (scripts/02b_soilgrids_nearby.py). It is not interpolated, the distance is reported in the evidence, and confidence drops by 0.1 (to 0.60).
+
+**Region, imagery, gazetteer, climate classes.**
+* `region`: Natural Earth 1:10m admin-1 unit containing the sampling point (scripts/02c_admin_region.py). Antarctica has no admin-1 units.
+* `imagery`: the lead image of the site's Wikipedia article, kept only if its Wikimedia Commons licence is public domain, CC0, CC BY, CC BY-SA or the Free Art License. Licence, author, file page and an HTTP 200 check are recorded (scripts/01b_imagery.py); sites without such an image stay null.
+* `gazetteer_feature_id`: the USGS/IAU Gazetteer of Planetary Nomenclature ID (scripts/03b_gazetteer.py). The match is either "exact" (the reference is the named feature) or "containing" (the reference lies inside a named mare or planitia). For exact matches `diameter_km` is the official Gazetteer diameter, and the Wikipedia diameter is kept as `diameter_wiki_km`. Containing matches have a null diameter.
+* `climate_class`: Koppen-Geiger type per Peel et al. (2007), doi:10.5194/hess-11-1633-2007, Table 1 (B tested first; Cs/Cw and Ds/Dw ties broken by half-year precipitation). It is computed from ERA5 1991-2020 monthly normals of the 0.25 deg grid cell, so it describes the grid cell (with its own elevation), not necessarily the exact point.
+* `aridity_class`: ERA5 P/ET0 classed with the UNEP scheme as tabulated by Zomer et al. (2022), doi:10.1038/s41597-022-01493-1: <0.03 hyper-arid, 0.03-0.2 arid, 0.2-0.5 semi-arid, 0.5-0.65 dry sub-humid, >0.65 humid. Cold polar sites can class as "humid" because ET0 is very small; read it together with `climate_class`.
+
+**Values that remain missing (not imputed; see supplementary/data_gaps.csv).**
+* `dust_sediment`: no Mars reference has a sourced silt+clay fraction, and EA-004 (McMurdo Dry Valleys) has no valid SoilGrids pixel within 10 km.
+* `resource`: seven sites have no resource tag supported by their fetched text, and MARS-REF-06 (Arsia Mons) has none either.
+* `thermal`: MOON-REF-07 (Apollo 11 site). Only a temperature range was found in the sources read, not a mean.
+* `abiotic_surface`: EA-004, because ESA WorldCover does not cover Antarctica.
+* `ruggedness`: EA-011 (Salar de Uyuni). The DEM has zero relief over the window, so the log ratio is undefined.
+
+**Known contract notes.**
+1. There are 155 criteria instead of a handful. This keeps the app's live score identical to the TerraAnalog fidelity, at the cost of long criterion lists in the UI; the app groups criteria by the extra `ref_id` and `feature` keys.
+2. `target_bodies` lists both bodies for every site, because every site is scored against both.
+3. Supplementary research files (not part of the 9-file contract) are in `supplementary/`: `data_gaps.csv`, `radar_chart_data.json`, `sensitivity_summary.json`, `analog_profile_rankings.csv` (profile-level ranking with the Monte Carlo `mc_*` columns) and `earth_analog_site_bounds.geojson` (approximate site extents, with `boundary_status`).
