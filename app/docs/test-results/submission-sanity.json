@@ -1,0 +1,132 @@
+{
+  "scope": "Committed contract and derived outputs; no new field validation or raw-raster retrieval.",
+  "checks": [
+    {
+      "name": "contract_valid",
+      "passed": true,
+      "details": {
+        "errors": 0,
+        "warnings": 0
+      }
+    },
+    {
+      "name": "research_not_synthetic",
+      "passed": true,
+      "details": "Research dataset"
+    },
+    {
+      "name": "catalog_counts",
+      "passed": true,
+      "details": {
+        "earth_sites": 28,
+        "planetary_references": 14,
+        "feature_values": 4340,
+        "published_rankings": 588,
+        "datasets": 40
+      }
+    },
+    {
+      "name": "mission_profiles",
+      "passed": true,
+      "details": "10 specialized profiles plus general mode"
+    },
+    {
+      "name": "feature_counts",
+      "passed": true,
+      "details": {
+        "provisional": 1673,
+        "measured": 770,
+        "modeled": 1519,
+        "missing": 378
+      }
+    },
+    {
+      "name": "missing_values_preserved",
+      "passed": true,
+      "details": "Missing is null; known values are never marked missing."
+    },
+    {
+      "name": "finite_feature_ranges",
+      "passed": true,
+      "details": [
+        0.0,
+        5.0
+      ]
+    },
+    {
+      "name": "earth_coordinate_ranges",
+      "passed": true,
+      "details": "WGS84 latitude/longitude ranges"
+    },
+    {
+      "name": "planet_coordinate_conventions",
+      "passed": true,
+      "details": "Body-fixed planetocentric coordinates, east-positive longitude"
+    },
+    {
+      "name": "earth_geometry_agrees_with_properties",
+      "passed": true,
+      "details": "Geometry order is longitude, latitude."
+    },
+    {
+      "name": "catalog_labels",
+      "passed": true,
+      "details": {
+        "baseline": 3,
+        "established": 10,
+        "candidate": 15
+      }
+    },
+    {
+      "name": "all_compatible_rankings",
+      "passed": true,
+      "details": {
+        "reference_objective_pairs": 84,
+        "site_scores_checked": 2352,
+        "issues": []
+      }
+    },
+    {
+      "name": "three_reviewed_cases",
+      "passed": true,
+      "details": [
+        "holuhraun-mobility",
+        "undara-cave-robotics",
+        "svalbard-polar-prospecting"
+      ]
+    },
+    {
+      "name": "same_reference_benchmarks",
+      "passed": true,
+      "details": "Case site and three benchmarks share the same target and objective."
+    },
+    {
+      "name": "case_sources_and_novelty",
+      "passed": true,
+      "details": "Novelty is bounded and sources remain attributed."
+    },
+    {
+      "name": "measurement_export_reproduces",
+      "passed": true,
+      "details": "Deterministic export of committed research CSV values, preserving nulls."
+    },
+    {
+      "name": "image_credits",
+      "passed": true,
+      "details": "Each catalog image has author/license attribution and source page."
+    }
+  ],
+  "passed": 17,
+  "failed": 0,
+  "input_sha256": {
+    "app/data/research/earth_analog_sites.geojson": "1da469730502722ce8486074294acea6c67b08e3393448a0109e3bc04cb7e383",
+    "app/data/research/planetary_reference_sites.geojson": "afefe9b1c9581fd06cace74a4380ddc610f29947a7df37e46aeeb56b034ab434",
+    "app/data/research/analog_features.csv": "2e0e8a7f03716ec0e62029f26be3aacb32baaf4e952c566833fd2289bcf1f038",
+    "app/data/research/analog_rankings.csv": "e9d8af4fd9e981e16615e16f7c7a20a654f18b6caed3d287b819283c324f1fe9",
+    "app/data/research/dataset_catalog.csv": "be78cdf8e859b2bd24d1ab0bf6aae5fc92a0ebd4c6e59715954c77fff128b3b8",
+    "app/data/research/site_evidence.json": "c8fcf2aead99ca59cde1f1a9b9ea3454bc8952ee6b2204d9a4d69e7456cc777f",
+    "app/data/research/scoring_config.json": "f8ca201d60b3d16ac4d90a30e15e94fb79b3b52caa568dfe6d73dd54b33dc7ad",
+    "app/data/research/scientific_methodology.md": "f4bce1f07b6eb66016fe7bdb5b6b938a1c03cf94a0ac4a9f7e1529385a7831ea",
+    "app/data/research/source_references.md": "602296b0cb622aca41a92729873f7506dff9912552368b6fd4b081bc68612f12"
+  }
+}

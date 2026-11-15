@@ -1,0 +1,71 @@
+{
+  "data_dir": "data/research",
+  "rows_published": 588,
+  "rows_compared": 588,
+  "rows_unscorable": 0,
+  "score_abs_diff_unrounded": {
+    "max": 4.737e-05,
+    "mean": 1.093e-05,
+    "median": 0.0,
+    "within_0.05": 588,
+    "within_0.01": 588
+  },
+  "score_abs_diff_display_1dp": {
+    "max": 0.05,
+    "mean": 0.0258,
+    "exact": 4
+  },
+  "completeness_abs_diff": {
+    "max": 0.0,
+    "mean": 0.0
+  },
+  "rank_agreement": {
+    "compared": 588,
+    "mismatches": 0,
+    "examples": []
+  },
+  "pairs": 21,
+  "worst_rows": [
+    {
+      "ref_id": "MOON-REF-05",
+      "objective": "MOON_LAVA_TUBE",
+      "site_id": "EA-011",
+      "published": 32.1711,
+      "engine_raw": 32.1711,
+      "abs_diff": 4.7368421057569776e-05
+    },
+    {
+      "ref_id": "MOON-REF-04",
+      "objective": "MOON_ISRU_ICE",
+      "site_id": "EA-011",
+      "published": 13.8711,
+      "engine_raw": 13.8711,
+      "abs_diff": 4.736842105579342e-05
+    },
+    {
+      "ref_id": "MARS-REF-06",
+      "objective": "MARS_LAVA_TUBE",
+      "site_id": "EA-027",
+      "published": 16.6211,
+      "engine_raw": 16.6211,
+      "abs_diff": 4.736842105401706e-05
+    },
+    {
+      "ref_id": "MARS-REF-06",
+      "objective": "MARS_LAVA_TUBE",
+      "site_id": "EA-017",
+      "published": 15.0211,
+      "engine_raw": 15.0211,
+      "abs_diff": 4.736842105401706e-05
+    },
+    {
+      "ref_id": "MOON-REF-04",
+      "objective": "MOON_ISRU_ICE",
+      "site_id": "EA-016",
+      "published": 8.7589,
+      "engine_raw": 8.7589,
+      "abs_diff": 4.7368421052240706e-05
+    }
+  ],
+  "problems": []
+}
