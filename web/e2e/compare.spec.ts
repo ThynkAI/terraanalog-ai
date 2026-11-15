@@ -39,3 +39,29 @@ test("sensitivity and discovery views render charts", async ({ page }) => {
   await expect(page.getByText("Cluster membership")).toBeVisible();
   await expect(page.locator(".recharts-scatter").first()).toBeVisible();
 });
+
+test("PDF report: download link returns a generated PDF for the current comparison", async ({ page, request }) => {
+  await page.goto("/compare?ids=CA-HAU,AQ-MDV&ref=moon-shackleton&obj=rover_mobility");
+  const link = page.getByTestId("export-pdf");
+  await expect(link).toBeVisible();
+  const href = (await link.getAttribute("href"))!;
+  expect(href).toContain("/api/export/compare.pdf");
+  expect(href).toContain("ref_id=moon-shackleton");
+  const res = await request.get(href);
+  expect(res.status()).toBe(200);
+  expect(res.headers()["content-type"]).toContain("application/pdf");
+  const body = await res.body();
+  expect(body.subarray(0, 5).toString()).toBe("%PDF-");
+  const [download] = await Promise.all([page.waitForEvent("download"), link.click()]);
+  expect(download.suggestedFilename()).toMatch(/^terraanalog_report_moon-shackleton_rover_mobility\.pdf$/);
+});
+
+test("discovery: deck.gl cluster-arc map renders a WebGL canvas with an accessible summary", async ({ page }) => {
+  await page.goto("/compare?tab=discovery&ref=moon-shackleton");
+  const map = page.getByTestId("cluster-arc-map");
+  await map.scrollIntoViewIfNeeded();
+  await expect(map.locator("canvas").first()).toBeVisible();
+  await expect.poll(async () => map.locator("canvas").count()).toBeGreaterThanOrEqual(2); // MapLibre + deck.gl overlay
+  await expect(map.getByRole("img")).toHaveAttribute("aria-label", /cluster 1 anchored at/);
+  await expect(page.getByText(/Moon\/Mars coordinates are never drawn on Earth/)).toBeVisible();
+});

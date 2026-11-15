@@ -1,2 +1,2 @@
- Test Files  1 passed (1)
-      Tests  11 passed (11)
+ Test Files  2 passed (2)
+      Tests  14 passed (14)

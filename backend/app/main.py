@@ -15,6 +15,7 @@ from .analysis import clusters, sensitivity
 from .loader import DataStore, get_store
 from .models import RecommendRequest
 from .recommend import recommend
+from .report import build_compare_pdf
 from .scoring import ScoringError, parse_weights, rank_sites, score_site
 
 VERSION = "1.0.0"
@@ -345,6 +346,17 @@ def export_compare(ids: str = Query(..., max_length=400), ref_id: Optional[str] 
                         round(b.effective_weight, 4), "" if b.contribution is None else b.contribution, b.source_id])
     return Response(buf.getvalue(), media_type="text/csv",
                     headers={"Content-Disposition": f'attachment; filename="terraanalog_compare_{ref.ref_id}_{obj}.csv"'})
+
+
+@app.get("/api/export/compare.pdf")
+def export_compare_pdf(ids: str = Query(..., max_length=400), ref_id: Optional[str] = Query(None, pattern=ID_RE),
+                       objective: Optional[str] = Query(None, pattern=ID_RE), weights: Optional[str] = Query(None, max_length=400)):
+    """Site Comparison Report as a generated PDF (same data and validation as /api/compare)."""
+    st = _store()
+    sids, ref, obj, ranked = _compare(st, ids, ref_id, objective, weights)
+    pdf = build_compare_pdf(st, sids, ref, obj, ranked, _weights(st, weights))
+    return Response(pdf, media_type="application/pdf",
+                    headers={"Content-Disposition": f'attachment; filename="terraanalog_report_{ref.ref_id}_{obj}.pdf"'})
 
 
 @app.get("/api/datasets")

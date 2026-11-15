@@ -29,7 +29,7 @@ function graticule(step = 30) {
   return { type: "FeatureCollection", features: lines } as GeoJSON.FeatureCollection;
 }
 
-function buildStyle(): StyleSpecification {
+export function buildStyle(): StyleSpecification {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const land = feature(land110 as any, (land110 as any).objects.land) as unknown as GeoJSON.FeatureCollection;
   return {

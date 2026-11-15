@@ -14,8 +14,16 @@
   backend URL never shipped to the client, `API_URL` changeable at container runtime).
 * **No database.** The dataset is small (tens–hundreds of sites); files are parsed into memory and **hot-reloaded when their mtime
   changes**, so Bot 1 can overwrite files without restarts. PostGIS would be the next step only if datasets grow to raster/AOI scale.
-* **No deck.gl**: MapLibre's native globe projection + DOM markers covered every requirement and keeps markers keyboard-focusable;
-  deck.gl remains an option for dense raster/heatmap layers later.
+* **deck.gl only where it adds something**: the Earth Analog Explorer keeps MapLibre's native globe + DOM markers (keyboard-focusable,
+  screen-reader friendly). The Comparison Lab's *Analog Discovery* tab adds a deck.gl 9 map (`@deck.gl/mapbox` `MapboxOverlay` on an
+  offline MapLibre basemap) with an **ArcLayer** linking each feature-space cluster member to its anchor (highest score vs the selected
+  reference), a **ScatterplotLayer** (colour = cluster, radius = score) and a **TextLayer** for anchors. It shows that similar
+  environments are spread across continents, which the 2-D feature scatter cannot. Only Earth (WGS84) coordinates are drawn; planetary
+  references are never projected onto Earth. Anchor/arc logic is a pure function (`web/lib/clusterArcs.ts`) with unit tests.
+* **PDF reports are generated server-side** with ReportLab (`backend/app/report.py`, `GET /api/export/compare.pdf`): same inputs and
+  validation as `/api/compare`; includes the synthetic-data banner, reference coordinates + citation, scores with plausible ranges,
+  completeness/confidence, criterion matrix with value types (missing shown as missing), per-criterion breakdown with sources,
+  site limitations and what Earth cannot replicate. The browser print view remains as a secondary option.
 
 ## Backend modules (`backend/app/`)
 | Module | Responsibility |

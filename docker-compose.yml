@@ -8,11 +8,11 @@ services:
       TERRA_CORS_ORIGINS: ${TERRA_CORS_ORIGINS:-http://localhost:3000}
     volumes:
       - ./data/real:/app/data/real:ro
-    ports: ["8000:8000"]
+    ports: ["${API_PORT:-8000}:8000"]
   web:
     build: { context: ./web }
     environment:
       API_URL: http://api:8000
-    ports: ["3000:3000"]
+    ports: ["${WEB_PORT:-3000}:3000"]
     depends_on:
       api: { condition: service_healthy }

@@ -5,7 +5,8 @@ ready for either option below.
 
 ## Option A — single Docker host (simplest; e.g. a VM, Fly.io machine, Render, Railway)
 ```bash
-docker compose up --build -d          # UI :3000, API :8000
+docker compose up --build -d          # UI :3000, API :8000 (verified 2026-11-15 with Docker Compose v5.7.1 on host ports 18000/13000)
+API_PORT=18000 WEB_PORT=13000 docker compose up --build -d   # alternative host ports
 ```
 * `web` image: Next.js standalone server (`node server.js`), env `API_URL=http://api:8000`.
 * `api` image: FastAPI + uvicorn, env `TERRA_DATA_DIR` (fixtures by default), healthcheck on `/api/health`.
@@ -27,3 +28,8 @@ docker compose up --build -d          # UI :3000, API :8000
 
 ## Build verification performed on the build box
 See `docs/TEST_RESULTS.md` for whether the Docker images were built/run in this environment.
+
+## Local without Docker (incl. Windows)
+See the README *Quick start*: `./scripts/setup.sh` (macOS/Linux) or
+`powershell -ExecutionPolicy Bypass -File scripts\setup.ps1` (Windows PowerShell 5.1/7). `npm start` reads `PORT` from the environment,
+so no shell-specific syntax is needed.

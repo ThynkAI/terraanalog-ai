@@ -1,4 +1,5 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import { buildQuery, useApi } from "@/lib/api";
 import { fmtLat, fmtLonEarth, num, paramToWeights, pct, weightsToParam } from "@/lib/format";
@@ -8,6 +9,8 @@ import { BreakdownBar, ClusterScatter, DistributionChart, RadarCompare, RankingC
 import { useMeta } from "@/components/MetaContext";
 import { ObjectiveSelect, ReferenceSelect } from "@/components/Selectors";
 import { ErrorNote, Loading, PageHeader, ScoreBar, StatusPill, ValueTypeBadge } from "@/components/ui";
+
+const ClusterArcMap = dynamic(() => import("@/components/ClusterArcMap"), { ssr: false, loading: () => <div className="aspect-[5/4] animate-pulse rounded-lg bg-white/5" /> });
 
 const TABS = [
   { id: "compare", label: "Side-by-side comparison" },
@@ -74,7 +77,7 @@ export default function CompareClient() {
         {tab === "compare" && <CompareTab ids={ids} refId={ref} obj={obj} wParam={wParam} />}
         {tab === "weights" && <WeightLab refId={ref} obj={obj} weights={weights} setWeights={(w) => u.set({ w: weightsToParam(w) || null })} />}
         {tab === "sensitivity" && <SensitivityTab refId={ref} obj={obj} wParam={wParam} />}
-        {tab === "discovery" && <DiscoveryTab />}
+        {tab === "discovery" && <DiscoveryTab refId={ref} obj={obj} />}
       </div>
     </div>
   );
@@ -95,12 +98,15 @@ function CompareTab({ ids, refId, obj, wParam }: { ids: string[]; refId: string;
   if (error) return <ErrorNote error={error} />;
   if (loading && !data) return <div className="panel p-4"><Loading rows={10} /></div>;
   if (!data) return null;
-  const exportUrl = `/api/export/compare.csv${buildQuery({ ids: ids.join(","), ref_id: refId, objective: obj, weights: wParam || undefined })}`;
+  const q = buildQuery({ ids: ids.join(","), ref_id: refId, objective: obj, weights: wParam || undefined });
+  const exportUrl = `/api/export/compare.csv${q}`;
+  const pdfUrl = `/api/export/compare.pdf${q}`;
   return (
     <div className="space-y-4" data-testid="compare-view">
       <div className="no-print flex flex-wrap items-center gap-2">
         <a className="btn" href={exportUrl} download>⬇ Export CSV report</a>
-        <button className="btn" onClick={() => window.print()}>🖨 Print / Save as PDF</button>
+        <a className="btn btn-primary" href={pdfUrl} download data-testid="export-pdf">⬇ Download PDF report</a>
+        <button className="btn" onClick={() => window.print()}>🖨 Print view</button>
         <button className="btn" onClick={() => navigator.clipboard?.writeText(window.location.href)}>Copy deep link</button>
         <span className="text-xs text-lunar-400">Report: {data.reference_name} · {meta?.objectives.find((o) => o.id === obj)?.label}{wParam ? ` · custom weights (${wParam})` : ""}</span>
       </div>
@@ -286,8 +292,9 @@ function SensitivityTab({ refId, obj, wParam }: { refId: string; obj: string; wP
   );
 }
 
-function DiscoveryTab() {
+function DiscoveryTab({ refId, obj }: { refId: string; obj: string }) {
   const { meta } = useMeta();
+  const scored = useApi<{ sites: Site[] }>("/sites", { ref_id: refId, objective: obj });
   const [k, setK] = useState(4);
   const [x, setX] = useState("thermal");
   const [y, setY] = useState("terrain");
@@ -304,6 +311,7 @@ function DiscoveryTab() {
     .filter(([, v]) => v[x]?.v !== null && v[x]?.v !== undefined && v[y]?.v !== null && v[y]?.v !== undefined)
     .map(([sid, v]) => ({ x: v[x].v as number, y: v[y].v as number, cluster: cl.data?.assignments[sid] ?? 0, name: nm[sid] ?? sid }));
   const excluded = Object.keys(values).length - points.length;
+  const geo = useMemo(() => (cl.data && scored.data ? scored.data.sites.filter((s) => s.site_id in cl.data!.assignments).map((s) => ({ site_id: s.site_id, name: s.name, lat: s.lat, lon: s.lon, score: s.score ?? null, cluster: cl.data!.assignments[s.site_id] })) : []), [cl.data, scored.data]);
   const dist = (meta?.criteria ?? []).map((c) => c.id);
   const [dc, setDc] = useState("ice_permafrost");
   const hist = [0, 1, 2, 3, 4, 5].map((b) => {
@@ -342,7 +350,11 @@ function DiscoveryTab() {
           ))}
         </ul>
       </section>
-      <section className="panel p-4 lg:col-span-12" aria-labelledby="dist-h">
+      <section className="panel p-4 lg:col-span-7" aria-labelledby="geo-h">
+        <h2 id="geo-h" className="panel-title mb-2">Where the clusters are — similar environments across the globe</h2>
+        <ClusterArcMap sites={geo} />
+      </section>
+      <section className="panel p-4 lg:col-span-5" aria-labelledby="dist-h">
         <div className="mb-2 flex flex-wrap items-end justify-between gap-2">
           <h2 id="dist-h" className="panel-title">Feature distribution across all sites (stacked by value type)</h2>
           <div className="w-60"><label className="label" htmlFor="dc">Criterion</label><select id="dc" className="select" value={dc} onChange={(e) => setDc(e.target.value)}>{dist.map((c) => <option key={c} value={c}>{lbl(c)}</option>)}</select></div>

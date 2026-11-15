@@ -17,16 +17,20 @@ const shots = [
   { name: "07-weight-lab", url: "/compare?tab=weights&ref=moon-shackleton&obj=general&w=operational:2.5,illumination:0.3", wait: "[data-testid=weightlab-table]", settle: 1500 },
   { name: "08-sensitivity", url: "/compare?tab=sensitivity&ref=mars-gale&obj=rover_mobility", wait: "text=Rank stability", settle: 2000 },
   { name: "09-discovery-clusters", url: "/compare?tab=discovery", wait: "text=Cluster membership", settle: 2000 },
+  { name: "15-discovery-deckgl-cluster-arcs", url: "/compare?tab=discovery&ref=moon-shackleton", wait: "[data-testid=cluster-arc-map] canvas", settle: 4000, after: async (p) => { await p.locator("[data-testid=cluster-arc-map]").scrollIntoViewIfNeeded(); }, clip: "[data-testid=cluster-arc-map]" },
   { name: "10-methodology", url: "/methodology", wait: "text=Body weights", settle: 1500 },
   { name: "11-data-provenance", url: "/data", wait: "text=Dataset catalog", settle: 1500 },
   { name: "12-impact-team", url: "/impact", wait: "text=Roadmap", settle: 500 },
 ];
 
+// ONLY=06,09 captures a subset (prefix match) without touching the other screenshots.
+const ONLY = (process.env.ONLY || "").split(",").filter(Boolean);
+const want = (n) => !ONLY.length || ONLY.some((o) => n.startsWith(o));
 const browser = await chromium.launch({ args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"] });
 const results = [];
 for (const viewport of [{ w: 1600, h: 1000, tag: "" }]) {
   const ctx = await browser.newContext({ viewport: { width: viewport.w, height: viewport.h }, deviceScaleFactor: 1 });
-  for (const s of shots) {
+  for (const s of shots.filter((x) => want(x.name))) {
     const page = await ctx.newPage();
     try {
       await page.goto(BASE + s.url, { waitUntil: "networkidle", timeout: 60000 });
@@ -34,7 +38,8 @@ for (const viewport of [{ w: 1600, h: 1000, tag: "" }]) {
       if (s.after) await s.after(page);
       await page.waitForTimeout(s.settle ?? 800);
       const file = path.join(OUT, `${s.name}${viewport.tag}.png`);
-      await page.screenshot({ path: file, fullPage: s.name.startsWith("02") || s.name.startsWith("03") ? false : true });
+      if (s.clip) await page.locator(s.clip).screenshot({ path: file });
+      else await page.screenshot({ path: file, fullPage: s.name.startsWith("02") || s.name.startsWith("03") ? false : true });
       results.push(["ok", file]);
     } catch (e) {
       results.push(["FAILED", s.name, String(e).split("\n")[0]]);
@@ -45,7 +50,7 @@ for (const viewport of [{ w: 1600, h: 1000, tag: "" }]) {
 }
 // mobile
 const mctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
-for (const s of [{ name: "13-mobile-explorer", url: "/explorer?ref=moon-shackleton&site=CA-HAU", wait: "[data-testid=site-detail]" }, { name: "14-mobile-overview", url: "/", wait: "text=Top matches · Shackleton" }]) {
+for (const s of [{ name: "13-mobile-explorer", url: "/explorer?ref=moon-shackleton&site=CA-HAU", wait: "[data-testid=site-detail]" }, { name: "14-mobile-overview", url: "/", wait: "text=Top matches · Shackleton" }].filter((x) => want(x.name))) {
   const page = await mctx.newPage();
   try {
     await page.goto(BASE + s.url, { waitUntil: "networkidle", timeout: 60000 });

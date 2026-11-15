@@ -9,7 +9,7 @@ Setup before going on stage: app running (`./scripts/dev.sh` or Docker), browser
 | 0:45–1:20 | **Moon Reference Explorer** `/moon` | Click **Shackleton crater vicinity**. Show LRO WAC imagery, coordinates −89.67°, 129.78°E, the polar stereographic inset on the 1737.4 km lunar sphere (≈10 km from the pole). Switch objective to **ISRU** — Analog Match Explorer re-ranks: McMurdo Dry Valleys, Axel Heiberg, Devon Island. |
 | 1:20–1:55 | **Earth Analog Explorer** | Click *Open in Earth Explorer*. Rotate the globe, switch basemap to **Satellite (NASA Blue Marble)**, toggle 2D. Click Haughton marker → detail: score, completeness, confidence, transparent breakdown table; open **Evidence inspector** → value type + source + citation slot. Tick compare boxes on 3 sites. |
 | 1:55–2:35 | **Comparison Lab** | Radar + side-by-side table (badges show provisional vs synthetic vs **missing**). Rio Tinto: "two criteria missing → completeness 78 %, the score shows a range, not false precision." Open **Custom Weight Lab**: drag *Operational testing* up → rankings move live with ▲▼. **Sensitivity** tab: rank-stability bars. |
-| 2:35–2:50 | Export & share | Click **Export CSV report** and **Copy deep link** — "every view is shareable." |
+| 2:35–2:50 | Export & share | Click **Download PDF report** (generated server-side), **Export CSV report** and **Copy deep link** — "every view is shareable." |
 | 2:50–3:00 | Close | "Drop the research bot's files into one folder and the whole platform updates — no code changes. Earth as a testbed, with the evidence on the table." |
 
 Backup if network/tiles fail: the Earth map falls back to the offline Natural Earth basemap; the planetary viewer shows its schematic
