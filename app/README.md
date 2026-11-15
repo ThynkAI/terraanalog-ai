@@ -107,6 +107,12 @@ Free Render services sleep when idle; the first request after a pause can take a
 - [Pitch](docs/PITCH.md) · [3-minute demo script](docs/DEMO_SCRIPT.md) · [Presentation outline](docs/PRESENTATION_OUTLINE.md)
 - [Test results](docs/TEST_RESULTS.md) · [Screenshots](docs/screenshots/)
 
+## Development and use of AI
+
+TerraAnalog AI was conceived, specified and directed by the team. Deep Kanabar wrote the project specification, set the scientific and data-integrity rules, and directed, reviewed and validated all output. AI coding assistants were used to help write code, documentation and data-processing scripts under that direction.
+
+The deployed application uses no generative AI at runtime. Scores are produced by a deterministic, explainable engine, and every value traces to a cited source. Missing measurements are shown as missing; they are never invented.
+
 ## Licence
 Code: [MIT](LICENSE) (copyright 2026 Deep Kanabar / ThynkAI). Data files keep their upstream licences, and research text and derived values are CC BY 4.0 unless upstream says otherwise. See *Licence and data terms* in the monorepo README (https://github.com/ThynkAI/terraanalog-ai).
 

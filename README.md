@@ -209,6 +209,12 @@ For each mission profile, a site's fidelity is `100 · Σ wᵢ·simᵢ / Σ wᵢ
 * The repo root is the research package root; the web app lives in `app/` (added with its own commit history via `git subtree`). A zip of the package (without `data/raw/`) is produced as `terraanalog_package.zip`.
 * Commits were pushed with `git` over HTTPS using the box's `gh` credential helper, not the GitHub MCP `push_files` tool, because that tool cannot carry binary PNGs or more than four file substitutions per call.
 
+## Development and use of AI
+
+TerraAnalog AI was conceived, specified and directed by the team. Deep Kanabar wrote the project specification, set the scientific and data-integrity rules, and directed, reviewed and validated all output. AI coding assistants were used to help write code, documentation and data-processing scripts under that direction.
+
+The deployed application uses no generative AI at runtime. Scores are produced by a deterministic, explainable engine, and every value traces to a cited source. Missing measurements are shown as missing; they are never invented.
+
 ## Licence and data terms
 
 * **Code** (research pipeline `scripts/`, the web app in `app/`, configs and tests): [MIT License](LICENSE), copyright 2026 Deep Kanabar / ThynkAI.
