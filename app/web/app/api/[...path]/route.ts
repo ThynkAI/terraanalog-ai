@@ -35,7 +35,7 @@ async function forward(req: NextRequest, path: string[], method: "GET" | "POST")
     headers.set("cache-control", "no-store");
     return new NextResponse(await res.arrayBuffer(), { status: res.status, headers });
   } catch {
-    return NextResponse.json({ detail: "Data service unavailable. Start the FastAPI backend (see README)." }, { status: 502 });
+    return NextResponse.json({ detail: "The research service is temporarily unavailable or waking from inactivity. Please retry shortly." }, { status: 502 });
   }
 }
 

@@ -1,47 +1,57 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState, useId } from "react";
 import { apiPost } from "@/lib/api";
 import { EXAMPLE_QUERIES } from "@/lib/constants";
 import type { RecommendResponse } from "@/lib/types";
 import { AnalogTypeChip, ErrorNote, ScoreBar } from "./ui";
 
 export function RecommendPanel({ compact = false, onPick }: { compact?: boolean; onPick?: (siteId: string, refId: string, objective: string) => void }) {
+  const inputId = useId();
+  const titleId = useId();
+  const controller = useRef<AbortController | null>(null);
+  useEffect(() => () => controller.current?.abort(), []);
   const [q, setQ] = useState("");
   const [res, setRes] = useState<RecommendResponse | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
   const run = async (query: string) => {
+    controller.current?.abort();
+    const request = new AbortController();
+    controller.current = request;
+    setRes(null);
     setQ(query);
     setBusy(true);
     setErr(null);
     try {
-      setRes(await apiPost<RecommendResponse>("/recommend", { query, top_k: compact ? 3 : 5 }));
+      const result = await apiPost<RecommendResponse>("/recommend", { query, top_k: compact ? 3 : 5 }, request.signal);
+      if (!request.signal.aborted) setRes(result);
     } catch (e) {
-      setErr((e as Error).message);
+      if (!request.signal.aborted) setErr((e as Error).message);
     } finally {
-      setBusy(false);
+      if (!request.signal.aborted) setBusy(false);
     }
   };
 
   return (
-    <section aria-labelledby="rec-h" className="panel p-4" data-testid="recommend-panel">
-      <h2 id="rec-h" className="panel-title">Explainable recommendation engine</h2>
+    <section aria-labelledby={titleId} className="panel p-4" data-testid="recommend-panel">
+      <h2 id={titleId} className="panel-title">Explainable recommendation engine</h2>
       <p className="mt-1 text-xs text-lunar-400">
         Plain-language intent → structured filters → documented scoring. Deterministic; no generative model invents sites, values or citations.
       </p>
       <form className="mt-3 flex flex-col gap-2 sm:flex-row" onSubmit={(e) => { e.preventDefault(); if (q.trim()) run(q.trim()); }}>
-        <label htmlFor="rec-q" className="sr-only">Describe your mission test</label>
-        <input id="rec-q" className="input" value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. Find Earth environments suitable for testing lunar polar rovers" maxLength={500} />
+        <label htmlFor={inputId} className="sr-only">Describe your mission test</label>
+        <input id={inputId} className="input" value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. Find Earth environments suitable for testing lunar polar rovers" maxLength={500} />
         <button className="btn btn-primary shrink-0" type="submit" disabled={busy || !q.trim()}>{busy ? "Analysing…" : "Recommend"}</button>
       </form>
       <div className="mt-2 flex flex-wrap gap-1.5" aria-label="Example queries">
         {EXAMPLE_QUERIES.slice(0, compact ? 3 : 5).map((ex) => (
-          <button key={ex} className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-lunar-300 hover:border-mars-400/60 hover:text-white" onClick={() => run(ex)}>{ex}</button>
+          <button key={ex} className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-lunar-300 hover:border-mars-400/60 hover:text-white" disabled={busy} onClick={() => run(ex)}>{ex}</button>
         ))}
       </div>
-      <div aria-live="polite" className="mt-3">
+      <div aria-live="polite" aria-busy={busy} className="mt-3">
+        {busy && <p className="text-sm text-lunar-300" role="status">Comparing mission requirements with the research catalog…</p>}
         <ErrorNote error={err} />
         {res && (
           <div className="fade-in space-y-3">

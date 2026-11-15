@@ -90,6 +90,7 @@ export interface Site {
   lat: number;
   lon: number;
   analog_types: string[];
+  group?: "baseline" | "established" | "candidate";
   climate: string;
   climate_class?: string | null;
   aridity_class?: string | null;

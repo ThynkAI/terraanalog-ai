@@ -8,14 +8,15 @@ interface Ctx {
   refs: PlanetaryReference[];
   error: string | null;
   loading: boolean;
+  retry: () => void;
 }
-const MetaCtx = createContext<Ctx>({ meta: null, refs: [], error: null, loading: true });
+const MetaCtx = createContext<Ctx>({ meta: null, refs: [], error: null, loading: true, retry: () => {} });
 
 export function MetaProvider({ children }: { children: React.ReactNode }) {
   const m = useApi<Meta>("/meta");
   const r = useApi<{ references: PlanetaryReference[] }>("/planetary-references");
   return (
-    <MetaCtx.Provider value={{ meta: m.data, refs: r.data?.references ?? [], error: m.error || r.error, loading: m.loading || r.loading }}>
+    <MetaCtx.Provider value={{ meta: m.data, refs: r.data?.references ?? [], error: m.error || r.error, loading: m.loading || r.loading, retry: () => { m.retry(); r.retry(); } }}>
       {children}
     </MetaCtx.Provider>
   );

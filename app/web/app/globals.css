@@ -53,3 +53,18 @@ body {
   .panel { border: 1px solid #999 !important; background: #fff !important; box-shadow: none !important; color: #000 !important; break-inside: avoid; }
   .print-dark-text, .print-dark-text * { color: #000 !important; }
 }
+
+/* Mission-control overview: the globe uses the same real catalog as the explorer. */
+.mission-hero { position: relative; isolation: isolate; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 20px; background: #080e1c; }
+.mission-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1; background: linear-gradient(90deg,#080e1c 2%,rgba(8,14,28,.94) 33%,transparent 70%); }
+.hero-globe { position: absolute; inset: 0 0 0 38%; }
+.mission-card { display: block; min-width: 0; padding: 22px; border: 1px solid rgba(255,255,255,.1); border-radius: 12px; background: linear-gradient(145deg,rgba(26,37,64,.7),rgba(10,16,32,.8)); transition: border-color .2s, transform .2s; }
+.mission-card:hover { border-color: rgba(246,167,124,.5); transform: translateY(-3px); }
+@media (max-width: 1023px) {
+  .mission-hero::before { background: radial-gradient(ellipse at top left,rgba(103,212,238,.05),transparent 65%); }
+  .hero-globe { position: relative; inset: auto; height: 370px; border-top: 1px solid rgba(255,255,255,.08); }
+}
+@media (max-width: 639px) {
+  .hero-globe { height: 310px; }
+  .btn { min-height: 40px; }
+}

@@ -223,6 +223,7 @@ def validation():
 def list_sites(
     body: Optional[str] = Query(None, pattern="^(moon|mars)$"),
     analog_type: Optional[str] = Query(None, max_length=64),
+    catalog_group: Optional[str] = Query(None, pattern="^(baseline|established|candidate)$", description="Curated research label, not a claim of novelty or validation"),
     climate: Optional[str] = Query(None, max_length=64),
     aridity: Optional[str] = Query(None, max_length=64),
     geology: Optional[str] = Query(None, max_length=64),
@@ -262,6 +263,8 @@ def list_sites(
         if body and body not in s.target_bodies:
             continue
         if analog_type and analog_type not in s.analog_types:
+            continue
+        if catalog_group and getattr(s, "group", None) != catalog_group:
             continue
         if climate and not _climate_matches(s, climate):
             continue
