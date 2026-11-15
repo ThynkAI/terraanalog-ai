@@ -1,0 +1,56 @@
+{
+  "reviewed_on": "2026-11-15",
+  "review_scope": "Targeted source review, not a systematic literature review. No claim of first discovery or field validation.",
+  "cases": [
+    {
+      "id": "holuhraun-mobility", "site_id": "EA-006", "ref_id": "MARS-REF-03", "objective": "MARS_ROVER_MOBILITY",
+      "title": "Holuhraun: volcanic terrain for Mars mobility",
+      "question": "Can a basaltic field support terrain-navigation trials relevant to Elysium Planitia?",
+      "novelty_status": "Previously published analog",
+      "novelty_finding": "Voigt et al. (2025) explicitly compare Holuhraun and Elysium Planitia. The RAVEN project also documents exploration research here. This app contributes an auditable comparison, not discovery of the analog.",
+      "interpretation": "The literature supports the volcanic-process analogy. Use the regional terrain scores to shortlist navigation exercises, then survey the actual traverse. A regional DEM does not resolve wheel-scale obstacles.",
+      "limits": ["Elysium is outside the mobility profile's published Jezero/Gale reference set: this is an exploratory application of the same weights.", "The annual precipitation proxy is about 1332 mm: Holuhraun is not a hyperarid Martian climate substitute.", "Lava morphology, eruption scale, gravity and atmospheric conditions differ; an Earth field trial cannot qualify flight hardware."],
+      "stress_weights": {"slope": 0, "ruggedness": 0}, "stress_label": "Exclude regional slope and ruggedness",
+      "stress_reason": "Does the site's position depend primarily on broad terrain rather than geological or environmental agreement? Remaining features are renormalized; this is a diagnostic, not an improved score.",
+      "field_plan": ["Survey a permitted traverse with photogrammetry and record wheel-scale rock size and slope distributions.", "Measure slip and navigation error on specified terrain classes using a repeatable rover protocol.", "Document seasonal water/snow and compare the field patch with the regional sampling window."],
+      "sources": [
+        {"title": "Voigt et al. (2025), Holuhraun as an Elysium Planitia analog", "url": "https://pubs.usgs.gov/publication/70275623", "supports": "Published volcanic-process comparison; DOI 10.3847/PSJ/adb5f1."},
+        {"title": "University of Arizona RAVEN: Holuhraun field site", "url": "https://raven.lpl.arizona.edu/field-site-holuhraun-iceland", "supports": "Existing exploration research and lava–water interactions."}
+      ]
+    },
+    {
+      "id": "undara-cave-robotics", "site_id": "EA-016", "ref_id": "MOON-REF-06", "objective": "MOON_LAVA_TUBE",
+      "title": "Undara: a cave-robotics research lead",
+      "question": "Which terrestrial cave properties could support a lunar subsurface robotics experiment?",
+      "novelty_status": "Mission-use proposal; novelty unverified",
+      "novelty_finding": "Queensland Parks documents the lava-tube system and sediment-covered cave floors. This targeted review does not establish a first use for lunar robotics. A comprehensive literature search and site-authority review are still required.",
+      "interpretation": "Basaltic cave morphology motivates a robotics investigation. Regional surface terrain and climate are not measurements of the cave interior, entrance geometry, radio propagation or traversability.",
+      "limits": ["The Earth thermal input is modeled mean annual air temperature, not a measured cave temperature.", "The lunar ~290 K input describes a modeled permanently shadowed cave environment; it is not a direct subsurface temperature measurement or proof of a traversable tube.", "Regional woodland, cave sediment, Earth gravity and atmosphere differ from lunar conditions. Access and conservation requirements must be confirmed."],
+      "stress_weights": {"thermal": 0}, "stress_label": "Exclude the cave-temperature proxy",
+      "stress_reason": "Test whether the comparison remains useful without comparing regional Earth air temperature with a modeled lunar cave environment. Remaining features are renormalized.",
+      "field_plan": ["Obtain permission for a non-invasive cave survey and define a specific test chamber.", "Log interior temperature through time; survey entrance geometry and obstacle sizes rather than inferring them from a regional DEM.", "Test localization drift and communications loss with a repeatable, conservation-compatible robotics protocol."],
+      "sources": [
+        {"title": "Queensland Parks: Undara park resource information (2023)", "url": "https://parks.desi.qld.gov.au/__data/assets/pdf_file/0025/309931/Undara-Volcanic-National-Park-Resource-Information-2023.pdf", "supports": "Lava-tube geology, reported cave dimensions and sediment-covered floors; not robotics approval."},
+        {"title": "NASA: lunar pit thermal modeling (2022)", "url": "https://www.nasa.gov/solar-system/nasas-lro-finds-lunar-pits-harbor-comfortable-temperatures/", "supports": "Tranquillitatis pit observations and modeled thermal environment."},
+        {"title": "Horvath, Hayne & Paige (2022)", "url": "https://doi.org/10.1029/2022GL099710", "supports": "Distinction between Diviner observations and thermophysical cave models."}
+      ]
+    },
+    {
+      "id": "svalbard-polar-prospecting", "site_id": "EA-005", "ref_id": "MOON-REF-02", "objective": "MOON_ISRU_ICE",
+      "title": "Svalbard: polar operations with explicit limits",
+      "question": "Can an established Arctic analog inform a limited polar-prospecting field exercise?",
+      "novelty_status": "Established analog; lunar use exploratory",
+      "novelty_finding": "NASA and ESA document AMASE campaigns in Svalbard. The Bockfjord volcanic centers are described in the 2011 LPI analog-sites workshop. These sources establish prior analog use, not validation for lunar resource extraction.",
+      "interpretation": "Cold terrain and permafrost proxies motivate field-procedure tests. Permafrost probability is not water-ice concentration, mineable inventory or evidence that Earth material reproduces lunar regolith.",
+      "limits": ["The modeled permafrost probability is a regional proxy; it is not a borehole measurement of ice at this sampling point.", "Shackleton's representative region is not an approved base or a uniform resource deposit. Permanent shadow and cryogenic vacuum are not reproduced in Svalbard.", "Hydrothermal alteration, terrestrial biology and protection requirements limit geological and operational transfer."],
+      "stress_weights": {"ice": 0}, "stress_label": "Exclude the ice/permafrost proxy",
+      "stress_reason": "Reveal dependence on the strongest resource-related proxy. A changed rank measures assumption sensitivity, not confirmation or rejection of lunar resource suitability.",
+      "field_plan": ["Review existing AMASE work and identify a distinct procedure to test before proposing new field activity.", "Use permitted non-invasive geophysics and independent ground-temperature observations to check the regional proxy.", "Document contamination controls and compare sampling procedures without claiming lunar ice-extraction equivalence."],
+      "sources": [
+        {"title": "NASA Goddard: Arctic Mars Analogue Svalbard Expedition", "url": "https://science.gsfc.nasa.gov/sci/projects/247/", "supports": "Established Svalbard field campaigns and instrument/protocol testing."},
+        {"title": "ESA: Mars in the Arctic", "url": "https://www.esa.int/Enabling_Support/Preparing_for_the_Future/Space_for_Earth/Arctic/Mars_in_the_Arctic", "supports": "Svalbard permafrost, outcrops and rover-testing context."},
+        {"title": "LPI (2011): Analogue Sites for Mars Missions", "url": "https://www.lpi.usra.edu/lpi/contribution_docs/LPI-001612.pdf", "supports": "Sverrefjell/Sigurdfjell in the Bockfjord Volcanic Complex; prior analog use."}
+      ]
+    }
+  ]
+}

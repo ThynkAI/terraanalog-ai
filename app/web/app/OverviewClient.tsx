@@ -80,6 +80,10 @@ export default function OverviewClient() {
       </div>
 
       <MissionLaunch />
+      <section className="panel grid gap-4 p-5 sm:grid-cols-[1fr_auto] sm:items-center">
+        <div><p className="panel-title text-signal-cyan">Science in practice</p><h2 className="mt-2 text-xl font-semibold text-white">Three cases. Real trade-offs. Traceable evidence.</h2><p className="mt-2 max-w-3xl text-sm leading-relaxed text-lunar-300">Investigate Holuhraun, Undara and Svalbard against named planetary targets. Compare the challenge benchmarks, remove influential proxies, and inspect the measurements still needed.</p></div>
+        <Link className="btn btn-primary" href="/science">Read scientific case studies →</Link>
+      </section>
 
       <section className="panel grid gap-5 p-5 sm:grid-cols-[1fr_auto] sm:items-center" aria-labelledby="discovery-title">
         <div><p className="panel-title text-mars-300">Beyond the challenge benchmarks</p>

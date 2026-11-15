@@ -7,6 +7,7 @@ const PAGES = [
   { path: "/moon", h1: "Moon Reference Explorer" },
   { path: "/mars", h1: "Mars Reference Explorer" },
   { path: "/compare", h1: "Site Comparison Laboratory" },
+  { path: "/science", h1: "Scientific Case Studies" },
   { path: "/methodology", h1: "Scientific Methodology" },
   { path: "/data", h1: "Data Sources and Provenance" },
   { path: "/impact", h1: "Project Impact and Team" },

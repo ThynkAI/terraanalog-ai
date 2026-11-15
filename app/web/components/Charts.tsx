@@ -11,10 +11,13 @@ const axis = { stroke: "#8b94a5", fontSize: 11 };
 const tooltipStyle = { background: "#0d1426", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 8, fontSize: 12, color: "#e3e7ee" };
 
 export function RadarCompare({ data, series, height = 340, domain = [0, 5] }: { data: Record<string, string | number | null>[]; series: { key: string; name: string }[]; height?: number; domain?: [number, number] }) {
+  const completeRows = data.filter((row) => series.every((s) => row[s.key] != null));
+  const omitted = data.length - completeRows.length;
   return (
-    <div style={{ width: "100%", height }} role="img" aria-label={`Radar chart comparing ${series.map((s) => s.name).join(", ")} across criteria (${domain[0]}–${domain[1]}). Missing values are plotted at 0 and marked in the table.`}>
+    <div><p className="mb-2 text-xs text-lunar-300">{omitted ? `${omitted} incomplete criteria omitted from this radar for all sites; inspect the evidence table for missing values.` : "Radar uses criteria available for every selected site."} Missing values are never plotted as zero.</p>
+    <div style={{ width: "100%", height }} role="img" aria-label={`Radar chart comparing ${series.map((s) => s.name).join(", ")} across criteria (${domain[0]}–${domain[1]}). Incomplete criteria are omitted for all sites.`}>
       <ResponsiveContainer>
-        <RadarChart data={data} outerRadius="72%">
+        <RadarChart data={completeRows} outerRadius="72%">
           <PolarGrid stroke="rgba(255,255,255,0.12)" />
           <PolarAngleAxis dataKey="label" tick={{ fill: "#c9ced6", fontSize: 11 }} />
           <PolarRadiusAxis domain={domain} tickCount={6} tick={{ fill: "#8b94a5", fontSize: 10 }} angle={90} />
@@ -25,7 +28,7 @@ export function RadarCompare({ data, series, height = 340, domain = [0, 5] }: { 
           <Tooltip contentStyle={tooltipStyle} />
         </RadarChart>
       </ResponsiveContainer>
-    </div>
+    </div></div>
   );
 }
 

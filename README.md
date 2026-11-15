@@ -56,6 +56,10 @@ are covered in [`app/README.md`](app/README.md).
 
 All screenshots: [`app/docs/screenshots/`](app/docs/screenshots/). A sample generated PDF report: [`app/docs/samples/site-comparison-report-sample.pdf`](app/docs/samples/site-comparison-report-sample.pdf).
 
+## Scientific case studies
+
+Open **Science Cases** (`/science`) for three source-reviewed investigations: Holuhraun–Elysium mobility, Undara–Tranquillitatis cave robotics and Svalbard–Shackleton polar procedures. Each includes same-reference benchmark comparisons, regional measurements with spatial support, assumption stress tests, published evidence-strict summaries, source links and evidence exports. These are research investigations, not claims of new field-validated analog discoveries. See [`app/docs/SCIENTIFIC_CASE_REVIEW.md`](app/docs/SCIENTIFIC_CASE_REVIEW.md).
+
 ## How the AI works
 TerraAnalog AI is **explainable AI for decision support**. It does not use a chatbot or a large language model, so nothing can invent a site, a value or a citation.
 1. **Feature extraction (research pipeline):** open geospatial datasets (Copernicus DEM, ESA WorldCover, CHELSA, ERA5, SoilGrids,
