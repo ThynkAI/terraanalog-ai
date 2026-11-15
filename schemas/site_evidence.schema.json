@@ -1,0 +1,93 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "site_evidence.json",
+ "type": "object",
+ "required": [
+  "schema_version",
+  "earth_sites",
+  "planetary_references"
+ ],
+ "$defs": {
+  "tag": {
+   "type": "object",
+   "required": [
+    "tag",
+    "provenance"
+   ],
+   "properties": {
+    "tag": {
+     "type": "string"
+    },
+    "keyword": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "provenance": {
+     "enum": [
+      "literature",
+      "hypothesized"
+     ]
+    },
+    "quote": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "source": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   }
+  }
+ },
+ "properties": {
+  "earth_sites": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "site_id",
+     "coordinates",
+     "lithology",
+     "process",
+     "landform",
+     "resource",
+     "numeric_sources",
+     "limitations",
+     "confidence"
+    ],
+    "properties": {
+     "lithology": {
+      "type": "array",
+      "items": {
+       "$ref": "#/$defs/tag"
+      }
+     },
+     "process": {
+      "type": "array",
+      "items": {
+       "$ref": "#/$defs/tag"
+      }
+     },
+     "landform": {
+      "type": "array",
+      "items": {
+       "$ref": "#/$defs/tag"
+      }
+     },
+     "resource": {
+      "type": "array",
+      "items": {
+       "$ref": "#/$defs/tag"
+      }
+     }
+    }
+   }
+  }
+ }
+}

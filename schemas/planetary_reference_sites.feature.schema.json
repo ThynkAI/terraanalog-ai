@@ -1,0 +1,51 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "planetary_reference_sites.geojson feature",
+ "type": "object",
+ "required": [
+  "type",
+  "id",
+  "geometry",
+  "properties"
+ ],
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^(MOON|MARS)-REF-[0-9]{2}$"
+  },
+  "properties": {
+   "type": "object",
+   "required": [
+    "ref_id",
+    "body",
+    "crs",
+    "status_class",
+    "not_an_approved_base_site"
+   ],
+   "properties": {
+    "body": {
+     "enum": [
+      "Moon",
+      "Mars"
+     ]
+    },
+    "crs": {
+     "enum": [
+      "IAU_2015:30100",
+      "IAU_2015:49900"
+     ]
+    },
+    "status_class": {
+     "enum": [
+      "verified_mission_site",
+      "candidate_region",
+      "representative_region"
+     ]
+    },
+    "not_an_approved_base_site": {
+     "const": true
+    }
+   }
+  }
+ }
+}

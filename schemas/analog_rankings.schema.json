@@ -1,0 +1,202 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "analog_rankings row",
+ "type": "object",
+ "properties": {
+  "site_id": {
+   "type": "string",
+   "description": "Stable Earth site ID `EA-NNN` (primary key) [-; -]"
+  },
+  "name": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Site name / country or territory [-; literature]"
+  },
+  "group": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "`baseline` (Atacama, Haughton, Death Valley) / `established` (documented analog use) / `candidate` [-; -]"
+  },
+  "body": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "`Moon` or `Mars` [-; -]"
+  },
+  "mission_profile": {
+   "type": "string",
+   "description": "Profile key in scoring_config.mission_profiles [-; -]"
+  },
+  "matched_reference_id": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Planetary reference ID (`MOON-REF-NN` / `MARS-REF-NN`) [-; -]"
+  },
+  "fidelity_score": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Surface/process analog fidelity for this profile (best-matching reference). NOT planetary equivalence [0-100; derived]"
+  },
+  "fidelity_rank": {
+   "type": [
+    "integer",
+    "null"
+   ],
+   "description": "Rank within the profile (n=28) [1 = best; derived]"
+  },
+  "evidence_completeness": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Share of profile weight with available data [0-1; derived]"
+  },
+  "confidence": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Weight-averaged provenance confidence of used features [0-1; derived]"
+  },
+  "operational_score": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Operational test suitability (separate from fidelity) [0-100; derived]"
+  },
+  "operational_completeness": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Share of operational weight with data [0-1; derived]"
+  },
+  "mc_score_p05": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "5th/95th percentile of score over 2000 Dirichlet weight draws [0-100; derived]"
+  },
+  "mc_score_p95": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "5th/95th percentile of score over 2000 Dirichlet weight draws [0-100; derived]"
+  },
+  "mc_rank_p05": {
+   "type": [
+    "integer",
+    "null"
+   ],
+   "description": "5th/95th percentile rank over weight draws [rank; derived]"
+  },
+  "mc_rank_p95": {
+   "type": [
+    "integer",
+    "null"
+   ],
+   "description": "5th/95th percentile rank over weight draws [rank; derived]"
+  },
+  "mc_top5_probability": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Probability of being in the top 5 over weight draws [0-1; derived]"
+  },
+  "sim_lithology": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Per-feature similarity to the matched reference (empty = unavailable) [0-1; derived]"
+  },
+  "sim_process": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Per-feature similarity to the matched reference (empty = unavailable) [0-1; derived]"
+  },
+  "sim_landform": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Per-feature similarity to the matched reference (empty = unavailable) [0-1; derived]"
+  },
+  "sim_resource": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Per-feature similarity to the matched reference (empty = unavailable) [0-1; derived]"
+  },
+  "sim_slope": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Per-feature similarity to the matched reference (empty = unavailable) [0-1; derived]"
+  },
+  "sim_ruggedness": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Per-feature similarity to the matched reference (empty = unavailable) [0-1; derived]"
+  },
+  "sim_thermal": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Per-feature similarity to the matched reference (empty = unavailable) [0-1; derived]"
+  },
+  "sim_aridity": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Per-feature similarity to the matched reference (empty = unavailable) [0-1; derived]"
+  },
+  "sim_ice": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Per-feature similarity to the matched reference (empty = unavailable) [0-1; derived]"
+  },
+  "sim_abiotic_surface": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Per-feature similarity to the matched reference (empty = unavailable) [0-1; derived]"
+  },
+  "sim_dust_sediment": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Per-feature similarity to the matched reference (empty = unavailable) [0-1; derived]"
+  }
+ },
+ "required": [
+  "site_id",
+  "mission_profile",
+  "fidelity_score"
+ ]
+}

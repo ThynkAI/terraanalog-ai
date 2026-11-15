@@ -1,0 +1,226 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "planetary_features row",
+ "type": "object",
+ "properties": {
+  "ref_id": {
+   "type": "string",
+   "description": "Planetary reference ID (`MOON-REF-NN` / `MARS-REF-NN`) [-; -]"
+  },
+  "body": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "`Moon` or `Mars` [-; -]"
+  },
+  "name": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Site name / country or territory [-; literature]"
+  },
+  "lat": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Sampling-point latitude / longitude, EPSG:4326 [deg (WGS84); literature]"
+  },
+  "lon": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Sampling-point latitude / longitude, EPSG:4326 [deg (WGS84); literature]"
+  },
+  "crs": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Body CRS: IAU_2015:30100 (Moon) or IAU_2015:49900 (Mars) [-; -]"
+  },
+  "status_class": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "verified_mission_site | candidate_region | representative_region [-; literature]"
+  },
+  "dem_product": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "DEM used for terrain metrics [-; -]"
+  },
+  "dem_grid_res_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Analysis grid resolution / window radius [m; -]"
+  },
+  "sample_radius_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Analysis grid resolution / window radius [m; -]"
+  },
+  "ref_elev_point_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Reference elevation (Moon: above 1737.4 km sphere; Mars: MOLA areoid) [m; derived]"
+  },
+  "ref_elev_mean_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Reference elevation (Moon: above 1737.4 km sphere; Mars: MOLA areoid) [m; derived]"
+  },
+  "ref_relief_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Reference elevation (Moon: above 1737.4 km sphere; Mars: MOLA areoid) [m; derived]"
+  },
+  "ref_slope_median_deg": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Reference slope statistics [deg; derived]"
+  },
+  "ref_slope_p90_deg": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Reference slope statistics [deg; derived]"
+  },
+  "ref_slope_frac_lt15": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Fraction of slopes <15° [fraction 0-1; derived]"
+  },
+  "ref_tri_median_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Reference TRI [m; derived]"
+  },
+  "temperature_K": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Temperature used by the thermal similarity [K; modeled (Earth) / literature or modeled (refs)]"
+  },
+  "temperature_provenance": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Provenance of temperature_K [-; -]"
+  },
+  "aridity_index": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Defined as 0 (no liquid precipitation) / 1 (no vegetation) for references [-; derived]"
+  },
+  "abiotic_fraction": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Defined as 0 (no liquid precipitation) / 1 (no vegetation) for references [-; derived]"
+  },
+  "lithology_tags": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Controlled-vocabulary tags (vocabulary in scoring_config.json); per-tag evidence in site_evidence.json [; separated; literature/hypothesized]"
+  },
+  "process_tags": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Controlled-vocabulary tags (vocabulary in scoring_config.json); per-tag evidence in site_evidence.json [; separated; literature/hypothesized]"
+  },
+  "landform_tags": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Controlled-vocabulary tags (vocabulary in scoring_config.json); per-tag evidence in site_evidence.json [; separated; literature/hypothesized]"
+  },
+  "resource_tags": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Controlled-vocabulary tags (vocabulary in scoring_config.json); per-tag evidence in site_evidence.json [; separated; literature/hypothesized]"
+  },
+  "ice_indicator": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "max(permafrost_prob, WorldCover snow/ice fraction); references 1/0 from literature ice evidence [0-1; modeled/derived]"
+  },
+  "fine_fraction": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "silt+clay (<50 µm) fraction [fraction 0-1; modeled (Earth) / derived (Moon)]"
+  },
+  "illumination_summary": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Narrative fields with sources in site_evidence.json [-; literature]"
+  },
+  "ice_evidence": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Narrative fields with sources in site_evidence.json [-; literature]"
+  },
+  "hazards": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Narrative fields with sources in site_evidence.json [-; literature]"
+  },
+  "mission_objectives": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Narrative fields with sources in site_evidence.json [-; literature]"
+  }
+ },
+ "required": [
+  "ref_id",
+  "lat",
+  "lon"
+ ]
+}

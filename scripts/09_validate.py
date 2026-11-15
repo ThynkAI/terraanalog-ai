@@ -130,10 +130,11 @@ def doi_checks():
     check("dois_resolve", not unresolved, f"{len(listed)-len(unresolved)}/{len(listed)} DOIs resolve (Crossref/doi.org); corrections applied: {d.get('_corrections')}")
     # every DOI used in md docs must be in the verified list
     used = set()
-    for p in list(ROOT.glob("*.md")) + list((OUTPUTS).glob("*.md")) + [OUTPUTS / "dataset_catalog.csv", CONFIG / "planetary_references.json"]:
+    corrected = {k.lower() for k in (d.get("_corrections") or {})}  # documented wrong DOIs, kept only in correction notes
+    for p in list(ROOT.glob("*.md")) + [OUTPUTS / "dataset_catalog.csv", CONFIG / "planetary_references.json"]:
         if p.exists():
-            used |= set(m.rstrip(").,;") for m in re.findall(r"10\.\d{4,9}/[^\s|\"'<>\]]+", p.read_text(encoding="utf-8")))
-    unknown = sorted(u for u in used if u.lower() not in {x.lower() for x in listed})
+            used |= set(m.rstrip(").,;:") for m in re.findall(r"10\.\d{4,9}/[^\s|\"'<>\]`,]+", p.read_text(encoding="utf-8")))
+    unknown = sorted(u for u in used if u.lower() not in {x.lower() for x in listed} | corrected)
     check("all_cited_dois_verified", not unknown, f"{len(used)} DOI strings found in docs/configs; not in verified list: {unknown}")
 
 

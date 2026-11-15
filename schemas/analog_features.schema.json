@@ -1,0 +1,597 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "analog_features row",
+ "type": "object",
+ "properties": {
+  "site_id": {
+   "type": "string",
+   "description": "Stable Earth site ID `EA-NNN` (primary key) [-; -]"
+  },
+  "name": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Site name / country or territory [-; literature]"
+  },
+  "country": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Site name / country or territory [-; literature]"
+  },
+  "lat": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Sampling-point latitude / longitude, EPSG:4326 [deg (WGS84); literature]"
+  },
+  "lon": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Sampling-point latitude / longitude, EPSG:4326 [deg (WGS84); literature]"
+  },
+  "group": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "`baseline` (Atacama, Haughton, Death Valley) / `established` (documented analog use) / `candidate` [-; -]"
+  },
+  "coord_kind": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "What the point represents and where it came from [-; literature]"
+  },
+  "coord_source": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "What the point represents and where it came from [-; literature]"
+  },
+  "elev_point_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Copernicus DEM elevation at the sampling point [m (EGM2008); measured]"
+  },
+  "t30m_r2km_elev_mean_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Terrain on 30 m local AEQD grid within 2 km: elev_mean_m, relief_m (p99-p1), slope_median_deg, slope_p90_deg, slope_frac_lt15 (0-1), tri_median_m (Riley TRI), valid_fraction [see suffix; derived]"
+  },
+  "t30m_r2km_relief_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Terrain on 30 m local AEQD grid within 2 km: elev_mean_m, relief_m (p99-p1), slope_median_deg, slope_p90_deg, slope_frac_lt15 (0-1), tri_median_m (Riley TRI), valid_fraction [see suffix; derived]"
+  },
+  "t30m_r2km_slope_median_deg": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Terrain on 30 m local AEQD grid within 2 km: elev_mean_m, relief_m (p99-p1), slope_median_deg, slope_p90_deg, slope_frac_lt15 (0-1), tri_median_m (Riley TRI), valid_fraction [see suffix; derived]"
+  },
+  "t30m_r2km_slope_p90_deg": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Terrain on 30 m local AEQD grid within 2 km: elev_mean_m, relief_m (p99-p1), slope_median_deg, slope_p90_deg, slope_frac_lt15 (0-1), tri_median_m (Riley TRI), valid_fraction [see suffix; derived]"
+  },
+  "t30m_r2km_slope_frac_lt15": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Terrain on 30 m local AEQD grid within 2 km: elev_mean_m, relief_m (p99-p1), slope_median_deg, slope_p90_deg, slope_frac_lt15 (0-1), tri_median_m (Riley TRI), valid_fraction [see suffix; derived]"
+  },
+  "t30m_r2km_tri_median_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Terrain on 30 m local AEQD grid within 2 km: elev_mean_m, relief_m (p99-p1), slope_median_deg, slope_p90_deg, slope_frac_lt15 (0-1), tri_median_m (Riley TRI), valid_fraction [see suffix; derived]"
+  },
+  "t30m_r2km_valid_fraction": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Terrain on 30 m local AEQD grid within 2 km: elev_mean_m, relief_m (p99-p1), slope_median_deg, slope_p90_deg, slope_frac_lt15 (0-1), tri_median_m (Riley TRI), valid_fraction [see suffix; derived]"
+  },
+  "t90m_r5km_elev_mean_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 90 m grid within 5 km (matched baseline for Moon references) [see suffix; derived]"
+  },
+  "t90m_r5km_relief_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 90 m grid within 5 km (matched baseline for Moon references) [see suffix; derived]"
+  },
+  "t90m_r5km_slope_median_deg": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 90 m grid within 5 km (matched baseline for Moon references) [see suffix; derived]"
+  },
+  "t90m_r5km_slope_p90_deg": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 90 m grid within 5 km (matched baseline for Moon references) [see suffix; derived]"
+  },
+  "t90m_r5km_slope_frac_lt15": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 90 m grid within 5 km (matched baseline for Moon references) [see suffix; derived]"
+  },
+  "t90m_r5km_tri_median_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 90 m grid within 5 km (matched baseline for Moon references) [see suffix; derived]"
+  },
+  "t90m_r5km_valid_fraction": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 90 m grid within 5 km (matched baseline for Moon references) [see suffix; derived]"
+  },
+  "t450m_r15km_elev_mean_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 450 m grid within 15 km (matched baseline for Mars references) [see suffix; derived]"
+  },
+  "t450m_r15km_relief_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 450 m grid within 15 km (matched baseline for Mars references) [see suffix; derived]"
+  },
+  "t450m_r15km_slope_median_deg": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 450 m grid within 15 km (matched baseline for Mars references) [see suffix; derived]"
+  },
+  "t450m_r15km_slope_p90_deg": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 450 m grid within 15 km (matched baseline for Mars references) [see suffix; derived]"
+  },
+  "t450m_r15km_slope_frac_lt15": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 450 m grid within 15 km (matched baseline for Mars references) [see suffix; derived]"
+  },
+  "t450m_r15km_tri_median_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 450 m grid within 15 km (matched baseline for Mars references) [see suffix; derived]"
+  },
+  "t450m_r15km_valid_fraction": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Same metrics on 450 m grid within 15 km (matched baseline for Mars references) [see suffix; derived]"
+  },
+  "wc_frac_bare_sparse_r5km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ESA WorldCover 2021 class fraction within 5 km [fraction 0-1; derived]"
+  },
+  "wc_frac_snow_ice_r5km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ESA WorldCover 2021 class fraction within 5 km [fraction 0-1; derived]"
+  },
+  "wc_frac_water_r5km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ESA WorldCover 2021 class fraction within 5 km [fraction 0-1; derived]"
+  },
+  "wc_frac_tree_r5km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ESA WorldCover 2021 class fraction within 5 km [fraction 0-1; derived]"
+  },
+  "wc_frac_shrub_r5km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ESA WorldCover 2021 class fraction within 5 km [fraction 0-1; derived]"
+  },
+  "wc_frac_grass_r5km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ESA WorldCover 2021 class fraction within 5 km [fraction 0-1; derived]"
+  },
+  "wc_frac_crop_r5km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ESA WorldCover 2021 class fraction within 5 km [fraction 0-1; derived]"
+  },
+  "wc_frac_built_r5km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ESA WorldCover 2021 class fraction within 5 km [fraction 0-1; derived]"
+  },
+  "wc_frac_wetland_r5km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ESA WorldCover 2021 class fraction within 5 km [fraction 0-1; derived]"
+  },
+  "wc_frac_moss_lichen_r5km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ESA WorldCover 2021 class fraction within 5 km [fraction 0-1; derived]"
+  },
+  "abiotic_fraction_r5km": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "(bare/sparse + snow/ice) / land fraction within 5 km [fraction 0-1; derived]"
+  },
+  "chelsa_maat_c": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "CHELSA V2.1 1981-2010 bio1 / bio5 / bio6 / bio7 [°C; modeled]"
+  },
+  "chelsa_tmax_warmest_c": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "CHELSA V2.1 1981-2010 bio1 / bio5 / bio6 / bio7 [°C; modeled]"
+  },
+  "chelsa_tmin_coldest_c": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "CHELSA V2.1 1981-2010 bio1 / bio5 / bio6 / bio7 [°C; modeled]"
+  },
+  "chelsa_t_annual_range_c": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "CHELSA V2.1 1981-2010 bio1 / bio5 / bio6 / bio7 [°C; modeled]"
+  },
+  "chelsa_precip_mm_yr": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "CHELSA bio12 annual precipitation [mm/yr; modeled]"
+  },
+  "era5_t_mean_c": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ERA5 1991-2020 daily (Open-Meteo): mean, 1st pct of Tmin, 99th pct of Tmax, mean diurnal range [°C; modeled]"
+  },
+  "era5_t_min_p01_c": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ERA5 1991-2020 daily (Open-Meteo): mean, 1st pct of Tmin, 99th pct of Tmax, mean diurnal range [°C; modeled]"
+  },
+  "era5_t_max_p99_c": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ERA5 1991-2020 daily (Open-Meteo): mean, 1st pct of Tmin, 99th pct of Tmax, mean diurnal range [°C; modeled]"
+  },
+  "era5_diurnal_range_c": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ERA5 1991-2020 daily (Open-Meteo): mean, 1st pct of Tmin, 99th pct of Tmax, mean diurnal range [°C; modeled]"
+  },
+  "era5_precip_mm_yr": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ERA5 precipitation / FAO-56 reference ET0 [mm/yr; modeled]"
+  },
+  "era5_et0_mm_yr": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "ERA5 precipitation / FAO-56 reference ET0 [mm/yr; modeled]"
+  },
+  "era5_aridity_index": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "P / ET0 (UNEP aridity index) [dimensionless; modeled]"
+  },
+  "era5_freeze_thaw_days_yr": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Days with Tmax>0 °C and Tmin<0 °C [days/yr; modeled]"
+  },
+  "era5_wind_max_mean_kmh": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Mean of daily max 10 m wind [km/h; modeled]"
+  },
+  "era5_sw_rad_mj_m2_day": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Mean daily shortwave radiation [MJ m-2 day-1; modeled]"
+  },
+  "climate_workable_month_fraction": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Months with ERA5 mean T in [-25, 35] °C [fraction 0-1; modeled]"
+  },
+  "maat_for_scoring_c": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "MAAT used for scoring (CHELSA, else ERA5) [°C; modeled]"
+  },
+  "maat_source": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Which source supplied the value [-; -]"
+  },
+  "temperature_K": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Temperature used by the thermal similarity [K; modeled (Earth) / literature or modeled (refs)]"
+  },
+  "permafrost_prob": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Obu et al. 2019 permafrost probability, else MAAT-logistic model [probability 0-1; modeled]"
+  },
+  "permafrost_source": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Which source supplied the value [-; -]"
+  },
+  "ice_indicator": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "max(permafrost_prob, WorldCover snow/ice fraction); references 1/0 from literature ice evidence [0-1; modeled/derived]"
+  },
+  "soil_sand_pct": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "SoilGrids 2.0 0-5 cm mean [% mass; modeled]"
+  },
+  "soil_silt_pct": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "SoilGrids 2.0 0-5 cm mean [% mass; modeled]"
+  },
+  "soil_clay_pct": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "SoilGrids 2.0 0-5 cm mean [% mass; modeled]"
+  },
+  "fine_fraction": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "silt+clay (<50 µm) fraction [fraction 0-1; modeled (Earth) / derived (Moon)]"
+  },
+  "road_distance_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Distance to nearest mapped road (Natural Earth 1:10m; OSM if available); upper bound [m; derived]"
+  },
+  "road_distance_censored_gt_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "If set, no road within this distance (right-censored) [m; derived]"
+  },
+  "nearest_highway_class": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Class of nearest road [-; derived]"
+  },
+  "populated_place_distance_m": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Distance to nearest Natural Earth populated place [m; derived]"
+  },
+  "access_source": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Which source supplied the value [-; -]"
+  },
+  "macrostrat_lith": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Macrostrat map-unit lithology at point (map scale) [-; literature]"
+  },
+  "macrostrat_unit": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Macrostrat map-unit lithology at point (map scale) [-; literature]"
+  },
+  "macrostrat_scale": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Macrostrat map-unit lithology at point (map scale) [-; literature]"
+  },
+  "lithology_tags": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Controlled-vocabulary tags (vocabulary in scoring_config.json); per-tag evidence in site_evidence.json [; separated; literature/hypothesized]"
+  },
+  "process_tags": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Controlled-vocabulary tags (vocabulary in scoring_config.json); per-tag evidence in site_evidence.json [; separated; literature/hypothesized]"
+  },
+  "landform_tags": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Controlled-vocabulary tags (vocabulary in scoring_config.json); per-tag evidence in site_evidence.json [; separated; literature/hypothesized]"
+  },
+  "resource_tags": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Controlled-vocabulary tags (vocabulary in scoring_config.json); per-tag evidence in site_evidence.json [; separated; literature/hypothesized]"
+  },
+  "regulatory_class": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Operational classes (scoring_config.operational) [-; literature/hypothesized]"
+  },
+  "infrastructure_class": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Operational classes (scoring_config.operational) [-; literature/hypothesized]"
+  },
+  "evidence_tag_fraction_literature": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Share of categorical tags supported by fetched text [fraction 0-1; derived]"
+  },
+  "data_confidence": {
+   "type": [
+    "number",
+    "null"
+   ],
+   "description": "Mean per-feature provenance confidence [0-1; derived]"
+  },
+  "limitations": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Site-specific caveats [' | ' separated; -]"
+  }
+ },
+ "required": [
+  "site_id",
+  "lat",
+  "lon"
+ ]
+}
