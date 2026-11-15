@@ -11,6 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, PlainTextResponse, Response
 
 from . import config
+from .case_studies import build_case_studies
 from .analysis import clusters, sensitivity
 from .loader import DataStore, get_store
 from .models import RecommendRequest
@@ -360,6 +361,11 @@ def get_site(site_id: str, ref_id: Optional[str] = Query(None, pattern=ID_RE), o
         if comps:
             out["operational_components"] = comps
     return out
+
+
+@app.get("/api/case-studies")
+def get_case_studies():
+    return build_case_studies(_store())
 
 
 @app.get("/api/planetary-references")

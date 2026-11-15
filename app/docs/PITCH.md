@@ -1,15 +1,9 @@
-# TerraAnalog AI — pitch (≈150 words)
+# TerraAnalog AI — submission pitch
 
-**Problem.** Every rover, drill, ISRU plant and habitat bound for the Moon or Mars is rehearsed on Earth first. But *which* Earth site
-best stands in for Shackleton's rim or Jezero's delta — for *this* test? Today that answer lives in scattered papers, datasets and
-institutional memory, and it is rarely explicit about uncertainty.
+Mission teams need Earth environments in which to test equipment and procedures before exploring the Moon or Mars. Choosing a useful analog requires more than finding a landscape that looks similar.
 
-**Solution.** TerraAnalog AI is an interactive decision-support platform. Pick one of 14 lunar or Martian reference regions (NASA Trek
-imagery) and one of 11 mission objectives. It ranks 28 Earth analog sites on a globe with a transparent score built from 11
-reference-specific similarity features (4,340 research values: measured, modeled or provisional),
-evidence completeness, confidence, a source for every value — and an honest list of what Earth can never replicate.
+TerraAnalog AI compares 28 Earth sites with 14 planetary reference regions using 10 specialized mission profiles plus a general mode. Interactive maps, transparent feature weights, evidence completeness and source trails make its rankings inspectable. Its 4,340 feature records include 378 missing values, which remain missing.
 
-**Why it's different.** Missing evidence lowers completeness instead of being guessed; judges can re-weight criteria live, stress-test
-rankings, cluster environments, and export a report. The engine reproduces all 588 published research scores to within 0.011 points, and new research data drops in with no code changes.
+Three scientific case studies connect the rankings to research decisions: Holuhraun for Mars mobility, Undara for lunar cave robotics and Svalbard for polar-prospecting procedures. Each compares established challenge benchmarks, identifies prior research, exposes proxy limitations and proposes field measurements. Interactive stress tests show how assumptions affect the result.
 
-**Impact.** Faster, auditable field-campaign planning for Artemis-era and Mars mission teams.
+The contribution is an auditable, reproducible shortlist and research workflow—not a claim that these sites are newly discovered or field-validated analogs. Software regression checks verify implementation consistency; scientific validation remains a separate task.

@@ -15,6 +15,7 @@
 | Screenshots | [`app/docs/screenshots/`](app/docs/screenshots/) (17 app views, including mobile, plus a PDF report page) |
 | Sample generated report | [`app/docs/samples/site-comparison-report-sample.pdf`](app/docs/samples/site-comparison-report-sample.pdf) |
 | How the AI works | [README → *How the AI works*](README.md#how-the-ai-works) (explainable scoring and a rule-based recommendation engine; no LLM invents facts) |
+| Scientific cases and source review | Live: `/science` · [`app/docs/SCIENTIFIC_CASE_REVIEW.md`](app/docs/SCIENTIFIC_CASE_REVIEW.md) |
 | Scientific methodology | [`scientific_methodology.md`](scientific_methodology.md) · app view: [`app/docs/DATA_INTEGRATION.md`](app/docs/DATA_INTEGRATION.md) |
 | Data sources and references | [`source_references.md`](source_references.md) · [`outputs/dataset_catalog.csv`](outputs/dataset_catalog.csv) |
 | Test evidence | [`app/docs/TEST_RESULTS.md`](app/docs/TEST_RESULTS.md) (backend, TypeScript, unit, end-to-end/accessibility, Docker Compose, 588-row published-score reproduction) |

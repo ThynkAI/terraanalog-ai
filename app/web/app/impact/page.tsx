@@ -5,9 +5,9 @@ import { PageHeader } from "@/components/ui";
 export const metadata: Metadata = { title: "Project Impact and Team" };
 
 const ROADMAP = [
-  ["Now", "Working platform on synthetic fixtures; real IAU/USGS planetary coordinates; transparent scoring, evidence, sensitivity, clustering, export."],
-  ["Next", "Drop in the research bot's datasets (DEM slope/roughness, MODIS LST, permafrost, cave surveys) via TERRA_DATA_DIR; peer-reviewed citations per attribute."],
-  ["Then", "Per-pair similarity from planetary rasters (LOLA, Diviner, MOLA, THEMIS) instead of site-level criteria; uncertainty propagation."],
+  ["Now", "Research-data platform: 28 Earth sites, 14 Moon/Mars references, transparent scoring, evidence, sensitivity, clustering, exports and three source-reviewed case studies."],
+  ["Next", "Prioritize field measurements and primary-source support for influential proxies; expand the targeted novelty review into a systematic literature assessment."],
+  ["Then", "Expand beyond regional DEM and literature proxies with validated local terrain, in-cave observations and propagated input uncertainty."],
   ["Later", "Field-campaign planner (logistics, season windows), community-contributed analog sites with review workflow, and API access for mission teams."],
 ];
 
@@ -46,11 +46,11 @@ export default function Page() {
       <section className="panel p-5" aria-labelledby="lim-h">
         <h2 id="lim-h" className="panel-title">Honest limitations</h2>
         <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-lunar-300">
-          <li>Current scores are synthetic or provisional (PREP_DRAFT) placeholders until the research datasets arrive.</li>
-          <li>Analog scores rank operational/environmental proxy value — not landing sites, and not flight qualification.</li>
+          <li>The default dataset is research-derived, with measured/derived, modeled, provisional and missing inputs. The optional fixture dataset is synthetic and explicitly labeled.</li>
+          <li>Fidelity scores compare objective-specific surface/process proxies. Operational suitability stays separate; neither score selects a landing site or qualifies hardware.</li>
           <li>No Earth site reproduces reduced gravity, vacuum or a thin CO₂ atmosphere, or space radiation.</li>
         </ul>
-        <p className="mt-3 text-sm"><Link className="link" href="/methodology">Read the methodology</Link> · <Link className="link" href="/data">Inspect provenance</Link></p>
+        <p className="mt-3 text-sm"><Link className="link" href="/science">Investigate scientific cases</Link> · <Link className="link" href="/methodology">Read the methodology</Link> · <Link className="link" href="/data">Inspect provenance</Link></p>
       </section>
     </div>
   );

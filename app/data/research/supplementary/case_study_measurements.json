@@ -1,0 +1,161 @@
+{
+  "method": "Deterministic subset of committed research CSVs. No new measurements; no missing-value imputation.",
+  "cases": {
+    "holuhraun-mobility": {
+      "source_files": [
+        "outputs/analog_features.csv",
+        "outputs/planetary_features.csv"
+      ],
+      "sampling_note": "Regional sampling windows around catalog reference points; not a cave survey, traverse map or legal site boundary.",
+      "earth_native_dem_m": 30,
+      "planet_dem_product": "MGS MOLA global DEM 463 m (USGS Astrogeology mosaic)",
+      "comparison_grid_m": 450,
+      "radius_m": 15000,
+      "earth_valid_fraction": 0.9997,
+      "metrics": [
+        {
+          "label": "Regional median slope",
+          "unit": "degrees",
+          "earth": 1.1717,
+          "planet": 0.2764,
+          "provenance": "Derived from Copernicus DEM and LOLA/MOLA at the stated comparison scale."
+        },
+        {
+          "label": "Regional 90th-percentile slope",
+          "unit": "degrees",
+          "earth": 3.3227,
+          "planet": 0.4683,
+          "provenance": "Derived; does not resolve wheel-scale hazards."
+        },
+        {
+          "label": "Median terrain ruggedness (TRI)",
+          "unit": "m",
+          "earth": 26.711,
+          "planet": 5.5492,
+          "provenance": "Derived; depends on DEM resolution and resampling."
+        },
+        {
+          "label": "Thermal scoring proxy",
+          "unit": "K",
+          "earth": 273.1,
+          "planet": 210.0,
+          "provenance": "Earth: modeled annual air temperature. Planet: literature; different physical/temporal support. Not a direct temperature equivalence."
+        },
+        {
+          "label": "Fine sediment fraction",
+          "unit": "0–1",
+          "earth": 0.468,
+          "planet": null,
+          "provenance": "Earth: SoilGrids modeled surface texture; planetary literature proxy if available. Not a cave-floor measurement."
+        }
+      ],
+      "earth_precipitation_mm_yr": 1331.6767,
+      "earth_permafrost_probability": 0.0706,
+      "earth_permafrost_source": "Obu2019_PERPROB"
+    },
+    "undara-cave-robotics": {
+      "source_files": [
+        "outputs/analog_features.csv",
+        "outputs/planetary_features.csv"
+      ],
+      "sampling_note": "Regional sampling windows around catalog reference points; not a cave survey, traverse map or legal site boundary.",
+      "earth_native_dem_m": 30,
+      "planet_dem_product": "LRO LOLA global LDEM 118 m (USGS Astrogeology mosaic, Mar 2014)",
+      "comparison_grid_m": 90,
+      "radius_m": 5000,
+      "earth_valid_fraction": 1.0,
+      "metrics": [
+        {
+          "label": "Regional median slope",
+          "unit": "degrees",
+          "earth": 1.2003,
+          "planet": 1.3024,
+          "provenance": "Derived from Copernicus DEM and LOLA/MOLA at the stated comparison scale."
+        },
+        {
+          "label": "Regional 90th-percentile slope",
+          "unit": "degrees",
+          "earth": 3.6159,
+          "planet": 6.059,
+          "provenance": "Derived; does not resolve wheel-scale hazards."
+        },
+        {
+          "label": "Median terrain ruggedness (TRI)",
+          "unit": "m",
+          "earth": 5.4374,
+          "planet": 5.9434,
+          "provenance": "Derived; depends on DEM resolution and resampling."
+        },
+        {
+          "label": "Thermal scoring proxy",
+          "unit": "K",
+          "earth": 295.3,
+          "planet": 290.0,
+          "provenance": "Earth: modeled annual air temperature. Planet: modeled; different physical/temporal support. Not a direct temperature equivalence."
+        },
+        {
+          "label": "Fine sediment fraction",
+          "unit": "0–1",
+          "earth": 0.526,
+          "planet": 0.45,
+          "provenance": "Earth: SoilGrids modeled surface texture; planetary literature proxy if available. Not a cave-floor measurement."
+        }
+      ],
+      "earth_precipitation_mm_yr": 711.1133,
+      "earth_permafrost_probability": 0.0,
+      "earth_permafrost_source": "MAAT_logistic_model"
+    },
+    "svalbard-polar-prospecting": {
+      "source_files": [
+        "outputs/analog_features.csv",
+        "outputs/planetary_features.csv"
+      ],
+      "sampling_note": "Regional sampling windows around catalog reference points; not a cave survey, traverse map or legal site boundary.",
+      "earth_native_dem_m": 30,
+      "planet_dem_product": "LRO LOLA LDEM_80S_80M (PDS3, LRO-L-LOLA-4-GDR-V1.0)",
+      "comparison_grid_m": 90,
+      "radius_m": 5000,
+      "earth_valid_fraction": 0.7837,
+      "metrics": [
+        {
+          "label": "Regional median slope",
+          "unit": "degrees",
+          "earth": 13.9811,
+          "planet": 27.4806,
+          "provenance": "Derived from Copernicus DEM and LOLA/MOLA at the stated comparison scale."
+        },
+        {
+          "label": "Regional 90th-percentile slope",
+          "unit": "degrees",
+          "earth": 36.0213,
+          "planet": 32.3128,
+          "provenance": "Derived; does not resolve wheel-scale hazards."
+        },
+        {
+          "label": "Median terrain ruggedness (TRI)",
+          "unit": "m",
+          "earth": 62.2843,
+          "planet": 115.0555,
+          "provenance": "Derived; depends on DEM resolution and resampling."
+        },
+        {
+          "label": "Thermal scoring proxy",
+          "unit": "K",
+          "earth": 264.3,
+          "planet": 90.0,
+          "provenance": "Earth: modeled annual air temperature. Planet: literature; different physical/temporal support. Not a direct temperature equivalence."
+        },
+        {
+          "label": "Fine sediment fraction",
+          "unit": "0–1",
+          "earth": 0.571,
+          "planet": 0.45,
+          "provenance": "Earth: SoilGrids modeled surface texture; planetary literature proxy if available. Not a cave-floor measurement."
+        }
+      ],
+      "earth_precipitation_mm_yr": 465.2367,
+      "earth_permafrost_probability": 1.0,
+      "earth_permafrost_source": "Obu2019_PERPROB"
+    }
+  }
+}

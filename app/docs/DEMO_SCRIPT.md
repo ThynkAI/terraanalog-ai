@@ -1,16 +1,17 @@
-# 3-minute live demo script
+# Three-minute submission demo
 
-Setup before going on stage: app running (`./scripts/dev.sh` or Docker), browser at `/`, zoom 100 %, second tab on `/compare`.
+Open the deployed app in a private window first. Confirm the Science Cases navigation entry and research badge are present. Wake both Render services before recording. Prepare `/science?case=undara-cave-robotics` in a second tab. Record the current UI; earlier screenshots describe the previous revision.
 
-| Time | Screen | Say / do |
+| Time | Screen | Demonstration |
 |---|---|---|
-| 0:00–0:20 | **Mission Overview** `/` | "Every lunar and Martian system is tested on Earth first. TerraAnalog AI answers *where* — transparently." Point at the green **Research dataset** badge and notice: "28 Earth sites, 14 Moon/Mars references, 4,340 research values — each one measured, modeled or provisional, and missing values stay missing." |
-| 0:20–0:45 | Recommendation engine | Click the example *"Find Earth environments suitable for testing lunar polar rovers."* Show the interpretation (Moon · Lunar south polar highlands · Moon Rover Mobility · polar desert), the ranked results (McMurdo Dry Valleys, Haughton) with **why** bullets, caveats, and **what Earth cannot replicate**. "No chatbot inventing facts — deterministic parsing into structured filters and a documented score." |
-| 0:45–1:20 | **Moon Reference Explorer** `/moon` | Click **Shackleton crater and rim vicinity**. Show the *representative region* status badge (never a "base"), LRO WAC imagery and the polar stereographic inset on the 1737.4 km lunar sphere. Switch objective to **Moon ISRU Ice** — Analog Match Explorer re-ranks: Haughton (46.3), McMurdo Dry Valleys (42.6), Bockfjorden (42.1). |
-| 1:20–1:55 | **Earth Analog Explorer** | Click *Open in Earth Explorer*. Rotate the globe, switch basemap to **Satellite (NASA Blue Marble)**, toggle 2D. Click Haughton marker → detail: score, completeness, confidence, feature breakdown with Measured/Modeled/Provisional badges, the published research score next to the live one; open **Evidence inspector** → source + citation per feature. Tick compare boxes on 3 sites. |
-| 1:55–2:35 | **Comparison Lab** | Radar of the 11 features + side-by-side table (badges show measured / modeled / provisional / **missing**). McMurdo (Moon Rover Mobility vs the south polar highlands): "abiotic surface and fine-sediment are missing → completeness 75 %, the score shows a range (26.9–51.9), not false precision." Operational suitability is shown separately, never mixed into the score. Open **Custom Weight Lab**: drag *Ice / permafrost agreement* up → rankings move live with ▲▼. **Sensitivity** tab: rank-stability bars. |
-| 2:35–2:50 | Export & share | Click **Download PDF report** (generated server-side), **Export CSV report** and **Copy deep link** — "every view is shareable." |
-| 2:50–3:00 | Close | "Drop the research bot's files into one folder and the whole platform updates — no code changes. Earth as a testbed, with the evidence on the table." |
+| 0:00–0:20 | Overview | “Where can we test a specific Moon or Mars mission on Earth?” Show 28 sites, 14 references and mission shortcuts. “We compare surface and process proxies; Earth cannot reproduce another world's environment.” |
+| 0:20–0:45 | Mission shortcut → Earth Explorer | Choose Mars rover mobility. Inspect a site, its evidence completeness and measured/modeled/provisional labels. Missing measurements stay missing. |
+| 0:45–1:20 | Science Cases → Undara | Show the source-reviewed novelty assessment. “This is a research lead, not a claimed discovery.” Show the regional measurement table, units, DEM comparison scale and sampling radius. “Regional terrain is not a cave survey; the Earth temperature is annual air temperature, not an in-cave measurement.” |
+| 1:20–1:45 | Benchmark table / proxy stress test | Compare Undara with Atacama, Haughton and Death Valley against the same Tranquillitatis reference. Remove the thermal proxy. “The score changes, but the case remains second in our fixed-reference catalog ranking. That is assumption sensitivity, not proof of field suitability.” |
+| 1:45–2:10 | Evidence-strict summary | Show the original and evidence-strict top five. “The published pipeline removes hypothesized tags. This is a profile summary across its published references, distinct from the fixed-reference score above. Strict does not mean measured-only.” |
+| 2:10–2:35 | Svalbard case | Show the ice-proxy stress test and benchmark result. “We show non-winning cases too. Permafrost probability is not mineable lunar ice; the tool makes that dependence visible.” Show source links and proposed field validation. |
+| 2:35–3:00 | Exports / close | Download the evidence JSON and measurement CSV; show the case's Comparison Lab link. “Our contribution is a traceable shortlist and a research workflow. The next step is targeted literature assessment and permitted field measurements, not a declaration of a new validated analog.” |
 
-Backup if network/tiles fail: the Earth map falls back to the offline Natural Earth basemap; the planetary viewer shows its schematic
-graticule; everything else is served locally.
+Fallback: the measurement tables, benchmark scores and evidence exports do not depend on external image tiles. The Earth Explorer's Natural Earth basemap works without a remote tile service. Run locally using the repository instructions if Render is unavailable.
+
+Do not describe reproduction of the 588 published internal scores as scientific validation or predictive accuracy. It is a computational regression check.

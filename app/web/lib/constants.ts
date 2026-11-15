@@ -29,6 +29,7 @@ export const NAV = [
   { href: "/moon", label: "Moon Reference" },
   { href: "/mars", label: "Mars Reference" },
   { href: "/compare", label: "Comparison Lab" },
+  { href: "/science", label: "Science Cases" },
   { href: "/methodology", label: "Methodology" },
   { href: "/data", label: "Data & Provenance" },
   { href: "/impact", label: "Impact & Team" },
