@@ -7,7 +7,7 @@ export type Params = Record<string, string | number | boolean | null | undefined
 export const TRANSIENT_RETRY_DELAYS_MS = [2000, 4000, 8000, 16000, 20000, 20000] as const;
 
 export const SERVICE_WAKE_MESSAGE =
-  "The research service is waking up — this can take up to a minute on the free tier. Retrying…";
+  "The research service is starting up — this can take up to a minute. Retrying…";
 
 const TRANSIENT_STATUS = new Set([502, 503, 504]);
 

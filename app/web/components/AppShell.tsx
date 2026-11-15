@@ -117,7 +117,7 @@ function ServiceError() {
   if (!error) return null;
   return (
     <div role="alert" className="border-b border-red-400/30 bg-red-500/10 px-4 py-2 text-center text-sm text-red-200">
-      <span>The research service is temporarily unavailable. It may be waking from inactivity.</span>{" "}
+      <span>The research service is temporarily unavailable. It may be starting up.</span>{" "}
       <button className="underline underline-offset-2 disabled:opacity-50" onClick={retry} disabled={loading}>{loading ? "Reconnecting…" : "Retry connection"}</button>
     </div>
   );

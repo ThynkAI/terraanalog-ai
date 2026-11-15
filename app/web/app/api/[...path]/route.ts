@@ -14,7 +14,7 @@ const API_URL = () => {
 };
 const SAFE_SEGMENT = /^[A-Za-z0-9_.\-]+$/;
 const TRANSIENT = new Set([502, 503, 504]);
-const WAKE_DETAIL = "The research service is temporarily unavailable or waking from inactivity. Please retry shortly.";
+const WAKE_DETAIL = "The research service is temporarily unavailable or starting up. Please retry shortly.";
 
 function looksLikeHtml(bytes: ArrayBuffer): boolean {
   const head = new TextDecoder().decode(bytes.slice(0, 240)).trimStart().toLowerCase();
