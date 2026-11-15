@@ -1,0 +1,904 @@
+{
+ "_doc": "Curated input for TerraAnalog AI. Coordinates are sampling points (WGS84, EPSG:4326) taken from the cited Wikipedia GeoData/infobox coordinates retrieved 2026-11-15 (see data/raw/literature/wikipedia_coordinates.json). Tags use the controlled vocabulary in config/scoring_config.json and are written 'tag:keyword'; scripts/02_build_evidence.py searches the cited source text for the keyword and records the matching sentence as evidence. Tags whose keyword is not found are downgraded to provenance 'hypothesized'.",
+ "sites": [
+  {
+   "site_id": "EA-001",
+   "name": "Atacama Desert (hyperarid core)",
+   "country": "Chile",
+   "lat": -24.5,
+   "lon": -69.25,
+   "coord_source": "wiki:Atacama Desert",
+   "coord_kind": "region centroid",
+   "bbox_half_deg": 0.5,
+   "group": "baseline",
+   "wiki": [
+    "Atacama Desert"
+   ],
+   "lithology": [
+    "evaporite_salts:salt",
+    "sedimentary_clastic:sediment",
+    "sulfate:sulfate",
+    "nitrate_perchlorate:nitrate"
+   ],
+   "process": [
+    "aeolian:wind",
+    "evaporitic:salt",
+    "fluvial_lacustrine:river"
+   ],
+   "landform": [
+    "plains:plain",
+    "playa_salt_flat:salt flat",
+    "valley_canyon:valley"
+   ],
+   "resource": [
+    "hydrated_salts:nitrate",
+    "perchlorate:perchlorate"
+   ],
+   "regulatory": "unrestricted_or_unknown",
+   "infrastructure": "analog_research_history:Mars"
+  },
+  {
+   "site_id": "EA-002",
+   "name": "Haughton impact crater, Devon Island",
+   "country": "Canada",
+   "lat": 75.38333,
+   "lon": -89.66667,
+   "coord_source": "wiki:Haughton impact crater",
+   "coord_kind": "crater centre",
+   "bbox_half_deg": 0.25,
+   "group": "baseline",
+   "wiki": [
+    "Haughton impact crater",
+    "Devon Island"
+   ],
+   "lithology": [
+    "impact_breccia_melt:breccia",
+    "carbonate:limestone",
+    "ground_ice:permafrost"
+   ],
+   "process": [
+    "impact:impact",
+    "periglacial:permafrost"
+   ],
+   "landform": [
+    "impact_crater:crater",
+    "patterned_ground:polygon",
+    "plains:barren"
+   ],
+   "resource": [
+    "ground_ice:permafrost"
+   ],
+   "regulatory": "unrestricted_or_unknown",
+   "infrastructure": "analog_research_station:Haughton–Mars Project"
+  },
+  {
+   "site_id": "EA-003",
+   "name": "Death Valley (Badwater Basin)",
+   "country": "United States",
+   "lat": 36.25028,
+   "lon": -116.82583,
+   "coord_source": "wiki:Badwater Basin",
+   "coord_kind": "named feature",
+   "bbox_half_deg": 0.3,
+   "group": "baseline",
+   "wiki": [
+    "Badwater Basin",
+    "Death Valley"
+   ],
+   "lithology": [
+    "evaporite_salts:salt",
+    "sedimentary_clastic:sediment",
+    "sulfate:borax"
+   ],
+   "process": [
+    "evaporitic:evaporat",
+    "aeolian:dune",
+    "fluvial_lacustrine:lake"
+   ],
+   "landform": [
+    "playa_salt_flat:salt flat",
+    "dune_field:dune",
+    "valley_canyon:valley",
+    "alluvial_fan_delta:alluvial fan"
+   ],
+   "resource": [
+    "hydrated_salts:borax"
+   ],
+   "regulatory": "protected_area:National Park",
+   "infrastructure": "analog_research_history:Mars"
+  },
+  {
+   "site_id": "EA-004",
+   "name": "McMurdo Dry Valleys (Wright Valley)",
+   "country": "Antarctica (Antarctic Treaty area)",
+   "lat": -77.55,
+   "lon": 160.83333,
+   "coord_source": "wiki:Wright Valley (coord template)",
+   "coord_kind": "valley reference point",
+   "bbox_half_deg": 0.3,
+   "group": "established",
+   "wiki": [
+    "McMurdo Dry Valleys",
+    "Wright Valley"
+   ],
+   "lithology": [
+    "granitic_felsic:granite",
+    "basalt_mafic:basalt",
+    "evaporite_salts:salt",
+    "ground_ice:permafrost",
+    "sedimentary_clastic:moraine"
+   ],
+   "process": [
+    "periglacial:permafrost",
+    "glacial:glacier",
+    "aeolian:wind",
+    "evaporitic:salt"
+   ],
+   "landform": [
+    "valley_canyon:valley",
+    "patterned_ground:polygon",
+    "dune_field:dune",
+    "plains:moraine"
+   ],
+   "resource": [
+    "ground_ice:permafrost",
+    "hydrated_salts:salt"
+   ],
+   "regulatory": "antarctic_treaty:Antarctic",
+   "infrastructure": "analog_research_history:Viking"
+  },
+  {
+   "site_id": "EA-005",
+   "name": "Bockfjorden Volcanic Complex (Sverrefjellet), Svalbard",
+   "country": "Norway",
+   "lat": 79.431656,
+   "lon": 13.304977,
+   "coord_source": "wiki:Sverrefjellet",
+   "coord_kind": "volcano summit",
+   "bbox_half_deg": 0.1,
+   "group": "established",
+   "wiki": [
+    "Sverrefjellet",
+    "Bockfjorden"
+   ],
+   "lithology": [
+    "basalt_mafic:basalt",
+    "carbonate:carbonate",
+    "ground_ice:permafrost"
+   ],
+   "process": [
+    "volcanic_effusive:volcan",
+    "hydrothermal:hot spring",
+    "periglacial:permafrost",
+    "glacial:glacier"
+   ],
+   "landform": [
+    "volcanic_cone_shield:volcano",
+    "valley_canyon:fjord"
+   ],
+   "resource": [
+    "hydrated_minerals:allophane"
+   ],
+   "regulatory": "protected_area:nature reserve",
+   "infrastructure": "analog_research_history:Mars"
+  },
+  {
+   "site_id": "EA-006",
+   "name": "Holuhraun lava field",
+   "country": "Iceland",
+   "lat": 64.85,
+   "lon": -16.83,
+   "coord_source": "wiki:Holuhraun",
+   "coord_kind": "lava field reference point",
+   "bbox_half_deg": 0.15,
+   "group": "candidate",
+   "wiki": [
+    "Holuhraun"
+   ],
+   "lithology": [
+    "basalt_mafic:lava",
+    "tephra_pyroclastic:ash"
+   ],
+   "process": [
+    "volcanic_effusive:eruption",
+    "fluvial_lacustrine:river",
+    "glacial:glacier"
+   ],
+   "landform": [
+    "lava_flow_field:lava field",
+    "plains:plain"
+   ],
+   "resource": [],
+   "regulatory": "protected_area:National Park",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-007",
+   "name": "Askja caldera",
+   "country": "Iceland",
+   "lat": 65.033,
+   "lon": -16.783,
+   "coord_source": "wiki:Askja",
+   "coord_kind": "volcano",
+   "bbox_half_deg": 0.15,
+   "group": "established",
+   "wiki": [
+    "Askja"
+   ],
+   "lithology": [
+    "basalt_mafic:basaltic",
+    "tephra_pyroclastic:tephra",
+    "ground_ice:permafrost"
+   ],
+   "process": [
+    "volcanic_effusive:effusive",
+    "volcanic_explosive:explosive",
+    "periglacial:permafrost"
+   ],
+   "landform": [
+    "caldera:caldera",
+    "lava_flow_field:lava flow",
+    "volcanic_cone_shield:volcano"
+   ],
+   "resource": [],
+   "regulatory": "protected_area:National Park",
+   "infrastructure": "analog_research_history:Apollo"
+  },
+  {
+   "site_id": "EA-008",
+   "name": "Timanfaya volcanic field, Lanzarote",
+   "country": "Spain",
+   "lat": 28.99417,
+   "lon": -13.79333,
+   "coord_source": "wiki:Timanfaya National Park",
+   "coord_kind": "park reference point",
+   "bbox_half_deg": 0.1,
+   "group": "candidate",
+   "wiki": [
+    "Timanfaya National Park"
+   ],
+   "lithology": [
+    "basalt_mafic:lava",
+    "tephra_pyroclastic:volcanic"
+   ],
+   "process": [
+    "volcanic_effusive:eruption",
+    "aeolian:wind"
+   ],
+   "landform": [
+    "lava_flow_field:lava",
+    "volcanic_cone_shield:volcano"
+   ],
+   "resource": [],
+   "regulatory": "protected_area:National Park",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-009",
+   "name": "Cueva de los Verdes lava tube (La Corona), Lanzarote",
+   "country": "Spain",
+   "lat": 29.16111,
+   "lon": -13.43889,
+   "coord_source": "wiki:Cueva de los Verdes",
+   "coord_kind": "cave entrance area",
+   "bbox_half_deg": 0.05,
+   "group": "candidate",
+   "wiki": [
+    "Cueva de los Verdes"
+   ],
+   "lithology": [
+    "basalt_mafic:lava"
+   ],
+   "process": [
+    "volcanic_effusive:lava stream"
+   ],
+   "landform": [
+    "lava_tube_cave:cave",
+    "pit_skylight:jameo",
+    "lava_flow_field:lava"
+   ],
+   "resource": [],
+   "regulatory": "protected_area:tourist",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-010",
+   "name": "Dallol hydrothermal field, Danakil Depression",
+   "country": "Ethiopia",
+   "lat": 14.24167,
+   "lon": 40.3,
+   "coord_source": "wiki:Dallol (hydrothermal system) (coord template)",
+   "coord_kind": "feature reference point",
+   "bbox_half_deg": 0.05,
+   "group": "candidate",
+   "wiki": [
+    "Dallol (hydrothermal system)"
+   ],
+   "lithology": [
+    "evaporite_salts:halite",
+    "sulfate:jarosite",
+    "iron_oxide:hematite",
+    "basalt_mafic:basaltic"
+   ],
+   "process": [
+    "hydrothermal:hydrothermal",
+    "evaporitic:evaporitic",
+    "acidic_aqueous:acidic",
+    "volcanic_effusive:magma"
+   ],
+   "landform": [
+    "playa_salt_flat:plain",
+    "volcanic_cone_shield:crater"
+   ],
+   "resource": [
+    "hydrated_salts:sylvite",
+    "sulfates:jarosite",
+    "iron_oxides:hematite"
+   ],
+   "regulatory": "unrestricted_or_unknown",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-011",
+   "name": "Salar de Uyuni",
+   "country": "Bolivia",
+   "lat": -20.13378,
+   "lon": -67.48913,
+   "coord_source": "wiki:Salar de Uyuni",
+   "coord_kind": "salt flat reference point",
+   "bbox_half_deg": 0.5,
+   "group": "candidate",
+   "wiki": [
+    "Salar de Uyuni"
+   ],
+   "lithology": [
+    "evaporite_salts:salt",
+    "sedimentary_clastic:lake"
+   ],
+   "process": [
+    "evaporitic:salt",
+    "fluvial_lacustrine:lake"
+   ],
+   "landform": [
+    "playa_salt_flat:salt flat",
+    "plains:flat"
+   ],
+   "resource": [
+    "hydrated_salts:lithium"
+   ],
+   "regulatory": "unrestricted_or_unknown",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-012",
+   "name": "Salar de Antofalla (Puna de Atacama)",
+   "country": "Argentina",
+   "lat": -25.73333,
+   "lon": -67.75,
+   "coord_source": "wiki:Salar de Antofalla",
+   "coord_kind": "salt flat reference point",
+   "bbox_half_deg": 0.3,
+   "group": "candidate",
+   "wiki": [
+    "Salar de Antofalla"
+   ],
+   "lithology": [
+    "evaporite_salts:salt"
+   ],
+   "process": [
+    "evaporitic:salt"
+   ],
+   "landform": [
+    "playa_salt_flat:salt flat"
+   ],
+   "resource": [],
+   "regulatory": "unrestricted_or_unknown",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-013",
+   "name": "Dresser Formation (North Pole Dome), Pilbara",
+   "country": "Australia",
+   "lat": -21.151759,
+   "lon": 119.437252,
+   "coord_source": "wiki:Dresser Formation (coord template)",
+   "coord_kind": "formation reference point",
+   "bbox_half_deg": 0.1,
+   "group": "candidate",
+   "wiki": [
+    "Dresser Formation"
+   ],
+   "lithology": [
+    "basalt_mafic:basalt",
+    "silica_chert_sinter:chert",
+    "carbonate:carbonate",
+    "evaporite_salts:evaporite",
+    "sedimentary_clastic:sandstone",
+    "sulfate:barite"
+   ],
+   "process": [
+    "hydrothermal:hydrothermal",
+    "volcanic_effusive:pillow",
+    "fluvial_lacustrine:sediment"
+   ],
+   "landform": [
+    "layered_sedimentary_outcrop:bedded",
+    "massif_highland:dome"
+   ],
+   "resource": [
+    "sulfates:barite"
+   ],
+   "regulatory": "unrestricted_or_unknown",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-014",
+   "name": "Arkaroola (Northern Flinders Ranges)",
+   "country": "Australia",
+   "lat": -30.31167,
+   "lon": 139.33611,
+   "coord_source": "wiki:Arkaroola",
+   "coord_kind": "settlement/sanctuary reference point",
+   "bbox_half_deg": 0.15,
+   "group": "candidate",
+   "wiki": [
+    "Arkaroola"
+   ],
+   "lithology": [
+    "granitic_felsic:granite",
+    "sedimentary_clastic:sediment",
+    "metamorphic:metamorph"
+   ],
+   "process": [
+    "hydrothermal:hot spring",
+    "fluvial_lacustrine:creek"
+   ],
+   "landform": [
+    "valley_canyon:gorge",
+    "massif_highland:range"
+   ],
+   "resource": [
+    "radioactive_minerals:uranium"
+   ],
+   "regulatory": "protected_area:sanctuary",
+   "infrastructure": "analog_research_history:Mars"
+  },
+  {
+   "site_id": "EA-015",
+   "name": "Wolfe Creek Crater",
+   "country": "Australia",
+   "lat": -19.17167,
+   "lon": 127.79556,
+   "coord_source": "wiki:Wolfe Creek Crater",
+   "coord_kind": "crater centre",
+   "bbox_half_deg": 0.05,
+   "group": "candidate",
+   "wiki": [
+    "Wolfe Creek Crater"
+   ],
+   "lithology": [
+    "impact_breccia_melt:shocked quartz",
+    "sedimentary_clastic:sandstone",
+    "iron_oxide:iron"
+   ],
+   "process": [
+    "impact:impact",
+    "aeolian:sand"
+   ],
+   "landform": [
+    "impact_crater:crater",
+    "dune_field:sand"
+   ],
+   "resource": [
+    "iron_oxides:iron"
+   ],
+   "regulatory": "protected_area:National Park",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-016",
+   "name": "Undara lava tubes (McBride Basalt Province)",
+   "country": "Australia",
+   "lat": -18.20111,
+   "lon": 144.59611,
+   "coord_source": "wiki:Undara Volcanic National Park",
+   "coord_kind": "park reference point",
+   "bbox_half_deg": 0.15,
+   "group": "candidate",
+   "wiki": [
+    "Undara Volcanic National Park"
+   ],
+   "lithology": [
+    "basalt_mafic:basalt"
+   ],
+   "process": [
+    "volcanic_effusive:lava"
+   ],
+   "landform": [
+    "lava_tube_cave:lava tube",
+    "volcanic_cone_shield:volcano",
+    "lava_flow_field:lava flow"
+   ],
+   "resource": [],
+   "regulatory": "protected_area:National Park",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-017",
+   "name": "Tso Kar basin, Ladakh",
+   "country": "India",
+   "lat": 33.3,
+   "lon": 77.98333,
+   "coord_source": "wiki:Tso Kar",
+   "coord_kind": "lake centre (water body)",
+   "bbox_half_deg": 0.1,
+   "group": "established",
+   "wiki": [
+    "Tso Kar"
+   ],
+   "lithology": [
+    "evaporite_salts:salt",
+    "sedimentary_clastic:sediment"
+   ],
+   "process": [
+    "evaporitic:salt",
+    "fluvial_lacustrine:lake",
+    "periglacial:permafrost"
+   ],
+   "landform": [
+    "playa_salt_flat:salt",
+    "valley_canyon:valley",
+    "plains:basin"
+   ],
+   "resource": [
+    "hydrated_salts:salt"
+   ],
+   "regulatory": "protected_area:Ramsar",
+   "infrastructure": "analog_research_station:HOPE"
+  },
+  {
+   "site_id": "EA-018",
+   "name": "Qaidam Basin",
+   "country": "China",
+   "lat": 37.26667,
+   "lon": 94.45,
+   "coord_source": "wiki:Qaidam Basin",
+   "coord_kind": "basin centroid",
+   "bbox_half_deg": 1.0,
+   "group": "established",
+   "wiki": [
+    "Qaidam Basin"
+   ],
+   "lithology": [
+    "evaporite_salts:salt",
+    "sedimentary_clastic:sediment",
+    "sulfate:sulfate"
+   ],
+   "process": [
+    "evaporitic:evaporite",
+    "aeolian:wind",
+    "fluvial_lacustrine:lake"
+   ],
+   "landform": [
+    "playa_salt_flat:playa",
+    "plains:basin",
+    "yardang_aeolian:yardang"
+   ],
+   "resource": [
+    "hydrated_salts:potash"
+   ],
+   "regulatory": "unrestricted_or_unknown",
+   "infrastructure": "analog_research_history:Mars analogue"
+  },
+  {
+   "site_id": "EA-019",
+   "name": "Mauna Kea (upper slopes)",
+   "country": "United States",
+   "lat": 19.82056,
+   "lon": -155.46806,
+   "coord_source": "wiki:Mauna Kea",
+   "coord_kind": "summit",
+   "bbox_half_deg": 0.15,
+   "group": "candidate",
+   "wiki": [
+    "Mauna Kea"
+   ],
+   "lithology": [
+    "basalt_mafic:basalt",
+    "tephra_pyroclastic:cinder",
+    "ground_ice:permafrost"
+   ],
+   "process": [
+    "volcanic_effusive:lava",
+    "volcanic_explosive:cinder",
+    "glacial:glacia",
+    "periglacial:permafrost"
+   ],
+   "landform": [
+    "volcanic_cone_shield:shield",
+    "volcanic_cone_shield:cinder cone"
+   ],
+   "resource": [
+    "iron_oxides:hematite"
+   ],
+   "regulatory": "protected_area:conservation",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-020",
+   "name": "Kaʻū Desert (Kīlauea)",
+   "country": "United States",
+   "lat": 19.40861,
+   "lon": -155.29667,
+   "coord_source": "wiki:Kaʻū Desert (coord template)",
+   "coord_kind": "desert reference point",
+   "bbox_half_deg": 0.1,
+   "group": "candidate",
+   "wiki": [
+    "Kaʻū Desert"
+   ],
+   "lithology": [
+    "tephra_pyroclastic:tephra",
+    "basalt_mafic:lava"
+   ],
+   "process": [
+    "volcanic_explosive:ash",
+    "volcanic_effusive:lava",
+    "aeolian:wind"
+   ],
+   "landform": [
+    "lava_flow_field:lava",
+    "plains:desert"
+   ],
+   "resource": [],
+   "regulatory": "protected_area:National Park",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-021",
+   "name": "Lava Beds National Monument",
+   "country": "United States",
+   "lat": 41.71389,
+   "lon": -121.50833,
+   "coord_source": "wiki:Lava Beds National Monument",
+   "coord_kind": "monument reference point",
+   "bbox_half_deg": 0.1,
+   "group": "candidate",
+   "wiki": [
+    "Lava Beds National Monument"
+   ],
+   "lithology": [
+    "basalt_mafic:basaltic",
+    "tephra_pyroclastic:cinder"
+   ],
+   "process": [
+    "volcanic_effusive:lava flow"
+   ],
+   "landform": [
+    "lava_tube_cave:lava tube",
+    "lava_flow_field:lava flow",
+    "volcanic_cone_shield:cinder cone"
+   ],
+   "resource": [
+    "cave_ice:ice"
+   ],
+   "regulatory": "protected_area:National Monument",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-022",
+   "name": "Craters of the Moon lava field",
+   "country": "United States",
+   "lat": 43.46167,
+   "lon": -113.56271,
+   "coord_source": "wiki:Craters of the Moon National Monument and Preserve",
+   "coord_kind": "monument reference point",
+   "bbox_half_deg": 0.2,
+   "group": "established",
+   "wiki": [
+    "Craters of the Moon National Monument and Preserve"
+   ],
+   "lithology": [
+    "basalt_mafic:basaltic",
+    "tephra_pyroclastic:cinder"
+   ],
+   "process": [
+    "volcanic_effusive:lava",
+    "volcanic_explosive:cinder"
+   ],
+   "landform": [
+    "lava_flow_field:lava field",
+    "lava_tube_cave:lava tube",
+    "volcanic_cone_shield:cinder cone"
+   ],
+   "resource": [],
+   "regulatory": "protected_area:National Monument",
+   "infrastructure": "analog_research_history:Apollo"
+  },
+  {
+   "site_id": "EA-023",
+   "name": "Meteor Crater (Barringer)",
+   "country": "United States",
+   "lat": 35.02806,
+   "lon": -111.02333,
+   "coord_source": "wiki:Meteor Crater",
+   "coord_kind": "crater centre",
+   "bbox_half_deg": 0.05,
+   "group": "established",
+   "wiki": [
+    "Meteor Crater"
+   ],
+   "lithology": [
+    "impact_breccia_melt:breccia",
+    "sedimentary_clastic:sandstone",
+    "carbonate:limestone"
+   ],
+   "process": [
+    "impact:impact"
+   ],
+   "landform": [
+    "impact_crater:crater"
+   ],
+   "resource": [
+    "metals_ni_fe:iron"
+   ],
+   "regulatory": "private_land:privately",
+   "infrastructure": "analog_research_history:Apollo"
+  },
+  {
+   "site_id": "EA-024",
+   "name": "Mistastin Lake impact structure",
+   "country": "Canada",
+   "lat": 55.88333,
+   "lon": -63.3,
+   "coord_source": "wiki:Mistastin crater",
+   "coord_kind": "crater centre (lake)",
+   "bbox_half_deg": 0.15,
+   "group": "established",
+   "wiki": [
+    "Mistastin crater"
+   ],
+   "lithology": [
+    "anorthosite_feldspathic:anorthosite",
+    "impact_breccia_melt:impact",
+    "granitic_felsic:batholith"
+   ],
+   "process": [
+    "impact:impact",
+    "glacial:glaci"
+   ],
+   "landform": [
+    "impact_crater:crater",
+    "massif_highland:island"
+   ],
+   "resource": [
+    "regolith_oxygen_feldspar:anorthosite"
+   ],
+   "regulatory": "unrestricted_or_unknown",
+   "infrastructure": "analog_research_history:astronauts"
+  },
+  {
+   "site_id": "EA-025",
+   "name": "Sudbury Basin",
+   "country": "Canada",
+   "lat": 46.6,
+   "lon": -81.18333,
+   "coord_source": "wiki:Sudbury Basin",
+   "coord_kind": "basin reference point",
+   "bbox_half_deg": 0.3,
+   "group": "candidate",
+   "wiki": [
+    "Sudbury Basin"
+   ],
+   "lithology": [
+    "impact_breccia_melt:breccia",
+    "norite_mafic_intrusive:norite",
+    "metamorphic:metamorph"
+   ],
+   "process": [
+    "impact:impact"
+   ],
+   "landform": [
+    "impact_crater:basin"
+   ],
+   "resource": [
+    "metals_ni_fe:nickel"
+   ],
+   "regulatory": "populated_or_mining:mining",
+   "infrastructure": "analog_research_history:Apollo"
+  },
+  {
+   "site_id": "EA-026",
+   "name": "Río Tinto headwaters (Minas de Riotinto mining district)",
+   "country": "Spain",
+   "lat": 37.68333,
+   "lon": -6.58333,
+   "coord_source": "wiki:Minas de Riotinto (infobox coord 37°41′N 6°35′W)",
+   "coord_kind": "town in headwater mining district",
+   "bbox_half_deg": 0.1,
+   "group": "established",
+   "wiki": [
+    "Río Tinto",
+    "Minas de Riotinto"
+   ],
+   "lithology": [
+    "iron_oxide:iron",
+    "sulfate:sulfate",
+    "sulfide:pyrite"
+   ],
+   "process": [
+    "acidic_aqueous:acid",
+    "fluvial_lacustrine:river"
+   ],
+   "landform": [
+    "valley_canyon:river"
+   ],
+   "resource": [
+    "sulfates:sulfate",
+    "iron_oxides:iron"
+   ],
+   "regulatory": "populated_or_mining:mining",
+   "infrastructure": "analog_research_history:Mars"
+  },
+  {
+   "site_id": "EA-027",
+   "name": "Lonar impact crater",
+   "country": "India",
+   "lat": 19.975,
+   "lon": 76.5075,
+   "coord_source": "wiki:Lonar Lake",
+   "coord_kind": "crater centre (lake)",
+   "bbox_half_deg": 0.03,
+   "group": "candidate",
+   "wiki": [
+    "Lonar Lake"
+   ],
+   "lithology": [
+    "basalt_mafic:basalt",
+    "impact_breccia_melt:impact"
+   ],
+   "process": [
+    "impact:impact",
+    "fluvial_lacustrine:lake",
+    "evaporitic:saline"
+   ],
+   "landform": [
+    "impact_crater:crater"
+   ],
+   "resource": [],
+   "regulatory": "protected_area:sanctuary",
+   "infrastructure": "none_known:"
+  },
+  {
+   "site_id": "EA-028",
+   "name": "Mars Desert Research Station area (San Rafael Swell margin)",
+   "country": "United States",
+   "lat": 38.40646,
+   "lon": -110.7919,
+   "coord_source": "wiki:Mars Desert Research Station",
+   "coord_kind": "station location",
+   "bbox_half_deg": 0.1,
+   "group": "established",
+   "wiki": [
+    "Mars Desert Research Station"
+   ],
+   "lithology": [
+    "sedimentary_clastic:sandstone",
+    "clay_phyllosilicate:clay"
+   ],
+   "process": [
+    "fluvial_lacustrine:river",
+    "aeolian:wind"
+   ],
+   "landform": [
+    "layered_sedimentary_outcrop:formation",
+    "plains:desert"
+   ],
+   "resource": [
+    "hydrated_minerals:gypsum"
+   ],
+   "regulatory": "public_land_permit:Bureau of Land Management",
+   "infrastructure": "analog_research_station:Mars Society"
+  }
+ ]
+}
